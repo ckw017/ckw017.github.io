@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="google-site-verification" content="vPLfvmVSeTNblZy_aIhUxvvqd1CAI52lBSX2BhHMCww" />
+    <title>61B Roguelike Game – Chris Wong – Student at UC Berkeley</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.
+
+" />
+    <meta property="og:description" content="While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.
+
+" />
+    
+    <meta name="author" content="Chris Wong" />
+
+    
+    <meta property="og:title" content="61B Roguelike Game" />
+    <meta property="twitter:title" content="61B Roguelike Game" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Chris Wong - Student at UC Berkeley" href="/feed.xml" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://i.imgur.com/FuNGkx1.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Chris Wong</a></h1>
+            <p class="site-description">Student at UC Berkeley</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+            <a href="/berkeley-lf-page">Lost+Found</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>61B Roguelike Game</h1>
+
+  <div class="entry">
+    <p>While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.</p>
+
+<p><em>Disclaimer: This won’t really go into as much technical detail as other posts, since I’m obligated not to share too much information on how I implemented stuff for the sake of academic integrity.</em></p>
+
+<p>The objective of the project was to create a <em>roguelike</em> game. According to Wikipedia, a roguelike is defined by “procedurally generated levels, turn-based gameplay, tile-based graphics, and permanent death of the player character.” In previous projects, we were usually handed a skeleton outline of the what we had to do, along with a predefined specification for how everything should be implemented. I had major qualms with this style of assignment, mainly because it locked you in to a single approach to problem solving, and often times the method headers gave away the tricks to the problem. But it was more or a less a necessary evil: there were 700+ students, and the autograder had to work with a predefined functions and classes to test.</p>
+
+<p>That’s why Project 2 was so exciting! The only rigid requirements we had were to use the graphics library that was provided. As for the more abstract goals, we were asked to:</p>
+<ol>
+  <li>Implement a player character with some form of movement</li>
+  <li>Randomly generated rooms and hallways</li>
+  <li>The ability to interact with the environment</li>
+  <li>A condition to win the game.</li>
+</ol>
+
+<p>Since this isn’t going to be a technical post anyway, I guess I’ll go a bit into my background in video games. The two big influencers for my game were <em>Pokemon Mystery Dungeon</em>, and <em>Realm of the Mad God (RotMG)</em>, both 2D dungeon crawling games with roguelike aspects. Two of my favorite parts of the dungeons featured in RotMG is that while the game tells you exactly <em>where</em> you should be headed, the labyrinth-like dungeon only provides one path to get there – everything else is just a dead end. When I was thinking up how I might implement this, I was struck by inspiration, which ended up going not being valid, and then by a Discrete Math exam. During some last minute review for that exam, I realized that the dungeons in RotMG were actually just an implementation of my third favorite type of graph: the tree. <em>(My first favorite is the n-dimensional hypercube graph, followed shortly by directed acyclic)</em></p>
+
+<p><img src="/images/rogue/rotmg_abyss.png" alt="" /></p>
+
+<p>An example layout for <em>The Abyss of Demons</em>, a dungeon that I spent too much time grinding in in RotMG.</p>
+
+<p>The strategy to make the dungeon was to generate a bunch of rooms, and the connect them with hallways until they formed a tree. If that sounds vague, its because it is. I really wish I could go into more detail here, but I can’t. I will say that the trick to forming the tree was to make sure each room wasn’t already connected to another before joining them. This is because if we treat each room as a node in a graph, then connecting two previously connected nodes would form a cycle, ruining the tree property of the graph. To check for connectedness, I ended up “inventing” a special class to keep track of what was already linked, only to be find out later in lecture that it was called a Disjoint Set and that it had already been figured out long before I came around :(</p>
+
+<p>Anyway, the last step was to come up with a theme for the game. I thought it would be funny to name the game after Dwinelle Hall, a building on campus rumored to have been designed by two disagreeable architects. For a gameplay video, check out <a href="https://www.youtube.com/watch?v=HFTrWrPsLMQ">my extra credit video</a>, or don’t! Anyway, that’s all for this post. Sorry about the lack of code.</p>
+
+<p><img src="/images/rogue/dwinelle.jpg" alt="" /></p>
+
+<p><em>Depiction of Dwinelle Hall, courtesy of the Daily Kale.</em></p>
+
+  </div>
+
+  <div class="date">
+    Written on July  2, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/ckw017"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/chriswong21"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+<br>
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

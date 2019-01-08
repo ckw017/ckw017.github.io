@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="google-site-verification" content="vPLfvmVSeTNblZy_aIhUxvvqd1CAI52lBSX2BhHMCww" />
+    <title>Hog Contest (Part 1) – Chris Wong – Student at UC Berkeley</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game
+Hog. The game itself is pretty simple (roll die to score points, first to 100 wins),
+and the project was more a less just a warm-up to get everyone used to Python syntax and higher order functions. The extra credit option,
+however, was a bit more interesting.
+
+" />
+    <meta property="og:description" content="The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game
+Hog. The game itself is pretty simple (roll die to score points, first to 100 wins),
+and the project was more a less just a warm-up to get everyone used to Python syntax and higher order functions. The extra credit option,
+however, was a bit more interesting.
+
+" />
+    
+    <meta name="author" content="Chris Wong" />
+
+    
+    <meta property="og:title" content="Hog Contest (Part 1)" />
+    <meta property="twitter:title" content="Hog Contest (Part 1)" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Chris Wong - Student at UC Berkeley" href="/feed.xml" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://i.imgur.com/FuNGkx1.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Chris Wong</a></h1>
+            <p class="site-description">Student at UC Berkeley</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+            <a href="/berkeley-lf-page">Lost+Found</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Hog Contest (Part 1)</h1>
+
+  <div class="entry">
+    <p>The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game
+<a href="http://inst.eecs.berkeley.edu/~cs61a/fa17/proj/hog/">Hog</a>. The game itself is pretty simple (roll die to score points, first to 100 wins),
+and the project was more a less just a warm-up to get everyone used to Python syntax and higher order functions. The extra credit option,
+however, was a bit more interesting.</p>
+
+<p><img src="/images/hog-gui.jpg" alt="" /></p>
+
+<p>The extra credit option was to create a “strategy” to compete against other students’ submissions. In this context,
+a strategy is a function that takes the current score, and outputs a number of die to roll. A basic strategy might
+look something like ‘lambda my_score, opp_score: 4’, which would always roll 4. The suggested ideas included taking
+advantages of some of the game mechanics, such as “Swine Swap,” which switches the players’ scores if one is an integer
+multiple of another, and “Free Bacon,” which let you get a set amount of points by choosing to roll zero die. This
+sort of thing could be implemented through a whole lot of if-statements, but it begged the question: was there a more
+precise way to make a strategy?</p>
+
+<p><a href="/images/iteration0.jpg"><img src="/images/iteration0.jpg" alt="" width="320px" /></a></p>
+
+<p><em>A handmade strategy</em></p>
+
+<p>The answer was of course, yes! The process goes something like this: given a score state and “seed” opponent strategy, we want to know the optimal
+number of dice to roll to maximize our odds of winning. How can we determine that? By adding up the probability of winning
+in future score states. This is a recursive problem, with the base case being situations where a player is guaranteed to win
+on that turn, for example, if someone has 99 points. Paired with memoization, you could calculate the optimal strategy fairly
+quickly. This approach had one limitation however: the strategy was only an optimal counter strategy against the input strategy, and not necessarily
+all strategies.</p>
+
+<p><a href="/images/iteration1.jpg"><img src="/images/iteration1.jpg" alt="" width="320px" /></a></p>
+
+<p><em>The optimal counter strategy against the handmade strategy</em></p>
+
+<p>The solution to this is actually pretty interesting. To get a truly optimal strategy, we can take the output from one iteration as
+the seed for the next. An interesting trend emerges as we do this: the win rate of the counter strategy gradually went down, until
+it reached 50%. Additionally, once it reached 50%, the output strategy would be equivalent to the input strategy!</p>
+
+<iframe width="600" height="371" seamless="" frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHv20ef9STEktZIhsttsDrPg-5DBtHDcbIfyTbquh56xGqkVaOt5ZdGMhRZ5rx_AA16l3rpf198zzZ/pubchart?oid=1321489337&amp;format=interactive"></iframe>
+
+<p>The implication of this is interesting. Consider this: If the output strategy is the same is the input strategy, then the best counter to that strategy is itself. If we have a strategy that is optimal against itself, then it must beat all other strategies.
+In other words, since the best counter strategy can only win 50% of the time, all other strategies must win less than 50% of the time. Which in the context of the contest means that this strategy was guaranteed to either win or tie against all other opponents1</p>
+
+<p>So, anyone who discovered this optimal strategy would have tied for first, right? Well, for better and worse, the course staff had accounted
+for this, which I will continue in <a href="/Hog-Contest-2/">another post</a>. For now, here’s some neat graphics of the strategies “evolving” and converging towards
+the optimal strategy.</p>
+
+<p><a href="/images/human_base.gif"><img src="/images/human_base.gif" alt="" width="320px" /></a>
+<a href="/images/always_4_base.gif"><img src="/images/always_4_base.gif" alt="" width="320px" /></a></p>
+
+<p><em>Seeded with the handmade strategy and “always 4” strategy respectively</em></p>
+
+  </div>
+
+  <div class="date">
+    Written on June  1, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/ckw017"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/chriswong21"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+<br>
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

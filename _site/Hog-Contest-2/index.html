@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="google-site-verification" content="vPLfvmVSeTNblZy_aIhUxvvqd1CAI52lBSX2BhHMCww" />
+    <title>Hog Contest (Part 2) – Chris Wong – Student at UC Berkeley</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy
+for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly
+wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first.
+Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic
+method by forcing the strategies to work with incomplete information.
+
+" />
+    <meta property="og:description" content="Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy
+for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly
+wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first.
+Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic
+method by forcing the strategies to work with incomplete information.
+
+" />
+    
+    <meta name="author" content="Chris Wong" />
+
+    
+    <meta property="og:title" content="Hog Contest (Part 2)" />
+    <meta property="twitter:title" content="Hog Contest (Part 2)" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Chris Wong - Student at UC Berkeley" href="/feed.xml" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://i.imgur.com/FuNGkx1.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Chris Wong</a></h1>
+            <p class="site-description">Student at UC Berkeley</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+            <a href="/berkeley-lf-page">Lost+Found</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Hog Contest (Part 2)</h1>
+
+  <div class="entry">
+    <p>Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy
+for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly
+wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first.
+Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic
+method by forcing the strategies to work with <em>incomplete information.</em></p>
+
+<p><em>“<strong>Time Trot</strong>: A turn involves a player rolling dice, and each turn is numbered, starting from 0. If a player
+chooses to roll a number of dice k on turn n, and n % 8 == k, then that player gets an extra turn immediately
+after the current turn. However, a player cannot get an extra turn immediately after an extra turn.”</em></p>
+
+<p>The new rule was fairly simple, and would be easy to implement as a person. A human player could keep track of
+what turn it is, and use their extra rolls as they wished. However, under the contest rules, the strategy
+“must be a deterministic function of the players’ scores and cannot track the turn number or previous actions.”</p>
+
+<p>Now that the strategies were forced to work with incomplete information, the contest was a lot more interesting.
+My first thought was to adapt the original probabilistic method as follows:</p>
+
+<ol>
+  <li>
+    <p>Calculate the best possible move to make against a given strategy given a set of scores <em>and</em> the current turn number.</p>
+  </li>
+  <li>
+    <p>Calculate the probability that it is a certain turn number for each possible turn (0 to 7), for each possible pair of scores
+(0 to 99, 0 to 99)</p>
+  </li>
+  <li>
+    <p>Normalize each turn number and roll by the probability of it leading to a winning game</p>
+  </li>
+  <li>
+    <p>Find the best roll by adding up the normalized turn numbers and their rolls</p>
+  </li>
+</ol>
+
+<p><strong>TODO: Put in visualization of how data interacts.</strong></p>
+
+<p>There was of course a major flaw in the second step: to calculate the probability that a given set of scores would be a certain
+turn number, you needed to simulate a game between the base strategy and the strategy you were currently making. But the strategy
+being was made wasn’t finished yet! Uh oh. It looks like we’ll need to use an approximation: the old optimal strategy.</p>
+
+<p>So, using the optimal strategy as the seed, as well as the approximation strategy, the new strategy reached a win rate of
+0.503, beating the optimal strategy 3 tenths of a percent more often than not. Surely we could do better? The ideal (but unachievable)
+win rate, given complete information, was around 0.58. Was there a way to get closer to that?</p>
+
+<p>The answer was: sorta. By rerunning the algorithm, this time using the output of the previous run as the approximation strategy, it
+actually ended up doing worse. But by repeatedly feeding the output back in like this gradual progress was made towards the ideal.
+After about 300+ iterations, the best win rate was around 0.537, almost halfway closer to the ideal than in the first iteration.</p>
+
+<iframe width="704" height="438" seamless="" frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHv20ef9STEktZIhsttsDrPg-5DBtHDcbIfyTbquh56xGqkVaOt5ZdGMhRZ5rx_AA16l3rpf198zzZ/pubchart?oid=1161975059&amp;format=interactive">
+  </iframe>
+
+<p>This was about as far as I got before I realized the contest deadline was going to make things tricky. To get that 0.537 win rate took a few
+hours, and a couple of attempt were ruined midway from problems with the memoization system I was using running out of memory. If I had more time,
+and I may look into these approaches now that I do have time, I would have tried out a few different approaches. The main ones that come to mind are
+creating what would be the optimal strategy if we did have complete information then “flattening” down into a 2D strategy, or doing an incremental
+approach where only a few outputs are changed each time. If I ever get around to that, I’ll make a part three to this saga, but for now that’s all for hog!</p>
+
+  </div>
+
+  <div class="date">
+    Written on June 15, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/ckw017"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/chriswong21"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+<br>
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

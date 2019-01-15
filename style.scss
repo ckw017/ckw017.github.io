@@ -22,7 +22,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   font: 18px/1.4 $helvetica;
-  color: $darkGray;
+  color: $white;
 }
 
 .container {
@@ -33,7 +33,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
-  color: $darkerGray;
+  color: $lightGray;
   font-weight: bold;
 
   line-height: 1.7;
@@ -135,7 +135,7 @@ img.post-preview:hover {
 
 .date {
   font-style: italic;
-  color: $gray;
+  color: rgb(210, 210, 210);
 }
 
 // Specify the color of the selection
@@ -169,7 +169,7 @@ img.post-preview:hover {
 //
 
 .wrapper-masthead {
-  background-color: rgba(255, 255, 255, .1);
+  background-color: rgba(0, 0, 0, .1);
   position: relative;
   z-index: 1;
 }
@@ -177,7 +177,7 @@ img.post-preview:hover {
 .masthead {
   padding: 40px 20px;
   margin: 0px;
-  background-color: rgba(255, 255, 255, .15);
+  background-color: rgba(0, 0, 0, .15);
   @include mobile {
     text-align: center;
   }
@@ -212,7 +212,7 @@ img.post-preview:hover {
 
 .site-name {
   margin: 0;
-  color: $darkGray;
+  color: rgb(210, 210, 210);
   cursor: pointer;
   font-family: $helveticaNeue;
   font-weight: 300;
@@ -222,7 +222,7 @@ img.post-preview:hover {
 
 .site-description {
   margin: -5px 0 0 0;
-  color: $darkGray;
+  color: rgb(210, 210, 210);
   font-size: 16px;
 
   @include mobile {
@@ -254,20 +254,19 @@ nav {
 
   a {
     margin-left: 20px;
-    color: $darkGray;
+    color: rgb(210, 210, 210);
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
 
     @include mobile {
       margin: 0 10px;
-      color: $blue;
     }
   }
 }
 
 #main {
-	background-color: rgba(255, 255, 255, .85);
+	background-color: rgba(28, 31, 33, .85);
     padding: 0 10px;
 	overflow: hidden;
 	z-index: 0;
@@ -276,7 +275,7 @@ nav {
 .posts > .post {
   padding: 15px;
   margin: 0 -10px;
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid #444;
 }
 
 .posts > .post:last-child {
@@ -309,9 +308,9 @@ nav {
 
 footer {
   padding: 20px 0;
-  background-color: rgba(223, 223, 223, .9);
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  background-color: rgba(28, 31, 33, .9);
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #2;
   text-align: center;
 }
 
@@ -319,3 +318,15 @@ footer {
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
 @import "svg-icons";
+
+// Dark links
+
+a:not([style*="color:"]) {
+    :color: rgb(137, 179, 192) !important;
+}
+a:not([style*="color:"]):hover {
+    color: rgb(148, 190, 208) !important;
+}
+a:not([style*="color:"]):active, a:not([style*="color:"]):focus {
+    color: rgb(160, 202, 224) !important;
+}

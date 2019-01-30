@@ -1,0 +1,28 @@
+---
+layout: default
+permalink: /portfolio/
+---
+
+<div class="posts"> 
+  <h1> Portfolio </h1>
+  These are a few of the projects I've worked on over the years for academic purposes, work, or personal interest. Source code should be available for all the personal ones and a few of the academic ones.
+  <hr>
+  {% assign portfolio = site.portfolio | reverse %}
+  {% for post in portfolio %}
+    <article class="post">
+        <div class="flex-container">
+          <a href="{{ site.baseurl }}{{ post.src }}">
+            <img class="post-preview" src="{{ post.img }}" width="150" height="150">
+          </a>
+          <div class="text-preview">
+            <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
+            <div class="entry">
+              {{ post.content }}
+            </div>
+            <a href="{{ post.src }}">Source code</a><br>
+            <i>Release date: {{post.date | date: "%B %e, %Y" }}</i>
+          </div>
+      </div>
+    </article>
+  {% endfor %}
+</div>

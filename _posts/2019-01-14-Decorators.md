@@ -4,7 +4,7 @@ img: https://i.imgur.com/uKBTjsf.png
 title: "Python Decorators: Not just for decoration"
 ---
 
-Python decorators are the semantic sugar that most people will
+Python decorators are syntactic sugar that most people will
 run into while working with web frameworks such as Flask or Bottle. 
 For example, the following snippet from the Bottle documentation uses
 decorators to specify a route:

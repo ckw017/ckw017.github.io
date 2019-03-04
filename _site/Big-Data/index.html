@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="google-site-verification" content="vPLfvmVSeTNblZy_aIhUxvvqd1CAI52lBSX2BhHMCww" />
+    <title>Corollaries to Big Data™ – Chris Wong – Student at UC Berkeley</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Okay, well maybe not big data compared to what some companies churn through.
+But definitely not small data for an individual, unless you’re one of those
+people on reddit. But, that’s enough
+with semantics.
+
+" />
+    <meta property="og:description" content="Okay, well maybe not big data compared to what some companies churn through.
+But definitely not small data for an individual, unless you’re one of those
+people on reddit. But, that’s enough
+with semantics.
+
+" />
+    
+    <meta name="author" content="Chris Wong" />
+
+    
+    <meta property="og:title" content="Corollaries to Big Data™" />
+    <meta property="twitter:title" content="Corollaries to Big Data™" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Chris Wong - Student at UC Berkeley" href="/feed.xml" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://i.imgur.com/FuNGkx1.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Chris Wong</a></h1>
+            <p class="site-description">Student at UC Berkeley</p>
+          </div>
+
+          <nav>
+            <a href="/">Home</a>
+            <a href="https://drive.google.com/file/d/1XxGLQxflwiz7mFxeYCGHuQDCHGZpQrLQ/view?usp=sharing" target="_blank" rel="noopener noreferrer"> Résumé
+            </a>
+            <a href="/portfolio">Portfolio</a>
+            <a href="/about">About</a>
+            <a href="/berkeley-lf-page">Lost+Found</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Corollaries to Big Data™</h1>
+
+  <div class="entry">
+    <p>Okay, well maybe not big data compared to what some companies churn through.
+But definitely not small data for an individual, unless you’re <a href="https://www.reddit.com/r/DataHoarder/">one of <em>those</em>
+people on reddit.</a> But, that’s enough
+with semantics.</p>
+
+<p>To preface this entry, I will briefly try to butcher a description of one of the
+research projects I’m involved with at my university’s <a href="neuroecon.berkeley.edu">neuroeconomics lab</a>.
+Explaining what exactly neuroeconomics is would probably take another blog post.
+To put it succintly, neuroeconomics studies the intersection of behavioral
+economics and neuroscience. To put it anecdotally, I’m a computer science major
+in a neuroscience lab operating within the business school.</p>
+
+<p>¯\ _(ツ)_/¯</p>
+
+<p>Anyway, one of my most well-defined projects among other miscellaneous things is
+to work with word embeddings: machine learning models of natural language that
+“embed” words into a 300-dimensional vector space through completely
+unsupervised training methods. The hope is to use these embeddings
+to predict how people would behave in various decision-making problems. Getting
+these models to be consistent however generally requires corpora of
+100 million well-formed english sentences, at the very least. Enter our first 
+corollary:</p>
+
+<h1 id="corollary-1-small-storage">Corollary 1: Small Storage</h1>
+
+<p>I don’t know a lot about big data, but I can tell you all about low disk space.
+Most of my first semester in the lab was plagued with running low on disk space
+which turns out can be quite catastophic on a Linux system, where the philosophy
+asserts that <em>everything</em> is a file. Needless to say, things can get a bit wonky
+when the kernel becomes physically incapable of allocating space for new files.</p>
+
+<p>Anyway, I took this as a sign/excuse to finally to get a fresh NVMe SSD
+(in the words of a firmware friend, “there’s no going back”), and so the problem
+was temporarily alleviated. Temporarily. This semester we hired a few new
+undergrads to help out, and as part of the oboarding process I was asked to send
+out a dataset and a script to build a basic model. One person was able to get the dataset, one was able to download it but didn’t have the space to decompress, and one couldn’t even find space for the compressed archive.</p>
+
+<p>¯\_(ツ)_/¯</p>
+
+<h1 id="corollary-2-small-memory">Corollary 2: Small Memory</h1>
+
+<p>All right. Well, clearly trying to distribute datasets like that to everyone
+wasn’t very efficient anyway. Ideally, we could just keep all our datasets on
+a shared remote machine (preferably with looots of storage) and work from there.
+Thankfully, the university’s <a href="https://www.ocf.berkeley.edu/">Open Computing Facility</a> (whose members are, on an unrelated note, very
+cool people) offers access to a high performance computing cluster which has
+a roomy 7TB of available disk space. Ahhh. We can breathe again. Now we can
+get back to work, right?</p>
+
+<p>Nope. Well, I guess we could, but it wouldn’t sit right. The HPC cluster is
+technically just one machine, but is definitely the most impressive machine I’ve
+ever gotten to work directly with. Namely, it has 2 CPU’s running at 2.4 GHz,
+with 20 threads each. In other words, “it’ll train faster than my laptop.”
+Or so I thought. Actually, the gains were negligible, even after specifying to
+train with 24+ worker threads. What’s the matter?</p>
+
+<p>After some digging, I found out that one of the major bottlenecks for word
+embedding model training is the time it takes to feed the corpus to the
+worker threads. After double checking the stats and making sure <a href="https://slurm.schedmd.com/">Slurm</a> (the workload manager used for the cluster) was 
+allocating the correct amount of worker threads, it became evident that the
+corpus iterator was really only quick enough to keep up with 4 threads of
+execution while the other 20 remained idle. Okay, okay. We can just
+pre-process the corpus and load the whole thing into memory, right?</p>
+
+<p>Actually, yeah, that part actually worked. The reason I include this corollary
+though is because there’s no way it could have worked on anything other than a
+high performance cluster. Loading the corpus (with a heapload of mysterious python overhead) into memory took up 50GB of RAM, which happens to work out 
+since the machine had 252GB available. Truly a monster.</p>
+
+<p><img src="/images/cluster.png" alt="More hands on deck just meant more idle hands" /></p>
+
+<p><em>Things of note: the silly amount of memory being used and the silly amount of 
+memory available. Also worthy of note: the comparatively awkward amount of Swap.</em></p>
+
+<h1 id="corollary-3-slow-read-times">Corollary 3: Slow Read Times</h1>
+
+<p>By the law of tripartite division, there is of a course a final corollary.
+Despite my sheer determination to rule over every clock cycle, the bottleneck
+still remains in memory. Which is to say, DRAM just isn’t fast enough. Even with
+the entire corpus pre-tokenized and loaded into memory, reads from memory just aren’t quick enough to keep up with the number of available threads, and in fact
+would perform only marginally better than if it had only 8 threads of execution,
+which is exactly the capabilities of laptop (albeit at a lower clock rate).</p>
+
+<p>Sure, training procedures have been sped up over tenfold. Sure,
+we’ve come far. But alas, we can go no further. For this is a problem for the
+<em>hardware people</em>.</p>
+
+<p>¯\_(ツ)_/¯</p>
+
+  </div>
+
+  <div class="date">
+    Written on March  1, 2019
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/ckw017"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/chriswong21"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+<br>
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

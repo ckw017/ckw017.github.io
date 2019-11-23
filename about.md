@@ -149,7 +149,7 @@ This in particular really hits home for me:
 
 See the second quote in the "What is our purpose?" section for more on this.
 
-<a name='I-got-a-404-error.-Who-is-this-"Debug-Dog\"?'></a>
+<a name='I-got-a-404-error.-Who-is-this-"Debug-Dog"?'></a>
 
 ---
 ## I got a 404 error. Who is this "Debug Dog"?

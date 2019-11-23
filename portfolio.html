@@ -3,26 +3,148 @@ layout: default
 permalink: /portfolio/
 ---
 
-<div class="posts"> 
-  <h1> Portfolio </h1>
-  These are a few of the projects I've worked on over the years for academic purposes, work, or personal interest. Source code should be available for all the personal ones and a few of the academic ones.
+<script>
+function showCategory(category) {
+  Object.keys(categories).forEach(c => categories[c].style.display="none");
+  categories[category].style.display = "block";
+}
+
+window.onload = function() {
+  categories = {
+    "personal": document.getElementById("personal"),
+    "coursework": document.getElementById("coursework"),
+    "professional":document.getElementById("professional"),
+    "data": document.getElementById("data"),
+  }
+  categories["personal"].style.display = "none";
+
+  showCategory("personal");
+}
+</script>
+<div>
+  <br>
+  <table style="width:100%">
+    <tr>
+      <th style="width:25%"><a onclick="showCategory('personal');"> Personal </a> </th>
+      <th style="width:25%"><a onclick="showCategory('coursework');"> Coursework </a></th>
+      {% comment %} <th style="width:25%"><a onclick="showCategory('professional');"> Professional  </a></th>
+      <th style="width:25%"><a onclick="showCategory('data');"> Data  </a></th> {% endcomment %}
+    </tr>
+  </table>
   <hr>
-  {% assign portfolio = site.portfolio | reverse %}
-  {% for post in portfolio %}
+  <div class="posts" id="personal">
     <article class="post">
-        <div class="flex-container">
-          <a href="{{ site.baseurl }}{{ post.src }}">
-            <img class="post-preview" src="{{ post.img }}" width="150" height="150">
-          </a>
-          <div class="text-preview">
-            <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
-            <div class="entry">
-              {{ post.content }}
-            </div>
-            <a href="{{ post.src }}">Source</a><br>
-            <i>Release date: {{post.date | date: "%B %e, %Y" }}</i>
-          </div>
-      </div>
+      <h1> Personal </h1>
+      These are all projects that I pursued out of personal interest. Everything for each of these projects should have completely public source code : )
     </article>
-  {% endfor %}
+    {% assign portfolio = site.portfolio | where:"category", "personal"| reverse %}
+    {% for post in portfolio %}
+      <article class="post">
+          <div class="flex-container">
+            <a href="{{ site.baseurl }}{{ post.src }}">
+              <img class="post-preview" src="{{ post.img }}" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
+              <div class="entry">
+                {{ post.content }}
+              </div>
+              <a href="{{ post.src }}">Source</a><br>
+              <i>Release date: {{post.date | date: "%B %e, %Y" }}</i>
+            </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  <div class="posts" id="coursework">
+    <article class="post">
+      <h1> Coursework </h1>
+      Stuff I've done for classes. Sadly most of these aren't publicly available to prevent future students from stealing code,
+      but you can request access from me via email if there's sufficient evidence that you're not currently enrolled in the respective class.
+      <br>
+      <br>
+      For the sake of thoroughness I included all of the projects from each class I've taken, but some were definitely
+      more interesting implementation and concept wise than others. So for each distinct class I put a nice ⭐ next to my
+      favorite project!
+      <br>
+      <br>
+      If you <i>are</i> currently enrolled (or plan to) and want to get advice
+      on something course related feel free to drop by my 
+      <a href="https://upe.berkeley.edu/officehours/">UPE office hours</a>
+      or toss me an email.
+      <br>
+
+      <font size=1>In addition to being part of my portfolio, this is also 
+      secretly an advertisement for prospective Berkeley CS students. Go bears!</font>
+    </article>
+    {% assign portfolio = site.portfolio | where:"category", "coursework"| reverse %}
+    {% for post in portfolio %}
+      <article class="post">
+          <div class="flex-container">
+            <a href="{{ site.baseurl }}{{ post.src }}">
+              <img class="post-preview" src="{{ post.img }}" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
+              <div class="entry">
+                {{ post.content }}
+              </div>
+              <i>Course: {{post.course}}, {{post.term}}</i><br>
+              <i>Language: {{post.language}}</i>
+            </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  <div class="posts" id="professional">
+    <article class="post">
+      <h1> Professional </h1>
+      Unlike the prior two categories I actually got paid to do this stuff! Obviously no source or option to request for source on the industry ones here,
+      but the things pertaining to academia are fair game!
+    </article>
+    {% assign portfolio = site.portfolio | where:"category", "professional"| reverse %}
+    {% for post in portfolio %}
+      <article class="post">
+          <div class="flex-container">
+            <a href="{{ site.baseurl }}{{ post.src }}">
+              <img class="post-preview" src="{{ post.img }}" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
+              <div class="entry">
+                {{ post.content }}
+              </div>
+              <a href="{{ post.src }}">Source</a><br>
+              <i>Release date: {{post.date | date: "%B %e, %Y" }}</i>
+            </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  <div class="posts" id="data">
+    <article class="post">
+      <h1> Data </h1>
+      Haha! I bet the first three tabs convinced you I'm solely a computer science major, but
+      (not particularly secretly) I'm Data Science too! Here are some nice datasets and tools
+      I've worked on.
+    </article>
+    {% assign portfolio = site.portfolio | where:"category", "data"| reverse %}
+    {% for post in portfolio %}
+      <article class="post">
+          <div class="flex-container">
+            <a href="{{ site.baseurl }}{{ post.src }}">
+              <img class="post-preview" src="{{ post.img }}" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
+              <div class="entry">
+                {{ post.content }}
+              </div>
+              <a href="{{ post.src }}">Source</a><br>
+              <i>Release date: {{post.date | date: "%B %e, %Y" }}</i>
+            </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
 </div>

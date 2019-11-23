@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="google-site-verification" content="vPLfvmVSeTNblZy_aIhUxvvqd1CAI52lBSX2BhHMCww" />
-    <title>Chris Wong – Student at UC Berkeley</title>
+    <title>Chris Wong – Comp/Data Sci @UC Berkeley</title>
 
         <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -10,8 +10,8 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="Student at UC Berkeley">
-    <meta property="og:description" content="Student at UC Berkeley" />
+    <meta name="description" content="Comp/Data Sci @UC Berkeley">
+    <meta property="og:description" content="Comp/Data Sci @UC Berkeley" />
     
     <meta name="author" content="Chris Wong" />
 
@@ -22,7 +22,7 @@
     <![endif]-->
 
     <link rel="stylesheet" type="text/css" href="/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="Chris Wong - Student at UC Berkeley" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Chris Wong - Comp/Data Sci @UC Berkeley" href="/feed.xml" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
@@ -36,7 +36,7 @@
 
           <div class="site-info">
             <h1 class="site-name"><a href="/">Chris Wong</a></h1>
-            <p class="site-description">Student at UC Berkeley</p>
+            <p class="site-description">Comp/Data Sci @UC Berkeley</p>
           </div>
 
           <nav>
@@ -52,115 +52,441 @@
     </div>
 
     <div id="main" role="main" class="container">
-      <div class="posts"> 
-  <h1> Portfolio </h1>
-  These are a few of the projects I've worked on over the years for academic purposes, work, or personal interest. Source code should be available for all the personal ones and a few of the academic ones.
+      <script>
+function showCategory(category) {
+  Object.keys(categories).forEach(c => categories[c].style.display="none");
+  categories[category].style.display = "block";
+}
+
+window.onload = function() {
+  categories = {
+    "personal": document.getElementById("personal"),
+    "coursework": document.getElementById("coursework"),
+    "professional":document.getElementById("professional"),
+    "data": document.getElementById("data"),
+  }
+  categories["personal"].style.display = "none";
+
+  showCategory("personal");
+}
+</script>
+<div>
+  <br>
+  <table style="width:100%">
+    <tr>
+      <th style="width:25%"><a onclick="showCategory('personal');"> Personal </a> </th>
+      <th style="width:25%"><a onclick="showCategory('coursework');"> Coursework </a></th>
+      
+    </tr>
+  </table>
   <hr>
-  
-  
+  <div class="posts" id="personal">
     <article class="post">
-        <div class="flex-container">
-          <a href="https://github.com/ckw017/showdown.py">
-            <img class="post-preview" src="https://i.imgur.com/bVL704q.jpg" width="150" height="150">
-          </a>
-          <div class="text-preview">
-            <h2><a href="https://github.com/ckw017/showdown.py">Showdown.py</a></h1>
-            <div class="entry">
-              <p>A <a href="https://pokemonshowdown.com/">Pokemon Showdown!</a> client for Python 3.4 and 3.5. This was written to make it easier to write bots, interact with users, moderate chat rooms, and collect data. Takes advantages of Py3’s async features to allow multiple connections over websockets, maintain IO channels, and to integrate with existing IRC bots.</p>
-
-            </div>
-            <a href="https://github.com/ckw017/showdown.py">Source</a><br>
-            <i>Release date: January 10, 2019</i>
-          </div>
-      </div>
+      <h1> Personal </h1>
+      These are all projects that I pursued out of personal interest. Everything for each of these projects should have completely public source code : )
     </article>
-  
-    <article class="post">
-        <div class="flex-container">
-          <a href="https://github.com/ckw017/vader-sentiment-rust">
-            <img class="post-preview" src="https://i.imgur.com/73L2Stn.png" width="150" height="150">
-          </a>
-          <div class="text-preview">
-            <h2><a href="https://github.com/ckw017/vader-sentiment-rust">VADER Sentiment Analyser</a></h1>
-            <div class="entry">
-              <p>VADER (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is <em>specifically attuned to sentiments expressed in social media</em>. It is fully open-sourced under the <a href="http://choosealicense.com/">MIT License</a>. <strong>This is a port of the original module</strong>, which was written in Python. If you’d like to make a contribution, please checkout  <a href="https://github.com/cjhutto/vaderSentiment">the original author’s work here</a>.</p>
+    
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://github.com/ckw017/showdown.py">
+              <img class="post-preview" src="https://i.imgur.com/bVL704q.jpg" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://github.com/ckw017/showdown.py">Showdown.py</a></h1>
+              <div class="entry">
+                <p>A <a href="https://pokemonshowdown.com/">Pokemon Showdown!</a> client for Python 3.4 and 3.5. This was written to make it easier to write bots, interact with users, moderate chat rooms, and collect data. Takes advantages of Py3’s async features to allow multiple connections over websockets, maintain IO channels, and to integrate with existing IRC bots.</p>
 
+              </div>
+              <a href="https://github.com/ckw017/showdown.py">Source</a><br>
+              <i>Release date: January 10, 2019</i>
             </div>
-            <a href="https://github.com/ckw017/vader-sentiment-rust">Source</a><br>
-            <i>Release date: July  5, 2018</i>
-          </div>
-      </div>
-    </article>
-  
-    <article class="post">
-        <div class="flex-container">
-          <a href="https://github.com/ckw017/soda-hacks-2018/">
-            <img class="post-preview" src="https://i.imgur.com/SPwfn0X.png" width="150" height="150">
-          </a>
-          <div class="text-preview">
-            <h2><a href="https://github.com/ckw017/soda-hacks-2018/">Cloud Vision App</a></h1>
-            <div class="entry">
-              <p>Designed and built app to recognize objects and text in the user’s field of view and display relevant language translations. Built on top of Android OpenCV and Google’s Vision API. Designed and released overnight for SodaHacks 2018, earning finalist position out of 100+ competitors.</p>
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://github.com/ckw017/vader-sentiment-rust">
+              <img class="post-preview" src="https://i.imgur.com/73L2Stn.png" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://github.com/ckw017/vader-sentiment-rust">VADER Sentiment Analyser</a></h1>
+              <div class="entry">
+                <p>VADER (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is <em>specifically attuned to sentiments expressed in social media</em>. It is fully open-sourced under the <a href="http://choosealicense.com/">MIT License</a>. <strong>This is a port of the original module</strong>, which was written in Python. If you’d like to make a contribution, please checkout  <a href="https://github.com/cjhutto/vaderSentiment">the original author’s work here</a>.</p>
 
+              </div>
+              <a href="https://github.com/ckw017/vader-sentiment-rust">Source</a><br>
+              <i>Release date: July  5, 2018</i>
             </div>
-            <a href="https://github.com/ckw017/soda-hacks-2018/">Source</a><br>
-            <i>Release date: April 15, 2018</i>
-          </div>
-      </div>
-    </article>
-  
-    <article class="post">
-        <div class="flex-container">
-          <a href="https://github.com/ckw017/lf-bot">
-            <img class="post-preview" src="https://i.imgur.com/PBeurZC.png" width="150" height="150">
-          </a>
-          <div class="text-preview">
-            <h2><a href="https://github.com/ckw017/lf-bot">Berkeley Lost and Found Bot</a></h1>
-            <div class="entry">
-              <p>An email bot that notifies the user whenever new items have been added to the UC Berkeley Lost and Found. Up-to-date data is synced with a Firebase database, and displayed on the <a href="https://ckw017.github.io/berkeley-lf-page/">interative webpage</a>. Currently being run off of <a href="https://ocf.io">OCF infrastructure</a>. In loving memory of the pair of glasses that I lost during orientation week :’(</p>
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://github.com/ckw017/soda-hacks-2018/">
+              <img class="post-preview" src="https://i.imgur.com/SPwfn0X.png" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://github.com/ckw017/soda-hacks-2018/">Cloud Vision App</a></h1>
+              <div class="entry">
+                <p>Designed and built app to recognize objects and text in the user’s field of view and display relevant language translations. Built on top of Android OpenCV and Google’s Vision API. Designed and released overnight for SodaHacks 2018, earning finalist position out of 100+ competitors.</p>
 
+              </div>
+              <a href="https://github.com/ckw017/soda-hacks-2018/">Source</a><br>
+              <i>Release date: April 15, 2018</i>
             </div>
-            <a href="https://github.com/ckw017/lf-bot">Source</a><br>
-            <i>Release date: October 20, 2017</i>
-          </div>
-      </div>
-    </article>
-  
-    <article class="post">
-        <div class="flex-container">
-          <a href="https://github.com/ckw017/hog-contest">
-            <img class="post-preview" src="https://i.imgur.com/utz2X8V.gif" width="150" height="150">
-          </a>
-          <div class="text-preview">
-            <h2><a href="https://github.com/ckw017/hog-contest">Hog Contest Visualizer</a></h1>
-            <div class="entry">
-              <p>Tools for developing optimal strategies for the game of Hog when complete information is available, and for approximating solutions when there is incomplete information. Includes visualization tools to watch strategies evolve between iterations. More details in <a href="/Hog-Contest">this post</a></p>
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://github.com/ckw017/lf-bot">
+              <img class="post-preview" src="https://i.imgur.com/PBeurZC.png" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://github.com/ckw017/lf-bot">Berkeley Lost and Found Bot</a></h1>
+              <div class="entry">
+                <p>An email bot that notifies the user whenever new items have been added to the UC Berkeley Lost and Found. Up-to-date data is synced with a Firebase database, and displayed on the <a href="https://ckw017.github.io/berkeley-lf-page/">interative webpage</a>. Currently being run off of <a href="https://ocf.io">OCF infrastructure</a>. In loving memory of the pair of glasses that I lost during orientation week :’(</p>
 
+              </div>
+              <a href="https://github.com/ckw017/lf-bot">Source</a><br>
+              <i>Release date: October 20, 2017</i>
             </div>
-            <a href="https://github.com/ckw017/hog-contest">Source</a><br>
-            <i>Release date: October 20, 2017</i>
-          </div>
-      </div>
-    </article>
-  
-    <article class="post">
-        <div class="flex-container">
-          <a href="https://drive.google.com/file/d/1xoJTLTMbYyfVc18p6WvnQ3PKaGwCCBve/view?usp=sharing">
-            <img class="post-preview" src="https://i.imgur.com/OdhqeoY.png" width="150" height="150">
-          </a>
-          <div class="text-preview">
-            <h2><a href="https://drive.google.com/file/d/1xoJTLTMbYyfVc18p6WvnQ3PKaGwCCBve/view?usp=sharing">Northgate Robotics Group Programming Manual</a></h1>
-            <div class="entry">
-              <p>Guide to introduce high school students to microcontroller
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://github.com/ckw017/hog-contest">
+              <img class="post-preview" src="https://i.imgur.com/utz2X8V.gif" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://github.com/ckw017/hog-contest">Hog Contest Visualizer</a></h1>
+              <div class="entry">
+                <p>Tools for developing optimal strategies for the game of Hog when complete information is available, and for approximating solutions when there is incomplete information. Includes visualization tools to watch strategies evolve between iterations. More details in <a href="/Hog-Contest">this post</a></p>
+
+              </div>
+              <a href="https://github.com/ckw017/hog-contest">Source</a><br>
+              <i>Release date: October 20, 2017</i>
+            </div>
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://drive.google.com/file/d/1xoJTLTMbYyfVc18p6WvnQ3PKaGwCCBve/view?usp=sharing">
+              <img class="post-preview" src="https://i.imgur.com/OdhqeoY.png" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://drive.google.com/file/d/1xoJTLTMbYyfVc18p6WvnQ3PKaGwCCBve/view?usp=sharing">Northgate Robotics Group Programming Manual</a></h1>
+              <div class="entry">
+                <p>Guide to introduce high school students to microcontroller
 programming for VEX Robotics competitions.</p>
 
+              </div>
+              <a href="https://drive.google.com/file/d/1xoJTLTMbYyfVc18p6WvnQ3PKaGwCCBve/view?usp=sharing">Source</a><br>
+              <i>Release date: May 25, 2017</i>
             </div>
-            <a href="https://drive.google.com/file/d/1xoJTLTMbYyfVc18p6WvnQ3PKaGwCCBve/view?usp=sharing">Source</a><br>
-            <i>Release date: May 25, 2017</i>
-          </div>
-      </div>
+        </div>
+      </article>
+    
+  </div>
+  <div class="posts" id="coursework">
+    <article class="post">
+      <h1> Coursework </h1>
+      Stuff I've done for classes. Sadly most of these aren't publicly available to prevent future students from stealing code,
+      but you can request access from me via email if there's sufficient evidence that you're not currently enrolled in the respective class.
+      <br>
+      <br>
+      For the sake of thoroughness I included all of the projects from each class I've taken, but some were definitely
+      more interesting implementation and concept wise than others. So for each distinct class I put a nice ⭐ next to my
+      favorite project!
+      <br>
+      <br>
+      If you <i>are</i> currently enrolled (or plan to) and want to get advice
+      on something course related feel free to drop by my 
+      <a href="https://upe.berkeley.edu/officehours/">UPE office hours</a>
+      or toss me an email.
+      <br>
+
+      <font size=1>In addition to being part of my portfolio, this is also 
+      secretly an advertisement for prospective Berkeley CS students. Go bears!</font>
     </article>
-  
+    
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://cs161.org/assets/projects/3/project3-problems.pdf">
+              <img class="post-preview" src="/images/portfolio/academic/pintos.png" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://cs161.org/assets/projects/3/project3-problems.pdf">⭐ PintOS</a></h1>
+              <div class="entry">
+                <p><em>Currently in progress~</em></p>
+
+<p>Building up features from a bare bones operating system! I’ll come back to write a more detailed
+report but so far it’s been:</p>
+
+<ul>
+  <li>Implementing userspace
+    <ul>
+      <li>Processes, threads, page faults, and appropriate syscalls</li>
+    </ul>
+  </li>
+  <li>Implementing thread priority
+    <ul>
+      <li>MLFQS, timers, deadlock avoidance in synchronization primitives</li>
+    </ul>
+  </li>
+  <li>Implementing a file system
+    <ul>
+      <li>Inodes, syscalls, path resolution, caching, and appropriate syscalls</li>
+    </ul>
+  </li>
+</ul>
+
+<p>For prospective students: this class is fun! But fun isn’t mutually exclusive from hard : )</p>
+
+              </div>
+              <i>Course: CS162 (Operating Systems), Fall 2019</i><br>
+              <i>Language: C</i>
+            </div>
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://guavabot.cs170.org/problem/">
+              <img class="post-preview" src="/images/portfolio/academic/guava.png" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://guavabot.cs170.org/problem/">⭐ Guavabot Rescue</a></h1>
+              <div class="entry">
+                <p>CS170 (Algorithms) at Berkeley has a long tradition of handing students an NP-complete
+problem and holding a competition to see who can produce the best
+computationally tractable approximation. <a href="https://www.dailycal.org/2019/10/14/clog-report-15-of-uc-berkeley-students-actually-3-stacked-kiwibots-in-trench-coat/">Guavabot</a> rescue gave a two layered
+problem:</p>
+<ul>
+  <li>Faulty sensing</li>
+  <li>Steiner-tree approximation</li>
+</ul>
+
+<p>Team “<code class="highlighter-rouge">go-bears'; UPDATE Teams SET score = 0 WHERE name != 'go-bears';</code>” got rank 23 out of
+320 groups. The important thing, of course, was that countless stranded Guavabots around the world were rescued.</p>
+
+<p>As with other projects I can’t really reveal my group’s approach publicly since this project
+may resurface in future semesters, but if you’re 1) curious and 2) not planning to enroll then
+let me know!</p>
+
+<p><a href="https://github.com/ckw017/170-guavabot">Source</a> |
+<a href="https://guavabot.cs170.org/problem/">Specification</a></p>
+
+              </div>
+              <i>Course: CS170 (Algorithms), Spring 2019</i><br>
+              <i>Language: Python</i>
+            </div>
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://cs161.org/assets/projects/2/project2-problems.pdf">
+              <img class="post-preview" src="/images/portfolio/academic/lock.png" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://cs161.org/assets/projects/2/project2-problems.pdf">⭐ End-to-End Encrypted File Sharing System</a></h1>
+              <div class="entry">
+                <p>Title is a mouthful but that’s what it was officially labeled as! In addition to being
+a programming assignment this was a major exercise in secure design, 
+so the source also includes a design
+document detailing the possible attack vectors and appropriate defenses. In particular
+the system was designed to allow trusted users to share files with each other using a client
+and an insecure data server. The goal was to allow
+for client’s to share arbitrarily large files, update + revoke access privileges, and modify files
+in such a way that it would be computationally infeasible for an attacker to recover 
+information, modify a file silently, or impersonate another user even with full control
+over the storage server.</p>
+
+<p>Implementation relies on traditional RSA, Argon2 for key derivation + password hashing, and generous 
+applications of HMAC. Sadly still vulnerable to Rubber-hose Cryptanalysis.</p>
+
+<p><a href="https://github.com/ckw017/161-fileshare">Source</a> |
+<a href="https://www.xkcd.com/538/">Relevant XKCD</a> |
+<a href="https://cs161.org/assets/projects/2/project2-problems.pdf">Specification</a></p>
+
+              </div>
+              <i>Course: CS161 (Computer Security), Spring 2019</i><br>
+              <i>Language: Go</i>
+            </div>
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://cs161.org/assets/projects/3/project3-problems.pdf">
+              <img class="post-preview" src="/images/portfolio/academic/snapitterbook.png" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://cs161.org/assets/projects/3/project3-problems.pdf">Penetration Testing</a></h1>
+              <div class="entry">
+                <p>A close contender for my favorite security project, however since it mainly
+consisted of breaking things instead of building I hesitate to list this at
+the top. I was handed an insecure webserver and was tasked to find
+7 exploits. To chain each exploit more effectively I ended up writing a few
+tools in Python to automate generating and sending malicious payloads.</p>
+
+<p>I can’t really list what the exploits were publicly since this project is still
+in use by the course, but they’re listed out in the private repo along with
+the tools.</p>
+
+<p><a href="https://github.com/ckw017/161-pentools">Source</a> |
+<a href="https://cs161.org/assets/projects/3/project3-problems.pdf">Specification</a></p>
+
+              </div>
+              <i>Course: CS161 (Computer Security), Spring 2019</i><br>
+              <i>Language: Python</i>
+            </div>
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://github.com/ckw017/61c-cpu">
+              <img class="post-preview" src="/images/portfolio/academic/cpu.png" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://github.com/ckw017/61c-cpu">⭐ RISC-V CPU</a></h1>
+              <div class="entry">
+                <p>A two-stage pipelined CPU that runs the <a href="https://riscv.org/">RISC-V</a> instruction set (thanks <a href="https://en.wikipedia.org/wiki/David_Patterson_(computer_scientist)">David Patterson</a>!). This was actually a real
+doozy that would take a while to list out but in summary:</p>
+
+<ul>
+  <li>Full Arithmetic Logic Unit built from ground-up with logic gates
+    <ul>
+      <li>Including support for word, half-word, and byte level instructions</li>
+    </ul>
+  </li>
+  <li>Memory, branching, and instruction decoding</li>
+  <li>2-stage (instruction-fetch, execute) pipelining
+    <ul>
+      <li>And cases for all the wonderful side-effects that crop out in conjunction with branching :’ )</li>
+    </ul>
+  </li>
+  <li>Lifetime supply of unit and integration tests</li>
+</ul>
+
+<p><a href="https://github.com/ckw017/61c-cpu/">Source</a> |
+<a href="http://www-inst.eecs.berkeley.edu/~cs61c/fa18/projs/03-2/">Specification</a></p>
+
+              </div>
+              <i>Course: CS61C (Computer Architecture), Fall 2018</i><br>
+              <i>Language: VHDL</i>
+            </div>
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="/61B-Roguelike">
+              <img class="post-preview" src="/images/rogue/roguelike.gif" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="/61B-Roguelike">⭐ Depths of Dwinelle</a></h1>
+              <div class="entry">
+                <p>A fully functioning “Roguelike” game including:</p>
+
+<ul>
+  <li>Procedural dungeon generation</li>
+  <li>Tile engine, lighting, and special game mechanics (further details in video)</li>
+  <li>Gameplay recording and playback</li>
+</ul>
+
+<p><a href="/61B-Roguelike">Blog Post</a> | 
+<a href="https://github.com/ckw017/depths/">Source</a> | 
+<a href="https://www.youtube.com/watch?v=HFTrWrPsLMQ">Video ; )</a> |
+<a href="https://sp18.datastructur.es/materials/proj/proj2/proj2">Specification</a></p>
+
+              </div>
+              <i>Course: CS61B (Data Structures), Spring 2018</i><br>
+              <i>Language: Java</i>
+            </div>
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://github.com/ckw017/bear-maps">
+              <img class="post-preview" src="/images/portfolio/academic/maps.png" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://github.com/ckw017/bear-maps">Bear Maps</a></h1>
+              <div class="entry">
+                <p>This project consisted of three main parts:</p>
+
+<ul>
+  <li>Rasterize map tiles of backend and serve to the front end</li>
+  <li>Modify an XML parser to convert OpenStreetMap data for the city of Berkeley into appropriate data structures on the backend</li>
+  <li>Implement A* search to provide navigation directions</li>
+</ul>
+
+<p><a href="https://github.com/ckw017/bear-maps/">Source</a> |
+<a href="https://sp18.datastructur.es/materials/proj/proj3/proj3">Specification</a></p>
+
+              </div>
+              <i>Course: CS61B (Data Structures), Spring 2018</i><br>
+              <i>Language: Java</i>
+            </div>
+        </div>
+      </article>
+    
+      <article class="post">
+          <div class="flex-container">
+            <a href="https://github.com/ckw017/scheme-interpreter">
+              <img class="post-preview" src="/images/portfolio/academic/scheme.png" width="150" height="150">
+            </a>
+            <div class="text-preview">
+              <h2><a href="https://github.com/ckw017/scheme-interpreter">⭐ Scheme Interpreter</a></h1>
+              <div class="entry">
+                <p>A full featured interpreter for the <a href="https://en.wikipedia.org/wiki/Scheme_%28programming_language%29">Scheme programming language</a>
+written in Python. Supports all the beautiful features of Scheme including:</p>
+
+<ul>
+  <li>Tail-call optimization</li>
+  <li>Quasiquotes</li>
+  <li>Macros</li>
+</ul>
+
+<p><a href="https://github.com/ckw017/scheme-interpreter/">Source</a> |
+<a href="https://xkcd.com/297/">Relevant XKCD</a> |
+<a href="https://inst.eecs.berkeley.edu/~cs61a/fa17/articles/scheme-spec.html">Specification</a></p>
+
+              </div>
+              <i>Course: CS61A, Fall 2017</i><br>
+              <i>Language: Python</i>
+            </div>
+        </div>
+      </article>
+    
+  </div>
+  <div class="posts" id="professional">
+    <article class="post">
+      <h1> Professional </h1>
+      Unlike the prior two categories I actually got paid to do this stuff! Obviously no source or option to request for source on the industry ones here,
+      but the things pertaining to academia are fair game!
+    </article>
+    
+    
+  </div>
+  <div class="posts" id="data">
+    <article class="post">
+      <h1> Data </h1>
+      Haha! I bet the first three tabs convinced you I'm solely a computer science major, but
+      (not particularly secretly) I'm Data Science too! Here are some nice datasets and tools
+      I've worked on.
+    </article>
+    
+    
+  </div>
 </div>
 
     </div>

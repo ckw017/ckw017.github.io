@@ -265,6 +265,20 @@ nav {
   }
 }
 
+tr {
+  a {
+    margin-left: 20px;
+    color: rgb(210, 210, 210);
+    text-align: right;
+    font-weight: 300;
+    letter-spacing: 1px;
+
+    @include mobile {
+      margin: 0 10px;
+    }
+  }
+}
+
 #main {
 	background-color: rgba(28, 31, 33, .85);
     padding: 0 10px;

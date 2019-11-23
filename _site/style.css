@@ -312,6 +312,19 @@ nav a {
   }
 }
 
+tr a {
+  margin-left: 20px;
+  color: #d2d2d2;
+  text-align: right;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+@media screen and (max-width: 640px) {
+  tr a {
+    margin: 0 10px;
+  }
+}
+
 #main {
   background-color: rgba(28, 31, 33, 0.85);
   padding: 0 10px;

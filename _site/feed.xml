@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-23T07:27:59-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Wong</title><subtitle>Comp/Data Sci @UC Berkeley</subtitle><entry><title type="html">Starting my own personal wiki</title><link href="http://localhost:4000/TiddlyWiki/" rel="alternate" type="text/html" title="Starting my own personal wiki" /><published>2019-11-22T00:00:00-08:00</published><updated>2019-11-22T00:00:00-08:00</updated><id>http://localhost:4000/TiddlyWiki</id><content type="html" xml:base="http://localhost:4000/TiddlyWiki/">&lt;p&gt;&lt;em&gt;“Think of the @TiddlyWiki as a markdown processor with a Turing-complete turbo-charged hyper-drive that becomes your external brain. Start intertwingling your ideas. Simple TWs use just markdown - but advanced TWs can do virtually anything.”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;– &lt;a href=&quot;https://twitter.com/joeerl/status/1083249244897796096?s=20&quot;&gt;Joe Armstrong&lt;/a&gt;, creator of erlang&lt;/p&gt;
+
+&lt;p&gt;Disclaimer: leading with this quote makes it feel like I’m trying to sell you on this tool as some kind of organizational panacea. I’m not. The introduction to this post is just really long so I needed a way to convince you to keep scrolling : )&lt;/p&gt;
+
+&lt;p&gt;Just before the start of this semester one of my friends had their backpack’s stolen along with their work laptop, phone, and wallet. While upset about the loss of their hardware and cards it wasn’t their major concern, since both sets of items were replaceable. What they were more concerned about were the photos on their phone and, to my surprise, their journal.&lt;/p&gt;
+
+&lt;p&gt;There’s a large stretch of my life that’s pretty much undocumented outside of my memories ranging from around 2003 to 2013. The first three years of my life are pretty fleshed out in my family’s scrapbooks. And after 2013 most of my peers had gotten access to smartphones and social media, so some form of what I was up to exists out there. But between those two times not many photos of me were taken, or at least preserved, outside of group photos of extended families and middle school yearbooks. This didn’t really bother me for most of my life. In fact, there’s &lt;a href=&quot;https://well.blogs.nytimes.com/2016/03/08/dont-post-about-me-on-social-media-children-say/&quot;&gt;a lot of concern today&lt;/a&gt; about parents over-documenting their child’s upbringing on social media when the kid is still too young to consent to the release of information that will be more or less impossible to retract from the clutches of indexers and dataminers unaffiliated with the original site. Imagine in 35 years when tabloids dig up videos of toddler tantrums as ammunition against the temperment of presidential candidates!&lt;/p&gt;
+
+&lt;p&gt;On the other hand, personal documentation is largely beneficial. Being able to keep track of day-to-day events, how time was spent, and how you felt gives a lot of great information that you can use to get to know yourself and find beneficial or harmful patterns in your life. Moreover a scheduled recap at the end of every day is a nice memory exercise. Relying purely on memory works sometimes, but for me anything after a week tends to deteriorate rapidly. I’ve tried journaling in the past but to put it plainly I’m really bad at managing physical mediums: notebooks inevitably get repurposed and notepads blink out of existence. And even if I were worthy of handling real, non-digital, non-e-prefixed paper, scheduling in a time at the end of the day to just write things out is sort of out of place with my workflow for school which revolves around a lot of markdown files, repos, and other things from removed from the domain of dead trees.*&lt;/p&gt;
+
+&lt;p&gt;* A &lt;a href=&quot;https://journals.sagepub.com/doi/abs/10.1177/154193120905302218?casa_token=3sRkvfe5L-EAAAAA%3AfvzReNSf5xZLCSf7yyA4_dhhRgAIej7ZpF86wJ6zhG_JwNVXnE1pjJIA97wRiXsBwYPSui6o_Q&amp;amp;&quot;&gt;study&lt;/a&gt; suggests that writing on dead trees is better for memory&lt;/p&gt;
+
+&lt;p&gt;Introducing TiddlyWiki: “a non-linear personal notebook.” 
+You can read all about it &lt;a href=&quot;https://tiddlywiki.com/&quot;&gt;here&lt;/a&gt;, which is itself a TiddlyWiki that documents its own features. To summarize what it is to me:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A journal that won’t get crumpled in my bag and can embed images&lt;/li&gt;
+  &lt;li&gt;A flexible data store with search and tagging for text documents, PDFs, images, and generic file types&lt;/li&gt;
+  &lt;li&gt;A notetaking tool that doesn’t require me to recompile LaTeX every time I forget a \end statement&lt;/li&gt;
+  &lt;li&gt;A more flexible Google Drive that I don’t have to entrust the confidentiality of to a cloud service&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Other people use it as a TODO list and task manager, but I don’t quite see it as the best choice of tool for that.&lt;/p&gt;
+
+&lt;p&gt;Personal wiki’s aren’t a new idea whatsoever, dating back to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Memex&quot;&gt;Memex&lt;/a&gt; in 1945. The Memex was imagined to be a device in the far future that could compress documents encoding a person’s knowledge and indexing it for rapid retrieval, not a farfetched idea at all in hindsight! &lt;a href=&quot;https://en.wikipedia.org/wiki/MyLifeBits&quot;&gt;MyLifeBits&lt;/a&gt; is an ongoing project by &lt;a href=&quot;https://en.wikipedia.org/wiki/Gordon_Bell&quot;&gt;Gordon Bell&lt;/a&gt; inspired by Memex to document everything he’s encountered. While my wiki and Bell’s are personal for privacy reasons, people on &lt;a href=&quot;https://github.com/RichardLitt/meta-knowledge&quot;&gt;this list&lt;/a&gt; have entirely open ones, (hopefully) cleansed of any sensitive information.&lt;/p&gt;
+
+&lt;p&gt;So far I’m really enjoying the experience. Journals are easy to create, format, and update either throughout the day or as I recall details. Tag’s allow hierachies to be formed, so at the end of each week I can link all the journal entries to a larger summary of the week, and as I approach the end of years and months the same techniques can be applied recursively.  Inline LaTeX means that I can actually take notes and the fact that it is a “wiki” means I can hyperlink together internal information.&lt;/p&gt;
+
+&lt;p&gt;One thing I’m excited to use is tagging a journal entry with “future” to mark it as something that I want to reflect on at a certain time. For example, right now most of my stress comes from a combination of summer job search and exam season. By the time these problems are resolved, I think it would be nice to have a one-for-one correspondence between present and future me. I found that by far my favorite writing assignment in high school was one of the first: to write a letter to myself at graduation, and then “write back” when the time came. I think both ends of the correspondence forced me to really consider my life holistically and in longer term than I’m ever forced to on a day-to-day basis. In particular, it was somewhat reassuring to see that all the worry’s my freshman year incarnation had worked out in one way another.&lt;/p&gt;
+
+&lt;p&gt;As I mentioned, for now this is a purely personal wiki. I don’t plan to make any of it public, though the version I use is hosted off a node server and displayed in browser. If I get good enough with the tools I might just fork off the notetaking and course related stuff to a separate public entity for the pedagogical greater good. Moreover, I can see this becoming a nice place to prototype ideas for more blog posts. As you may notice, there’s a very apparent gap in content here! Part of the reason I’ve been hesitant to publish anything is because there’s a lot of careful checking that I do before I put anything out, and these formalisms make me reluctant to start at all. Being able to just write out ideas lazily (no full sentences, grammar structure, special formats) let’s me get started easily, and starting tends to be half the battle for writing.&lt;/p&gt;
+
+&lt;p&gt;Because I’m bad at conclusions, enjoy some snippets of how I’m currently using my personal wiki! And thanks for reading.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tiddlywiki/fstring.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Notetaking on a particularly interesting python library, as well as a hint towards a future post : )&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tiddlywiki/journal.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Journal entry aggregation and some nice $\LaTeX$ rendering&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tiddlywiki/lecture.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;I’m almost good enough to keep with lectures that don’t have heavy notation&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tiddlywiki/fullview.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Images (shoutout to the Berkeley Alum artist Yuumeii) can be uploaded and tagged. Side bar on the side has search, recently used, and other tools (which can be extended programmatically from within the wiki!)&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">“Think of the @TiddlyWiki as a markdown processor with a Turing-complete turbo-charged hyper-drive that becomes your external brain. Start intertwingling your ideas. Simple TWs use just markdown - but advanced TWs can do virtually anything.”</summary></entry><entry><title type="html">Python Decorators: Not just for decoration</title><link href="http://localhost:4000/Decorators/" rel="alternate" type="text/html" title="Python Decorators: Not just for decoration" /><published>2019-01-14T00:00:00-08:00</published><updated>2019-01-14T00:00:00-08:00</updated><id>http://localhost:4000/Decorators</id><content type="html" xml:base="http://localhost:4000/Decorators/">&lt;p&gt;Python decorators are syntactic sugar that most people will
+run into while working with web frameworks such as Flask or Bottle. 
+For example, the following snippet from the Bottle documentation uses
+decorators to specify a route:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/hello/&amp;lt;name&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;lt;b&amp;gt;Hello &amp;lt;/b&amp;gt;!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#Equivalent to index = route('/hello/&amp;lt;name&amp;gt;')(index)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In fact the most common use of decorators is to allow framework users 
+to hook into some interesting functionality. Of course, there 
+are some uses in more common cases. Consider the following decorator:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;memoize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;memoized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;memoized&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;memoize&lt;/code&gt; is a higher order function that takes &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; (another function) as
+input. It creates a dictionary &lt;code class=&quot;highlighter-rouge&quot;&gt;cache&lt;/code&gt;, then returns the function &lt;code class=&quot;highlighter-rouge&quot;&gt;memoized&lt;/code&gt;. Upon closer inspection, &lt;code class=&quot;highlighter-rouge&quot;&gt;memoized&lt;/code&gt; checks whether &lt;code class=&quot;highlighter-rouge&quot;&gt;cache&lt;/code&gt; already contains
+its arguments. If not, it computes the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;cache[args]&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This function is incredibly useful for recursive routines without side-effects.
+For example, consider the textbook example of “there’s a time and place for 
+recursion, but not now!”:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This function would normally sport an elegantly inefficient 2^n runtime.
+However, applying the memoize decorator would cache the result of each call
+to &lt;code class=&quot;highlighter-rouge&quot;&gt;fib(n)&lt;/code&gt; for n in [0..n-1]. This caching procedure reduces the runtime from
+exponential to linear (at the cost of memory).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A pragmatist would argue to solve the problem iteratively (and a 
+hyper-pragmatist would suggest exploiting matrix multiplies), but in such
+a case I wouldn’t have an excuse to use decorators.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This however, is just the surface of decorators. Back to the framework
+examples, I recently put together a &lt;a href=&quot;https://github.com/ckw017/showdown.py/&quot;&gt;python module for writing Pokemon Showdown chat clients&lt;/a&gt; (you can read about why I’ve done so &lt;a href=&quot;/Rock-Paper-Scissors/&quot;&gt;here&lt;/a&gt;). One of the challenges of writing
+a module for other’s people use is the necessity for consistent documentation.
+Consider the following two function docstrings (apologies in advance for asking you to read documentation):&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;private_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+    Sends a private message with content to the user specified by user_name.
+    The client must be logged in for this to work.
+
+    Params:
+        user_name (:obj:`str`) : The name of the user the client will send 
+            the message to.
+        content (:obj:`str`) : The content of the message.
+        strict (:obj:`bool`, optional) : If this flag is set, passing in 
+            content more than 300 characters will raise an error. Otherwise,
+            the message will be senttruncated with a warning. This paramater
+            defaults to False.
+
+    Notes:
+        Content should be less than 300 characters long. Longer messages 
+        will be concatenated. If the strict flag is set, an error will be 
+        raised instead.
+    &quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+    Sends a chat message to the room specified by room_id. The client must
+    be logged in for this to work
+
+    Params:
+        room_id (:obj:`str`) : The id of the room the client will send the 
+            message to.
+        content (:obj:`str`) : The content of the message.
+        strict (:obj:`bool`, optional) : If this flag is set, passing in 
+            content more than 300 characters will raise an error. Otherwise,
+            the message will be sent truncated with a warning. This 
+            paramater defaults to False.
+
+    Notes:
+        Content should be less than 300 characters long. Longer messages 
+        will be concatenated. If the strict flag is set, an error will be
+        raised instead.
+
+    &quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There’s something wrong here. Very, very wrong. Can you spot it? That’s right,
+we’re repeating ourselves all over the place! The two functions involved, 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;private_message&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;say&lt;/code&gt; both do essentially the same thing: send a
+message somewhere. As such, their parameters and docstrings bear nearly
+identical content, in two different parts of the code base. This violates a
+basic rule of programming best practice: &lt;strong&gt;D&lt;/strong&gt;on’t &lt;strong&gt;R&lt;/strong&gt;epeat &lt;strong&gt;Y&lt;/strong&gt;ourself.
+The problem lies in trying to update individual parts of the docstring. What
+if at some point I chose to concatenate messages at the 350 character limit? I
+would have to update the “Notes:” entry of the docstrings in two different
+places. This shall not stand.&lt;/p&gt;
+
+&lt;p&gt;As you may have guessed from the previous article content, the solution here is
+decorators! If you take a look at the source code for &lt;code class=&quot;highlighter-rouge&quot;&gt;showdown.client&lt;/code&gt;, the
+actual function declarations look like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@docutils.format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+    Sends a chat message to the room specified by room_id. The client must
+    be logged in for this to work
+
+    Params:
+        {room_id}
+        {content}
+        {strict}
+
+    Notes:
+        {strict_notes}
+    &quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;What’s going on here? I will take this moment to comment on the fact that the 
+Python language allows users to do some deep, dark acts of programmatic black
+magic. The answer to any question of the form “Hey, can I do {unspeakable act usually involving self-modifying code} in python?” is “Yes, however &lt;code class=&quot;highlighter-rouge&quot;&gt;PEP 666 + 2/3&lt;/code&gt; recommends that you reread Goethe’s &lt;em&gt;Faust&lt;/em&gt; before proceeding.” The 
+ feature
+used here barely qualifies as one of such acts, but might be classified as a
+first step towards future acts of Lovecraftian nature.&lt;/p&gt;
+
+&lt;p&gt;To be less dramatic, you can modify docstrings (and function signatures for
+that matter) programmatically, so that they display differently when calling
+&lt;code class=&quot;highlighter-rouge&quot;&gt;help()&lt;/code&gt; in the interpreter. We can use decorators here to do away with
+some of the repetition:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#in docutils.py&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;full_indent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;indent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'    '&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;partial_indent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'    '&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;docstrings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;full_indent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base_docstrings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# base_docstrings is a dict of prewritten docstrings&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__doc__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__doc__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;docstrings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapper&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There are a few important details in this snippet. First of all, &lt;code class=&quot;highlighter-rouge&quot;&gt;format&lt;/code&gt; is
+a function that returns a function, &lt;code class=&quot;highlighter-rouge&quot;&gt;wrapper&lt;/code&gt;, which in turn returns another
+function (namely, the modified &lt;code class=&quot;highlighter-rouge&quot;&gt;func&lt;/code&gt;). Functions returning function-valued
+functions! Welcome to the world of decorators. The outermost function &lt;code class=&quot;highlighter-rouge&quot;&gt;format&lt;/code&gt; is necessary to deal with quirks of indentation in multiline strings. The
+inner function modifies the dunder attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;__doc__&lt;/code&gt; and formats in 
+appropriate substitutions for &lt;code class=&quot;highlighter-rouge&quot;&gt;room_id&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;content&lt;/code&gt;, etc… as seen in
+the previous example. And there we have it! We can modify the part of the
+docstring in one place (the entry for &lt;code class=&quot;highlighter-rouge&quot;&gt;strict_notes&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;base_docstrings&lt;/code&gt;)
+and it will update everywhere it is mentioned in the docstrings.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;An extra astute reader might observe that we could automate the process
+further by automatically reading the parameters from the function signature
+and dynamically generating the “Params:” section of the docstring. While I
+considered this, there were various cases within the project where paramater 
+name collisions would complicate things, so I chose to forgo it.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Whether you’re writing a framework or using one, decorators are definitely a
+handy tool to have in your metaphorical toolbox!&lt;/p&gt;</content><author><name></name></author><summary type="html">Python decorators are syntactic sugar that most people will run into while working with web frameworks such as Flask or Bottle. For example, the following snippet from the Bottle documentation uses decorators to specify a route:</summary></entry><entry><title type="html">Rock, Paper, Scissors, Fire, Water, Grass</title><link href="http://localhost:4000/Rock-Paper-Scissors/" rel="alternate" type="text/html" title="Rock, Paper, Scissors, Fire, Water, Grass" /><published>2019-01-01T00:00:00-08:00</published><updated>2019-01-01T00:00:00-08:00</updated><id>http://localhost:4000/Rock-Paper-Scissors</id><content type="html" xml:base="http://localhost:4000/Rock-Paper-Scissors/">&lt;p&gt;For those unfamiliar with the finer details of competitive Pokemon, it’s basically just a fancy version of rock, paper, scissors. While RPS gives each player 3 options, a turn in pokemon consists of around 4-9 possibilities for each player. Each player then reveals his or her choice simultaneously, and the results of their actions play out. This makes it different than games like Tic Tac Toe, Chess, or Go where only one player is “in control” at a time, and instead more like a game of Poker where two players are forced to reveal their hands at the same time.&lt;/p&gt;
+
+&lt;p&gt;If you’ve heard of Pokemon, you probably know that the game has a type system (&lt;a href=&quot;https://en.wikipedia.org/wiki/Type_system&quot;&gt;no, not that kind&lt;/a&gt;). For example, the franchise mascot Pikachu is an electric type, while the fan favorite Charizard is a combination of flying and fire type. Different attacks are also assigned types. As you might expect, a water type move does extra damage (super effective) when used against a fire type opponent, while an electric type moves do no damage to ground types. In this sense, the game really is just an elaborate version of rock, paper, scissors, but with 18 different objects (weapons? implements? tchotchkes?) instead of three.&lt;/p&gt;
+
+&lt;h2 id=&quot;monotype&quot;&gt;Monotype&lt;/h2&gt;
+
+&lt;p&gt;A normal battle can take place between any combination of the 600+ Pokemon allowed in competitive matches, with each player being allowed to choose up to six. The types of battles I was interested are placed under a constraint known as “Monotype,” which is to say that all Pokemon must share a type. For example, a team consisting of Pikachu (electric), Voltorb (electric), and Magneton (electric/steel) is allowed, since all members are electric type (such a team is called “mono electric”). Conversely, a team consisting of Squirtle (water) and Charmander (fire) is disallowed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://play.pokemonshowdown.com/sprites/xyani/pikachu-original.gif&quot; alt=&quot;Pikachu&quot; /&gt;
+ &lt;img src=&quot;http://play.pokemonshowdown.com/sprites/xyani/voltorb.gif&quot; alt=&quot;Voltorb&quot; /&gt; 
+ &lt;img src=&quot;http://play.pokemonshowdown.com/sprites/xyani/magneton.gif&quot; alt=&quot;Magneton&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Pikachu, Voltorb, and Magneton form a valid “Mono Electric” team&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can imagine, competitive matches in this format can be quite one-sided for certain “matchups” (combination of types against each other). For example, the matchup of Mono Water vs. Mono Fire heavily favors the player using water, but it isn’t as black as white as a game of rock, paper, scissors. Every so often, a fire teams do overcome water teams through a combination of luck and strategy. For example, some Mono Fire teams run the Pokemon Volcanion, which regains health when hit by water type attacks and knows the move &lt;em&gt;Solar Beam&lt;/em&gt;, which does heavy damage to water types. We would expect fire teams using this Pokemon to perform better on average than those without it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://play.pokemonshowdown.com/sprites/xyani/volcanion.gif&quot; alt=&quot;Volcanion&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Volcanion: a Fire/Water type, that is immune to water attacks&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This is just one particular case for one particular matchup of a potential 172. As you can imagine, there are all sorts of factors that actually contribute to how likely one type is likely to beat another, ranging anywhere from team composition, to special abilities, to esoteric game mechanics. Attempting to quantify this is where the fun part begins.&lt;/p&gt;
+
+&lt;h2 id=&quot;collecting-data&quot;&gt;Collecting Data&lt;/h2&gt;
+&lt;p&gt;To start off, I decided to collect data from the popular online Pokemon simulator, &lt;a href=&quot;https://pokemonshowdown.com/&quot;&gt;Pokemon Showdown&lt;/a&gt;. Showdown typically has ~10,000 users online during the day and upwards of ~1000 battles taking place at any given moment. During the time I spent collecting data, I found that roughly 12,000 monotype battle took place on a daily basis.&lt;/p&gt;
+
+&lt;p&gt;To collect data, I had to create a bot that hooked into Showdown’s websocket interface and listened in onto all public battles. Chat bots that interact with the website’s chat rooms already existed, however were heavily specialized for chat based interactions and were exclusively written for Node.js. I decided to write my own client in Python, which ended up being great practice with Python 3’s async features and Object Relational Managers (all of the data is currently being stored in a PostgreSQL backend.).&lt;/p&gt;
+
+&lt;p&gt;There was a long, complicated, and at times frustrating step between collecting the raw data and getting out useful information. For the sake of brevity and sanity, this has been omitted.&lt;/p&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results!&lt;/h2&gt;
+&lt;p&gt;After collecting all and parsing all the data, we finally get to the my personal favorite part of this kind of process: staring at tables and hoping that it makes. Said tables can be found &lt;a href=&quot;https://docs.google.com/spreadsheets/d/1BU5OC5Q9Xw5zcgSzIfnbDw8X4AaiKbSN1L1jfyx7llc/edit?usp=sharing&quot;&gt;here&lt;/a&gt;. The data has been split into the following groups: 1100-1300, 1300-1500, and 1500+. These refer to a matches &lt;a href=&quot;https://en.wikipedia.org/wiki/Elo_rating_system&quot;&gt;Elo rating&lt;/a&gt;, which is a metric originally invented as a chess rating system that quantifies the skill of given players in the match. The minimum possible Elo is 1000, and the highest (for my purposes) is roughly 2000. I excluded matches rated between 1000 to 1100 because these tend to contain sketchy results as the result of player’s things or hooligans writing bots that serve no purpose but to forfeit every match (this may be expanded on at a later time). Anyway, we can now look over some of the results. These are the 5 most one-sided matchups in the 1100-1300 range:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;matchup&lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;win_rate&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;fire vs. grass&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;0.8295302013&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;steel vs. ice&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;0.8210023866&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;fighting vs. dark&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;0.7970244421&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;steel vs. fairy&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;0.7966850829&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;fairy vs. fighting&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;0.7950310559&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;The win_rate refers to the probability that a wins in the matchup a vs. b&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;As any Californian will tell you, the matchup of fire vs. grass heavily favors fire. The difference is now we know exactly how much it favors grass, and that it is in fact the worst matchup in the game for players of the 1100-1300 skill range. It is interesting to note that this matchup gets even worse with higher skill players, moving from ~83% to ~87% in the 1500+ range (this is however based on a far smaller sample size).&lt;/p&gt;
+
+&lt;p&gt;One of the first “unintuitive” matchups comes with bug vs. ice, with bug winning at around 71% of the time. Bug and Ice are as neutral of a matchup you can get. Bug attacks do neutral damage on ice types, and ice attacks do neutral types on bug types. So what’s giving Bug its edge? Scizors. As in the Pokemon, Scizor. Scizor is Bug/Steel type with access to the steel type Bullet Punch, which always hits first. Thanks to Scizor’s special ability, Bullet Punch also does 1.5 times more damage than usual. Scizor also gets a Mega-Evolution, which in essence means it gets punch even harder. Oh, and its super effective against ice types. Oof.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://play.pokemonshowdown.com/sprites/xyani/scizor.gif&quot; alt=&quot;Scizor&quot; /&gt;
+&lt;img src=&quot;http://play.pokemonshowdown.com/sprites/xyani/scizor-mega.gif&quot; alt=&quot;Scizor-Mega&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Scizor and Mega Scizor: a Steel/Bug Pokemon that can single-clawedly beat ice teams&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Pokemon really is just a fancy version of rock, paper, Scizors.&lt;/p&gt;</content><author><name></name></author><summary type="html">For those unfamiliar with the finer details of competitive Pokemon, it’s basically just a fancy version of rock, paper, scissors. While RPS gives each player 3 options, a turn in pokemon consists of around 4-9 possibilities for each player. Each player then reveals his or her choice simultaneously, and the results of their actions play out. This makes it different than games like Tic Tac Toe, Chess, or Go where only one player is “in control” at a time, and instead more like a game of Poker where two players are forced to reveal their hands at the same time.</summary></entry><entry><title type="html">This title consists of two a’s, one b, tw…</title><link href="http://localhost:4000/This-Title/" rel="alternate" type="text/html" title="This title consists of  two a's, one b, tw..." /><published>2018-12-19T00:00:00-08:00</published><updated>2018-12-19T00:00:00-08:00</updated><id>http://localhost:4000/This-Title</id><content type="html" xml:base="http://localhost:4000/This-Title/">&lt;p&gt;Full title: This title consists of two a’s, one b, two c’s, two d’s, thirty-one e’s, six f’s, four g’s, eight h’s, eleven i’s, one j, one k, three i’s, one m, eighteen n’s, seventeen o’s, one p, one q, seven r’s, twenty-eight s’s, twenty t’s, four u’s, five v’s, six w’s, three x’s, four y’s, and one z.&lt;/p&gt;
+
+&lt;p&gt;For real! Test it out (or just take my word for it)! The title of this post is a self-describing sentence on the typographical level. Note that I specify on a typographical level, as opposed to say a “semantic meaning” level. A statement that fits that criteria would be something like “This sentence talks about itself”. You could also have a sentence that describes itself on a “word” level, such as “This sentence has seven words in it.” Yet both of these feel somehow less interesting as the title, which is a lot more “sensitive” to minor changes. For example, if you tried to change the prefix to “This is a title…”, you would of course have to say it has four i’s instead of three. But wait, well now we have thirty-three e’s, right? But “thirty-three” adds another two e’s, so do we have thirty-five? Well now we’re back down to thirty-four, but wai… And so on, ad nauseam.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.xkcd.com/688/&quot;&gt;&lt;img src=&quot;https://imgs.xkcd.com/comics/self_description.png&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;xkcd 668, “Self-description”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I first came across this concept in Douglas Hofstadter’s anthology &lt;a href=&quot;https://en.wikipedia.org/wiki/Metamagical_Themas&quot;&gt;&lt;em&gt;Metamagical Themas: Questing for the Essence of Mind and Pattern&lt;/em&gt;&lt;/a&gt;. I would definitely recommmend it to anyone familiar with Hofstadter’s more popular work &lt;em&gt;Gödel, Escher, Bach&lt;/em&gt;, although the structure of &lt;em&gt;Metamagical Themas&lt;/em&gt; is pretty friendly to people unfamiliar with his writing style. Much like his other works, a major topic of interest is self-reference.&lt;/p&gt;
+
+&lt;h1 id=&quot;a-linear-algebra-attempt&quot;&gt;A Linear Algebra Attempt&lt;/h1&gt;
+
+&lt;p&gt;So how does one produce such a sentence? One approach would be to brute force it by manually running through every combination of 26 “coefficients,” capped at some value, say forty. This would mean it would take &lt;code class=&quot;highlighter-rouge&quot;&gt;40^26 == 4.5*10^41&lt;/code&gt; in the worst case scenario to find a working combination (or to discover that no such solution exists for a given “prefix”, in the case of this article “This title consists of”). This, in simple terms, would take a while. One reader of Hofstadtr’s column did in fact find a solution in this manner. Using a handful of clever optimizations and custom hardware, Lee Sallows was able to find a solution for the prefix “This pangram tallies” after only 2.5 months!&lt;/p&gt;
+
+&lt;p&gt;That sort of runtime really begs the assertion: “There has to be a better way!” When I first attempted the problem, I felt a natural approach would be through linear algebra. The essence of these self-describing sentences is the equality in the &lt;em&gt;meaning&lt;/em&gt; of the sentence, and the &lt;em&gt;composition&lt;/em&gt; of the sentence, i.e. solve for &lt;code class=&quot;highlighter-rouge&quot;&gt;meaning == composition&lt;/code&gt;. To represent both sides of the equation, we can map each letter in the alphabet to an axis in 26-dimensional space. This isn’t unlike how in two dimensional space, we map the unit vector i to the x-axis, and j to the y-axis.&lt;/p&gt;
+
+&lt;p&gt;To represent the &lt;em&gt;meaning&lt;/em&gt; side of the equation, we sum together the &lt;em&gt;meaning&lt;/em&gt; of each coefficient (i.e. the string “two”-&amp;gt;2, “twenty-five”-&amp;gt;25, etc…) times the constant unit vector representing the letter (“i”-&amp;gt;the unit vector in the positive direction of the i-dimension). This is better said in an example: “Three x’s, two y’s”. The evaluation of the meaning of this statement is a vector a component of length 3 in the x direction and 2 in the y direction.&lt;/p&gt;
+
+&lt;p&gt;On the other side, we have the &lt;em&gt;composition&lt;/em&gt; of the sentence. To start, we can treat the prefix of the statement as a constant vector in our 26-dimensional character space. For example, the prefix “Prefix” is just a constant vector with components of length 1 in the p, r, e, f, i, and x directions, and 0 elsewhere. We also know that every letter is mentioned at least once, so we can add a “diagonal” vector that has a component of 1 in each direction. Finally, must add on the &lt;em&gt;composition&lt;/em&gt; of all the coefficients from the left. This would require some function f that takes in a number, and outputs a character space vector of that numbers composition. For example, f(3) should return a vector with components of 1 in the t, h, and r directions, 2 in the e direction, and 0 elsewhere.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-problem-with-the-problem&quot;&gt;The problem with the problem&lt;/h2&gt;
+
+&lt;p&gt;The downfall of this approach is rooted in the need for this function f, since it isn’t a linear operation (i.e. f(1) + f(2) != f(3)), which renders linear algebra techniques useless for solving the problem. You may have also noted that the “‘s” were not accounted for author, which relied on boolean logic that I suspected wouldn’t translate cleanly into this linear algebra approach either. It should be noted that you could use a modified version of Peano numbering as f which would be linear. In Peano’s scheme, the number zero is represented with 0, while the number one is represented as “successor of zero”, or S0. Likewise, the since two is the “successor of one” it is represented as SS0. If we cut out the postfix 0, then our “number to composition” function would be linear, but force our sentence to be read in a ssssnake-ish dialect.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-solution&quot;&gt;The Solution&lt;/h1&gt;
+&lt;p&gt;So, how can a solution be found then? The answer lies in iteration. Let’s start with a simpler prefix: “The previous sentence consists of…” This transforms the problem into something of a novelty. If we put in a dumby starter sentence, such as “The previous sentence consists of one l,” then producing a new sentence describing this one is quite trivial. We just count the letters, and then output a new sentence along the lines of “The previous sentence consists of one d, one y…” A new sentence can then be generated to describe this one, thus forming an endless list of sentences describing their predecessors. I say endless here, but intuitively we know that these sentences occupy a finite set of points in character space. Paired with the fact that our successor function is deterministic, we can conclude that at some point we run into a cycle.&lt;/p&gt;
+
+&lt;p&gt;This has an interesting implication: any “starter” input will eventually collapse into a loop given enough applications of our successor function. Our goal to find a self-describing sentence is instead to find a cycle of length one given a specific prefix. So, if we just generate random starting points and continue applying the successor function until we get “sucked into” a loop of length one. One way to visualize this is to imagine a sea full of whirlpools. If we wanted to find eye of an “ideal” whirlpool, which in our analogy will be one with an eye with diameter of say, 2 inches, we could check every 2x2 inch square of surface on the sea and hope to run into it. Alternatively, we could airdrop thousands of 2 inch buoys into the water. The buoy’s will naturally find their ways to the eye of every whirlpool, and if we’re lucky, one of them will find its way to the center of our ideal one.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.bulbagarden.net%2Fupload%2F1%2F19%2FHGSS_Whirl_Islands-Day.png&amp;amp;f=1&quot; alt=&quot;Whirl Islands&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A sea of whirlpools. Image source: “Whirl Islands” from Pokemon HeartGold &amp;amp; SoulSilver&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;The contents of this paragraph is left as an exercise to the reader. This concluding sentence consists of ___?&lt;/p&gt;</content><author><name></name></author><summary type="html">Full title: This title consists of two a’s, one b, two c’s, two d’s, thirty-one e’s, six f’s, four g’s, eight h’s, eleven i’s, one j, one k, three i’s, one m, eighteen n’s, seventeen o’s, one p, one q, seven r’s, twenty-eight s’s, twenty t’s, four u’s, five v’s, six w’s, three x’s, four y’s, and one z.</summary></entry><entry><title type="html">61B Roguelike Game</title><link href="http://localhost:4000/61B-Roguelike/" rel="alternate" type="text/html" title="61B Roguelike Game" /><published>2018-07-02T00:00:00-07:00</published><updated>2018-07-02T00:00:00-07:00</updated><id>http://localhost:4000/61B-Roguelike</id><content type="html" xml:base="http://localhost:4000/61B-Roguelike/">&lt;p&gt;While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Disclaimer: This won’t really go into as much technical detail as other posts, since I’m obligated not to share too much information on how I implemented stuff for the sake of academic integrity.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The objective of the project was to create a &lt;em&gt;roguelike&lt;/em&gt; game. According to Wikipedia, a roguelike is defined by “procedurally generated levels, turn-based gameplay, tile-based graphics, and permanent death of the player character.” In previous projects, we were usually handed a skeleton outline of the what we had to do, along with a predefined specification for how everything should be implemented. I had major qualms with this style of assignment, mainly because it locked you in to a single approach to problem solving, and often times the method headers gave away the tricks to the problem. But it was more or a less a necessary evil: there were 700+ students, and the autograder had to work with a predefined functions and classes to test.&lt;/p&gt;
+
+&lt;p&gt;That’s why Project 2 was so exciting! The only rigid requirements we had were to use the graphics library that was provided. As for the more abstract goals, we were asked to:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Implement a player character with some form of movement&lt;/li&gt;
+  &lt;li&gt;Randomly generated rooms and hallways&lt;/li&gt;
+  &lt;li&gt;The ability to interact with the environment&lt;/li&gt;
+  &lt;li&gt;A condition to win the game.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Since this isn’t going to be a technical post anyway, I guess I’ll go a bit into my background in video games. The two big influencers for my game were &lt;em&gt;Pokemon Mystery Dungeon&lt;/em&gt;, and &lt;em&gt;Realm of the Mad God (RotMG)&lt;/em&gt;, both 2D dungeon crawling games with roguelike aspects. Two of my favorite parts of the dungeons featured in RotMG is that while the game tells you exactly &lt;em&gt;where&lt;/em&gt; you should be headed, the labyrinth-like dungeon only provides one path to get there – everything else is just a dead end. When I was thinking up how I might implement this, I was struck by inspiration, which ended up going not being valid, and then by a Discrete Math exam. During some last minute review for that exam, I realized that the dungeons in RotMG were actually just an implementation of my third favorite type of graph: the tree. &lt;em&gt;(My first favorite is the n-dimensional hypercube graph, followed shortly by directed acyclic)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rogue/rotmg_abyss.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;An example layout for &lt;em&gt;The Abyss of Demons&lt;/em&gt;, a dungeon that I spent too much time grinding in in RotMG.&lt;/p&gt;
+
+&lt;p&gt;The strategy to make the dungeon was to generate a bunch of rooms, and the connect them with hallways until they formed a tree. If that sounds vague, its because it is. I really wish I could go into more detail here, but I can’t. I will say that the trick to forming the tree was to make sure each room wasn’t already connected to another before joining them. This is because if we treat each room as a node in a graph, then connecting two previously connected nodes would form a cycle, ruining the tree property of the graph. To check for connectedness, I ended up “inventing” a special class to keep track of what was already linked, only to be find out later in lecture that it was called a Disjoint Set and that it had already been figured out long before I came around :(&lt;/p&gt;
+
+&lt;p&gt;Anyway, the last step was to come up with a theme for the game. I thought it would be funny to name the game after Dwinelle Hall, a building on campus rumored to have been designed by two disagreeable architects. For a gameplay video, check out &lt;a href=&quot;https://www.youtube.com/watch?v=HFTrWrPsLMQ&quot;&gt;my extra credit video&lt;/a&gt;, or don’t! Anyway, that’s all for this post. Sorry about the lack of code.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rogue/dwinelle.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Depiction of Dwinelle Hall, courtesy of the Daily Kale.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.</summary></entry><entry><title type="html">Hog Contest (Part 2)</title><link href="http://localhost:4000/Hog-Contest-2/" rel="alternate" type="text/html" title="Hog Contest (Part 2)" /><published>2018-06-15T00:00:00-07:00</published><updated>2018-06-15T00:00:00-07:00</updated><id>http://localhost:4000/Hog-Contest-2</id><content type="html" xml:base="http://localhost:4000/Hog-Contest-2/">&lt;p&gt;Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy
+for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly
+wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first.
+Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic
+method by forcing the strategies to work with &lt;em&gt;incomplete information.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“&lt;strong&gt;Time Trot&lt;/strong&gt;: A turn involves a player rolling dice, and each turn is numbered, starting from 0. If a player
+chooses to roll a number of dice k on turn n, and n % 8 == k, then that player gets an extra turn immediately
+after the current turn. However, a player cannot get an extra turn immediately after an extra turn.”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The new rule was fairly simple, and would be easy to implement as a person. A human player could keep track of
+what turn it is, and use their extra rolls as they wished. However, under the contest rules, the strategy
+“must be a deterministic function of the players’ scores and cannot track the turn number or previous actions.”&lt;/p&gt;
+
+&lt;p&gt;Now that the strategies were forced to work with incomplete information, the contest was a lot more interesting.
+My first thought was to adapt the original probabilistic method as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Calculate the best possible move to make against a given strategy given a set of scores &lt;em&gt;and&lt;/em&gt; the current turn number.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Calculate the probability that it is a certain turn number for each possible turn (0 to 7), for each possible pair of scores
+(0 to 99, 0 to 99)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Normalize each turn number and roll by the probability of it leading to a winning game&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Find the best roll by adding up the normalized turn numbers and their rolls&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;TODO: Put in visualization of how data interacts.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There was of course a major flaw in the second step: to calculate the probability that a given set of scores would be a certain
+turn number, you needed to simulate a game between the base strategy and the strategy you were currently making. But the strategy
+being was made wasn’t finished yet! Uh oh. It looks like we’ll need to use an approximation: the old optimal strategy.&lt;/p&gt;
+
+&lt;p&gt;So, using the optimal strategy as the seed, as well as the approximation strategy, the new strategy reached a win rate of
+0.503, beating the optimal strategy 3 tenths of a percent more often than not. Surely we could do better? The ideal (but unachievable)
+win rate, given complete information, was around 0.58. Was there a way to get closer to that?&lt;/p&gt;
+
+&lt;p&gt;The answer was: sorta. By rerunning the algorithm, this time using the output of the previous run as the approximation strategy, it
+actually ended up doing worse. But by repeatedly feeding the output back in like this gradual progress was made towards the ideal.
+After about 300+ iterations, the best win rate was around 0.537, almost halfway closer to the ideal than in the first iteration.&lt;/p&gt;
+
+&lt;iframe width=&quot;704&quot; height=&quot;438&quot; seamless=&quot;&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSHv20ef9STEktZIhsttsDrPg-5DBtHDcbIfyTbquh56xGqkVaOt5ZdGMhRZ5rx_AA16l3rpf198zzZ/pubchart?oid=1161975059&amp;amp;format=interactive&quot;&gt;
+  &lt;/iframe&gt;
+
+&lt;p&gt;This was about as far as I got before I realized the contest deadline was going to make things tricky. To get that 0.537 win rate took a few
+hours, and a couple of attempt were ruined midway from problems with the memoization system I was using running out of memory. If I had more time,
+and I may look into these approaches now that I do have time, I would have tried out a few different approaches. The main ones that come to mind are
+creating what would be the optimal strategy if we did have complete information then “flattening” down into a 2D strategy, or doing an incremental
+approach where only a few outputs are changed each time. If I ever get around to that, I’ll make a part three to this saga, but for now that’s all for hog!&lt;/p&gt;</content><author><name></name></author><summary type="html">Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first. Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic method by forcing the strategies to work with incomplete information.</summary></entry><entry><title type="html">Fix for “exit status 4” when writing Primitive Gif</title><link href="http://localhost:4000/Primitive-Gif-Fix/" rel="alternate" type="text/html" title="Fix for &quot;exit status 4&quot; when writing Primitive Gif" /><published>2018-06-08T00:00:00-07:00</published><updated>2018-06-08T00:00:00-07:00</updated><id>http://localhost:4000/Primitive-Gif-Fix</id><content type="html" xml:base="http://localhost:4000/Primitive-Gif-Fix/">&lt;p&gt;This is just a quick fix for a problem I ran into while trying to use &lt;a href=&quot;https://github.com/fogleman/primitive&quot;&gt;Primitive&lt;/a&gt;
+on Windows. While trying to create a gif, you might run into a message like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;writing test.gif
+2018/06/08 14:07:20 exit status 4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make sure that you have &lt;a href=&quot;[https://www.imagemagick.org/script/download.php&quot;&gt;ImageMagick&lt;/a&gt; installed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Locate the “utils.go” file in the source for primitive. On my computer it was located at &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Users\Me\go\src\github.com\fogleman\primitive\primitive\utils.go&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Look for this section:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     args := []string{
+     &quot;-loop&quot;, &quot;0&quot;,
+     &quot;-delay&quot;, fmt.Sprint(delay),
+     filepath.Join(dir, &quot;*.png&quot;),
+     &quot;-delay&quot;, fmt.Sprint(lastDelay - delay),
+     filepath.Join(dir, fmt.Sprintf(&quot;%06d.png&quot;, len(frames)-1)),
+     path,
+ }
+ cmd := exec.Command(&quot;convert&quot;, args...)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Move &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;convert&quot;&lt;/code&gt; to the beginning of args, and change the command name to &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;magick&quot;&lt;/code&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     args := []string{
+     &quot;convert&quot;,
+     &quot;-loop&quot;, &quot;0&quot;,
+     &quot;-delay&quot;, fmt.Sprint(delay),
+     filepath.Join(dir, &quot;*.png&quot;),
+     &quot;-delay&quot;, fmt.Sprint(lastDelay - delay),
+     filepath.Join(dir, fmt.Sprintf(&quot;%06d.png&quot;, len(frames)-1)),
+     path,
+ }
+ cmd := exec.Command(&quot;magick&quot;, args...)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Reinstall primitive with &lt;code class=&quot;highlighter-rouge&quot;&gt;go install github.com/fogleman/primitive&lt;/code&gt; (or whatever your path is in go\src)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Basically, to create the gifs primitive tries to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;magick convert&lt;/code&gt; command.
+However, windows has a default command called &lt;code class=&quot;highlighter-rouge&quot;&gt;convert&lt;/code&gt; that gets used instead.
+These changes should fix the problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/primitive-fix/campanile.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/primitive-fix/campanile.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">This is just a quick fix for a problem I ran into while trying to use Primitive on Windows. While trying to create a gif, you might run into a message like this:</summary></entry><entry><title type="html">Hog Contest (Part 1)</title><link href="http://localhost:4000/Hog-Contest/" rel="alternate" type="text/html" title="Hog Contest (Part 1)" /><published>2018-06-01T00:00:00-07:00</published><updated>2018-06-01T00:00:00-07:00</updated><id>http://localhost:4000/Hog-Contest</id><content type="html" xml:base="http://localhost:4000/Hog-Contest/">&lt;p&gt;The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game
+&lt;a href=&quot;http://inst.eecs.berkeley.edu/~cs61a/fa17/proj/hog/&quot;&gt;Hog&lt;/a&gt;. The game itself is pretty simple (roll die to score points, first to 100 wins),
+and the project was more a less just a warm-up to get everyone used to Python syntax and higher order functions. The extra credit option,
+however, was a bit more interesting.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/hog-gui.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The extra credit option was to create a “strategy” to compete against other students’ submissions. In this context,
+a strategy is a function that takes the current score, and outputs a number of die to roll. A basic strategy might
+look something like ‘lambda my_score, opp_score: 4’, which would always roll 4. The suggested ideas included taking
+advantages of some of the game mechanics, such as “Swine Swap,” which switches the players’ scores if one is an integer
+multiple of another, and “Free Bacon,” which let you get a set amount of points by choosing to roll zero die. This
+sort of thing could be implemented through a whole lot of if-statements, but it begged the question: was there a more
+precise way to make a strategy?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/images/iteration0.jpg&quot;&gt;&lt;img src=&quot;/images/iteration0.jpg&quot; alt=&quot;&quot; width=&quot;320px&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A handmade strategy&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The answer was of course, yes! The process goes something like this: given a score state and “seed” opponent strategy, we want to know the optimal
+number of dice to roll to maximize our odds of winning. How can we determine that? By adding up the probability of winning
+in future score states. This is a recursive problem, with the base case being situations where a player is guaranteed to win
+on that turn, for example, if someone has 99 points. Paired with memoization, you could calculate the optimal strategy fairly
+quickly. This approach had one limitation however: the strategy was only an optimal counter strategy against the input strategy, and not necessarily
+all strategies.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/images/iteration1.jpg&quot;&gt;&lt;img src=&quot;/images/iteration1.jpg&quot; alt=&quot;&quot; width=&quot;320px&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The optimal counter strategy against the handmade strategy&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The solution to this is actually pretty interesting. To get a truly optimal strategy, we can take the output from one iteration as
+the seed for the next. An interesting trend emerges as we do this: the win rate of the counter strategy gradually went down, until
+it reached 50%. Additionally, once it reached 50%, the output strategy would be equivalent to the input strategy!&lt;/p&gt;
+
+&lt;iframe width=&quot;600&quot; height=&quot;371&quot; seamless=&quot;&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSHv20ef9STEktZIhsttsDrPg-5DBtHDcbIfyTbquh56xGqkVaOt5ZdGMhRZ5rx_AA16l3rpf198zzZ/pubchart?oid=1321489337&amp;amp;format=interactive&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;The implication of this is interesting. Consider this: If the output strategy is the same is the input strategy, then the best counter to that strategy is itself. If we have a strategy that is optimal against itself, then it must beat all other strategies.
+In other words, since the best counter strategy can only win 50% of the time, all other strategies must win less than 50% of the time. Which in the context of the contest means that this strategy was guaranteed to either win or tie against all other opponents1&lt;/p&gt;
+
+&lt;p&gt;So, anyone who discovered this optimal strategy would have tied for first, right? Well, for better and worse, the course staff had accounted
+for this, which I will continue in &lt;a href=&quot;/Hog-Contest-2/&quot;&gt;another post&lt;/a&gt;. For now, here’s some neat graphics of the strategies “evolving” and converging towards
+the optimal strategy.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/images/human_base.gif&quot;&gt;&lt;img src=&quot;/images/human_base.gif&quot; alt=&quot;&quot; width=&quot;320px&quot; /&gt;&lt;/a&gt;
+&lt;a href=&quot;/images/always_4_base.gif&quot;&gt;&lt;img src=&quot;/images/always_4_base.gif&quot; alt=&quot;&quot; width=&quot;320px&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Seeded with the handmade strategy and “always 4” strategy respectively&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game Hog. The game itself is pretty simple (roll die to score points, first to 100 wins), and the project was more a less just a warm-up to get everyone used to Python syntax and higher order functions. The extra credit option, however, was a bit more interesting.</summary></entry><entry><title type="html">Hello World!</title><link href="http://localhost:4000/Hello-World/" rel="alternate" type="text/html" title="Hello World!" /><published>2018-05-25T00:00:00-07:00</published><updated>2018-05-25T00:00:00-07:00</updated><id>http://localhost:4000/Hello-World</id><content type="html" xml:base="http://localhost:4000/Hello-World/">&lt;p&gt;Hello world! I just finished my first year at university, and I thought it would be neat to share some of the projects I undertook throughout the year somewhere, both personal and for classes. If you’re interested in anything you see or have any feedback, feel free to contact me at &lt;a href=&quot;mailto:chriswong21@berkeley.edu&quot;&gt;chriswong21@berkeley.edu&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">Hello world! I just finished my first year at university, and I thought it would be neat to share some of the projects I undertook throughout the year somewhere, both personal and for classes. If you’re interested in anything you see or have any feedback, feel free to contact me at chriswong21@berkeley.edu.</summary></entry></feed>

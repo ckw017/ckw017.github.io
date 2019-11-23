@@ -212,7 +212,7 @@ img.post-preview:hover {
 
 .site-name {
   margin: 0;
-  color: rgb(210, 210, 210);
+  color: rgb(240, 240, 240);
   cursor: pointer;
   font-family: $helveticaNeue;
   font-weight: 300;
@@ -222,7 +222,7 @@ img.post-preview:hover {
 
 .site-description {
   margin: -5px 0 0 0;
-  color: rgb(210, 210, 210);
+  color: rgb(230, 230, 230);
   font-size: 16px;
 
   @include mobile {
@@ -254,7 +254,7 @@ nav {
 
   a {
     margin-left: 20px;
-    color: rgb(210, 210, 210);
+    color: rgb(256, 256, 256);
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
@@ -268,7 +268,7 @@ nav {
 tr {
   a {
     margin-left: 20px;
-    color: rgb(210, 210, 210);
+    color: rgb(256, 256, 256);
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
@@ -298,6 +298,7 @@ tr {
 }
 
 .post {
+  margin: 30px;
   blockquote {
     margin: 1.8em .8em;
     border-left: 2px solid $gray;
@@ -315,6 +316,10 @@ tr {
     text-transform: uppercase;
     font-size: 15px;
   }
+}
+
+.page {
+  margin: 30px;
 }
 
 .wrapper-footer {

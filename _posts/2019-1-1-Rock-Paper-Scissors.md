@@ -1,7 +1,7 @@
 ---
 layout: post
 img: https://i.imgur.com/qegKRGV.png?1
-title: Rock, Paper, Scissors, Fire, Water, Gra...
+title: Rock, Paper, Scissors, Fire, Water, Grass
 ---
 For those unfamiliar with the finer details of competitive Pokemon, it's basically just a fancy version of rock, paper, scissors. While RPS gives each player 3 options, a turn in pokemon consists of around 4-9 possibilities for each player. Each player then reveals his or her choice simultaneously, and the results of their actions play out. This makes it different than games like Tic Tac Toe, Chess, or Go where only one player is "in control" at a time, and instead more like a game of Poker where two players are forced to reveal their hands at the same time.
 

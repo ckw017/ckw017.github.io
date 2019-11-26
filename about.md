@@ -22,11 +22,11 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 
 ---
 # FAQs
+[What is our purpose?](#What-is-our-purpose?)
+<br>
 [What's with the background image for this site?](#What's-with-the-background-image-for-this-site?)
 <br>
 [Why is everything so dark?](#Why-is-everything-so-dark?)
-<br>
-[What is our purpose?](#What-is-our-purpose?)
 <br>
 [Class recommendations?](#Class-recommendations?)
 <br>
@@ -39,7 +39,29 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 [I got a 404 error. Who is this "Debug Dog"?](#I-got-a-404-error.-Who-is-this-"Debug-Dog"?)
 <br>
 [What's Berkeley CS like/should I apply?](#What's-Berkeley-CS-like/should-I-apply?)
+<br>
+[What does your middle initial stand for?](#What-does-your-middle-initial-stand-for?)
 
+
+<a name="What-is-our-purpose?"></a>
+
+---
+## What is our purpose?
+
+One of my peers in the Neuroecon lab asked me in the sense of "wait what are we supposed to be doing this week?" I didn't really have a specific answer for him at the time.
+
+In general though, I like to adhere to this philosophy:
+
+"*A purpose of human life, no matter who is controlling it, is to love whoever is around to be loved.*"
+
+― Kurt Vonnegut, *The Sirens of Titan*
+
+And occasionally:
+
+
+"*I tell you, we are here on Earth to fart around, and don't let anybody tell you different.*"
+
+― Also Kurt Vonnegut, *A Man Without a Country* 
 
 <a name="What's-with-the-background-image-for-this-site?"></a>
 
@@ -57,26 +79,6 @@ With respect to this website, I'm used to having [darkmode everywhere](https://d
 
 If you're asking outside of the context of this website, perhaps it is nighttime in conjunction with a power outage. Or if you mean in a more metaphorical "the world seems so bleak" kind of way, I guess that's more of a perspective thing that maybe positive thinking might help with. I can't really give a better answer without more details.
 
-<a name="What-is-our-purpose?"></a>
-
----
-## What is our purpose?
-
-One of my peers in the Neuroecon lab asked me in the sense of "wait what are we supposed to be doing this week?" I didn't really have a specific answer at the time.
-
-In general though, I like to adhere to this philosophy:
-
-"*A purpose of human life, no matter who is controlling it, is to love whoever is around to be loved.*"
-
-― Kurt Vonnegut, *The Sirens of Titan*
-
-And occasionally:
-
-
-"*I tell you, we are here on Earth to fart around, and don't let anybody tell you different.*"
-
-― Also Kurt Vonnegut, *A Man Without a Country* 
-
 <a name="Class-recommendations?"></a>
 
 ---
@@ -91,7 +93,7 @@ Definitely take:
     * Requires: CS70
 * CS194 - Linux System Administration DeCal
     * Requires: Enrollment Luck
-    * This is a DeCal run by the awesome dudes down in the OCF! Enrollment is usually really tight though, but the members of the OCF are generally enthusiastic enough to help you out with Linux stuff if you show up during regular hours
+    * This is a DeCal run by the awesome students down in the OCF! Enrollment is usually really tight though, but the members of the OCF are generally enthusiastic enough to help you out with Linux stuff if you show up during regular hours
 
 If you like programming:
 * CS161 - Computer Security
@@ -137,7 +139,7 @@ If you're thinking "I probably won't get into anything if I apply," that's also 
 
 In high school I was relatively clueless about what I wanted to do in terms of career. I knew I wanted to some sort of STEM-related field, but I wasn't sure which one. My junior year I took the AP courses for CS and Chemistry, and actually really loved both of them! Unfortunately for chem, it was a lot easier to tinker with programming than it was with mass spectometry on my own time, and so I ended up leaning towards computer science.
 
-I will say that APCS is kind of useless in terms of preparation of Berkeley (and I imagine many other school's) CS Curriculum. I hate to say it but a lot of CS courses "handhold" a bit too excessively. The most productive uses of time during high school were probably spent on trying to get retrospectively lovecraftian codebases for simple graphical games to display and run at 30 FPS without a proper IDE and relying solely on StackOverflow, compiler vitriol, and Java's standard library documentation. This is the kind of suffering that the department of education and parts of the constitution tend to forbid, but I suspect that that kind of struggle working on a personal project builds a level of independence that very few undergraduate or high school courses are capable of providing.
+I will say that APCS is kind of useless in terms of preparation of Berkeley (and I imagine many other school's) CS Curriculum. I hate to say it but a lot of CS courses "handhold" a bit too excessively. The most productive uses of time during high school were probably spent on trying to get retrospectively Lovecraftian codebases for simple graphical games to display and run at 30 FPS without a proper IDE and relying solely on StackOverflow, compiler vitriol, and Java's standard library documentation. This is the kind of suffering that the department of education and parts of the constitution tend to forbid, but I suspect that that kind of struggle working on a personal project builds a level of independence that very few undergraduate or high school courses are capable of providing.
 
 I also had some background in competition math, which teaches a lot of intuition and practical problem solving skills that you really won't get in a classroom. 
 
@@ -175,3 +177,11 @@ Yes you should apply (if it's within your financial capacity). I really don't ha
     * Check out the "Academics" tab of my [portfolio](/portfolio) for cool classes and associated projects I've had the chance to take
 
 People will of course give you impassioned reasons for why you shouldn't come to Berkeley, usually regarding difficulty and class sizes. I think you should take their words in to consideration as well.
+
+<a name="What-does-your-middle-initial-stand-for?"></a>
+
+---
+## What does your middle initial stand for?
+
+Potassium.
+

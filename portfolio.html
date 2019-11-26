@@ -5,34 +5,45 @@ permalink: /portfolio/
 
 <script>
 function showCategory(category) {
+  if (category === "") {
+    category = "personal";
+  }
   Object.keys(categories).forEach(c => categories[c].style.display="none");
+  Object.keys(categories).forEach(c => anchors[c].style.color=null);
   categories[category].style.display = "block";
+  anchors[category].style.color = "#61A3E4";
+  window.location.hash = "#" + category;
 }
 
 window.onload = function() {
-  categories = {
-    "personal": document.getElementById("personal"),
-    "coursework": document.getElementById("coursework"),
-    "professional":document.getElementById("professional"),
-    "data": document.getElementById("data"),
-  }
-  categories["personal"].style.display = "none";
 
-  showCategory("personal");
+  categories = {
+    "personal": document.getElementById("personaldiv"),
+    "coursework": document.getElementById("courseworkdiv"),
+    "professional":document.getElementById("professionaldiv"),
+    "data": document.getElementById("datadiv"),
+  }
+  anchors = {
+    "personal": document.getElementById("personala"),
+    "coursework": document.getElementById("courseworka"),
+    "professional":document.getElementById("professionala"),
+    "data": document.getElementById("dataa"),
+  }
+  showCategory(window.location.hash.substr(1));
 }
 </script>
 <div>
   <br>
   <table style="width:100%">
     <tr>
-      <th style="width:25%"><a onclick="showCategory('personal');"> Personal </a> </th>
-      <th style="width:25%"><a onclick="showCategory('coursework');"> Coursework </a></th>
-      {% comment %} <th style="width:25%"><a onclick="showCategory('professional');"> Professional  </a></th>
-      <th style="width:25%"><a onclick="showCategory('data');"> Data  </a></th> {% endcomment %}
+      <th style="width:25%"><a id="personala" onclick="showCategory('personal');"> ⭐ Personal </a> </th>
+      <th style="width:25%"><a id="courseworka" onclick="showCategory('coursework');"> 📚 Coursework </a></th>
+      <th style="width:25%"><a id="professionala" onclick="showCategory('professional');"> 💼 Professional  </a></th>
+      <th style="width:25%"><a id="dataa" onclick="showCategory('data');"> 💾 Data </a></th>
     </tr>
   </table>
   <hr>
-  <div class="posts" id="personal">
+  <div class="posts" id="personaldiv">
     <article class="post">
       <h1> Personal </h1>
       These are all projects that I pursued out of personal interest. Everything for each of these projects should have completely public source code : )
@@ -56,7 +67,7 @@ window.onload = function() {
       </article>
     {% endfor %}
   </div>
-  <div class="posts" id="coursework">
+  <div class="posts" id="courseworkdiv">
     <article class="post">
       <h1> Coursework </h1>
       Stuff I've done for classes. Sadly most of these aren't publicly available to prevent future students from stealing code,
@@ -96,11 +107,12 @@ window.onload = function() {
       </article>
     {% endfor %}
   </div>
-  <div class="posts" id="professional">
+  <div class="posts" id="professionaldiv">
     <article class="post">
       <h1> Professional </h1>
-      Unlike the prior two categories I actually got paid to do this stuff! Obviously no source or option to request for source on the industry ones here,
-      but the things pertaining to academia are fair game!
+      Stuff I've done for paid positions. 
+      Obviously most of this isn't open sourced so this section is more or less 
+      just a quick overview of what my role with each organization was.
     </article>
     {% assign portfolio = site.portfolio | where:"category", "professional"| reverse %}
     {% for post in portfolio %}
@@ -110,38 +122,31 @@ window.onload = function() {
               <img class="post-preview" src="{{ post.img }}" width="150" height="150">
             </a>
             <div class="text-preview">
-              <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
+              <h2><a href="{{ post.src }}">{{ post.title }}</a></h2>
               <div class="entry">
                 {{ post.content }}
               </div>
-              <a href="{{ post.src }}">Source</a><br>
-              <i>Release date: {{post.date | date: "%B %e, %Y" }}</i>
             </div>
         </div>
       </article>
     {% endfor %}
   </div>
-  <div class="posts" id="data">
+  <div class="posts" id="datadiv">
     <article class="post">
       <h1> Data </h1>
-      Haha! I bet the first three tabs convinced you I'm solely a computer science major, but
-      (not particularly secretly) I'm Data Science too! Here are some nice datasets and tools
-      I've worked on.
+      Some datasets, dataviz, and data collection tools I've worked on mostly at my time
+      with the Berkeley Neuroecon lab.
     </article>
     {% assign portfolio = site.portfolio | where:"category", "data"| reverse %}
     {% for post in portfolio %}
       <article class="post">
           <div class="flex-container">
-            <a href="{{ site.baseurl }}{{ post.src }}">
-              <img class="post-preview" src="{{ post.img }}" width="150" height="150">
-            </a>
-            <div class="text-preview">
+            <div class="text-preview" style="width:100%;">
               <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
               <div class="entry">
                 {{ post.content }}
               </div>
               <a href="{{ post.src }}">Source</a><br>
-              <i>Release date: {{post.date | date: "%B %e, %Y" }}</i>
             </div>
         </div>
       </article>

@@ -20,7 +20,7 @@ int main() {
 }
 ```
 
-The interesting bit inside the for loop, where it appears we're indexing *into* an `int` *with* a c-string. Intuitively this doesn't make any sense, so maybe it's just one of the infinite number of things in C that can compile but will just result in garbage. Checking the output we get:
+The interesting bit is inside the for loop, where it appears we're indexing *into* an `int` *with* a c-string. Intuitively this doesn't make any sense, so maybe it's just one of the infinite number of things in C that can compile but will just result in garbage. Checking the output we get:
 
 `Hello World!`
 
@@ -45,11 +45,11 @@ Traceback (most recent call last):
 TypeError: 'int' object is not subscriptable
 ```
 
-*Apparently Python 3.8 gives firendly little advice now :O*
+*Apparently Python 3.8 gives friendly little advice now :O*
 
 And as expected errors as `int` objects aren't allowed to be indexed into. Unless...?
 
-The way Python decides whether or not you can index (or subscript, as the error message uses) into something is if the class has a `__getitem__` method. You may recognize this as a "dunder" method, which is how Python implements operator overloading. More on that [here](https://www.geeksforgeeks.org/dunder-magic-methods-python). So, hypothetically, if we implemented this function for the int class we could get the behavior we wanted, right?
+The way Python decides whether or not you can index (or subscript, as the error message uses) into something is if the class has a `__getitem__` method. You may recognize this as a "dunder" or "magic" method, which is how Python implements operator overloading. More on that [here](https://www.geeksforgeeks.org/dunder-magic-methods-python). So, hypothetically, if we implemented this function for the int class we could get the behavior we wanted, right?
 
 ```python
 >>> def getitem(self, other):

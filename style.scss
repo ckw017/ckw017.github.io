@@ -112,7 +112,9 @@ img {
 }
 
 img.post-preview {
-  	margin: 15px 15px 15px 0px;
+    width: calc(50px + 10vw);
+    max-width: 150px;
+    height: auto;
 	border-radius: 10%;
 	-moz-transition: -moz-transform 0.2s ease-out;
 	-webkit-transition: -webkit-transform 0.2s ease-out;
@@ -232,11 +234,17 @@ img.post-preview:hover {
 
 div.flex-container {
    display: flex;
+
+   align-items: center;
    flex-direction: row;
+
 }
 
+
+
 div.text-preview {
-   width: calc(100% - 180px);
+   margin-left: 10px;
+   width: calc(80%);
 }
 
 nav {

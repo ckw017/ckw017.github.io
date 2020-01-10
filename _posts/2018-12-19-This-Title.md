@@ -2,6 +2,7 @@
 layout: post
 img: https://images.thestar.com/content/dam/thestar/life/travel/2016/12/01/10-ways-to-enjoy-san-francisco/7-letters-1jpg.jpg.size-custom-crop.1086x0.jpg
 title: This title consists of  two a's, one b, tw...
+tags: Fun Meta 2018
 ---
 Full title: This title consists of two a's, one b, two c's, two d's, thirty-one e's, six f's, four g's, eight h's, eleven i's, one j, one k, three i's, one m, eighteen n's, seventeen o's, one p, one q, seven r's, twenty-eight s's, twenty t's, four u's, five v's, six w's, three x's, four y's, and one z.
 
@@ -17,7 +18,7 @@ I first came across this concept in Douglas Hofstadter's anthology [*Metamagical
 
 So how does one produce such a sentence? One approach would be to brute force it by manually running through every combination of 26 "coefficients," capped at some value, say forty. This would mean it would take ``40^26 == 4.5*10^41`` in the worst case scenario to find a working combination (or to discover that no such solution exists for a given "prefix", in the case of this article "This title consists of"). This, in simple terms, would take a while. One reader of Hofstadtr's column did in fact find a solution in this manner. Using a handful of clever optimizations and custom hardware, Lee Sallows was able to find a solution for the prefix "This pangram tallies" after only 2.5 months!
 
-That sort of runtime really begs the assertion: "There has to be a better way!" When I first attempted the problem, I felt a natural approach would be through linear algebra. The essence of these self-describing sentences is the equality in the *meaning* of the sentence, and the *composition* of the sentence, i.e. solve for `meaning == composition`. To represent both sides of the equation, we can map each letter in the alphabet to an axis in 26-dimensional space. This isn't unlike how in two dimensional space, we map the unit vector i to the x-axis, and j to the y-axis. 
+That sort of runtime really begs the assertion: "There has to be a better way!" When I first attempted the problem, I felt a natural approach would be through linear algebra. The essence of these self-describing sentences is the equality in the *meaning* of the sentence, and the *composition* of the sentence, i.e. solve for `meaning == composition`. To represent both sides of the equation, we can map each letter in the alphabet to an axis in 26-dimensional space. This isn't unlike how in two dimensional space, we map the unit vector i to the x-axis, and j to the y-axis.
 
 To represent the *meaning* side of the equation, we sum together the *meaning* of each coefficient (i.e. the string "two"->2, "twenty-five"->25, etc...) times the constant unit vector representing the letter ("i"->the unit vector in the positive direction of the i-dimension). This is better said in an example: "Three x's, two y's". The evaluation of the meaning of this statement is a vector a component of length 3 in the x direction and 2 in the y direction.
 

@@ -2,9 +2,10 @@
 layout: post
 img: /images/blursed.png
 title: Blursing Python
+tags: Python Fun 2019
 ---
 
-*"**blursed** (adj): Simultaneously blessed and cursed by a situation, object, person, etc..."* 
+*"**blursed** (adj): Simultaneously blessed and cursed by a situation, object, person, etc..."*
 
 -- [Urban Dictionary](https://www.urbandictionary.com/define.php?term=Blursed)
 
@@ -54,7 +55,7 @@ The way Python decides whether or not you can index (or subscript, as the error 
 ```python
 >>> def getitem(self, other):
 ...     return other[self]
-... 
+...
 >>> int.__getitem__ = getitem
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -63,7 +64,7 @@ TypeError: can't set attributes of built-in/extension type 'int'
 
 Well shoot, it looks like we aren't allowed to assign any attributes into built-in types (int, float, complex, bool, etc...). So we're stuck, right? This is where I'll admit that I didn't go out of my way to introduce this abomination of a "feature" into Python. As a matter of fact, the method comes from a separate attempt to introduce a different, slightly less abominable feature into Python.
 
-Let's open a new stack frame for this... 
+Let's open a new stack frame for this...
 
 ---
 
@@ -119,10 +120,10 @@ print(f"Hello {location}!")
 This isn't backwards compatible with earlier versions of Python:
 
 ```python
-Python 3.5.6 |Anaconda, Inc.| (default, Aug 26 2018, 21:41:56) 
+Python 3.5.6 |Anaconda, Inc.| (default, Aug 26 2018, 21:41:56)
 [GCC 7.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> 
+>>>
 >>> location = "Xanadu"
 >>> print(f"Hello {location}!")
   File "<stdin>", line 1
@@ -165,7 +166,7 @@ You may have noticed that for compatibility with python3, which uses utf-8 by de
 gödel = True is False
 ```
 
-Python will read off the codec specified and use it to decode the file from raw bytes into the tokens that will ultimately end up in the AST. 
+Python will read off the codec specified and use it to decode the file from raw bytes into the tokens that will ultimately end up in the AST.
 
 We can pop out of the topic of codecs now
 

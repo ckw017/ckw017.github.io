@@ -1,4 +1,301 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-25T16:58:01-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Wong</title><subtitle>Comp/Data Sci @UC Berkeley</subtitle><entry><title type="html">Starting my own personal wiki</title><link href="http://localhost:4000/TiddlyWiki/" rel="alternate" type="text/html" title="Starting my own personal wiki" /><published>2019-11-22T00:00:00-08:00</published><updated>2019-11-22T00:00:00-08:00</updated><id>http://localhost:4000/TiddlyWiki</id><content type="html" xml:base="http://localhost:4000/TiddlyWiki/">&lt;p&gt;&lt;em&gt;“Think of the @TiddlyWiki as a markdown processor with a Turing-complete turbo-charged hyper-drive that becomes your external brain. Start intertwingling your ideas. Simple TWs use just markdown - but advanced TWs can do virtually anything.”&lt;/em&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-09T22:37:34-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Wong</title><subtitle>Comp/Data Sci @UC Berkeley</subtitle><entry><title type="html">Blursing Python</title><link href="http://localhost:4000/blursed-python/" rel="alternate" type="text/html" title="Blursing Python" /><published>2019-12-06T00:00:00-08:00</published><updated>2019-12-06T00:00:00-08:00</updated><id>http://localhost:4000/blursed-python</id><content type="html" xml:base="http://localhost:4000/blursed-python/">&lt;p&gt;&lt;em&gt;“&lt;strong&gt;blursed&lt;/strong&gt; (adj): Simultaneously blessed and cursed by a situation, object, person, etc…”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;– &lt;a href=&quot;https://www.urbandictionary.com/define.php?term=Blursed&quot;&gt;Urban Dictionary&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I recently discovered something incredibly blursed while reading an article by &lt;code class=&quot;highlighter-rouge&quot;&gt;faehnrick&lt;/code&gt; in &lt;a href=&quot;https://pagedout.institute/&quot;&gt;PagedOut&lt;/a&gt; Volume 2. In an article titled “Abusing C - Have Fun!” on the topic of obsfuscated C code it’s demonstrated that this sort of thing is valid C:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%c&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The interesting bit is inside the for loop, where it appears we’re indexing &lt;em&gt;into&lt;/em&gt; an &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt; &lt;em&gt;with&lt;/em&gt; a c-string. Intuitively this doesn’t make any sense, so maybe it’s just one of the infinite number of things in C that can compile but will just result in garbage. Checking the output we get:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Hello World!&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Ah, yup garba – wait what? What happened here? The key is to realize that brackets are really just syntactic sugar in the sense that each of the following prints are equivalent:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;abcd&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Normal usage
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Without the syntactic sugar
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Commute!
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Oh no
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So that’s C, but this article is about blursing Python. Surely Python wouldn’t let something like this fly, right?&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Blursed?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;SyntaxWarning&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'int'&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subscriptable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;perhaps&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;missed&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;comma&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;?&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Traceback&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;most&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;stdin&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;TypeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'int'&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subscriptable&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Apparently Python 3.8 gives friendly little advice now :O&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;And as expected errors as &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt; objects aren’t allowed to be indexed into. Unless…?&lt;/p&gt;
+
+&lt;p&gt;The way Python decides whether or not you can index (or subscript, as the error message uses) into something is if the class has a &lt;code class=&quot;highlighter-rouge&quot;&gt;__getitem__&lt;/code&gt; method. You may recognize this as a “dunder” or “magic” method, which is how Python implements operator overloading. More on that &lt;a href=&quot;https://www.geeksforgeeks.org/dunder-magic-methods-python&quot;&gt;here&lt;/a&gt;. So, hypothetically, if we implemented this function for the int class we could get the behavior we wanted, right?&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getitem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__getitem__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getitem&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Traceback&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;most&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;stdin&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;TypeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'t set attributes of built-in/extension type '&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Well shoot, it looks like we aren’t allowed to assign any attributes into built-in types (int, float, complex, bool, etc…). So we’re stuck, right? This is where I’ll admit that I didn’t go out of my way to introduce this abomination of a “feature” into Python. As a matter of fact, the method comes from a separate attempt to introduce a different, slightly less abominable feature into Python.&lt;/p&gt;
+
+&lt;p&gt;Let’s open a new stack frame for this…&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;frame-1-a-slightly-less-abominable-use-case&quot;&gt;Frame 1: A slightly less abominable use case&lt;/h2&gt;
+
+&lt;p&gt;Python is my go to tool for doing calculations because of its builtin implementation of big integers. Last semester I took &lt;a href=&quot;https://inst.eecs.berkeley.edu/~cs188/&quot;&gt;CS188 (Intro to AI)&lt;/a&gt; which loved more than anything to give assignments that made you &lt;em&gt;be&lt;/em&gt; a rational agent, i.e. chugging through hand calculations of cost and reward functions. Needless to say I trust the Python interpreter to do calculations more correctly than I ever could. Sadly I ran into a problem almost non-stop:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;188&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;456&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Since most of the time I was just copying in whatever I had written in my notes down verbatim I ended up keeping the traditional “2(1 + 1) = 2 * (1 + 1)” syntax of normal arithmetic. Python of course expects the asterisk to be there to indicate multiplication, so we get:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;SyntaxWarning&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'int'&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;callable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;perhaps&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;missed&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;comma&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;?&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Traceback&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;most&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;stdin&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;TypeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'int'&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;callable&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;But wait, this looks familiar doesn’t it? The first time the interpreter was peeved because we were subscripting an int, and here it’s peeved that we’re trying to call it. After all “188(…)” to the interpreter just looks like we’re trying to “call” the constant 188 as a function. So we still have the same problem before. So how to get around this?&lt;/p&gt;
+
+&lt;p&gt;Earlier the main problem was that we can’t assign new attributes to built-in types. But what about subclasses of built-in types? For example, this totally works:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;callable_int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__call__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;callable_int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;186&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;456&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Output: 107694&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Of course casting every integer (or numeric type in general) is quite a mouthful. If only there were a way to somehow &lt;em&gt;modify the file before running it to slip in these casts implicitly&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s open a new stack frame for this…&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;frame-2-future-fstrings&quot;&gt;Frame 2: Future Fstrings&lt;/h2&gt;
+
+&lt;p&gt;Fstrings are a feature introduced in Python 3.6 that lets you do this:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Dresden&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello {location}!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Output: Hello Dresden!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This isn’t backwards compatible with earlier versions of Python:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Python&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Anaconda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Inc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Aug&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2018&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;41&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;56&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GCC&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;7.3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linux&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;help&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;copyright&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;credits&quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;license&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;more&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;information&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Xanadu&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello {location}!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;stdin&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello {location}!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                             &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;SyntaxError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;invalid&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;syntax&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Which makes sense, even if earlier versions could let the &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; prefix to strings slide, they would have no idea how to interpret the format notation. And yet, it seems that there’s a package which allows this kind of compatability. The package &lt;a href=&quot;https://github.com/asottile/future-fstrings&quot;&gt;future-fstring&lt;/a&gt; allows for older versions of python to use fstrings. After installing you can run this file as expcted:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: future_fstrings -*&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Ithaca&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello {location}!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Output: Hello Ithaca!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;What’s going on here? Let’s briefly dive into a new topic:&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;frame-3-codecs&quot;&gt;Frame 3: Codecs&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;codec&lt;/code&gt; is short for &lt;strong&gt;co&lt;/strong&gt;der &lt;strong&gt;dec&lt;/strong&gt;oder. Codecs crop up a lot in audio and video streams to compress information by encoding it on the senders end and decoding it on the receivers end, overall decreasing the network cost. In Python codecs are used to interpret the text passed into the script. You may have encountered this before when working with python2, which by default uses the ascii encoding. So something like this will happen by default:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;ö&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;del&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;stdin&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;ö&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;del&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;SyntaxError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;invalid&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;syntax&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You may have noticed that for compatibility with python3, which uses utf-8 by default, Python files will occasionally lead off like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: utf8 -*&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;ö&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;del&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Python will read off the codec specified and use it to decode the file from raw bytes into the tokens that will ultimately end up in the AST.&lt;/p&gt;
+
+&lt;p&gt;We can pop out of the topic of codecs now&lt;/p&gt;
+
+&lt;h2 id=&quot;frame-3-end&quot;&gt;Frame 3: End&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Back to frame 2, on future_fstrings.&lt;/p&gt;
+
+&lt;p&gt;So how does this tie in with future_fstrings? It turns out that future_fstring just adds a new codec that decodes as utf8 would, and then modifies the result before returning:&lt;/p&gt;
+
+&lt;p&gt;In: &lt;a href=&quot;https://github.com/asottile/future-fstrings/blob/master/future_fstrings.py&quot;&gt;future_fstrings.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'strict'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tokenize_rt&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Tokenizer&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;utf_8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Use regular utf8 codec to decode&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokenize_rt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src_to_tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Tokenize the result&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Modify tokens&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokenize_rt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tokens_to_src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Return modified tokens as src&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After passing this codec over the raw source, this:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: future_fstrings -*-&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;thing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'world'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'hello {thing}'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Is seen by the interpreter as:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: future_fstrings -*-&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;thing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'world'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'hello {}'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Okay, we can pop out of frame 2 now.&lt;/p&gt;
+
+&lt;h2 id=&quot;frame-2-end&quot;&gt;Frame 2: End&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Back to frame 1, where we’re trying to find a way to slip in casts to &lt;code class=&quot;highlighter-rouge&quot;&gt;callable_int&lt;/code&gt; around regular &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;. Well, using the technique from future_fstrings this can be accomplished fairly easily. With a new encoding we can do:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'strict'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;utf_8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokenize_rt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src_to_tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;new_tokens&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'NUMBER'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Wrap any tokens that look like numeric literals&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;new_tokens&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;tokenize_rt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src_to_tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+                    &lt;span class=&quot;s&quot;&gt;&quot;callable_int({})&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;new_tokens&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokenize_rt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tokens_to_src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After installing the new codec:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: callable_numerics -*-&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;186&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;456&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Is passed to the interpreter as&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: callable_ints -*-&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;callable_int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;186&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;callable_int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;callable_int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;456&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Which is evaluated as 107694 without complaint! Time to pop one last time:&lt;/p&gt;
+
+&lt;h2 id=&quot;frame-1-end&quot;&gt;Frame 1: End&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Back to frame 0! This whole frame business is a play on call stacks, which I’ve found have sometimes been an apt metaphor for discussions that end up having to nest deeper and deeper into “moderately related tangents” and slowly get resolved outwards into the original topic. And we’re finally back to our original goal: blursing Python!&lt;/p&gt;
+
+&lt;p&gt;Well, at this point it should be fairly straightforward to blurse python. We adjust callable_int with a new dunder method:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;blursedint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__getitem__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__call__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once we modify the codec we can get the behavior we want!&lt;/p&gt;
+
+&lt;p&gt;Of course there are some caveats that implementation wise aren’t as interesting to talk about, however are present in the source including a not limited to:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Blursing the other numeric types in python, &lt;code class=&quot;highlighter-rouge&quot;&gt;complex&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;float&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Making blurses “contagious”, i.e. 123(456)(789) should still be valid! So 123*456 should also be blursed&lt;/li&gt;
+  &lt;li&gt;Lots and lots of decorators… Which I’ve found have plenty of &lt;a href=&quot;/Decorators&quot;&gt;(ab)use cases&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;An &lt;strong&gt;extra&lt;/strong&gt; blursed implementation of float&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The final result runs the following file:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: blursed -*-&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Multiplications&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;238&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Indexing&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sup&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Konichiwhat's up&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ohno&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Float indexing&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ohno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ohno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;why&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;why&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Outputing this (try to guess what’s going on with float indexing!):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Multiplications
+20289024.0
+2816
+
+Indexing
+w
+h
+a
+t
+
+Float indexing
+2.7
+0.5
+18.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Hopefully you now have a good idea of what I mean when I say blursed! The source for this can be found &lt;a href=&quot;https://github.com/ckw017/blursed&quot;&gt;here&lt;/a&gt;. If you want to experience this travesty firsthand, Python 3.5+ should be able to take use this properly after running &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install blursed&lt;/code&gt;. And as always, thanks for reading.&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="Fun" /><category term="2019" /><summary type="html">“blursed (adj): Simultaneously blessed and cursed by a situation, object, person, etc…”</summary></entry><entry><title type="html">Starting my own personal wiki</title><link href="http://localhost:4000/TiddlyWiki/" rel="alternate" type="text/html" title="Starting my own personal wiki" /><published>2019-11-22T00:00:00-08:00</published><updated>2019-11-22T00:00:00-08:00</updated><id>http://localhost:4000/TiddlyWiki</id><content type="html" xml:base="http://localhost:4000/TiddlyWiki/">&lt;p&gt;&lt;em&gt;“Think of the @TiddlyWiki as a markdown processor with a Turing-complete turbo-charged hyper-drive that becomes your external brain. Start intertwingling your ideas. Simple TWs use just markdown - but advanced TWs can do virtually anything.”&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;– &lt;a href=&quot;https://twitter.com/joeerl/status/1083249244897796096?s=20&quot;&gt;Joe Armstrong&lt;/a&gt;, creator of erlang&lt;/p&gt;
 
@@ -12,7 +309,7 @@
 
 &lt;p&gt;* A &lt;a href=&quot;https://journals.sagepub.com/doi/abs/10.1177/154193120905302218?casa_token=3sRkvfe5L-EAAAAA%3AfvzReNSf5xZLCSf7yyA4_dhhRgAIej7ZpF86wJ6zhG_JwNVXnE1pjJIA97wRiXsBwYPSui6o_Q&amp;amp;&quot;&gt;study&lt;/a&gt; suggests that writing on dead trees is better for memory&lt;/p&gt;
 
-&lt;p&gt;Introducing TiddlyWiki: “a non-linear personal notebook.” 
+&lt;p&gt;Introducing TiddlyWiki: “a non-linear personal notebook.”
 You can read all about it &lt;a href=&quot;https://tiddlywiki.com/&quot;&gt;here&lt;/a&gt;, which is itself a TiddlyWiki that documents its own features. To summarize what it is to me:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -48,8 +345,8 @@ You can read all about it &lt;a href=&quot;https://tiddlywiki.com/&quot;&gt;here
 
 &lt;p&gt;&lt;img src=&quot;/images/tiddlywiki/fullview.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Images (shoutout to the Berkeley Alum artist Yuumeii) can be uploaded and tagged. Side bar on the side has search, recently used, and other tools (which can be extended programmatically from within the wiki!)&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">“Think of the @TiddlyWiki as a markdown processor with a Turing-complete turbo-charged hyper-drive that becomes your external brain. Start intertwingling your ideas. Simple TWs use just markdown - but advanced TWs can do virtually anything.”</summary></entry><entry><title type="html">Python Decorators: Not just for decoration</title><link href="http://localhost:4000/Decorators/" rel="alternate" type="text/html" title="Python Decorators: Not just for decoration" /><published>2019-01-14T00:00:00-08:00</published><updated>2019-01-14T00:00:00-08:00</updated><id>http://localhost:4000/Decorators</id><content type="html" xml:base="http://localhost:4000/Decorators/">&lt;p&gt;Python decorators are syntactic sugar that most people will
-run into while working with web frameworks such as Flask or Bottle. 
+&lt;p&gt;&lt;em&gt;Images (shoutout to the Berkeley Alum artist Yuumeii) can be uploaded and tagged. Side bar on the side has search, recently used, and other tools (which can be extended programmatically from within the wiki!)&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><category term="Tools" /><category term="Workflow" /><category term="2019" /><summary type="html">“Think of the @TiddlyWiki as a markdown processor with a Turing-complete turbo-charged hyper-drive that becomes your external brain. Start intertwingling your ideas. Simple TWs use just markdown - but advanced TWs can do virtually anything.”</summary></entry><entry><title type="html">Python Decorators: Not just for decoration</title><link href="http://localhost:4000/Decorators/" rel="alternate" type="text/html" title="Python Decorators: Not just for decoration" /><published>2019-01-14T00:00:00-08:00</published><updated>2019-01-14T00:00:00-08:00</updated><id>http://localhost:4000/Decorators</id><content type="html" xml:base="http://localhost:4000/Decorators/">&lt;p&gt;Python decorators are syntactic sugar that most people will
+run into while working with web frameworks such as Flask or Bottle.
 For example, the following snippet from the Bottle documentation uses
 decorators to specify a route:&lt;/p&gt;
 
@@ -60,8 +357,8 @@ decorators to specify a route:&lt;/p&gt;
 &lt;span class=&quot;c&quot;&gt;#Equivalent to index = route('/hello/&amp;lt;name&amp;gt;')(index)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;In fact the most common use of decorators is to allow framework users 
-to hook into some interesting functionality. Of course, there 
+&lt;p&gt;In fact the most common use of decorators is to allow framework users
+to hook into some interesting functionality. Of course, there
 are some uses in more common cases. Consider the following decorator:&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;memoize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -78,7 +375,7 @@ input. It creates a dictionary &lt;code class=&quot;highlighter-rouge&quot;&gt;c
 its arguments. If not, it computes the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;cache[args]&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;This function is incredibly useful for recursive routines without side-effects.
-For example, consider the textbook example of “there’s a time and place for 
+For example, consider the textbook example of “there’s a time and place for
 recursion, but not now!”:&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -92,7 +389,7 @@ However, applying the memoize decorator would cache the result of each call
 to &lt;code class=&quot;highlighter-rouge&quot;&gt;fib(n)&lt;/code&gt; for n in [0..n-1]. This caching procedure reduces the runtime from
 exponential to linear (at the cost of memory).&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;A pragmatist would argue to solve the problem iteratively (and a 
+&lt;p&gt;&lt;em&gt;A pragmatist would argue to solve the problem iteratively (and a
 hyper-pragmatist would suggest exploiting matrix multiplies), but in such
 a case I wouldn’t have an excuse to use decorators.&lt;/em&gt;&lt;/p&gt;
 
@@ -107,17 +404,17 @@ Consider the following two function docstrings (apologies in advance for asking 
     The client must be logged in for this to work.
 
     Params:
-        user_name (:obj:`str`) : The name of the user the client will send 
+        user_name (:obj:`str`) : The name of the user the client will send
             the message to.
         content (:obj:`str`) : The content of the message.
-        strict (:obj:`bool`, optional) : If this flag is set, passing in 
+        strict (:obj:`bool`, optional) : If this flag is set, passing in
             content more than 300 characters will raise an error. Otherwise,
             the message will be senttruncated with a warning. This paramater
             defaults to False.
 
     Notes:
-        Content should be less than 300 characters long. Longer messages 
-        will be concatenated. If the strict flag is set, an error will be 
+        Content should be less than 300 characters long. Longer messages
+        will be concatenated. If the strict flag is set, an error will be
         raised instead.
     &quot;&quot;&quot;&lt;/span&gt;
 
@@ -127,16 +424,16 @@ Consider the following two function docstrings (apologies in advance for asking 
     be logged in for this to work
 
     Params:
-        room_id (:obj:`str`) : The id of the room the client will send the 
+        room_id (:obj:`str`) : The id of the room the client will send the
             message to.
         content (:obj:`str`) : The content of the message.
-        strict (:obj:`bool`, optional) : If this flag is set, passing in 
+        strict (:obj:`bool`, optional) : If this flag is set, passing in
             content more than 300 characters will raise an error. Otherwise,
-            the message will be sent truncated with a warning. This 
+            the message will be sent truncated with a warning. This
             paramater defaults to False.
 
     Notes:
-        Content should be less than 300 characters long. Longer messages 
+        Content should be less than 300 characters long. Longer messages
         will be concatenated. If the strict flag is set, an error will be
         raised instead.
 
@@ -144,7 +441,7 @@ Consider the following two function docstrings (apologies in advance for asking 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;There’s something wrong here. Very, very wrong. Can you spot it? That’s right,
-we’re repeating ourselves all over the place! The two functions involved, 
+we’re repeating ourselves all over the place! The two functions involved,
 &lt;code class=&quot;highlighter-rouge&quot;&gt;private_message&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;say&lt;/code&gt; both do essentially the same thing: send a
 message somewhere. As such, their parameters and docstrings bear nearly
 identical content, in two different parts of the code base. This violates a
@@ -174,9 +471,9 @@ actual function declarations look like this:&lt;/p&gt;
     &quot;&quot;&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;What’s going on here? I will take this moment to comment on the fact that the 
+&lt;p&gt;What’s going on here? I will take this moment to comment on the fact that the
 Python language allows users to do some deep, dark acts of programmatic black
-magic. The answer to any question of the form “Hey, can I do {unspeakable act usually involving self-modifying code} in python?” is “Yes, however &lt;code class=&quot;highlighter-rouge&quot;&gt;PEP 666 + 2/3&lt;/code&gt; recommends that you reread Goethe’s &lt;em&gt;Faust&lt;/em&gt; before proceeding.” The 
+magic. The answer to any question of the form “Hey, can I do {unspeakable act usually involving self-modifying code} in python?” is “Yes, however &lt;code class=&quot;highlighter-rouge&quot;&gt;PEP 666 + 2/3&lt;/code&gt; recommends that you reread Goethe’s &lt;em&gt;Faust&lt;/em&gt; before proceeding.” The
  feature
 used here barely qualifies as one of such acts, but might be classified as a
 first step towards future acts of Lovecraftian nature.&lt;/p&gt;
@@ -203,7 +500,7 @@ some of the repetition:&lt;/p&gt;
 a function that returns a function, &lt;code class=&quot;highlighter-rouge&quot;&gt;wrapper&lt;/code&gt;, which in turn returns another
 function (namely, the modified &lt;code class=&quot;highlighter-rouge&quot;&gt;func&lt;/code&gt;). Functions returning function-valued
 functions! Welcome to the world of decorators. The outermost function &lt;code class=&quot;highlighter-rouge&quot;&gt;format&lt;/code&gt; is necessary to deal with quirks of indentation in multiline strings. The
-inner function modifies the dunder attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;__doc__&lt;/code&gt; and formats in 
+inner function modifies the dunder attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;__doc__&lt;/code&gt; and formats in
 appropriate substitutions for &lt;code class=&quot;highlighter-rouge&quot;&gt;room_id&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;content&lt;/code&gt;, etc… as seen in
 the previous example. And there we have it! We can modify the part of the
 docstring in one place (the entry for &lt;code class=&quot;highlighter-rouge&quot;&gt;strict_notes&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;base_docstrings&lt;/code&gt;)
@@ -212,11 +509,11 @@ and it will update everywhere it is mentioned in the docstrings.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;An extra astute reader might observe that we could automate the process
 further by automatically reading the parameters from the function signature
 and dynamically generating the “Params:” section of the docstring. While I
-considered this, there were various cases within the project where paramater 
+considered this, there were various cases within the project where paramater
 name collisions would complicate things, so I chose to forgo it.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Whether you’re writing a framework or using one, decorators are definitely a
-handy tool to have in your metaphorical toolbox!&lt;/p&gt;</content><author><name></name></author><summary type="html">Python decorators are syntactic sugar that most people will run into while working with web frameworks such as Flask or Bottle. For example, the following snippet from the Bottle documentation uses decorators to specify a route:</summary></entry><entry><title type="html">Rock, Paper, Scissors, Fire, Water, Grass</title><link href="http://localhost:4000/Rock-Paper-Scissors/" rel="alternate" type="text/html" title="Rock, Paper, Scissors, Fire, Water, Grass" /><published>2019-01-01T00:00:00-08:00</published><updated>2019-01-01T00:00:00-08:00</updated><id>http://localhost:4000/Rock-Paper-Scissors</id><content type="html" xml:base="http://localhost:4000/Rock-Paper-Scissors/">&lt;p&gt;For those unfamiliar with the finer details of competitive Pokemon, it’s basically just a fancy version of rock, paper, scissors. While RPS gives each player 3 options, a turn in pokemon consists of around 4-9 possibilities for each player. Each player then reveals his or her choice simultaneously, and the results of their actions play out. This makes it different than games like Tic Tac Toe, Chess, or Go where only one player is “in control” at a time, and instead more like a game of Poker where two players are forced to reveal their hands at the same time.&lt;/p&gt;
+handy tool to have in your metaphorical toolbox!&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="2019" /><summary type="html">Python decorators are syntactic sugar that most people will run into while working with web frameworks such as Flask or Bottle. For example, the following snippet from the Bottle documentation uses decorators to specify a route:</summary></entry><entry><title type="html">Rock, Paper, Scissors, Fire, Water, Grass</title><link href="http://localhost:4000/Rock-Paper-Scissors/" rel="alternate" type="text/html" title="Rock, Paper, Scissors, Fire, Water, Grass" /><published>2019-01-01T00:00:00-08:00</published><updated>2019-01-01T00:00:00-08:00</updated><id>http://localhost:4000/Rock-Paper-Scissors</id><content type="html" xml:base="http://localhost:4000/Rock-Paper-Scissors/">&lt;p&gt;For those unfamiliar with the finer details of competitive Pokemon, it’s basically just a fancy version of rock, paper, scissors. While RPS gives each player 3 options, a turn in pokemon consists of around 4-9 possibilities for each player. Each player then reveals his or her choice simultaneously, and the results of their actions play out. This makes it different than games like Tic Tac Toe, Chess, or Go where only one player is “in control” at a time, and instead more like a game of Poker where two players are forced to reveal their hands at the same time.&lt;/p&gt;
 
 &lt;p&gt;If you’ve heard of Pokemon, you probably know that the game has a type system (&lt;a href=&quot;https://en.wikipedia.org/wiki/Type_system&quot;&gt;no, not that kind&lt;/a&gt;). For example, the franchise mascot Pikachu is an electric type, while the fan favorite Charizard is a combination of flying and fire type. Different attacks are also assigned types. As you might expect, a water type move does extra damage (super effective) when used against a fire type opponent, while an electric type moves do no damage to ground types. In this sense, the game really is just an elaborate version of rock, paper, scissors, but with 18 different objects (weapons? implements? tchotchkes?) instead of three.&lt;/p&gt;
 
@@ -225,7 +522,7 @@ handy tool to have in your metaphorical toolbox!&lt;/p&gt;</content><author><nam
 &lt;p&gt;A normal battle can take place between any combination of the 600+ Pokemon allowed in competitive matches, with each player being allowed to choose up to six. The types of battles I was interested are placed under a constraint known as “Monotype,” which is to say that all Pokemon must share a type. For example, a team consisting of Pikachu (electric), Voltorb (electric), and Magneton (electric/steel) is allowed, since all members are electric type (such a team is called “mono electric”). Conversely, a team consisting of Squirtle (water) and Charmander (fire) is disallowed.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://play.pokemonshowdown.com/sprites/xyani/pikachu-original.gif&quot; alt=&quot;Pikachu&quot; /&gt;
- &lt;img src=&quot;http://play.pokemonshowdown.com/sprites/xyani/voltorb.gif&quot; alt=&quot;Voltorb&quot; /&gt; 
+ &lt;img src=&quot;http://play.pokemonshowdown.com/sprites/xyani/voltorb.gif&quot; alt=&quot;Voltorb&quot; /&gt;
  &lt;img src=&quot;http://play.pokemonshowdown.com/sprites/xyani/magneton.gif&quot; alt=&quot;Magneton&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Pikachu, Voltorb, and Magneton form a valid “Mono Electric” team&lt;/em&gt;&lt;/p&gt;
@@ -297,7 +594,7 @@ handy tool to have in your metaphorical toolbox!&lt;/p&gt;</content><author><nam
 &lt;p&gt;&lt;em&gt;Scizor and Mega Scizor: a Steel/Bug Pokemon that can single-clawedly beat ice teams&lt;/em&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
-&lt;p&gt;Pokemon really is just a fancy version of rock, paper, Scizors.&lt;/p&gt;</content><author><name></name></author><summary type="html">For those unfamiliar with the finer details of competitive Pokemon, it’s basically just a fancy version of rock, paper, scissors. While RPS gives each player 3 options, a turn in pokemon consists of around 4-9 possibilities for each player. Each player then reveals his or her choice simultaneously, and the results of their actions play out. This makes it different than games like Tic Tac Toe, Chess, or Go where only one player is “in control” at a time, and instead more like a game of Poker where two players are forced to reveal their hands at the same time.</summary></entry><entry><title type="html">This title consists of two a’s, one b, tw…</title><link href="http://localhost:4000/This-Title/" rel="alternate" type="text/html" title="This title consists of  two a's, one b, tw..." /><published>2018-12-19T00:00:00-08:00</published><updated>2018-12-19T00:00:00-08:00</updated><id>http://localhost:4000/This-Title</id><content type="html" xml:base="http://localhost:4000/This-Title/">&lt;p&gt;Full title: This title consists of two a’s, one b, two c’s, two d’s, thirty-one e’s, six f’s, four g’s, eight h’s, eleven i’s, one j, one k, three i’s, one m, eighteen n’s, seventeen o’s, one p, one q, seven r’s, twenty-eight s’s, twenty t’s, four u’s, five v’s, six w’s, three x’s, four y’s, and one z.&lt;/p&gt;
+&lt;p&gt;Pokemon really is just a fancy version of rock, paper, Scizors.&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="Data Collection" /><category term="Game" /><category term="2019" /><summary type="html">For those unfamiliar with the finer details of competitive Pokemon, it’s basically just a fancy version of rock, paper, scissors. While RPS gives each player 3 options, a turn in pokemon consists of around 4-9 possibilities for each player. Each player then reveals his or her choice simultaneously, and the results of their actions play out. This makes it different than games like Tic Tac Toe, Chess, or Go where only one player is “in control” at a time, and instead more like a game of Poker where two players are forced to reveal their hands at the same time.</summary></entry><entry><title type="html">This title consists of two a’s, one b, tw…</title><link href="http://localhost:4000/This-Title/" rel="alternate" type="text/html" title="This title consists of  two a's, one b, tw..." /><published>2018-12-19T00:00:00-08:00</published><updated>2018-12-19T00:00:00-08:00</updated><id>http://localhost:4000/This-Title</id><content type="html" xml:base="http://localhost:4000/This-Title/">&lt;p&gt;Full title: This title consists of two a’s, one b, two c’s, two d’s, thirty-one e’s, six f’s, four g’s, eight h’s, eleven i’s, one j, one k, three i’s, one m, eighteen n’s, seventeen o’s, one p, one q, seven r’s, twenty-eight s’s, twenty t’s, four u’s, five v’s, six w’s, three x’s, four y’s, and one z.&lt;/p&gt;
 
 &lt;p&gt;For real! Test it out (or just take my word for it)! The title of this post is a self-describing sentence on the typographical level. Note that I specify on a typographical level, as opposed to say a “semantic meaning” level. A statement that fits that criteria would be something like “This sentence talks about itself”. You could also have a sentence that describes itself on a “word” level, such as “This sentence has seven words in it.” Yet both of these feel somehow less interesting as the title, which is a lot more “sensitive” to minor changes. For example, if you tried to change the prefix to “This is a title…”, you would of course have to say it has four i’s instead of three. But wait, well now we have thirty-three e’s, right? But “thirty-three” adds another two e’s, so do we have thirty-five? Well now we’re back down to thirty-four, but wai… And so on, ad nauseam.&lt;/p&gt;
 
@@ -332,7 +629,7 @@ handy tool to have in your metaphorical toolbox!&lt;/p&gt;</content><author><nam
 
 &lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
 
-&lt;p&gt;The contents of this paragraph is left as an exercise to the reader. This concluding sentence consists of ___?&lt;/p&gt;</content><author><name></name></author><summary type="html">Full title: This title consists of two a’s, one b, two c’s, two d’s, thirty-one e’s, six f’s, four g’s, eight h’s, eleven i’s, one j, one k, three i’s, one m, eighteen n’s, seventeen o’s, one p, one q, seven r’s, twenty-eight s’s, twenty t’s, four u’s, five v’s, six w’s, three x’s, four y’s, and one z.</summary></entry><entry><title type="html">61B Roguelike Game</title><link href="http://localhost:4000/61B-Roguelike/" rel="alternate" type="text/html" title="61B Roguelike Game" /><published>2018-07-02T00:00:00-07:00</published><updated>2018-07-02T00:00:00-07:00</updated><id>http://localhost:4000/61B-Roguelike</id><content type="html" xml:base="http://localhost:4000/61B-Roguelike/">&lt;p&gt;While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.&lt;/p&gt;
+&lt;p&gt;The contents of this paragraph is left as an exercise to the reader. This concluding sentence consists of ___?&lt;/p&gt;</content><author><name></name></author><category term="Fun" /><category term="Meta" /><category term="2018" /><summary type="html">Full title: This title consists of two a’s, one b, two c’s, two d’s, thirty-one e’s, six f’s, four g’s, eight h’s, eleven i’s, one j, one k, three i’s, one m, eighteen n’s, seventeen o’s, one p, one q, seven r’s, twenty-eight s’s, twenty t’s, four u’s, five v’s, six w’s, three x’s, four y’s, and one z.</summary></entry><entry><title type="html">61B Roguelike Game</title><link href="http://localhost:4000/61B-Roguelike/" rel="alternate" type="text/html" title="61B Roguelike Game" /><published>2018-07-02T00:00:00-07:00</published><updated>2018-07-02T00:00:00-07:00</updated><id>http://localhost:4000/61B-Roguelike</id><content type="html" xml:base="http://localhost:4000/61B-Roguelike/">&lt;p&gt;While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Disclaimer: This won’t really go into as much technical detail as other posts, since I’m obligated not to share too much information on how I implemented stuff for the sake of academic integrity.&lt;/em&gt;&lt;/p&gt;
 
@@ -358,7 +655,7 @@ handy tool to have in your metaphorical toolbox!&lt;/p&gt;</content><author><nam
 
 &lt;p&gt;&lt;img src=&quot;/images/rogue/dwinelle.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Depiction of Dwinelle Hall, courtesy of the Daily Kale.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.</summary></entry><entry><title type="html">Hog Contest (Part 2)</title><link href="http://localhost:4000/Hog-Contest-2/" rel="alternate" type="text/html" title="Hog Contest (Part 2)" /><published>2018-06-15T00:00:00-07:00</published><updated>2018-06-15T00:00:00-07:00</updated><id>http://localhost:4000/Hog-Contest-2</id><content type="html" xml:base="http://localhost:4000/Hog-Contest-2/">&lt;p&gt;Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy
+&lt;p&gt;&lt;em&gt;Depiction of Dwinelle Hall, courtesy of the Daily Kale.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><category term="Java" /><category term="Game" /><category term="Berkeley" /><category term="2018" /><summary type="html">While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.</summary></entry><entry><title type="html">Hog Contest (Part 2)</title><link href="http://localhost:4000/Hog-Contest-2/" rel="alternate" type="text/html" title="Hog Contest (Part 2)" /><published>2018-06-15T00:00:00-07:00</published><updated>2018-06-15T00:00:00-07:00</updated><id>http://localhost:4000/Hog-Contest-2</id><content type="html" xml:base="http://localhost:4000/Hog-Contest-2/">&lt;p&gt;Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy
 for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly
 wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first.
 Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic
@@ -412,7 +709,7 @@ After about 300+ iterations, the best win rate was around 0.537, almost halfway 
 hours, and a couple of attempt were ruined midway from problems with the memoization system I was using running out of memory. If I had more time,
 and I may look into these approaches now that I do have time, I would have tried out a few different approaches. The main ones that come to mind are
 creating what would be the optimal strategy if we did have complete information then “flattening” down into a 2D strategy, or doing an incremental
-approach where only a few outputs are changed each time. If I ever get around to that, I’ll make a part three to this saga, but for now that’s all for hog!&lt;/p&gt;</content><author><name></name></author><summary type="html">Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first. Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic method by forcing the strategies to work with incomplete information.</summary></entry><entry><title type="html">Fix for “exit status 4” when writing Primitive Gif</title><link href="http://localhost:4000/Primitive-Gif-Fix/" rel="alternate" type="text/html" title="Fix for &quot;exit status 4&quot; when writing Primitive Gif" /><published>2018-06-08T00:00:00-07:00</published><updated>2018-06-08T00:00:00-07:00</updated><id>http://localhost:4000/Primitive-Gif-Fix</id><content type="html" xml:base="http://localhost:4000/Primitive-Gif-Fix/">&lt;p&gt;This is just a quick fix for a problem I ran into while trying to use &lt;a href=&quot;https://github.com/fogleman/primitive&quot;&gt;Primitive&lt;/a&gt;
+approach where only a few outputs are changed each time. If I ever get around to that, I’ll make a part three to this saga, but for now that’s all for hog!&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="Berkeley" /><category term="2018" /><summary type="html">Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first. Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic method by forcing the strategies to work with incomplete information.</summary></entry><entry><title type="html">Fix for “exit status 4” when writing Primitive Gif</title><link href="http://localhost:4000/Primitive-Gif-Fix/" rel="alternate" type="text/html" title="Fix for &quot;exit status 4&quot; when writing Primitive Gif" /><published>2018-06-08T00:00:00-07:00</published><updated>2018-06-08T00:00:00-07:00</updated><id>http://localhost:4000/Primitive-Gif-Fix</id><content type="html" xml:base="http://localhost:4000/Primitive-Gif-Fix/">&lt;p&gt;This is just a quick fix for a problem I ran into while trying to use &lt;a href=&quot;https://github.com/fogleman/primitive&quot;&gt;Primitive&lt;/a&gt;
 on Windows. While trying to create a gif, you might run into a message like this:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;writing test.gif
@@ -459,7 +756,7 @@ However, windows has a default command called &lt;code class=&quot;highlighter-r
 These changes should fix the problem.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/primitive-fix/campanile.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;/images/primitive-fix/campanile.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">This is just a quick fix for a problem I ran into while trying to use Primitive on Windows. While trying to create a gif, you might run into a message like this:</summary></entry><entry><title type="html">Hog Contest (Part 1)</title><link href="http://localhost:4000/Hog-Contest/" rel="alternate" type="text/html" title="Hog Contest (Part 1)" /><published>2018-06-01T00:00:00-07:00</published><updated>2018-06-01T00:00:00-07:00</updated><id>http://localhost:4000/Hog-Contest</id><content type="html" xml:base="http://localhost:4000/Hog-Contest/">&lt;p&gt;The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game
+&lt;img src=&quot;/images/primitive-fix/campanile.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="Go" /><category term="Bugfix" /><category term="2018" /><summary type="html">This is just a quick fix for a problem I ran into while trying to use Primitive on Windows. While trying to create a gif, you might run into a message like this:</summary></entry><entry><title type="html">Hog Contest (Part 1)</title><link href="http://localhost:4000/Hog-Contest/" rel="alternate" type="text/html" title="Hog Contest (Part 1)" /><published>2018-06-01T00:00:00-07:00</published><updated>2018-06-01T00:00:00-07:00</updated><id>http://localhost:4000/Hog-Contest</id><content type="html" xml:base="http://localhost:4000/Hog-Contest/">&lt;p&gt;The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game
 &lt;a href=&quot;http://inst.eecs.berkeley.edu/~cs61a/fa17/proj/hog/&quot;&gt;Hog&lt;/a&gt;. The game itself is pretty simple (roll die to score points, first to 100 wins),
 and the project was more a less just a warm-up to get everyone used to Python syntax and higher order functions. The extra credit option,
 however, was a bit more interesting.&lt;/p&gt;
@@ -505,4 +802,4 @@ the optimal strategy.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;/images/human_base.gif&quot;&gt;&lt;img src=&quot;/images/human_base.gif&quot; alt=&quot;&quot; width=&quot;320px&quot; /&gt;&lt;/a&gt;
 &lt;a href=&quot;/images/always_4_base.gif&quot;&gt;&lt;img src=&quot;/images/always_4_base.gif&quot; alt=&quot;&quot; width=&quot;320px&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Seeded with the handmade strategy and “always 4” strategy respectively&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game Hog. The game itself is pretty simple (roll die to score points, first to 100 wins), and the project was more a less just a warm-up to get everyone used to Python syntax and higher order functions. The extra credit option, however, was a bit more interesting.</summary></entry><entry><title type="html">Hello World!</title><link href="http://localhost:4000/Hello-World/" rel="alternate" type="text/html" title="Hello World!" /><published>2018-05-25T00:00:00-07:00</published><updated>2018-05-25T00:00:00-07:00</updated><id>http://localhost:4000/Hello-World</id><content type="html" xml:base="http://localhost:4000/Hello-World/">&lt;p&gt;Hello world! I just finished my first year at university, and I thought it would be neat to share some of the projects I undertook throughout the year somewhere, both personal and for classes. If you’re interested in anything you see or have any feedback, feel free to contact me at &lt;a href=&quot;mailto:chriswong21@berkeley.edu&quot;&gt;chriswong21@berkeley.edu&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">Hello world! I just finished my first year at university, and I thought it would be neat to share some of the projects I undertook throughout the year somewhere, both personal and for classes. If you’re interested in anything you see or have any feedback, feel free to contact me at chriswong21@berkeley.edu.</summary></entry></feed>
+&lt;p&gt;&lt;em&gt;Seeded with the handmade strategy and “always 4” strategy respectively&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="Berkeley" /><category term="Visualization" /><category term="2018" /><summary type="html">The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game Hog. The game itself is pretty simple (roll die to score points, first to 100 wins), and the project was more a less just a warm-up to get everyone used to Python syntax and higher order functions. The extra credit option, however, was a bit more interesting.</summary></entry><entry><title type="html">Hello World!</title><link href="http://localhost:4000/Hello-World/" rel="alternate" type="text/html" title="Hello World!" /><published>2018-05-25T00:00:00-07:00</published><updated>2018-05-25T00:00:00-07:00</updated><id>http://localhost:4000/Hello-World</id><content type="html" xml:base="http://localhost:4000/Hello-World/">&lt;p&gt;Hello world! I just finished my first year at university, and I thought it would be neat to share some of the projects I undertook throughout the year somewhere, both personal and for classes. If you’re interested in anything you see or have any feedback, feel free to contact me at &lt;a href=&quot;mailto:chriswong21@berkeley.edu&quot;&gt;chriswong21@berkeley.edu&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="Meta" /><category term="2018" /><summary type="html">Hello world! I just finished my first year at university, and I thought it would be neat to share some of the projects I undertook throughout the year somewhere, both personal and for classes. If you’re interested in anything you see or have any feedback, feel free to contact me at chriswong21@berkeley.edu.</summary></entry></feed>

@@ -11,13 +11,13 @@
 
     
     <meta name="description" content="Python decorators are syntactic sugar that most people will
-run into while working with web frameworks such as Flask or Bottle. 
+run into while working with web frameworks such as Flask or Bottle.
 For example, the following snippet from the Bottle documentation uses
 decorators to specify a route:
 
 " />
     <meta property="og:description" content="Python decorators are syntactic sugar that most people will
-run into while working with web frameworks such as Flask or Bottle. 
+run into while working with web frameworks such as Flask or Bottle.
 For example, the following snippet from the Bottle documentation uses
 decorators to specify a route:
 
@@ -66,14 +66,24 @@ decorators to specify a route:
 
     <div id="main" role="main" class="container">
       <article class="post">
-  <h1>Python Decorators: Not just for decoration</h1>
-  <div class="date">
-    January 14, 2019
+    <div class="flex-container">
+      
+      <a href="https://i.imgur.com/uKBTjsf.png">
+        <img src="https://i.imgur.com/uKBTjsf.png" width="100" height=auto>
+      </a>
+      
+      <div class="text-preview">
+      <h1>Python Decorators: Not just for decoration</h1>
+      <div class="date">
+        January 14, 2019
+      </div>
+        <i>Tags:</i> Python, 2019
+      </div>
   </div>
 
   <div class="entry">
     <p>Python decorators are syntactic sugar that most people will
-run into while working with web frameworks such as Flask or Bottle. 
+run into while working with web frameworks such as Flask or Bottle.
 For example, the following snippet from the Bottle documentation uses
 decorators to specify a route:</p>
 
@@ -84,8 +94,8 @@ decorators to specify a route:</p>
 <span class="c">#Equivalent to index = route('/hello/&lt;name&gt;')(index)</span>
 </code></pre></div></div>
 
-<p>In fact the most common use of decorators is to allow framework users 
-to hook into some interesting functionality. Of course, there 
+<p>In fact the most common use of decorators is to allow framework users
+to hook into some interesting functionality. Of course, there
 are some uses in more common cases. Consider the following decorator:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">memoize</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
@@ -102,7 +112,7 @@ input. It creates a dictionary <code class="highlighter-rouge">cache</code>, the
 its arguments. If not, it computes the value of <code class="highlighter-rouge">cache[args]</code> with <code class="highlighter-rouge">f</code>.</p>
 
 <p>This function is incredibly useful for recursive routines without side-effects.
-For example, consider the textbook example of “there’s a time and place for 
+For example, consider the textbook example of “there’s a time and place for
 recursion, but not now!”:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -116,7 +126,7 @@ However, applying the memoize decorator would cache the result of each call
 to <code class="highlighter-rouge">fib(n)</code> for n in [0..n-1]. This caching procedure reduces the runtime from
 exponential to linear (at the cost of memory).</p>
 
-<p><em>A pragmatist would argue to solve the problem iteratively (and a 
+<p><em>A pragmatist would argue to solve the problem iteratively (and a
 hyper-pragmatist would suggest exploiting matrix multiplies), but in such
 a case I wouldn’t have an excuse to use decorators.</em></p>
 
@@ -131,17 +141,17 @@ Consider the following two function docstrings (apologies in advance for asking 
     The client must be logged in for this to work.
 
     Params:
-        user_name (:obj:`str`) : The name of the user the client will send 
+        user_name (:obj:`str`) : The name of the user the client will send
             the message to.
         content (:obj:`str`) : The content of the message.
-        strict (:obj:`bool`, optional) : If this flag is set, passing in 
+        strict (:obj:`bool`, optional) : If this flag is set, passing in
             content more than 300 characters will raise an error. Otherwise,
             the message will be senttruncated with a warning. This paramater
             defaults to False.
 
     Notes:
-        Content should be less than 300 characters long. Longer messages 
-        will be concatenated. If the strict flag is set, an error will be 
+        Content should be less than 300 characters long. Longer messages
+        will be concatenated. If the strict flag is set, an error will be
         raised instead.
     """</span>
 
@@ -151,16 +161,16 @@ Consider the following two function docstrings (apologies in advance for asking 
     be logged in for this to work
 
     Params:
-        room_id (:obj:`str`) : The id of the room the client will send the 
+        room_id (:obj:`str`) : The id of the room the client will send the
             message to.
         content (:obj:`str`) : The content of the message.
-        strict (:obj:`bool`, optional) : If this flag is set, passing in 
+        strict (:obj:`bool`, optional) : If this flag is set, passing in
             content more than 300 characters will raise an error. Otherwise,
-            the message will be sent truncated with a warning. This 
+            the message will be sent truncated with a warning. This
             paramater defaults to False.
 
     Notes:
-        Content should be less than 300 characters long. Longer messages 
+        Content should be less than 300 characters long. Longer messages
         will be concatenated. If the strict flag is set, an error will be
         raised instead.
 
@@ -168,7 +178,7 @@ Consider the following two function docstrings (apologies in advance for asking 
 </code></pre></div></div>
 
 <p>There’s something wrong here. Very, very wrong. Can you spot it? That’s right,
-we’re repeating ourselves all over the place! The two functions involved, 
+we’re repeating ourselves all over the place! The two functions involved,
 <code class="highlighter-rouge">private_message</code> and <code class="highlighter-rouge">say</code> both do essentially the same thing: send a
 message somewhere. As such, their parameters and docstrings bear nearly
 identical content, in two different parts of the code base. This violates a
@@ -198,9 +208,9 @@ actual function declarations look like this:</p>
     """</span>
 </code></pre></div></div>
 
-<p>What’s going on here? I will take this moment to comment on the fact that the 
+<p>What’s going on here? I will take this moment to comment on the fact that the
 Python language allows users to do some deep, dark acts of programmatic black
-magic. The answer to any question of the form “Hey, can I do {unspeakable act usually involving self-modifying code} in python?” is “Yes, however <code class="highlighter-rouge">PEP 666 + 2/3</code> recommends that you reread Goethe’s <em>Faust</em> before proceeding.” The 
+magic. The answer to any question of the form “Hey, can I do {unspeakable act usually involving self-modifying code} in python?” is “Yes, however <code class="highlighter-rouge">PEP 666 + 2/3</code> recommends that you reread Goethe’s <em>Faust</em> before proceeding.” The
  feature
 used here barely qualifies as one of such acts, but might be classified as a
 first step towards future acts of Lovecraftian nature.</p>
@@ -227,7 +237,7 @@ some of the repetition:</p>
 a function that returns a function, <code class="highlighter-rouge">wrapper</code>, which in turn returns another
 function (namely, the modified <code class="highlighter-rouge">func</code>). Functions returning function-valued
 functions! Welcome to the world of decorators. The outermost function <code class="highlighter-rouge">format</code> is necessary to deal with quirks of indentation in multiline strings. The
-inner function modifies the dunder attribute <code class="highlighter-rouge">__doc__</code> and formats in 
+inner function modifies the dunder attribute <code class="highlighter-rouge">__doc__</code> and formats in
 appropriate substitutions for <code class="highlighter-rouge">room_id</code>, <code class="highlighter-rouge">content</code>, etc… as seen in
 the previous example. And there we have it! We can modify the part of the
 docstring in one place (the entry for <code class="highlighter-rouge">strict_notes</code> in <code class="highlighter-rouge">base_docstrings</code>)
@@ -236,7 +246,7 @@ and it will update everywhere it is mentioned in the docstrings.</p>
 <p><em>An extra astute reader might observe that we could automate the process
 further by automatically reading the parameters from the function signature
 and dynamically generating the “Params:” section of the docstring. While I
-considered this, there were various cases within the project where paramater 
+considered this, there were various cases within the project where paramater
 name collisions would complicate things, so I chose to forgo it.</em></p>
 
 <p>Whether you’re writing a framework or using one, decorators are definitely a

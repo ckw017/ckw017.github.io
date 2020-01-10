@@ -2,6 +2,7 @@
 layout: post
 img: /images/tiddlywiki/berry.png
 title: Starting my own personal wiki
+tags: Tools Workflow 2019
 ---
 
 *"Think of the @TiddlyWiki as a markdown processor with a Turing-complete turbo-charged hyper-drive that becomes your external brain. Start intertwingling your ideas. Simple TWs use just markdown - but advanced TWs can do virtually anything."*
@@ -12,13 +13,13 @@ Disclaimer: leading with this quote makes it feel like I'm trying to sell you on
 
 Recently one of my friends had their backpack stolen along with their work laptop, phone, and wallet. While upset about the loss of their hardware and valuables it wasn't their main concern, since both sets of items were replaceable. What they were more concerned about were the photos on their phone and, to my surprise, their journal.
 
-There's a large stretch of my life that's pretty much undocumented outside of my memories ranging from around 2003 to 2013. The first three years of my life are pretty fleshed out in my family's scrapbooks. And after 2013 most of my peers had gotten access to smartphones and social media, so some form of what I was up to exists out there. But between those two times not many photos of me were taken, or at least preserved, outside of group photos of extended families and middle school yearbooks. This didn't really bother me for most of my life. In fact, there's [a lot of concern today](https://well.blogs.nytimes.com/2016/03/08/dont-post-about-me-on-social-media-children-say/) about parents over-documenting their child's upbringing on social media when the kid is still too young to consent to the release of information that will be more or less impossible to retract from the clutches of indexers and dataminers unaffiliated with the original site. Imagine in 35 years when tabloids dig up videos of toddler tantrums as ammunition against the temperment of presidential candidates! 
+There's a large stretch of my life that's pretty much undocumented outside of my memories ranging from around 2003 to 2013. The first three years of my life are pretty fleshed out in my family's scrapbooks. And after 2013 most of my peers had gotten access to smartphones and social media, so some form of what I was up to exists out there. But between those two times not many photos of me were taken, or at least preserved, outside of group photos of extended families and middle school yearbooks. This didn't really bother me for most of my life. In fact, there's [a lot of concern today](https://well.blogs.nytimes.com/2016/03/08/dont-post-about-me-on-social-media-children-say/) about parents over-documenting their child's upbringing on social media when the kid is still too young to consent to the release of information that will be more or less impossible to retract from the clutches of indexers and dataminers unaffiliated with the original site. Imagine in 35 years when tabloids dig up videos of toddler tantrums as ammunition against the temperment of presidential candidates!
 
 On the other hand, personal documentation is largely beneficial. Being able to keep track of day-to-day events, how time was spent, and how you felt gives a lot of great information that you can use to get to know yourself and to keep track of beneficial or harmful patterns in your life. Moreover a scheduled recap at the end of every day is a nice memory exercise. Relying purely on memory works sometimes, but for me anything after a week tends to deteriorate rapidly. I've tried journaling in the past but to put it plainly I'm really bad at managing physical mediums: notebooks inevitably get repurposed and notepads blink out of existence. And even if I were worthy of handling real, non-digital, non-e-prefixed paper, scheduling in a time at the end of the day to just write things out is sort of out of place with my workflow for school which revolves around a lot of markdown files, repos, and other things from removed from the domain of dead trees.*
 
 \* A [study](https://journals.sagepub.com/doi/abs/10.1177/154193120905302218?casa_token=3sRkvfe5L-EAAAAA%3AfvzReNSf5xZLCSf7yyA4_dhhRgAIej7ZpF86wJ6zhG_JwNVXnE1pjJIA97wRiXsBwYPSui6o_Q&) suggests that writing on dead trees is better for memory
 
-Introducing TiddlyWiki: "a non-linear personal notebook." 
+Introducing TiddlyWiki: "a non-linear personal notebook."
 You can read all about it [here](https://tiddlywiki.com/), which is itself a TiddlyWiki that documents its own features. To summarize what it is to me:
 
 * A journal that won't get crumpled in my bag and can embed images

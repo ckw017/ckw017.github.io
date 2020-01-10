@@ -2,6 +2,7 @@
 layout: post
 img: https://i.imgur.com/qegKRGV.png?1
 title: Rock, Paper, Scissors, Fire, Water, Grass
+tags: [Python, Data Collection, Game, 2019]
 ---
 For those unfamiliar with the finer details of competitive Pokemon, it's basically just a fancy version of rock, paper, scissors. While RPS gives each player 3 options, a turn in pokemon consists of around 4-9 possibilities for each player. Each player then reveals his or her choice simultaneously, and the results of their actions play out. This makes it different than games like Tic Tac Toe, Chess, or Go where only one player is "in control" at a time, and instead more like a game of Poker where two players are forced to reveal their hands at the same time.
 
@@ -12,11 +13,11 @@ If you've heard of Pokemon, you probably know that the game has a type system ([
 A normal battle can take place between any combination of the 600+ Pokemon allowed in competitive matches, with each player being allowed to choose up to six. The types of battles I was interested are placed under a constraint known as "Monotype," which is to say that all Pokemon must share a type. For example, a team consisting of Pikachu (electric), Voltorb (electric), and Magneton (electric/steel) is allowed, since all members are electric type (such a team is called "mono electric"). Conversely, a team consisting of Squirtle (water) and Charmander (fire) is disallowed.
 
  ![Pikachu](http://play.pokemonshowdown.com/sprites/xyani/pikachu-original.gif)
- ![Voltorb](http://play.pokemonshowdown.com/sprites/xyani/voltorb.gif) 
+ ![Voltorb](http://play.pokemonshowdown.com/sprites/xyani/voltorb.gif)
  ![Magneton](http://play.pokemonshowdown.com/sprites/xyani/magneton.gif)
 
  *Pikachu, Voltorb, and Magneton form a valid "Mono Electric" team*
- 
+
 As you can imagine, competitive matches in this format can be quite one-sided for certain "matchups" (combination of types against each other). For example, the matchup of Mono Water vs. Mono Fire heavily favors the player using water, but it isn't as black as white as a game of rock, paper, scissors. Every so often, a fire teams do overcome water teams through a combination of luck and strategy. For example, some Mono Fire teams run the Pokemon Volcanion, which regains health when hit by water type attacks and knows the move *Solar Beam*, which does heavy damage to water types. We would expect fire teams using this Pokemon to perform better on average than those without it.
 
  ![Volcanion](http://play.pokemonshowdown.com/sprites/xyani/volcanion.gif)

@@ -11,7 +11,8 @@ layout: default
           </a>
           <div class="text-preview">
             <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-            <i>{{post.date | date: "%B %e, %Y" }}</i>
+            <i>{{post.date | date: "%B %e, %Y" }}</i><br>
+            <i>Tags:</i> {{post.tags | join: ', '}}
 
             <div class="entry">
               {{ post.excerpt }}

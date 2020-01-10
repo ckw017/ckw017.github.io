@@ -2,10 +2,11 @@
 layout: post
 img: https://i.imgur.com/uKBTjsf.png
 title: "Python Decorators: Not just for decoration"
+tags: Python 2019
 ---
 
 Python decorators are syntactic sugar that most people will
-run into while working with web frameworks such as Flask or Bottle. 
+run into while working with web frameworks such as Flask or Bottle.
 For example, the following snippet from the Bottle documentation uses
 decorators to specify a route:
 
@@ -17,8 +18,8 @@ def index(name):
 #Equivalent to index = route('/hello/<name>')(index)
 ```
 
-In fact the most common use of decorators is to allow framework users 
-to hook into some interesting functionality. Of course, there 
+In fact the most common use of decorators is to allow framework users
+to hook into some interesting functionality. Of course, there
 are some uses in more common cases. Consider the following decorator:
 
 ```python
@@ -36,7 +37,7 @@ input. It creates a dictionary ``cache``, then returns the function ``memoized``
 its arguments. If not, it computes the value of ``cache[args]`` with ``f``.
 
 This function is incredibly useful for recursive routines without side-effects.
-For example, consider the textbook example of "there's a time and place for 
+For example, consider the textbook example of "there's a time and place for
 recursion, but not now!":
 
 ```python
@@ -49,9 +50,9 @@ def fib(n):
 This function would normally sport an elegantly inefficient 2^n runtime.
 However, applying the memoize decorator would cache the result of each call
 to ``fib(n)`` for n in [0..n-1]. This caching procedure reduces the runtime from
-exponential to linear (at the cost of memory). 
+exponential to linear (at the cost of memory).
 
-*A pragmatist would argue to solve the problem iteratively (and a 
+*A pragmatist would argue to solve the problem iteratively (and a
 hyper-pragmatist would suggest exploiting matrix multiplies), but in such
 a case I wouldn't have an excuse to use decorators.*
 
@@ -67,17 +68,17 @@ def private_message(self, user_name, content, strict=False)
     The client must be logged in for this to work.
 
     Params:
-        user_name (:obj:`str`) : The name of the user the client will send 
+        user_name (:obj:`str`) : The name of the user the client will send
             the message to.
         content (:obj:`str`) : The content of the message.
-        strict (:obj:`bool`, optional) : If this flag is set, passing in 
+        strict (:obj:`bool`, optional) : If this flag is set, passing in
             content more than 300 characters will raise an error. Otherwise,
             the message will be senttruncated with a warning. This paramater
             defaults to False.
 
     Notes:
-        Content should be less than 300 characters long. Longer messages 
-        will be concatenated. If the strict flag is set, an error will be 
+        Content should be less than 300 characters long. Longer messages
+        will be concatenated. If the strict flag is set, an error will be
         raised instead.
     """
 
@@ -87,16 +88,16 @@ def say(self, room_id, content, strict=False)
     be logged in for this to work
 
     Params:
-        room_id (:obj:`str`) : The id of the room the client will send the 
+        room_id (:obj:`str`) : The id of the room the client will send the
             message to.
         content (:obj:`str`) : The content of the message.
-        strict (:obj:`bool`, optional) : If this flag is set, passing in 
+        strict (:obj:`bool`, optional) : If this flag is set, passing in
             content more than 300 characters will raise an error. Otherwise,
-            the message will be sent truncated with a warning. This 
+            the message will be sent truncated with a warning. This
             paramater defaults to False.
 
     Notes:
-        Content should be less than 300 characters long. Longer messages 
+        Content should be less than 300 characters long. Longer messages
         will be concatenated. If the strict flag is set, an error will be
         raised instead.
 
@@ -104,7 +105,7 @@ def say(self, room_id, content, strict=False)
 ```
 
 There's something wrong here. Very, very wrong. Can you spot it? That's right,
-we're repeating ourselves all over the place! The two functions involved, 
+we're repeating ourselves all over the place! The two functions involved,
 ``private_message`` and ``say`` both do essentially the same thing: send a
 message somewhere. As such, their parameters and docstrings bear nearly
 identical content, in two different parts of the code base. This violates a
@@ -135,9 +136,9 @@ async def say(self, room_id, content, strict=False):
     """
 ```
 
-What's going on here? I will take this moment to comment on the fact that the 
+What's going on here? I will take this moment to comment on the fact that the
 Python language allows users to do some deep, dark acts of programmatic black
-magic. The answer to any question of the form "Hey, can I do {unspeakable act usually involving self-modifying code} in python?" is "Yes, however ``PEP 666 + 2/3`` recommends that you reread Goethe's *Faust* before proceeding." The 
+magic. The answer to any question of the form "Hey, can I do {unspeakable act usually involving self-modifying code} in python?" is "Yes, however ``PEP 666 + 2/3`` recommends that you reread Goethe's *Faust* before proceeding." The
  feature
 used here barely qualifies as one of such acts, but might be classified as a
 first step towards future acts of Lovecraftian nature.
@@ -165,7 +166,7 @@ There are a few important details in this snippet. First of all, ``format`` is
 a function that returns a function, ``wrapper``, which in turn returns another
 function (namely, the modified ``func``). Functions returning function-valued
 functions! Welcome to the world of decorators. The outermost function ``format`` is necessary to deal with quirks of indentation in multiline strings. The
-inner function modifies the dunder attribute ``__doc__`` and formats in 
+inner function modifies the dunder attribute ``__doc__`` and formats in
 appropriate substitutions for ``room_id``, ``content``, etc... as seen in
 the previous example. And there we have it! We can modify the part of the
 docstring in one place (the entry for ``strict_notes`` in ``base_docstrings``)
@@ -174,7 +175,7 @@ and it will update everywhere it is mentioned in the docstrings.
 *An extra astute reader might observe that we could automate the process
 further by automatically reading the parameters from the function signature
 and dynamically generating the "Params:" section of the docstring. While I
-considered this, there were various cases within the project where paramater 
+considered this, there were various cases within the project where paramater
 name collisions would complicate things, so I chose to forgo it.*
 
 Whether you're writing a framework or using one, decorators are definitely a

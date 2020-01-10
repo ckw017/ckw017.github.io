@@ -3,9 +3,19 @@ layout: default
 ---
 
 <article class="post">
-  <h1>{{ page.title }}</h1>
-  <div class="date">
-    {{ page.date | date: "%B %e, %Y" }}
+    <div class="flex-container">
+      {% if page.img %}
+      <a href="{{ page.img }}">
+        <img src="{{ page.img }}" width="100" height=auto>
+      </a>
+      {% endif %}
+      <div class="text-preview">
+      <h1>{{ page.title }}</h1>
+      <div class="date">
+        {{ page.date | date: "%B %e, %Y" }}
+      </div>
+        <i>Tags:</i> {{page.tags | join: ', '}}
+      </div>
   </div>
 
   <div class="entry">

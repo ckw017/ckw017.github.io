@@ -5,18 +5,24 @@ permalink: /about/
 ---
 
 ---
+*Last updated: January 9th, 2020*
 
-Hi! I've been a student at Berkeley since Fall 2017, doubling in Computer Science and Data Science. I'm currently working in the Haas Neuroeconomics Lab to build [stereotype models](https://www.pnas.org/content/115/39/9696) from word embeddings. I'm also involved with the Institue of Transportation Studies/Caltrans doing various backend tasks for their ongoing [truckparking database project](http://www.americantruckparking.com/about-us).
+Hi! I've been an undergrad at UC Berkeley since Fall 2017. I started out studying computer science and finished the major
+requirements in Fall 2019. To prevent the university from asking me to leave before I get to take all the cool CS classes I'm now
+doubling in data science with a [domain emphasis](https://data.berkeley.edu/degrees/domain-emphasis) in applied math (again,
+mostly as an excuse to take more CS classes) and plan to graduate in Spring 2021.
 
-Next semester I'll be starting as a student instructor for CS186: Databases.
+My sophomore year I worked in Berkeley's [Neuroeconomics Lab](http://neuroecon.berkeley.edu/) on
+[bias in word embedding models](https://papers.nips.cc/paper/6228-man-is-to-computer-programmer-as-woman-is-to-homemaker-debiasing-word-embeddings.pdf) and a handful of decision making experiments.
+Last spring I helped manage a fleet a buses with [Berkeley PATH](https://path.berkeley.edu/)'s [T-Connect project](https://path.berkeley.edu/research/connected-and-automated-vehicles/integrated-dynamic-transit-operation-idto-system-using) and over the summer I interned [BOLD](https://www.bold.com/) to work on their career matching system.
 
-Over the summer I interned [BOLD](https://www.bold.com/) to work on their document retrieval system and helped manage a fleet a buses with [Berkeley PATH](https://path.berkeley.edu/)'s [T-Connect project](https://path.berkeley.edu/research/connected-and-automated-vehicles/integrated-dynamic-transit-operation-idto-system-using). 
+This spring I'll be starting as a TA for CS186: Databases.
 
-In my freetime, I enjoy remaking retro games, reading (Vonnegut, Egan, Pratchett are some of the most recent),  and playing competitive Pokemon.
+In my freetime I enjoy remaking retro games, reading (I recommend Vonnegut, Egan, and Pratchett), and playing competitive Pokemon.
 
 If you have any questions/critiques/feedback for me, feel free to contact me!
 
-### 100% Bot Proof Contact Info (???% Human Proof)
+### 100% Bot Proof Contact Info
 
 [ude.yelekreb [ta] 12gnowsirhc](Hint: I graduate in 2021)
 
@@ -61,14 +67,14 @@ And occasionally:
 
 "*I tell you, we are here on Earth to fart around, and don't let anybody tell you different.*"
 
-― Also Kurt Vonnegut, *A Man Without a Country* 
+― Also Kurt Vonnegut, *A Man Without a Country*
 
 <a name="What's-with-the-background-image-for-this-site?"></a>
 
 ---
 ## What's with the background image for this site?
 
-That's a picture of Berkeley's Campanile, with a few rounds of primitive run on top of it to try to approximate it using geometric primitives. I personally really like the aesthetic, though I'll admit without looking closely it kind of seems like a blown-up low fidelity JPEG.
+That's a picture of Berkeley's Campanile, with a few rounds of [primitive](https://github.com/fogleman/primitive) run on top of it to try to approximate it using geometric primitives. I personally really like the aesthetic, though I'll admit without looking closely it kind of seems like a blown-up low fidelity JPEG.
 
 <a name="Why-is-everything-so-dark?"></a>
 
@@ -77,7 +83,7 @@ That's a picture of Berkeley's Campanile, with a few rounds of primitive run on 
 
 With respect to this website, I'm used to having [darkmode everywhere](https://darkreader.org). While I could just design the site in light-mode and then run the plugin on top of it, I wouldn't be designing the same thing user's are seeing. So I opted to just make my site dark by default.
 
-If you're asking outside of the context of this website, perhaps it is nighttime in conjunction with a power outage. Or if you mean in a more metaphorical "the world seems so bleak" kind of way, I guess that's more of a perspective thing that maybe positive thinking might help with. I can't really give a better answer without more details.
+If you're asking outside of the context of this website, perhaps you're a victim of PG&E's power outages.
 
 <a name="Class-recommendations?"></a>
 
@@ -105,7 +111,7 @@ If you're interested or think you're interested\* in two letter hypeisms:
 * CS188 - Artificial Intelligence
     * Requires: CS61AB
 * CS189 - Machine Learning
-    * Requires: EE126\*, EE127\*, Any STAT upperdiv\*, MATH54, MATH53, 
+    * Requires: EE126\*, EE127\*, Any STAT upperdiv\*, MATH54, MATH53,
     * I really recommend taking at least one of the asterisked things before this class
 * EECS127 - Optimization Models in Engineering
     * Requires: Math54
@@ -141,7 +147,7 @@ In high school I was relatively clueless about what I wanted to do in terms of c
 
 I will say that APCS is kind of useless in terms of preparation of Berkeley (and I imagine many other school's) CS Curriculum. I hate to say it but a lot of CS courses "handhold" a bit too excessively. The most productive uses of time during high school were probably spent on trying to get retrospectively Lovecraftian codebases for simple graphical games to display and run at 30 FPS without a proper IDE and relying solely on StackOverflow, compiler vitriol, and Java's standard library documentation. This is the kind of suffering that the department of education and parts of the constitution tend to forbid, but I suspect that that kind of struggle working on a personal project builds a level of independence that very few undergraduate or high school courses are capable of providing.
 
-I also had some background in competition math, which teaches a lot of intuition and practical problem solving skills that you really won't get in a classroom. 
+I also had some background in competition math, which teaches a lot of intuition and practical problem solving skills that you really won't get in a classroom.
 
 This in particular really hits home for me:
 
@@ -156,25 +162,19 @@ See the second quote in the "What is our purpose?" section for more on this.
 ---
 ## I got a 404 error. Who is this "Debug Dog"?
 
-Debug Dog is my dog-in-law that came with me to Berkeley to study CS. In general I do my best to [explain code to line-to-line to him](https://en.wikipedia.org/wiki/Rubber_duck_debugging) during debugging sessions while he stares back at me in judgemental silence.* In terms of standing thanks to the power of Berkeley course capture he has approximately the same level of CS knowledge and programming maturity as me, but severely lacks in communication skills.
-
-His favorite color is green (the color of all test cases passed) and his full name is Pluper McPeanut Plop The First, Jr.**
-
-\* Presumably because he doesn't have a mouth
-
-\** His father's name of course being Pluper McPeanut Plop The First, Sr.
+Debug Dog is my dog-in-law that came with me to Berkeley to study CS. In general I do my best to [explain code to line-to-line to him](https://en.wikipedia.org/wiki/Rubber_duck_debugging) during debugging sessions while he stares back at me in judgemental silence. Thanks to the power of Berkeley course capture he has approximately the same level of CS knowledge and programming maturity as me, but severely lacks in communication skills (presumably because he doesn't have a mouth).
 
 <a name="What's-Berkeley-CS-like/should-I-apply?"></a>
 
 ---
 ## What's Berkeley CS like/should I apply?
 
-Yes you should apply (if it's within your financial capacity). I really don't have a universal answer to this, any curriculum will really have a completely different effect for different people. There are a few things that I do think stand out:
+Yes, you should apply (if it's within your financial capacity). I really don't have a universal answer to this, any curriculum will really have a completely different effect for different people. There are a few things that I do think stand out:
 
 * There is bar you have to get past. Although advertised as no prior experience required, the intro CS course CS61A has been accused of being a weeder course along with CS61B (Data Structures) and CS70 (Discrete Math). The requirement to declare the computer science major is a 3.3 GPA in these classes, i.e. 2 A's and  B, or 3 B+'s, etc... This is, as far as I know, the highest GPA cutoff at Berkeley, and it's been trending upwards (though I doubt, knock on wood, that it will get any higher). I know that roughly 25% students a semester are barred from the major by this cutoff, and I would bet that even more are diverted away before even getting through all three courses by performance in the first ones they take.
 * The bar is high because the staff believes in you. Since our CS department has grown a bit slower than Moore's law in the past few years it might seem like resources are getting spread thin. That's not really the whole story though. Many undergraduates TA, tutor, and mentor other undergraduates. This is often times equally if not more effective than help from graduate student instructors and professors, since many profs and grads tend to be a bit too experienced to empathize with a lower-div undergrad. I implore you to take advantage of your peers both enrolled in the class and acting as course staff.
 * Classes tend to get easier in upper div! The curves are kinder, class sizes are smaller, and the professors tend to have genuine interest in the material. Since you've made it through lower-divs by this point, the projects get a lot more interesting as well since you should have decent programming/problem-solving maturity
-    * Check out the "Academics" tab of my [portfolio](/portfolio) for cool classes and associated projects I've had the chance to take
+    * Check out the "Academics" tab of my [portfolio](/portfolio#coursework) for cool classes and associated projects I've had the chance to take
 
 People will of course give you impassioned reasons for why you shouldn't come to Berkeley, usually regarding difficulty and class sizes. I think you should take their words in to consideration as well.
 

@@ -2,6 +2,7 @@
 layout: post
 img: /images/primitive-fix/campanile.gif
 title: Fix for "exit status 4" when writing Primitive Gif
+tags: Go Bugfix 2018
 ---
 
 This is just a quick fix for a problem I ran into while trying to use [Primitive](https://github.com/fogleman/primitive)
@@ -16,7 +17,7 @@ writing test.gif
 
 2. Locate the "utils.go" file in the source for primitive. On my computer it was located at `C:\Users\Me\go\src\github.com\fogleman\primitive\primitive\utils.go`
 
-3. Look for this section: 
+3. Look for this section:
 	```
 		args := []string{
 		"-loop", "0",
@@ -41,7 +42,7 @@ writing test.gif
 	}
 	cmd := exec.Command("magick", args...)
 	```
-	
+
 5. Reinstall primitive with `go install github.com/fogleman/primitive` (or whatever your path is in go\src\)
 
 Basically, to create the gifs primitive tries to use the `magick convert` command.

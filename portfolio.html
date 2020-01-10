@@ -52,16 +52,19 @@ window.onload = function() {
     {% for post in portfolio %}
       <article class="post">
           <div class="flex-container">
+            {% if post.img %}
             <a href="{{ site.baseurl }}{{ post.src }}">
               <img class="post-preview" src="{{ post.img }}" width="150" height="150">
             </a>
+            {% endif %}
             <div class="text-preview">
-              <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
+              <h2><a href="{{ post.src }}">{{ post.title }}</a></h2>
+              <i>{{post.date | date: "%B %e, %Y" }}</i><br>
               <div class="entry">
                 {{ post.content }}
               </div>
               <a href="{{ post.src }}">Source</a><br>
-              <i>Release date: {{post.date | date: "%B %e, %Y" }}</i>
+              <i>Tags:</i> {{post.tags | join: ', '}}
             </div>
         </div>
       </article>
@@ -80,28 +83,30 @@ window.onload = function() {
       <br>
       <br>
       If you <i>are</i> currently enrolled (or plan to) and want to get advice
-      on something course related feel free to drop by my 
+      on something course related feel free to drop by my
       <a href="https://upe.berkeley.edu/officehours/">UPE office hours</a>
       or toss me an email.
       <br>
 
-      <font size=1>In addition to being part of my portfolio, this is also 
+      <font size=1>In addition to being part of my portfolio, this is also
       secretly an advertisement for prospective Berkeley CS students. Go bears!</font>
     </article>
     {% assign portfolio = site.portfolio | where:"category", "coursework"| reverse %}
     {% for post in portfolio %}
       <article class="post">
           <div class="flex-container">
+            {% if post.img %}
             <a href="{{ site.baseurl }}{{ post.src }}">
               <img class="post-preview" src="{{ post.img }}" width="150" height="150">
             </a>
+            {% endif %}
             <div class="text-preview">
-              <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
+              <h2><a href="{{ post.src }}">{{ post.title }}</a></h2>
+              <i>Course: {{post.course}}, {{post.term}}</i><br>
               <div class="entry">
                 {{ post.content }}
               </div>
-              <i>Course: {{post.course}}, {{post.term}}</i><br>
-              <i>Language: {{post.language}}</i>
+              <i>Tags:</i> {{post.tags | join: ', '}}
             </div>
         </div>
       </article>
@@ -110,21 +115,24 @@ window.onload = function() {
   <div class="posts" id="professionaldiv">
     <article class="post">
       <h1> Professional </h1>
-      Stuff I've done for paid positions. 
-      Obviously most of this isn't open sourced so this section is more or less 
+      Stuff I've done for paid positions.
+      Obviously most of this isn't open sourced so this section is more or less
       just a quick overview of what my role with each organization was.
     </article>
     {% assign portfolio = site.portfolio | where:"category", "professional"| reverse %}
     {% for post in portfolio %}
       <article class="post">
           <div class="flex-container">
+            {% if post.img %}
             <a href="{{ site.baseurl }}{{ post.src }}">
               <img class="post-preview" src="{{ post.img }}" width="150" height="150">
             </a>
+            {% endif %}
             <div class="text-preview">
               <h2><a href="{{ post.src }}">{{ post.title }}</a></h2>
               <div class="entry">
                 {{ post.content }}
+              <i>Tags:</i> {{post.tags | join: ', '}}
               </div>
             </div>
         </div>
@@ -141,12 +149,18 @@ window.onload = function() {
     {% for post in portfolio %}
       <article class="post">
           <div class="flex-container">
-            <div class="text-preview" style="width:100%;">
+            {% if post.img %}
+            <a href="{{ site.baseurl }}{{ post.src }}">
+              <img class="post-preview" src="{{ post.img }}" width="150" height="150">
+            </a>
+            {% endif %}
+            <div class="text-preview">
               <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
               <div class="entry">
                 {{ post.content }}
               </div>
               <a href="{{ post.src }}">Source</a><br>
+              <i>Tags:</i> {{post.tags | join: ', '}}
             </div>
         </div>
       </article>

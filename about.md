@@ -14,7 +14,7 @@ mostly as an excuse to take more CS classes) and plan to graduate in Spring 2021
 
 My sophomore year I worked in Berkeley's [Neuroeconomics Lab](http://neuroecon.berkeley.edu/) on
 [bias in word embedding models](https://papers.nips.cc/paper/6228-man-is-to-computer-programmer-as-woman-is-to-homemaker-debiasing-word-embeddings.pdf) and a handful of decision making experiments.
-Last spring I helped manage a fleet a buses with [Berkeley PATH](https://path.berkeley.edu/)'s [T-Connect project](https://path.berkeley.edu/research/connected-and-automated-vehicles/integrated-dynamic-transit-operation-idto-system-using) and over the summer I interned [BOLD](https://www.bold.com/) to work on their career matching system.
+Last spring I helped manage a fleet a buses with [Berkeley PATH](https://path.berkeley.edu/)'s [T-Connect project](https://path.berkeley.edu/research/connected-and-automated-vehicles/integrated-dynamic-transit-operation-idto-system-using) and over the summer I interned with [BOLD](https://www.bold.com/) to work on their career matching system.
 
 This spring I'll be starting as a TA for CS186: Databases.
 

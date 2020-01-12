@@ -2,7 +2,7 @@
 layout: post
 img: /images/blursed.png
 title: Blursing Python
-tags: Python Fun 2019
+tags: Python Fun
 excerpt_separator: <!--more-->
 ---
 

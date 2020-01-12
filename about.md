@@ -19,13 +19,11 @@ permalink: /about/
 
 Hi! I've been an undergrad at UC Berkeley since Fall 2017. I started out studying computer science and finished the major
 requirements in Fall 2019. To prevent the university from asking me to leave
-I started a second major in data science with a [domain emphasis](https://data.berkeley.edu/degrees/domain-emphasis) in applied math (mostly as an excuse to take more CS classes) and plan to graduate in Spring 2021.
+I've started a second major in data science with a [domain emphasis](https://data.berkeley.edu/degrees/domain-emphasis) in applied math (mostly as an excuse to take more CS classes). I'm planning to graduate in Spring 2021.
 
 My sophomore year I worked in Berkeley's [Neuroeconomics Lab](http://neuroecon.berkeley.edu/) on
 [bias in word embedding models](https://papers.nips.cc/paper/6228-man-is-to-computer-programmer-as-woman-is-to-homemaker-debiasing-word-embeddings.pdf) and a handful of decision making experiments.
-Last spring I helped manage a fleet a buses with [Berkeley PATH](https://path.berkeley.edu/)'s [T-Connect project](https://path.berkeley.edu/research/connected-and-automated-vehicles/integrated-dynamic-transit-operation-idto-system-using) and over the summer I interned with [BOLD](https://www.bold.com/) to work on their career matching system.
-
-This spring I'll be TAing for CS186: Databases.
+Last spring I helped manage a fleet a buses with [Berkeley PATH](https://path.berkeley.edu/)'s [T-Connect project](https://path.berkeley.edu/research/connected-and-automated-vehicles/integrated-dynamic-transit-operation-idto-system-using) and over the summer I interned with [BOLD](https://www.bold.com/) to work on their career matching system. This spring I'll be TAing for CS186: Databases.
 
 In my freetime I enjoy remaking retro games, reading (I recommend Vonnegut, Egan, and Pratchett), and playing competitive Pokemon.
 

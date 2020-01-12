@@ -88,8 +88,12 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+  - archive.py
 
 theme: jekyll-theme-slate
 
 collections:
-  - portfolio
+  portfolio:
+  tagarchive:
+    output: true
+    permalink: /tag/:name

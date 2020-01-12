@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<div class="posts">
+<article class="post">
+<h1> Content tagged as <u>{{page.value}}</u> </h1>
+{% for t in site.tagarchive %}
+    <a href="{{t.permalink}}">{{t.value}}</a> &nbsp
+{% endfor %}
+</article>
+{% for tag in site.tags %}
+    {% if tag[0] == page.value %}
+        {% assign posts = tag[1] | sort | reverse %}
+        {% for post in posts %}
+            <br>
+            &nbsp <i>Blog Post (<a href="/">Home</a>)</i>
+            <article class="post">
+                    <div class="flex-container">
+                <a href="{{ site.baseurl }}{{ post.permalink }}">
+                    <img class="post-preview" src="{{ post.img }}">
+                </a>
+                <div class="text-preview">
+                    <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+                    <i>{{post.date | date: "%B %e, %Y" }}</i><br>
+                    <i>Tags:</i> {% for t in post.tags %}
+                        <a href="{{site.baseurl}}/tag/{{t | downcase | replace: " ", "-"}}">{{t}}</a>{% assign c = post.tags | size%}{% if forloop.index != c %}, {% endif %}
+                    {% endfor %}
+
+                    <div class="entry">
+                    {{ post.excerpt }}
+                    </div>
+                    <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+                </div>
+            </div>
+            </article>
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+{% assign portfolio = site.portfolio | reverse %}
+{% for port in portfolio %}
+    {% if port.tags contains page.value %}
+        <br>
+        &nbsp <i>Portfolio (<a href="/portfolio#{{port.category}}">{{port.category | capitalize }}</a>) </i>
+        {{port}}
+    {% endif %}
+{% endfor%}
+</div>

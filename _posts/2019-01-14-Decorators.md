@@ -2,7 +2,7 @@
 layout: post
 img: https://i.imgur.com/uKBTjsf.png
 title: "Python Decorators: Not just for decoration"
-tags: Python 2019
+tags: Python
 ---
 
 Python decorators are syntactic sugar that most people will

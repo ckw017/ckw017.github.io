@@ -1,0 +1,5 @@
+---
+permalink: /tags.txt
+---
+{% assign tags = site.tags | map: 0 %}{% for tag in site.tags %}{% assign tags = tags | push: tag[0] %}{% endfor %}{% for port in site.portfolio %}{% for tag in port.tags %}{% assign tags = tags | push: tag | uniq %}{% endfor %}{% endfor %}{% for tag in tags %}{{tag}}
+{% endfor %}

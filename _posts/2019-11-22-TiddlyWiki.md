@@ -2,7 +2,7 @@
 layout: post
 img: /images/tiddlywiki/berry.png
 title: Starting my own personal wiki
-tags: Tools Workflow 2019
+tags: Tools Workflow
 excerpt_separator: <!--more-->
 ---
 
@@ -14,7 +14,7 @@ excerpt_separator: <!--more-->
 
 Disclaimer: leading with this quote makes it feel like I'm trying to sell you on this tool as some kind of organizational panacea. I'm not. The introduction to this post is just really long so I needed a way to convince you to keep reading : )
 
-Recently one of my friends had their backpack stolen along with their work laptop, phone, and wallet. While upset about the loss of their hardware and valuables it wasn't their main concern, since both sets of items were replaceable. What they were more concerned about were the photos on their phone and, to my surprise, their journal.
+Recently one of my friends had their backpack stolen along with their work laptop, phone, and wallet. While upset about the loss of their hardware and valuables, it wasn't their main concern -- both sets of items were replaceable. What they were more concerned about were the photos on their phone and, to my surprise, their journal.
 
 There's a large stretch of my life that's pretty much undocumented outside of my memories ranging from around 2003 to 2013. The first three years of my life are pretty fleshed out in my family's scrapbooks. And after 2013 most of my peers had gotten access to smartphones and social media, so some form of what I was up to exists out there. But between those two times not many photos of me were taken, or at least preserved, outside of group photos of extended families and middle school yearbooks. This didn't really bother me for most of my life. In fact, there's [a lot of concern today](https://well.blogs.nytimes.com/2016/03/08/dont-post-about-me-on-social-media-children-say/) about parents over-documenting their child's upbringing on social media when the kid is still too young to consent to the release of information that will be more or less impossible to retract from the clutches of indexers and dataminers unaffiliated with the original site. Imagine in 35 years when tabloids dig up videos of toddler tantrums as ammunition against the temperment of presidential candidates!
 

@@ -2,7 +2,7 @@
 layout: post
 img: /images/rogue/roguelike.gif
 title: 61B Roguelike Game
-tags: Java Game Berkeley 2018
+tags: Java Game Berkeley
 ---
 
 While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.

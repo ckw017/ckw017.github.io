@@ -2,7 +2,7 @@
 layout: post
 img: /images/hog-2-preview.jpg
 title: Hog Contest (Part 2)
-tags: Python Berkeley 2018
+tags: Python Berkeley
 ---
 
 Picking up where we left off from Part 1, so far we've found a way to generate an optimal strategy

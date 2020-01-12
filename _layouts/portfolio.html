@@ -21,6 +21,8 @@
         {% if page.category == 'personal' or page.category == 'data' %}
             <a href="{{ page.src }}">Source</a><br>
         {% endif %}
-        <i>Tags:</i> {{page.tags | join: ', '}}
+        <i>Tags:</i> {% for t in page.tags %}
+                        <a href="{{site.baseurl}}/tag/{{t | downcase | replace: " ", "-"}}">{{t}}</a>{% assign c = page.tags | size%}{% if forloop.index != c %}, {% endif %}
+                    {% endfor %}
     </div>
 </article>

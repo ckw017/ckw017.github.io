@@ -2,7 +2,7 @@
 layout: post
 img: /images/primitive-fix/campanile.gif
 title: Fix for "exit status 4" when writing Primitive Gif
-tags: Go Bugfix 2018
+tags: Go Bugfix
 excerpt_separator: <!--more-->
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 img: https://images.thestar.com/content/dam/thestar/life/travel/2016/12/01/10-ways-to-enjoy-san-francisco/7-letters-1jpg.jpg.size-custom-crop.1086x0.jpg
 title: This title consists of  two a's, one b, tw...
-tags: Fun Meta 2018
+tags: Fun Meta
 excerpt_separator: <!--more-->
 ---
 Full title: This title consists of two a's, one b, two c's, two d's, thirty-one e's, six f's, four g's, eight h's, eleven i's, one j, one k, three i's, one m, eighteen n's, seventeen o's, one p, one q, seven r's, twenty-eight s's, twenty t's, four u's, five v's, six w's, three x's, four y's, and one z.

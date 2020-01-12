@@ -2,7 +2,7 @@
 layout: post
 img: https://i.imgur.com/utz2X8V.gif
 title: Hog Contest (Part 1)
-tags: Python Berkeley Visualization 2018
+tags: Python Berkeley Visualization
 ---
 
 The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game

@@ -3,6 +3,15 @@ layout: default
 ---
 
 <div class="posts">
+  <article class="post">
+    <h1> Welcome to my website! </h1>
+    This section is where I write about interesting things that I've worked on or encountered. You can find out more about me in the
+    <a href="about">about</a> section. If you're looking for a specific topic
+    you can click on one of the tags listed below. Otherwise feel free to explore the blog in order of recency. <br><br>
+    {% for t in site.tagarchive %}
+        <a href="{{t.permalink}}">{{t.value}}</a> &nbsp
+    {% endfor %}
+  </article>
   {% for post in site.posts %}
     <article class="post">
 			  <div class="flex-container">
@@ -12,8 +21,9 @@ layout: default
           <div class="text-preview">
             <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
             <i>{{post.date | date: "%B %e, %Y" }}</i><br>
-            <i>Tags:</i> {{post.tags | join: ', '}}
-
+            <i>Tags:</i> {% for t in post.tags %}
+                        <a href="{{site.baseurl}}/tag/{{t | downcase | replace: " ", "-"}}">{{t}}</a>{% assign c = post.tags | size%}{% if forloop.index != c %}, {% endif %}
+                    {% endfor %}
             <div class="entry">
               {{ post.excerpt }}
             </div>

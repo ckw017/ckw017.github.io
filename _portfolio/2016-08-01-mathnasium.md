@@ -4,6 +4,7 @@ img: /images/portfolio/professional/mathnasium.png
 src: https://its.berkeley.edu/
 category: professional
 tags: Teaching 2016
+layout: portfolio
 ---
 
 Tutored K-12 kids in math and spent a lot of time trying to ascertain

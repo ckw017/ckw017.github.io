@@ -3,6 +3,7 @@ title: Word Embedding Visualizer
 src: https://github.com/neuroecon/word-embedding-site
 category: data
 tags: NLP Visualization 2019
+layout: portfolio
 ---
 
 Website that takes in user inputted tokens, performs a lookup for their corresponding

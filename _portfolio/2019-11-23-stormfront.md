@@ -3,6 +3,7 @@ title: Stormfront Posts
 src: https://drive.google.com/file/d/1VorJGnFG9vxGgs75jsYirRJ1eyCllW44/view?usp=sharing
 category: data
 tags: NLP Dataset 2019
+layout: portfolio
 ---
 
 [Stormfront](https://en.wikipedia.org/wiki/Stormfront_(website)) is a white nationalist, white supremecist internet forum.

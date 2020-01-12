@@ -50,24 +50,7 @@ window.onload = function() {
     </article>
     {% assign portfolio = site.portfolio | where:"category", "personal"| reverse %}
     {% for post in portfolio %}
-      <article class="post">
-          <div class="flex-container">
-            {% if post.img %}
-            <a href="{{ site.baseurl }}{{ post.src }}">
-              <img class="post-preview" src="{{ post.img }}" width="150" height="150">
-            </a>
-            {% endif %}
-            <div class="text-preview">
-              <h2><a href="{{ post.src }}">{{ post.title }}</a></h2>
-              <i>{{post.date | date: "%B %e, %Y" }}</i><br>
-              <div class="entry">
-                {{ post.content }}
-              </div>
-              <a href="{{ post.src }}">Source</a><br>
-              <i>Tags:</i> {{post.tags | join: ', '}}
-            </div>
-        </div>
-      </article>
+      {{ post }}
     {% endfor %}
   </div>
   <div class="posts" id="courseworkdiv">
@@ -93,23 +76,7 @@ window.onload = function() {
     </article>
     {% assign portfolio = site.portfolio | where:"category", "coursework"| reverse %}
     {% for post in portfolio %}
-      <article class="post">
-          <div class="flex-container">
-            {% if post.img %}
-            <a href="{{ site.baseurl }}{{ post.src }}">
-              <img class="post-preview" src="{{ post.img }}" width="150" height="150">
-            </a>
-            {% endif %}
-            <div class="text-preview">
-              <h2><a href="{{ post.src }}">{{ post.title }}</a></h2>
-              <i>Course: {{post.course}}, {{post.term}}</i><br>
-              <div class="entry">
-                {{ post.content }}
-              </div>
-              <i>Tags:</i> {{post.tags | join: ', '}}
-            </div>
-        </div>
-      </article>
+      {{ post }}
     {% endfor %}
   </div>
   <div class="posts" id="professionaldiv">
@@ -121,22 +88,7 @@ window.onload = function() {
     </article>
     {% assign portfolio = site.portfolio | where:"category", "professional"| reverse %}
     {% for post in portfolio %}
-      <article class="post">
-          <div class="flex-container">
-            {% if post.img %}
-            <a href="{{ site.baseurl }}{{ post.src }}">
-              <img class="post-preview" src="{{ post.img }}" width="150" height="150">
-            </a>
-            {% endif %}
-            <div class="text-preview">
-              <h2><a href="{{ post.src }}">{{ post.title }}</a></h2>
-              <div class="entry">
-                {{ post.content }}
-              <i>Tags:</i> {{post.tags | join: ', '}}
-              </div>
-            </div>
-        </div>
-      </article>
+      {{post}}
     {% endfor %}
   </div>
   <div class="posts" id="datadiv">
@@ -147,23 +99,7 @@ window.onload = function() {
     </article>
     {% assign portfolio = site.portfolio | where:"category", "data"| reverse %}
     {% for post in portfolio %}
-      <article class="post">
-          <div class="flex-container">
-            {% if post.img %}
-            <a href="{{ site.baseurl }}{{ post.src }}">
-              <img class="post-preview" src="{{ post.img }}" width="150" height="150">
-            </a>
-            {% endif %}
-            <div class="text-preview">
-              <h2><a href="{{ post.src }}">{{ post.title }}</a></h1>
-              <div class="entry">
-                {{ post.content }}
-              </div>
-              <a href="{{ post.src }}">Source</a><br>
-              <i>Tags:</i> {{post.tags | join: ', '}}
-            </div>
-        </div>
-      </article>
+      {{post}}
     {% endfor %}
   </div>
 </div>

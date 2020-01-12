@@ -1,0 +1,26 @@
+<article class="post">
+    <div class="flex-container">
+        {% if page.img %}
+            <a href="{{ site.baseurl }}{{ page.src }}">
+                <img class="post-preview" src="{{ page.img }}" width="150" height="150">
+            </a>
+        {% endif%}
+        <div class="text-preview">
+            <h2><a href="{{ page.src }}">{{ page.title }}</a></h2>
+            {% if page.category == 'personal' or page.category == 'data'%}
+            <i>{{page.date | date: "%B %e, %Y" }}</i><br>
+            {% elsif page.category == 'coursework' %}
+            Course: {{page.course}} <br>
+            Term: {{page.term}} <br>
+            {% elsif page.category == 'professional'%}
+                <i> {{ page.start_date }} - {{ page.end_date }} </i>
+            {% endif %}
+        <div class="entry">
+            {{ page.content }}
+        </div>
+        {% if page.category == 'personal' or page.category == 'data' %}
+            <a href="{{ page.src }}">Source</a><br>
+        {% endif %}
+        <i>Tags:</i> {{page.tags | join: ', '}}
+    </div>
+</article>

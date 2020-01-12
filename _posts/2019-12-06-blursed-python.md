@@ -3,13 +3,15 @@ layout: post
 img: /images/blursed.png
 title: Blursing Python
 tags: Python Fun 2019
+excerpt_separator: <!--more-->
 ---
 
 *"**blursed** (adj): Simultaneously blessed and cursed by a situation, object, person, etc..."*
 
 -- [Urban Dictionary](https://www.urbandictionary.com/define.php?term=Blursed)
 
-I recently discovered something incredibly blursed while reading an article by `faehnrick` in [PagedOut](https://pagedout.institute/) Volume 2. In an article titled "Abusing C - Have Fun!" on the topic of obsfuscated C code it's demonstrated that this sort of thing is valid C:
+I recently discovered something incredibly blursed while reading an article by `faehnrick` in [PagedOut](https://pagedout.institute/) Volume 2.
+<!--more-->  In an article titled "Abusing C - Have Fun!" on the topic of obsfuscated C code it's demonstrated that this sort of thing is valid C:
 
 ```c
 #include <stdio.h>

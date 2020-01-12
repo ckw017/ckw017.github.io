@@ -3,10 +3,11 @@ layout: post
 img: https://images.thestar.com/content/dam/thestar/life/travel/2016/12/01/10-ways-to-enjoy-san-francisco/7-letters-1jpg.jpg.size-custom-crop.1086x0.jpg
 title: This title consists of  two a's, one b, tw...
 tags: Fun Meta 2018
+excerpt_separator: <!--more-->
 ---
 Full title: This title consists of two a's, one b, two c's, two d's, thirty-one e's, six f's, four g's, eight h's, eleven i's, one j, one k, three i's, one m, eighteen n's, seventeen o's, one p, one q, seven r's, twenty-eight s's, twenty t's, four u's, five v's, six w's, three x's, four y's, and one z.
 
-For real! Test it out (or just take my word for it)! The title of this post is a self-describing sentence on the typographical level. Note that I specify on a typographical level, as opposed to say a "semantic meaning" level. A statement that fits that criteria would be something like "This sentence talks about itself". You could also have a sentence that describes itself on a "word" level, such as "This sentence has seven words in it." Yet both of these feel somehow less interesting as the title, which is a lot more "sensitive" to minor changes. For example, if you tried to change the prefix to "This is a title...", you would of course have to say it has four i's instead of three. But wait, well now we have thirty-three e's, right? But "thirty-three" adds another two e's, so do we have thirty-five? Well now we're back down to thirty-four, but wai... And so on, ad nauseam.
+For real! Test it out (or just take my word for it)! <!--more--> The title of this post is a self-describing sentence on the typographical level. Note that I specify on a typographical level, as opposed to say a "semantic meaning" level. A statement that fits that criteria would be something like "This sentence talks about itself". You could also have a sentence that describes itself on a "word" level, such as "This sentence has seven words in it." Yet both of these feel somehow less interesting as the title, which is a lot more "sensitive" to minor changes. For example, if you tried to change the prefix to "This is a title...", you would of course have to say it has four i's instead of three. But wait, well now we have thirty-three e's, right? But "thirty-three" adds another two e's, so do we have thirty-five? Well now we're back down to thirty-four, but wai... And so on, ad nauseam.
 
 [![](https://imgs.xkcd.com/comics/self_description.png)](https://www.xkcd.com/688/)
 

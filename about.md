@@ -19,7 +19,7 @@ permalink: /about/
 
 Hi! I've been an undergrad at UC Berkeley since Fall 2017. I started out studying computer science and finished the major
 requirements in Fall 2019. To prevent the university from asking me to leave
-doubling in data science with a [domain emphasis](https://data.berkeley.edu/degrees/domain-emphasis) in applied math (mostly as an excuse to take more CS classes) and plan to graduate in Spring 2021.
+I started a second major in data science with a [domain emphasis](https://data.berkeley.edu/degrees/domain-emphasis) in applied math (mostly as an excuse to take more CS classes) and plan to graduate in Spring 2021.
 
 My sophomore year I worked in Berkeley's [Neuroeconomics Lab](http://neuroecon.berkeley.edu/) on
 [bias in word embedding models](https://papers.nips.cc/paper/6228-man-is-to-computer-programmer-as-woman-is-to-homemaker-debiasing-word-embeddings.pdf) and a handful of decision making experiments.

@@ -4,19 +4,28 @@ title: About
 permalink: /about/
 ---
 
+*Last updated: January 11th, 2020*
+
 ---
-*Last updated: January 9th, 2020*
+
+<img src="/images/about/git_profile.png" width="20%" height="auto">
+<img src="/images/about/hill.png" width="20%" height="auto">
+<img src="/images/about/triangles.png" width="20%" height="auto">
+<img src="/images/about/bridge.png" width="20%" height="auto">
+
+*(Approximate) photos of me.*
+
+---
 
 Hi! I've been an undergrad at UC Berkeley since Fall 2017. I started out studying computer science and finished the major
-requirements in Fall 2019. To prevent the university from asking me to leave before I get to take all the cool CS classes I'm now
-doubling in data science with a [domain emphasis](https://data.berkeley.edu/degrees/domain-emphasis) in applied math (again,
-mostly as an excuse to take more CS classes) and plan to graduate in Spring 2021.
+requirements in Fall 2019. To prevent the university from asking me to leave
+doubling in data science with a [domain emphasis](https://data.berkeley.edu/degrees/domain-emphasis) in applied math (mostly as an excuse to take more CS classes) and plan to graduate in Spring 2021.
 
 My sophomore year I worked in Berkeley's [Neuroeconomics Lab](http://neuroecon.berkeley.edu/) on
 [bias in word embedding models](https://papers.nips.cc/paper/6228-man-is-to-computer-programmer-as-woman-is-to-homemaker-debiasing-word-embeddings.pdf) and a handful of decision making experiments.
 Last spring I helped manage a fleet a buses with [Berkeley PATH](https://path.berkeley.edu/)'s [T-Connect project](https://path.berkeley.edu/research/connected-and-automated-vehicles/integrated-dynamic-transit-operation-idto-system-using) and over the summer I interned with [BOLD](https://www.bold.com/) to work on their career matching system.
 
-This spring I'll be starting as a TA for CS186: Databases.
+This spring I'll be TAing for CS186: Databases.
 
 In my freetime I enjoy remaking retro games, reading (I recommend Vonnegut, Egan, and Pratchett), and playing competitive Pokemon.
 
@@ -162,7 +171,7 @@ See the second quote in the "What is our purpose?" section for more on this.
 ---
 ## I got a 404 error. Who is this "Debug Dog"?
 
-Debug Dog is my dog-in-law that came with me to Berkeley to study CS. In general I do my best to [explain code to line-to-line to him](https://en.wikipedia.org/wiki/Rubber_duck_debugging) during debugging sessions while he stares back at me in judgemental silence. Thanks to the power of Berkeley course capture he has approximately the same level of CS knowledge and programming maturity as me, but severely lacks in communication skills (presumably because he doesn't have a mouth).
+Debug Dog is my dog-in-law who came with me to Berkeley to study CS. In general I do my best to [explain code to line-to-line to him](https://en.wikipedia.org/wiki/Rubber_duck_debugging) during debugging sessions while he stares back at me in judgemental silence. Thanks to the power of Berkeley course capture he has approximately the same level of CS knowledge and programming maturity as me, but severely lacks in communication skills (presumably because he doesn't have a mouth).
 
 <a name="What's-Berkeley-CS-like/should-I-apply?"></a>
 
@@ -174,7 +183,7 @@ Yes, you should apply (if it's within your financial capacity). I really don't h
 * There is bar you have to get past. Although advertised as no prior experience required, the intro CS course CS61A has been accused of being a weeder course along with CS61B (Data Structures) and CS70 (Discrete Math). The requirement to declare the computer science major is a 3.3 GPA in these classes, i.e. 2 A's and  B, or 3 B+'s, etc... This is, as far as I know, the highest GPA cutoff at Berkeley, and it's been trending upwards (though I doubt, knock on wood, that it will get any higher). I know that roughly 25% students a semester are barred from the major by this cutoff, and I would bet that even more are diverted away before even getting through all three courses by performance in the first ones they take.
 * The bar is high because the staff believes in you. Since our CS department has grown a bit slower than Moore's law in the past few years it might seem like resources are getting spread thin. That's not really the whole story though. Many undergraduates TA, tutor, and mentor other undergraduates. This is often times equally if not more effective than help from graduate student instructors and professors, since many profs and grads tend to be a bit too experienced to empathize with a lower-div undergrad. I implore you to take advantage of your peers both enrolled in the class and acting as course staff.
 * Classes tend to get easier in upper div! The curves are kinder, class sizes are smaller, and the professors tend to have genuine interest in the material. Since you've made it through lower-divs by this point, the projects get a lot more interesting as well since you should have decent programming/problem-solving maturity
-    * Check out the "Academics" tab of my [portfolio](/portfolio#coursework) for cool classes and associated projects I've had the chance to take
+* Check out the "Academics" tab of my [portfolio](/portfolio#coursework) for cool classes and associated projects I've had the chance to take
 
 People will of course give you impassioned reasons for why you shouldn't come to Berkeley, usually regarding difficulty and class sizes. I think you should take their words in to consideration as well.
 

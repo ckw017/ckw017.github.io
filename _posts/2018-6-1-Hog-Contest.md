@@ -1,6 +1,6 @@
 ---
 layout: post
-img: https://i.imgur.com/utz2X8V.gif
+img: /images/hog.gif
 title: Hog Contest (Part 1)
 tags: Python Berkeley Visualization
 ---

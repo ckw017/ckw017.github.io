@@ -32,7 +32,7 @@
     <div class="wrapper-masthead">
       <div class="container">
         <header class="masthead clearfix">
-          <a href="/" class="site-avatar"><img src="https://i.imgur.com/FuNGkx1.png" /></a>
+          <a href="/" class="site-avatar"><img src="/images/me.png" /></a>
 
           <div class="site-info">
             <h1 class="site-name"><a href="/">Chris Wong</a></h1>
@@ -66,6 +66,7 @@ function showCategory(category) {
   Object.keys(categories).forEach(c => anchors[c].style.color=null);
   Object.keys(categories).forEach(c => anchors[c].style["font-weight"]="");
   categories[category].style.display = "block";
+  anchors[category].style.color = "#0066ff";
   anchors[category].style['font-weight'] = "bold";
   window.location.hash = "#" + category;
 }
@@ -89,14 +90,14 @@ window.onload = function() {
 </script>
 <div>
   <br>
-  <table style="width:100%">
-    <tr>
-      <th style="width:25%"><a id="personala" onclick="showCategory('personal');"> ⭐ Personal </a> </th>
-      <th style="width:25%"><a id="courseworka" onclick="showCategory('coursework');"> 📚 Coursework </a></th>
-      <th style="width:25%"><a id="professionala" onclick="showCategory('professional');"> 💼 Professional  </a></th>
-      <th style="width:25%"><a id="dataa" onclick="showCategory('data');"> 💾 Data </a></th>
-    </tr>
-  </table>
+  <center>
+  <nav style="float:none;">
+      <a id="personala" style="margin: 0 5%;" onclick="showCategory('personal');"> ⭐&nbspPersonal </a>
+      <a id="courseworka" style="margin: 0 5%;" onclick="showCategory('coursework');"> 📚&nbspCoursework </a>
+      <a id="professionala" style="margin: 0 5%;" onclick="showCategory('professional');"> 💼&nbspProfessional  </a>
+      <a id="dataa" style="margin: 0 5%;" onclick="showCategory('data');"> 💾&nbspData </a>
+  </nav>
+  </center>
   <hr>
   <div class="posts" id="personaldiv">
     <article class="post">
@@ -109,7 +110,7 @@ window.onload = function() {
     <div class="flex-container">
         
             <a href="https://github.com/ckw017/showdown.py">
-                <img class="post-preview" src="https://i.imgur.com/bVL704q.jpg" width="150" height="150">
+                <img class="post-preview" src="/images/portfolio/personal/showdown.jpg" width="150" height="150">
             </a>
         
         <div class="text-preview">
@@ -140,7 +141,7 @@ window.onload = function() {
     <div class="flex-container">
         
             <a href="https://github.com/ckw017/vader-sentiment-rust">
-                <img class="post-preview" src="https://i.imgur.com/73L2Stn.png" width="150" height="150">
+                <img class="post-preview" src="/images/portfolio/personal/vader.png" width="150" height="150">
             </a>
         
         <div class="text-preview">
@@ -202,7 +203,7 @@ window.onload = function() {
     <div class="flex-container">
         
             <a href="https://github.com/ckw017/soda-hacks-2018/">
-                <img class="post-preview" src="https://i.imgur.com/SPwfn0X.png" width="150" height="150">
+                <img class="post-preview" src="/images/portfolio/personal/cloud.png" width="150" height="150">
             </a>
         
         <div class="text-preview">
@@ -233,7 +234,7 @@ window.onload = function() {
     <div class="flex-container">
         
             <a href="https://github.com/ckw017/lf-bot">
-                <img class="post-preview" src="https://i.imgur.com/PBeurZC.png" width="150" height="150">
+                <img class="post-preview" src="/images/portfolio/personal/lf.png" width="150" height="150">
             </a>
         
         <div class="text-preview">
@@ -266,7 +267,7 @@ window.onload = function() {
     <div class="flex-container">
         
             <a href="https://github.com/ckw017/hog-contest">
-                <img class="post-preview" src="https://i.imgur.com/utz2X8V.gif" width="150" height="150">
+                <img class="post-preview" src="/images/hog.gif" width="150" height="150">
             </a>
         
         <div class="text-preview">
@@ -297,7 +298,7 @@ window.onload = function() {
     <div class="flex-container">
         
             <a href="https://drive.google.com/file/d/1xoJTLTMbYyfVc18p6WvnQ3PKaGwCCBve/view?usp=sharing">
-                <img class="post-preview" src="https://i.imgur.com/OdhqeoY.png" width="150" height="150">
+                <img class="post-preview" src="/images/portfolio/personal/nrg.png" width="150" height="150">
             </a>
         
         <div class="text-preview">
@@ -752,8 +753,6 @@ components to log responses and synchronize with dispatchers.</p>
   <li>Integrated IoT input devices with onboard display device and server to create physical interface for operators</li>
 </ul>
 
-<p>April 2019 - June 2019</p>
-
         </div>
         
         <i>Tags:</i> 
@@ -793,8 +792,6 @@ these public feeds tracking the movements of over 10,000 shared vehicles in the 
   </li>
 </ul>
 
-<p>November 2018 - May 2019</p>
-
         </div>
         
         <i>Tags:</i> 
@@ -818,8 +815,6 @@ these public feeds tracking the movements of over 10,000 shared vehicles in the 
         <div class="entry">
             <p>Tutored K-12 kids in math and spent a lot of time trying to ascertain
 the motives behind common core curriculum.</p>
-
-<p>August 2016 - August 2017</p>
 
         </div>
         

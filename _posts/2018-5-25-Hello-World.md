@@ -1,6 +1,6 @@
 ---
 layout: post
-img: https://i.imgur.com/dzDxeKr.png
+img: /images/hello.png
 title: Hello World!
 tags: Meta
 ---

@@ -1,5 +1,5 @@
 ---
-img: https://i.imgur.com/73L2Stn.png
+img: /images/portfolio/personal/vader.png
 title: VADER Sentiment Analyser
 src: https://github.com/ckw017/vader-sentiment-rust
 category: personal

@@ -1,6 +1,6 @@
 ---
 layout: post
-img: https://i.imgur.com/qegKRGV.png?1
+img: /images/rps.png
 title: Rock, Paper, Scissors, Fire, Water, Grass
 tags: [Python, Data Collection, Game]
 ---

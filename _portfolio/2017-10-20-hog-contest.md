@@ -1,5 +1,5 @@
 ---
-img: https://i.imgur.com/utz2X8V.gif
+img: /images/hog.gif
 title: Hog Contest Visualizer
 src: https://github.com/ckw017/hog-contest
 category: personal

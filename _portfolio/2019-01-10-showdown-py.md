@@ -1,5 +1,5 @@
 ---
-img: https://i.imgur.com/bVL704q.jpg
+img: /images/portfolio/personal/showdown.jpg
 title: Showdown.py
 src: https://github.com/ckw017/showdown.py
 category: personal

@@ -12,6 +12,7 @@ function showCategory(category) {
   Object.keys(categories).forEach(c => anchors[c].style.color=null);
   Object.keys(categories).forEach(c => anchors[c].style["font-weight"]="");
   categories[category].style.display = "block";
+  anchors[category].style.color = "#0066ff";
   anchors[category].style['font-weight'] = "bold";
   window.location.hash = "#" + category;
 }
@@ -35,14 +36,14 @@ window.onload = function() {
 </script>
 <div>
   <br>
-  <table style="width:100%">
-    <tr>
-      <th style="width:25%"><a id="personala" onclick="showCategory('personal');"> ⭐ Personal </a> </th>
-      <th style="width:25%"><a id="courseworka" onclick="showCategory('coursework');"> 📚 Coursework </a></th>
-      <th style="width:25%"><a id="professionala" onclick="showCategory('professional');"> 💼 Professional  </a></th>
-      <th style="width:25%"><a id="dataa" onclick="showCategory('data');"> 💾 Data </a></th>
-    </tr>
-  </table>
+  <center>
+  <nav style="float:none;">
+      <a id="personala" style="margin: 0 5%;" onclick="showCategory('personal');"> ⭐&nbspPersonal </a>
+      <a id="courseworka" style="margin: 0 5%;" onclick="showCategory('coursework');"> 📚&nbspCoursework </a>
+      <a id="professionala" style="margin: 0 5%;" onclick="showCategory('professional');"> 💼&nbspProfessional  </a>
+      <a id="dataa" style="margin: 0 5%;" onclick="showCategory('data');"> 💾&nbspData </a>
+  </nav>
+  </center>
   <hr>
   <div class="posts" id="personaldiv">
     <article class="post">

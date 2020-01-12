@@ -1,5 +1,5 @@
 ---
-img: https://i.imgur.com/SPwfn0X.png
+img: /images/portfolio/personal/cloud.png
 title: Cloud Vision App
 src: https://github.com/ckw017/soda-hacks-2018/
 category: personal

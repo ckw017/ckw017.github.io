@@ -5,13 +5,25 @@ layout: default
 <article class="post">
 <h1> Content tagged as <u>{{page.value}}</u> </h1>
 {% for t in site.tagarchive %}
-    <a href="{{t.permalink}}">{{t.value}}</a> &nbsp
+    {% if t.value == page.value %}
+        <b style="color: #06F"> {{t.value}} &nbsp</b>
+    {% else %}
+        <a href="{{t.permalink}}">{{t.value}}</a> &nbsp
+    {% endif%}
 {% endfor %}
 </article>
+
+{% assign posts = site.portfolio | where_exp: "port", "port.tags contains page.value" %}
 {% for tag in site.tags %}
     {% if tag[0] == page.value %}
-        {% assign posts = tag[1] | sort | reverse %}
-        {% for post in posts %}
+        {% for post in tag[1] %}
+            {% assign posts = posts | push: post %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+{% assign posts = posts | sort: "date" | reverse %}
+{% for post in posts %}
+    {% if post.layout == 'post' %}
             <br>
             &nbsp <i>Blog Post (<a href="/">Home</a>)</i>
             <article class="post">
@@ -33,15 +45,10 @@ layout: default
                 </div>
             </div>
             </article>
-        {% endfor %}
+    {% else %}
+        <br>
+        &nbsp <i>Portfolio (<a href="/portfolio#{{post.category}}">{{post.category | capitalize }}</a>) </i>
+        {{post}}
     {% endif %}
 {% endfor %}
-{% assign portfolio = site.portfolio | reverse %}
-{% for port in portfolio %}
-    {% if port.tags contains page.value %}
-        <br>
-        &nbsp <i>Portfolio (<a href="/portfolio#{{port.category}}">{{port.category | capitalize }}</a>) </i>
-        {{port}}
-    {% endif %}
-{% endfor%}
 </div>

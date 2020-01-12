@@ -1,6 +1,6 @@
 ---
 layout: post
-img: https://i.imgur.com/uKBTjsf.png
+img: /images/decorator.png
 title: "Python Decorators: Not just for decoration"
 tags: Python
 ---

@@ -9,7 +9,7 @@ excerpt_separator: <!--more-->
 This is just a quick fix for a problem I ran into while trying to use [Primitive](https://github.com/fogleman/primitive)
 on Windows. While trying to create a gif, you might run into a message like this:
 
-```bash
+```shell
 writing test.gif
 2018/06/08 14:07:20 exit status 4
 ```
@@ -21,7 +21,7 @@ writing test.gif
 2. Locate the "utils.go" file in the source for primitive. On my computer it was located at `C:\Users\Me\go\src\github.com\fogleman\primitive\primitive\utils.go`
 
 3. Look for this section:
-	```
+	```go
 		args := []string{
 		"-loop", "0",
 		"-delay", fmt.Sprint(delay),
@@ -33,7 +33,7 @@ writing test.gif
 	cmd := exec.Command("convert", args...)
 	```
 4. Move `"convert"` to the beginning of args, and change the command name to `"magick"`
-	```
+	```go
 		args := []string{
 		"convert",
 		"-loop", "0",

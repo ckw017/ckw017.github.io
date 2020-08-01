@@ -14,9 +14,11 @@ layout: default
       <div class="date">
         {{ page.date | date: "%B %e, %Y" }}
       </div>
+      {% if page.tags.size > 0 %}
       <i>Tags:</i> {% for t in page.tags %}
                         <a href="{{site.baseurl}}/tag/{{t | downcase | replace: " ", "-"}}">{{t}}</a>{% assign c = page.tags | size%}{% if forloop.index != c %}, {% endif %}
                     {% endfor %}
+      {% endif %}
       </div>
   </div>
 

@@ -21,9 +21,11 @@ layout: default
           <div class="text-preview">
             <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
             <i>{{post.date | date: "%B %e, %Y" }}</i><br>
+            {% if post.tags.size > 0 %}
             <i>Tags:</i> {% for t in post.tags %}
                         <a href="{{site.baseurl}}/tag/{{t | downcase | replace: " ", "-"}}">{{t}}</a>{% assign c = post.tags | size%}{% if forloop.index != c %}, {% endif %}
                     {% endfor %}
+            {% endif %}
             <div class="entry">
               {{ post.excerpt }}
             </div>

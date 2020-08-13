@@ -39,8 +39,8 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 <br>
 [What's with the background image for this site?](#What's-with-the-background-image-for-this-site?)
 <br>
-[Why is everything so dark?](#Why-is-everything-so-dark?)
-<br>
+<!-- [Why is everything so dark?](#Why-is-everything-so-dark?) -->
+<!-- <br> -->
 [Class recommendations?](#Class-recommendations?)
 <br>
 [How can I get into undergrad research?](#How-can-I-get-into-undergrad-research?)
@@ -84,15 +84,6 @@ And occasionally:
 That's a picture of Berkeley's Campanile, with a few rounds of [primitive](https://github.com/fogleman/primitive) run on top of it to try to approximate it using geometric primitives. I personally really like the aesthetic, though I'll admit without looking closely it kind of seems like a blown-up low fidelity JPEG.
 
 <a name="Why-is-everything-so-dark?"></a>
-
----
-## Why is everything so dark?
-
-With respect to this website, I'm used to having [darkmode everywhere](https://darkreader.org). While I could just design the site in light-mode and then run the plugin on top of it, I wouldn't be designing the same thing user's are seeing. So I opted to just make my site dark by default.
-
-If you're asking outside of the context of this website, perhaps you're a victim of PG&E's power outages.
-
-<a name="Class-recommendations?"></a>
 
 ---
 ## Class recommendations?

@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-*Last updated: January 11th, 2020*
+*Last updated: August 20th, 2020*
 
 ---
 
@@ -22,10 +22,13 @@ requirements in Fall 2019. To prevent the university from asking me to leave
 I've started a second major in data science with a [domain emphasis](https://data.berkeley.edu/degrees/domain-emphasis) in applied math (mostly as an excuse to take more CS classes). I'm planning to graduate in Spring 2021.
 
 My sophomore year I worked in Berkeley's [Neuroeconomics Lab](http://neuroecon.berkeley.edu/) on
-[bias in word embedding models](https://papers.nips.cc/paper/6228-man-is-to-computer-programmer-as-woman-is-to-homemaker-debiasing-word-embeddings.pdf) and a handful of decision making experiments.
-Last spring I helped manage a fleet a buses with [Berkeley PATH](https://path.berkeley.edu/)'s [T-Connect project](https://path.berkeley.edu/research/connected-and-automated-vehicles/integrated-dynamic-transit-operation-idto-system-using) and over the summer I interned with [BOLD](https://www.bold.com/) to work on their career matching system. This spring I'll be TAing for CS186: Databases.
+[bias in word embedding models](https://papers.nips.cc/paper/6228-man-is-to-computer-programmer-as-woman-is-to-homemaker-debiasing-word-embeddings.pdf) and a handful of decision making experiments. In spring I helped manage a fleet a buses with [Berkeley PATH](https://path.berkeley.edu/)'s [T-Connect project](https://path.berkeley.edu/research/connected-and-automated-vehicles/integrated-dynamic-transit-operation-idto-system-using) and in the summer I interned with [BOLD](https://www.bold.com/) to work on their career matching system.
 
-In my freetime I enjoy remaking retro games, reading (I recommend Vonnegut, Egan, and Pratchett), and playing competitive Pokemon.
+This spring I began TAing for CS186: Databases and over the summer interned at
+Cisco AppDynamics on their infrastructure monitoring team. I'll be returning to TA
+for 186 this fall.
+
+In my freetime I enjoy [doodling with my fancy printer](/art), reading (I recommend Vonnegut, Ted Chiang, and Terry Pratchett), and playing competitive Pokemon.
 
 If you have any questions/critiques/feedback for me, feel free to contact me!
 

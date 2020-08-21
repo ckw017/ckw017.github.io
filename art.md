@@ -17,11 +17,11 @@ Roll pen (white) or a Pentel 0.05 Pointliner (black).
 {% for plot in site.plots reversed %}
 <article class="post">
     <div class="flex-container">
-        <a href="{{ plot.img }}">
-        <img src="{{ plot.img }}" style="max-width:300px;">
+        <a href="{{ site.baseurl }}{{ plot.img }}">
+        <img src="{{ site.baseurl }}{{ plot.img }}" style="max-width:300px;">
         </a>
         <div class="text-preview">
-        <h1><a href="{{ plot.img }}">{{ plot.title }}</a></h1>
+        <h1><a href="{{ site.baseurl }}{{ plot.img }}">{{ plot.title }}</a></h1>
         <i>{{plot.date | date: "%B %Y" }}</i>
             <div class="entry">
                 {{ plot.content }}

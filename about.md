@@ -108,7 +108,7 @@ If you like programming:
 * CS186 - Databases
     * Requires: CS61BC, strong emotions about disk latency
 
-If you're interested or think you're interested\* in two letter hypeisms:
+If you're interested or think you're interested in two letter hypeisms:
 * CS188 - Artificial Intelligence
     * Requires: CS61AB
 * CS189 - Machine Learning
@@ -117,8 +117,11 @@ If you're interested or think you're interested\* in two letter hypeisms:
 * EECS127 - Optimization Models in Engineering
     * Requires: Math54
     * I think this technically requires the EE16 series but I didn't take them when I took this class and it was mostly fine
-
-\*I say "think you're interested" because depending on the 189 professor it may make or break your outlook on this field
+* CS182 - Neural Networks
+    * Requires: Math53, Math54 (127 also works), CS70
+    * By the time I took this class my interest had almost vanished, but its an
+    interesting survey of architectures, intuition behind why some are effective,
+    lots of linalg and lots and lots of little hacks to get things working
 
 <a name="How-can-I-get-into-undergrad-research?"></a>
 

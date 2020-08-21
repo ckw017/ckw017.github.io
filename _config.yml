@@ -94,6 +94,7 @@ theme: jekyll-theme-slate
 
 collections:
   portfolio:
+  plots:
   tagarchive:
     output: true
     permalink: /tag/:name

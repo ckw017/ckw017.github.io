@@ -64,7 +64,7 @@ In the broader sense though, I like to adhere to this philosophy:
 Or alternatively:
 
 "*Love while you've got love to give.*
-
+<br>
 *Live while you've got life to live.*"
 
 ― Piet Hein, *Grooks*

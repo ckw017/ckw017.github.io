@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-*Last updated: August 20th, 2020*
+*Last updated: May 20th, 2022*
 
 ---
 
@@ -17,16 +17,7 @@ permalink: /about/
 
 ---
 
-Hi! I've been an undergrad at UC Berkeley since Fall 2017. I started out studying computer science and finished the major
-requirements in Fall 2019. To prevent the university from asking me to leave
-I've started a second major in data science with a [domain emphasis](https://data.berkeley.edu/degrees/domain-emphasis) in applied math (mostly as an excuse to take more CS classes). I'm planning to graduate in Spring 2021.
-
-My sophomore year I worked in Berkeley's [Neuroeconomics Lab](http://neuroecon.berkeley.edu/) on
-[bias in word embedding models](https://papers.nips.cc/paper/6228-man-is-to-computer-programmer-as-woman-is-to-homemaker-debiasing-word-embeddings.pdf) and a handful of decision making experiments. In spring I helped manage a fleet a buses with [Berkeley PATH](https://path.berkeley.edu/)'s [T-Connect project](https://path.berkeley.edu/research/connected-and-automated-vehicles/integrated-dynamic-transit-operation-idto-system-using) and in the summer I interned with [BOLD](https://www.bold.com/) to work on their career matching system.
-
-This spring I began TAing for CS186: Databases and over the summer interned at
-Cisco AppDynamics on their infrastructure monitoring team. I'll be returning to TA
-for 186 this fall.
+Hi, I'm just some guy! I graduated for UC Berkeley in 2021 where I studied Computer Science and Data Science, and currently work at [Anyscale](https://www.anyscale.com/).
 
 In my freetime I enjoy [doodling with my fancy printer](/art), reading (I recommend Vonnegut, Ted Chiang, and Terry Pratchett), and playing competitive Pokemon.
 
@@ -64,7 +55,7 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 ---
 ## What is our purpose?
 
-One of my peers in the Neuroecon lab asked me in the sense of "wait what are we supposed to be doing this week?" I didn't really have a specific answer for him at the time.
+During my stint at Berkeley's [Neuroecon lab](https://neuroecon.berkeley.edu/), one of the other undergrads asked me this in the sense of "wait what are we supposed to be doing this week?" I didn't really have a specific answer for him at the time.
 
 In general though, I like to adhere to this philosophy:
 
@@ -72,8 +63,14 @@ In general though, I like to adhere to this philosophy:
 
 ― Kurt Vonnegut, *The Sirens of Titan*
 
-And occasionally:
+Or alternatively:
 
+"*Love while you've got love to give.*
+*Live while you've got life to live.*"
+
+- Piet Hein, *Grooks*
+
+And occasionally:
 
 "*I tell you, we are here on Earth to fart around, and don't let anybody tell you different.*"
 

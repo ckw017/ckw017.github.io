@@ -82,7 +82,7 @@ And occasionally:
 
 That's a picture of Berkeley's Campanile, with a few rounds of [primitive](https://github.com/fogleman/primitive) run on top of it to try to approximate it using geometric primitives. I personally really like the aesthetic, though I'll admit without looking closely it kind of seems like a blown-up low fidelity JPEG.
 
-<a name="Why-is-everything-so-dark?"></a>
+<a name="Class-recommendations?"></a>
 
 ---
 ## Class recommendations?
@@ -129,7 +129,7 @@ If you're interested or think you're interested in two letter hypeisms:
 ― Dijkstra
 
 
-<a name='How-did-you-get-started-in-Computer-Science?'></a>
+<a name='How-did-you-get-into-programming?'></a>
 
 ---
 ## How did you into programming?

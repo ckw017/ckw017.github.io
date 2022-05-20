@@ -58,7 +58,7 @@ During my stint at Berkeley's [Neuroecon lab](https://neuroecon.berkeley.edu/), 
 In the broader sense though, I like to adhere to this philosophy:
 
 "*A purpose of human life, no matter who is controlling it, is to love whoever is around to be loved.*"
-
+<br>
 ― Kurt Vonnegut, *The Sirens of Titan*
 
 Or alternatively:
@@ -66,13 +66,13 @@ Or alternatively:
 "*Love while you've got love to give.*
 <br>
 *Live while you've got life to live.*"
-
+<br>
 ― Piet Hein, *Grooks*
 
 And occasionally:
 
 "*I tell you, we are here on Earth to fart around, and don't let anybody tell you different.*"
-
+<br>
 ― Also Kurt Vonnegut, *A Man Without a Country*
 
 <a name="What's-with-the-background-image-for-this-site?"></a>

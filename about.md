@@ -55,9 +55,9 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 ---
 ## What is our purpose?
 
-During my stint at Berkeley's [Neuroecon lab](https://neuroecon.berkeley.edu/), one of the other undergrads asked me this in the sense of "wait what are we supposed to be doing this week?" I didn't really have a specific answer for him at the time.
+During my stint at Berkeley's [Neuroecon lab](https://neuroecon.berkeley.edu/), one of the other undergrads asked me this in the sense of "wait what are we supposed to be doing this week?" At the time, I too had no idea what we were supposed to be doing that week.
 
-In general though, I like to adhere to this philosophy:
+In the broader sense though, I like to adhere to this philosophy:
 
 "*A purpose of human life, no matter who is controlling it, is to love whoever is around to be loved.*"
 
@@ -66,9 +66,10 @@ In general though, I like to adhere to this philosophy:
 Or alternatively:
 
 "*Love while you've got love to give.*
+
 *Live while you've got life to live.*"
 
-- Piet Hein, *Grooks*
+― Piet Hein, *Grooks*
 
 And occasionally:
 

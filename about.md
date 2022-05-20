@@ -37,11 +37,9 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 <!-- <br> -->
 [Class recommendations?](#Class-recommendations?)
 <br>
-[How can I get into undergrad research?](#How-can-I-get-into-undergrad-research?)
-<br>
 [Can machines think?](#Can-machines-think?)
 <br>
-[How did you get started in Computer Science?](#How-did-you-get-started-in-Computer-Science?)
+[How did you get into programming?](#How-did-you-get-into-programming?)
 <br>
 [I got a 404 error. Who is this "Debug Dog"?](#I-got-a-404-error.-Who-is-this-"Debug-Dog"?)
 <br>
@@ -121,15 +119,6 @@ If you're interested or think you're interested in two letter hypeisms:
     interesting survey of architectures, intuition behind why some are effective,
     lots of linalg and lots and lots of little hacks to get things working
 
-<a name="How-can-I-get-into-undergrad-research?"></a>
-
----
-## How can I get into undergrad research?
-
-Just apply! I've found almost every department is happy to take in CS students with proficiency in Python, especially if you've taken CS61A and B. As it happens, it seems almost every lab could use some extra computer people. Obviously you may end up with unpleasant or uninteresting work, but I've found many of the practical skills I've picked up at Berkeley were on jobs that weren't necessarily something I was passionate about.
-
-If you're thinking "I probably won't get into anything if I apply," that's also what I thought when I applied to URAP in Fall 2018 (start of my sophomore year). Don't undersell yourself! In the worst case scenario you spend a few hours getting to read through cool research projects and writing up a personal statement of your interest, which are both rewarding experiences regardless of whether you get anything.
-
 <a name='Can-machines-think?'></a>
 
 ---
@@ -143,13 +132,13 @@ If you're thinking "I probably won't get into anything if I apply," that's also 
 <a name='How-did-you-get-started-in-Computer-Science?'></a>
 
 ---
-## How did you get started in Computer Science?
+## How did you into programming?
 
 In high school I was relatively clueless about what I wanted to do in terms of career. I knew I wanted to some sort of STEM-related field, but I wasn't sure which one. My junior year I took the AP courses for CS and Chemistry, and actually really loved both of them! Unfortunately for chem, it was a lot easier to tinker with programming than it was with mass spectometry on my own time, and so I ended up leaning towards computer science.
 
-I will say that APCS is kind of useless in terms of preparation of Berkeley (and I imagine many other school's) CS curriculum. I hate to say it but a lot of CS courses "handhold" a bit too excessively. The most educational periods of my time during high school were spent trying get to simple graphical games to display and run at 30 FPS relying solely on StackOverflow, compiler vitriol, and Java's standard library documentation. This is the kind of suffering that the department of education and parts of the constitution tend to forbid, but I suspect that that kind of struggle working on a personal project builds a level of independence that very few undergraduate or high school courses are capable of providing.
+Admittedly, APCS is kind of useless in terms of preparation of Berkeley (and I imagine many other school's) CS curriculum. I hate to say it but a lot of CS courses "handhold" a bit too excessively. The most educational periods of my time during high school were spent trying get to simple graphical games to display and run at 30 FPS relying solely on StackOverflow, compiler vitriol, and Java's standard library documentation. This is the kind of suffering that the department of education and parts of the constitution tend to forbid, but I suspect that that kind of struggle working on a personal project builds a level of independence that many undergraduate or high school courses aren't able to provide.
 
-I also had some background in competition math, which teaches a lot of intuition and practical problem solving skills that you really won't get in a classroom.
+I also had some background in [competition math](https://purplecomet.org/), which teaches a lot of intuition and practical problem solving skills that you really won't get in a classroom.
 
 This in particular really hits home for me:
 
@@ -157,14 +146,14 @@ This in particular really hits home for me:
 
 [https://www.xkcd.com/519/](https://www.xkcd.com/519/)
 
-See the second quote in the "What is our purpose?" section for more on this.
+See the third quote in the "What is our purpose?" section for more on this.
 
 <a name='I-got-a-404-error.-Who-is-this-"Debug-Dog"?'></a>
 
 ---
 ## I got a 404 error. Who is this "Debug Dog"?
 
-Debug Dog is my dog-in-law who came with me to Berkeley to study CS. In general I do my best to [explain code to line-to-line to him](https://en.wikipedia.org/wiki/Rubber_duck_debugging) during debugging sessions while he stares back at me in judgemental silence. Thanks to the power of Berkeley course capture he has approximately the same level of CS knowledge and programming maturity as me, but severely lacks in communication skills (presumably because he doesn't have a mouth).
+Debug Dog is my dog-in-law who came with me to Berkeley to study CS. In general I do my best to [explain code to line-to-line to him](https://en.wikipedia.org/wiki/Rubber_duck_debugging) during debugging sessions while he stares back at me in judgemental silence. Thanks to the power of Berkeley's recorded lectures he has approximately the same level of CS knowledge and programming maturity as me, but severely lacks in communication skills (presumably because he doesn't have a mouth).
 
 <a name="What's-Berkeley-CS-like/should-I-apply?"></a>
 
@@ -173,7 +162,7 @@ Debug Dog is my dog-in-law who came with me to Berkeley to study CS. In general 
 
 Yes, you should apply (if it's within your financial capacity). I really don't have a universal answer to this, any curriculum will really have a completely different effect for different people. There are a few things that I do think stand out:
 
-* There is bar you have to get past. Although advertised as no prior experience required, the intro CS course CS61A has been accused of being a weeder course along with CS61B (Data Structures) and CS70 (Discrete Math). The requirement to declare the computer science major is a 3.3 GPA in these classes, i.e. 2 A's and  B, or 3 B+'s, etc... This is, as far as I know, the highest GPA cutoff at Berkeley, and it's been trending upwards (though I doubt, knock on wood, that it will get any higher). I know that roughly 25% students a semester are barred from the major by this cutoff, and I would bet that even more are diverted away before even getting through all three courses by performance in the first ones they take.
+* There is a hill you have to get over. Although advertised as no prior experience required, the intro CS course CS61A has been accused of being a weeder course along with CS61B (Data Structures) and CS70 (Discrete Math). The requirement to declare the computer science major is a 3.3 GPA in these classes, i.e. 2 A's and  B, or 3 B+'s, etc... This is, as far as I know, the highest GPA cutoff at Berkeley, and it's been trending upwards (though I doubt, knock on wood, that it will get any higher). I know that roughly 25% students a semester are barred from the major by this cutoff, and I would bet that even more are diverted away before even getting through all three courses by performance in the first ones they take.
 * The bar is high because the staff believes in you. Since our CS department has grown a bit slower than Moore's law in the past few years it might seem like resources are getting spread thin. That's not really the whole story though. Many undergraduates TA, tutor, and mentor other undergraduates. This is often times equally if not more effective than help from graduate student instructors and professors, since many profs and grads tend to be a bit too experienced to empathize with a lower-div undergrad. I implore you to take advantage of your peers both enrolled in the class and acting as course staff.
 * Classes tend to get easier in upper div! The curves are kinder, class sizes are smaller, and the professors tend to have genuine interest in the material. Since you've made it through lower-divs by this point, the projects get a lot more interesting as well since you should have decent programming/problem-solving maturity
 * Check out the "Academics" tab of my [portfolio](/portfolio#coursework) for cool classes and associated projects I've had the chance to take

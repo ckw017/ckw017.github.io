@@ -17,7 +17,8 @@ permalink: /about/
 
 ---
 
-Hi, I'm some guy! I graduated from UC Berkeley in 2021 where I studied Computer Science and Data Science, and previously worked at [Anyscale](https://www.anyscale.com/).
+Hi, I'm some guy! I graduated from UC Berkeley in 2021 where I studied Computer Science and Data Science, and previously worked
+on platform engineering, distributed computing, and container orchestration at [Anyscale](https://www.anyscale.com/).
 I am currently on sabbatical.
 In my freetime I enjoy [doodling with my fancy printer](/art), reading (I recommend Vonnegut, Ted Chiang, and Terry Pratchett), and playing competitive Pokemon.
 

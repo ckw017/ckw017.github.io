@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T14:02:31-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/24/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-24T00:00:00-07:00</published><updated>2025-05-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/24/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/24/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T16:37:45-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/24/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-24T00:00:00-07:00</published><updated>2025-05-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/24/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/24/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
 
 &lt;p&gt;I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are
 supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;cool S&lt;/a&gt;’s
@@ -683,18 +683,64 @@ following matrix one additional special property that we’ll cover briefly near
 1 &amp; -1 &amp;  1 &amp;  0 \\
 \end{bmatrix} %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;Now that we have a suitable matrix, we can prepare for the most ambitious visualization
-attempt of the post. I imagine this is the sort of thing my higher dimensional analog would
-put up on the 4D hypersurface of their room’s 5D walls, so I’m dubbing it “the orthotopeflower.” Unfortunately
-my apartment’s size is measured in square feet and not hypercubic feet, so I came up with
-the following 7x7 grid of 7x7 grids to visualize it:&lt;/p&gt;
+&lt;p&gt;Now that we have a suitable matrix, we can attempt to visualize our 4D fractal.
+One way to do this is to take 3D “slices” of the four dimensional space by fixing the
+value of &lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/4d_iter0.gif&quot; alt=&quot;4D iteration 0&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It turns out that the base case is boring regardless of how many dimensions.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/4d_iter1.gif&quot; alt=&quot;4D iteration 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From here you can get a better feel for how the visualization works. The purple cubes on the
+left and right that appear to be sitting at the origin are really at the &lt;script type=&quot;math/tex&quot;&gt;(x,y,z,w)&lt;/script&gt;
+coordinates of &lt;script type=&quot;math/tex&quot;&gt;(0,0,0,-1)&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;(0,0,0,1)&lt;/script&gt; respectively.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/4d_iter2.gif&quot; alt=&quot;4D iteration 2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can see parts of iteration 1 still poking through in iteration 2, which is a bit concerning since this
+was a symptom of the squishing behavior we saw in 3D. However looking closely, the squishing
+behavior doesn’t seem as bad yet. If you really twist your mind around the concept of 4
+dimensions, you might be able to see that while that the two pluses in &lt;script type=&quot;math/tex&quot;&gt;w=0&lt;/script&gt; don’t
+seem to be balanced, there are 3 pluses sitting to the left (&lt;script type=&quot;math/tex&quot;&gt;w=-1&lt;/script&gt;) and 3 more to the
+right (&lt;script type=&quot;math/tex&quot;&gt;w=1&lt;/script&gt;) that you could imagine as being orthogonal to the &lt;script type=&quot;math/tex&quot;&gt;w=0&lt;/script&gt; ones.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/4d_iter3.gif&quot; alt=&quot;4D iteration 3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My main takeaway from this is that while iteration 2
+can still be seen, iteration 1 has now been completely covered.
+Technically iteration 3 extends farther out in the &lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt; dimension, but at this point its
+difficult to comprehend the fractal anyway. I imagine this is the sort of thing my higher dimensional analog would
+put up on the 4D hypersurface of their room’s 5D walls to admire in its full glory, so I’m dubbing it “the orthotopeflower.”&lt;/p&gt;
+
+&lt;p&gt;Unfortunately my apartment is measured in square feet and not hypercubic feet, so
+it’s difficult for me to fully appreciate it. There are a couple of issues with the “3D slices”
+approach of visualizing in 4D:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;It extends way too quickly in the horizontal direction, wasting precious screen
+(or wall) real estate. Notably in iteration 3 we
+would have had to add 2 more slices to the left and to the right to visualize the whole
+thing.&lt;/li&gt;
+  &lt;li&gt;My inferior 3 dimensional eyes can’t see the interior of 3D objects (unlike how I’m
+able to see the interior of colored in 2D squares on a piece of paper), making it
+hard to fully appreciate the structure.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To get around both of these we can use the following 7x7 grid of 7x7 grids to visualize it
+a la the very first animation of this post:&lt;/p&gt;
 
 &lt;p&gt;Each smaller grid shows a slice -3 to 3 on the x and y axes. The “grid of grids” represent
 -3 to 3 along the z and w axes. Whenever a square across from one small grid
-to another its really being translated through the z or w axis.
-I opted for a 2D grid of 2D grids to visualize 4D rather than a line of 3D “slices” since it
-lets you see colors in the interior the structure that would otherwise be encased and blocked
-from view 3D. Plus this design would go nicely with the existing fractal on my wall.&lt;/p&gt;
+to another its really being translated through the z or w axis. Squares that appear to
+fade in or fade out are moving in or out of the 7x7x7x7 “viewing frame” in 4 dimensions.
+Compared to the line of 3D slices, this approach uses screen real estate a bit better
+(growing as a square instead of in a line), and lets you see the interior of the entire
+fractal without obscuring previous iterations. Plus this design would go nicely with
+the existing fractal on my wall.&lt;/p&gt;
+
+&lt;p&gt;With this method we can visualize a 21x21x21x21 area by cutting out some of the stylistic flourishes, and setting each
+square to the size of a single pixel:&lt;/p&gt;
 
 &lt;p&gt;A natural question is if we can continue into higher dimensions. Sadly I suspect the
 answer is no. Applying all our constraints from earlier we need a dimension &lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt; such that:&lt;/p&gt;
@@ -719,6 +765,14 @@ this problem to a future version of me who knows more math. This strategy seemed
 pretty well last time.&lt;/p&gt;
 
 &lt;h2 id=&quot;closing-thoughts&quot;&gt;Closing thoughts&lt;/h2&gt;
+
+&lt;p&gt;I once dreamt about a post-scarcity society that had to work around the problem of
+people not having any motivation to do anything, since all their basic needs were met.
+To give people something to do, every few years everyone over a certain age was expected
+to report on something beautiful that they learned or discovered about the world, otherwise
+they’d be executed or something (Note: post-scarcity &lt;script type=&quot;math/tex&quot;&gt;\neq&lt;/script&gt; utopia). Anyway, I’d like to
+imagine the formulation of a strange flower with jigsaw-like petals blooming through 4
+dimensional space would be enough to keep me off the chopping block for awhile.&lt;/p&gt;
 
 &lt;p&gt;I had a faint glimmer of hope that I would be able to stumble upon something novel &lt;em&gt;and&lt;/em&gt; useful while
 doing this investigation. For example, at one point I realized that the “spiral” construction

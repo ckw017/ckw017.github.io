@@ -25,7 +25,7 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 
 ### 100% Bot Proof Contact Info
 
-`<website.domain>@gmail.com`
+`<thissite.xyz>@gmail.com`
 
 ---
 # FAQs

@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-*Last updated: May 20th, 2022*
+*Last updated: May 21th, 2025*
 
 ---
 

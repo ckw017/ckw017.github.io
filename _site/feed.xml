@@ -1,159 +1,843 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-02T16:42:22-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Teaching, and other paradoxes</title><link href="http://localhost:4000/2021/07/02/Teaching/" rel="alternate" type="text/html" title="Teaching, and other paradoxes" /><published>2021-07-02T00:00:00-07:00</published><updated>2021-07-02T00:00:00-07:00</updated><id>http://localhost:4000/2021/07/02/Teaching</id><content type="html" xml:base="http://localhost:4000/2021/07/02/Teaching/">&lt;p&gt;Woops, I zoned out for another year. Thankfully I’m pretty sure no one actually reads most of this stuff, except maybe CS186 students who wanted to look into that one TA who doesn’t teach a live section and who primarily answers debugging questions at 4 AM. Which brings us to today’s topic!&lt;!--more--&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T13:57:30-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/24/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-24T00:00:00-07:00</published><updated>2025-05-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/24/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/24/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
 
-&lt;p&gt;If this is the first thing of mine you’re reading, then hi! My name isn’t important, and I’m nobody in particular. I’ve been teaching stuff in semi-official capacities since I was a high school freshman, when I volunteered at local elementary schools to help run after school math programs and keep kids from burning down bridges, or whatever it is that elementary schoolers would do without daycare. Teaching was also my first &lt;em&gt;real&lt;/em&gt; job (real := having to pay taxes) when I worked at Mathnasium, an after school math tutoring/self-studying/getting-ahead/SAT prep/daycare place type thingy. Later I became a lab assistant during my second and third semester for the intro to CS classes at Berkeley, and eventually as a TA up until my graduation a couple of months ago.&lt;/p&gt;
+&lt;p&gt;I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are
+supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;cool S&lt;/a&gt;’s
+and &lt;a href=&quot;https://en.wikipedia.org/wiki/Penrose_triangle&quot;&gt;Penrose triangles&lt;/a&gt; I stumbled upon a neat
+way to fill up graph paper by repeatedly combining and copying squares. I suspected there might
+have been more to the doodle, but wasn’t quite sure how to analyze it. Deciding to delegate to a future version of me that
+knows more math, I put it up on the wall behind my desk where it has followed me from high
+school to college to the present day.&lt;/p&gt;
 
-&lt;h2 id=&quot;the-paradoxes&quot;&gt;The paradoxes&lt;/h2&gt;
+&lt;!--more--&gt;
 
-&lt;p&gt;Well, okay, most of these aren’t going to be real paradoxes as much as they are catch-22’s or complaints, although I did leave a real paradox in my bio on the &lt;a href=&quot;https://cs186berkeley.net/staff/&quot;&gt;class website&lt;/a&gt;. For background, from Spring 2020 to Spring 2021 I taught CS 186, Berkeley’s databases course of roughly 600 students per semester. Starting in Fall 20 I was a head TA, which is a fancy way to say I answered more emails and worked extra hours.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/fractal/iter0to4.jpg&quot; alt=&quot;Static image of iterations 0 to 4&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;An important piece of context is that the course’s assignments are essentially a term-long project implementing various components of a database: query optimizer, indices, concurrency control, etc… Three of my main goals as a TA were:&lt;/p&gt;
+&lt;p&gt;Anyway, after a series of accidents I am now the prophesized future version of me that knows a bit more math.
+Due to its petal-like blooming structure and timeless presence scotch taped to my wall I’ll be referring to the
+fractal affectionately as “the wallflower,” although further down we’ll see that it’s closely related
+to a some well-known fractals. To start investigating it might help to run through
+the steps of how middle school me originally drew it:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Start with a single square.&lt;/li&gt;
+  &lt;li&gt;Tile four copies of the current state to the left, right, top, and bottom of the current state.&lt;/li&gt;
+  &lt;li&gt;Tile four copies of the current state slightly angled (about 27 degrees clockwise) from the left, right, top, and bottom of the current state.&lt;/li&gt;
+  &lt;li&gt;Alternate between steps 2 and 3 until you run out of graph paper.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In animated form (shoutout to &lt;a href=&quot;https://www.manim.community/&quot;&gt;manim&lt;/a&gt; for making this possible!):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/wallflower.gif&quot; alt=&quot;Gif of the first 7 iterations of constructing the fractal&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Similar to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Gosper_curve&quot;&gt;Gosper Curve&lt;/a&gt;, the steps can
+be run repeatedly to eventually cover any part of the plane, and each intermediate state can tile the plane.
+If you have graph paper and free time you can try out the steps for yourself – it’s fun to
+translate and trace the contour of the previous state and watch things lock into place like a puzzle.
+Alternatively, a bit over a year ago I realized you could
+generate the contour using an &lt;a href=&quot;https://en.wikipedia.org/wiki/L-system&quot;&gt;L-System&lt;/a&gt;.
+The rules are simple and consist of only 90 degree right (&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;) and left (&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;) turns:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Start with 4 right turns: &lt;script type=&quot;math/tex&quot;&gt;RRRR&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;Each iteration run the following substitutions: &lt;script type=&quot;math/tex&quot;&gt;R \rightarrow RLR, L \rightarrow RLL&lt;/script&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For example, after applying the first iteration of substitutions you should have &lt;script type=&quot;math/tex&quot;&gt;RLRRLRRLRLR&lt;/script&gt;.
+The following images demonstrate the first few applications of the rule:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/contouriter0to4.jpg&quot; alt=&quot;Static image of iterations 0 to 4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Yellow=next turn (going clockwise) will be to the left, Blue=to the right&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;And in animated form:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/contour.gif&quot; alt=&quot;Gif of the first 4 iterations of constructing the boundary&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Both methods end up generating equivale– hold up! When I first tried
+the L-System method a year ago I &lt;em&gt;thought&lt;/em&gt; it generated the same countour as the wallflower.
+In other words, I tried drawing the fourth iteration and its many right angles free
+hand and gave up partway thinking “well it worked for the first 3 iterations, therefore it works in general &lt;script type=&quot;math/tex&quot;&gt;\text{Q.E.D.}&lt;/script&gt;”
+It was only when I started making the animations for this post that I realized
+that the two don’t quite match up. Comparing the 4th iteration from each method:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/woops.jpg&quot; alt=&quot;Annotated comparison between two different versions of fourth iteration&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Side by side, the main difference between the two is how the “copies”
+of the 3rd iteration are placed around the original in the center. The first method (let’s call it
+“drag and drop”) places the copies directly above, below, etc… around the center, while
+the L-System method places them diagonally. The countour produced by the L-System
+approach is already documented in a few places:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Decrease friction on the student’s end. A bit of a conflicting goal to go for, after all falling into debugging session rabbit holes or stumbling waste deep in a flawed design is an important thing to be aware of when writing software. But, the primary goal of the assignments were to help students grok the algorithms presented in lecture, and getting caught in the weeds wasn’t conducive to that goal.&lt;/li&gt;
-  &lt;li&gt;Help students help themselves. There’s a lot of students compared to TAs, and that ratio isn’t getting any better thanks to budget cuts. On top of that, the pandemic made it difficult for students in certain timezones to get help directly. So a nice way to alleviate both issues was to make it easier for students to work out problems on their own.&lt;/li&gt;
+  &lt;li&gt;Wikipedia article for &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_fractals_by_Hausdorff_dimension&quot;&gt;List of fractals&lt;/a&gt; (listed as “Quadratic von Koch island”)&lt;/li&gt;
+  &lt;li&gt;Wikipedia article for &lt;a href=&quot;https://en.wikipedia.org/wiki/Koch_snowflake&quot;&gt;Koch snowflake&lt;/a&gt; (listed as “Quadratic Flake”, with file name “&lt;a href=&quot;https://imagej.net/ij/plugins/fractal-generator/index.html&quot;&gt;Karperien&lt;/a&gt; Flake”)&lt;/li&gt;
+  &lt;li&gt;Wikipedia article for &lt;a href=&quot;https://en.wikipedia.org/wiki/Minkowski_sausage&quot;&gt;Minkowski Sausage&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Jeffrey Ventrella’s generator for &lt;a href=&quot;http://www.fractalcurves.com/Root5.html&quot;&gt;Mandelbrot’s Quartet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Meanwhile, the variation made from the drag and drop method doesn’t appear anywhere I can find
+via Google image search and Wikipedia surfing. Why would one way be so much more common than the other?
+With some fiddling around I was able to get a set of rules to generate my wall’s version of the fractal (&lt;script type=&quot;math/tex&quot;&gt;L \rightarrow RLR, R \rightarrow LLR&lt;/script&gt;), however it has a strange
+effect that seems to “flip” the direction you draw the contour at each step, e.g. the first step
+goes from &lt;script type=&quot;math/tex&quot;&gt;RRRR&lt;/script&gt; (majority right turns) to &lt;script type=&quot;math/tex&quot;&gt;LLRLLRLLRLLR&lt;/script&gt; (majority left turns).
+Another natural question is if the original L-System doesn’t place copies aligned with
+the axes, what angle is it placing them at? It turns out that the “flipping” behavior,
+the L-System’s angles, and the seemingly arbitrary “about 27 degrees” from the beginning
+are connected in a surprising way. But before we get to that, lets take a detour to review an important topic:&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-count&quot;&gt;How to count&lt;/h2&gt;
+
+&lt;p&gt;Procrastinating for over a decade has given me plenty of opportunities to look at the fractal
+with fresh eyes as I learned new things. During freshman year of college I learned how to show that the cardinality
+of the natural numbers &lt;script type=&quot;math/tex&quot;&gt;\mathbb{N}&lt;/script&gt; is equal to the cardinality of pairs of natural
+numbers &lt;script type=&quot;math/tex&quot;&gt;\mathbb{N}^2&lt;/script&gt; using the &lt;a href=&quot;https://en.wikipedia.org/wiki/Pairing_function#Cantor_pairing_function&quot;&gt;Cantor pairing function&lt;/a&gt;
+to “dovetail” across the Cartesian plane. Similarly, I learned you could map the natural
+numbers onto a spiral to show that &lt;script type=&quot;math/tex&quot;&gt;\mathbb{N}&lt;/script&gt; has the same cardinality as pairs of integers &lt;script type=&quot;math/tex&quot;&gt;\mathbb{Z}^2&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/cantorpairing.png&quot; alt=&quot;Cantor pairing function&quot; /&gt;
+&lt;img src=&quot;/images/fractal/z2spiral.jpg&quot; alt=&quot;Z^2 spiral&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Credit to &lt;a href=&quot;https://en.m.wikipedia.org/wiki/Pairing_function#/media/File%3ACantor's_Pairing_Function.svg&quot;&gt;Wikipedia&lt;/a&gt; for the Cantor pairing function image, &lt;a href=&quot;http://stanford.edu/~dntse/classes/cs70_fall09/n20_fall09.pdf&quot;&gt;UCB CS70&lt;/a&gt; for the spiral&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Both of these reminded me of how the wallflower fills space in the Cartesian
+plane by building outwards from the origin. To use the wallflower’s structure as a pairing
+function we would need to find a way to assign an “order” to the way that we place each
+square, preferably in a way that complements the recursive nature of its construction.
+A natural starting point would be to use the center of the fractal as 0. From there we can number
+the surrounding four squares created from the first iteration of copying as 1, 2, 3 and 4
+in clockwise order:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/numbering1.jpg&quot; alt=&quot;Numbering 0 to 4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we’re faced with the question of how to label the squares from the next iteration. One
+way would be to number them in the order they appear scanning from top down, left to right:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/numberingjank.jpg&quot; alt=&quot;Jank numbering 0 to 24&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For lack of better words, this doesn’t feel very fractally – the order here seems unrelated to recursive
+structure of fractal. What if instead we tried to reuse the “middle out” approach used for
+0 to 4? After all, each “petal” is a copy of the first iteration that we’ve
+already given an ordering to. Reusing the clockwise scheme from 0 to 4 within each blue
+petal, and &lt;em&gt;across&lt;/em&gt; each blue petal (the dashed lines):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/numbering2.jpg&quot; alt=&quot;Numbering 0 to 24&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And extending to the next set of petals:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/numbering3.jpg&quot; alt=&quot;Numbering 0 to 124&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As chaotic as it may look at first glance, a few interesting properties emerge
+if we look at the positions of certain numbers. If we isolate our view to just multiples of 5,
+a scaled up grid tilted about 27 degrees clockwise is formed:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/just5s.jpg&quot; alt=&quot;Just multiples of 5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If we only look at the numbers of the form &lt;script type=&quot;math/tex&quot;&gt;5n + 1&lt;/script&gt;,
+we get the previous grid but scooted up by 1 square:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/just5plus1s.jpg&quot; alt=&quot;Just 5n + 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And if we look at just multiple of 25 we get another grid, scaled up even further:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/just25s.jpg&quot; alt=&quot;Just multiples of 25&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The number 5 appears to have a special relationship with the fractal. The reason becomes
+apparent if you look at the number of squares in each iteration. The 0th iteration
+is a single square, the first iteration has 5, the second has 25, the third has 125, etc… Since
+each iteration is constructed by taking the previous state and adding 4 additional copies
+it scales up by a factor of 5 in each step. Given the special relationship
+with multiples of 5 and powers and 5, it’s tempting to redo the labeling while counting
+in base 5 instead of base 10. Doing so we get this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/numberingbase5.jpg&quot; alt=&quot;Numbering in base 5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a ton of information, but if we focus in on just the iteration 3 pattern and its copy to the right you might
+notice something interesting:&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-add&quot;&gt;How to add&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/numberingsidebyside.jpg&quot; alt=&quot;Iteration 3 + copy to the right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you take any number on the left and check 5 spaces to the right, you’ll find
+its copy on the teal petal. Comparing the numbers between cells, they always seem to be
+the original value plus 200. For example, 5 spaces to the right of
+44 you’ll find 244, and 5 spaces to the right of 3 is 203. In some sense, adding 200
+seems to encode “shifting” 5 spaces to the right. This “shifting” property isn’t unique to 200
+either: consider the positions of 0, 1, 2, 3, and 4 relative to 30, 31, 32, 33, and 34.&lt;/p&gt;
+
+&lt;p&gt;If you stare for long enough you might notice by expanding any number, say 231 = 200 + 30 + 1,
+we can use each number in the expanded form to find its location on the grid. In this case, we
+can find vectors corresponding to 200, 30, and 1 on the grid and add them
+together to get the location of 231:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/vector231.gif&quot; alt=&quot;231 decomposition vectors&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can test out other numbers using the same strategy of breaking down the number into
+its 1s, 10s, 100s, etc… places and adding vectors. Assuming
+this works in general, all we need to know the position of any number on the grid is to know the position of each number
+in its expanded form, and then add them together. Let’s &lt;del&gt;abuse&lt;/del&gt; introduce some notation, defining &lt;script type=&quot;math/tex&quot;&gt;\vec{n}&lt;/script&gt; as the vector
+pointing to where the number &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; sits on the grid. Using our 1 digit values as an example:&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \overrightarrow{0} &amp;= \begin{bmatrix}
+           0 \\
+           0 \\
+         \end{bmatrix}
+  \end{align}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \overrightarrow{1} &amp;= \begin{bmatrix}
+           1 \\
+           0 \\
+         \end{bmatrix}
+  \end{align}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \overrightarrow{2} &amp;= \begin{bmatrix}
+           0 \\
+           1 \\
+         \end{bmatrix}
+  \end{align}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \overrightarrow{3} &amp;= \begin{bmatrix}
+           -1 \\
+           0 \\
+         \end{bmatrix}
+  \end{align}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \overrightarrow{4} &amp;= \begin{bmatrix}
+           0 \\
+           -1 \\
+         \end{bmatrix}
+  \end{align} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;With this new notation, we can stare at how “powers of 10” seem to behave:&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \overrightarrow{1} &amp;= \begin{bmatrix}
+           0 \\
+           1 \\
+         \end{bmatrix}
+  \end{align}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \overrightarrow{10} &amp;= \begin{bmatrix}
+           1 \\
+           2 \\
+         \end{bmatrix}
+  \end{align}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \overrightarrow{100} &amp;= \begin{bmatrix}
+           0 \\
+           5 \\
+         \end{bmatrix}
+  \end{align}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \overrightarrow{1000} &amp;= \begin{bmatrix}
+           5 \\
+           10 \\
+         \end{bmatrix}
+  \end{align}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \overrightarrow{10000} &amp;= \begin{bmatrix}
+           0 \\
+           25 \\
+         \end{bmatrix}
+  \end{align}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \overrightarrow{100000} &amp;= \begin{bmatrix}
+           25 \\
+           50 \\
+         \end{bmatrix}
+  \end{align} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Looking closely you might pick up on the pattern:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{equation}
+\overrightarrow{(10^n)} =  \begin{cases}
+5^n \begin{bmatrix}
+           0 \\
+           1 \\
+         \end{bmatrix} &amp; \text{if } n \text{ is even} \\
+5^{(n-1)} \begin{bmatrix}
+           1 \\
+           2 \\
+         \end{bmatrix} &amp; \text{if } n \text{ is odd}
+\end{cases}
+\end{equation} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;This conditional formula based on number of digits was
+how I initally wrote the visualization code. However it begged the question:
+is there a more elegant way to compute the values without needing a conditional?
+Ideally we want a transformation we could repeatedly apply to scale and rotate a vector
+based on the value of &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;, i.e. a matrix raised to the power of &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;. With some fiddling around, we can find the matrix &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; and its powers:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+M = \begin{bmatrix}
+           -2 &amp; 1 \\
+           1 &amp; 2\\
+\end{bmatrix},
+M^2 = \begin{bmatrix}
+           5 &amp; 0 \\
+           0 &amp; 5\\
+\end{bmatrix},
+M^3 = \begin{bmatrix}
+           -10 &amp; 5 \\
+           5 &amp; 10\\
+\end{bmatrix},
+M^4 = \begin{bmatrix}
+           25 &amp; 0 \\
+           0 &amp; 25\\
+\end{bmatrix}, \text{etc...} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Which conveniently matches the values we’re expecting &lt;em&gt;without&lt;/em&gt; needing a conditional in the equation:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\overrightarrow{(10^n)}  = M^n\overrightarrow{1} = \begin{bmatrix}
+           -2 &amp; 1 \\
+           1 &amp; 2\\
+         \end{bmatrix}^n\begin{bmatrix}
+           0 \\
+           1 \\
+         \end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Similarly we can set up equations for the other possible digits:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\overrightarrow{(2 \cdot 10^n)} &amp;= M^n\overrightarrow{2} = \begin{bmatrix}
+           -2 &amp; 1 \\
+           1 &amp; 2\\
+         \end{bmatrix}^n\begin{bmatrix}
+           1 \\
+           0 \\
+         \end{bmatrix}
+\newline
+\overrightarrow{(3 \cdot 10^n)} &amp;= M^n\overrightarrow{3} = \begin{bmatrix}
+           -2 &amp; 1 \\
+           1 &amp; 2\\
+         \end{bmatrix}^n\begin{bmatrix}
+           0 \\
+           -1 \\
+         \end{bmatrix}
+\newline
+\overrightarrow{(4 \cdot 10^n)} &amp;= M^n\overrightarrow{4} = \begin{bmatrix}
+           -2 &amp; 1 \\
+           1 &amp; 2\\
+         \end{bmatrix}^n\begin{bmatrix}
+           -1 \\
+           0 \\
+         \end{bmatrix}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;If you blur your eyes with the tears shed over the cursed notation, you might
+make out a connection to number systems such as base 5 or base 10.
+Similar to how in base 10 the number 1234 would expand to:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+1234 &amp;= 10^3 \cdot 1 + 10^2 \cdot 2 + 10^1 \cdot 3 + 10^0 \cdot 4
+\newline
+1234 &amp;= 1000 + 200 + 30 + 4
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;And in base 5:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+1234_5 &amp;= 5^3 \cdot 1 + 5^2 \cdot 2 + 5^1 \cdot 3 + 5^0 \cdot 4
+\newline
+1234_5 &amp;= 1000_5 + 200_5 + 30_5 + 4_5
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;We can use the matrix &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; as our base, and vectors as our digits to encode positions
+in the fractal:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+\overrightarrow{1234} &amp;= M^3\overrightarrow{1} + M^2\overrightarrow{2} + M^1\overrightarrow{3} + M^0\overrightarrow{4}
+\newline
+\overrightarrow{1234} &amp;= \overrightarrow{1000} + \overrightarrow{200} + \overrightarrow{30} + \overrightarrow{4}
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;We’ve stumbled upon a number system with a matrix base and vector digits, rather than scalars!
+Counting up from 0 we can get a feel for the how the number system connects to the structure
+of the fractal:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/makeitcount.gif&quot; alt=&quot;Gif with vectors + formulas&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;determinants&quot;&gt;Determinants&lt;/h2&gt;
+
+&lt;p&gt;You may have noticed that &lt;script type=&quot;math/tex&quot;&gt;20&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;40&lt;/script&gt;
+have switched positions compared to our original numbering. This is due to the fact that our choice
+of &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; has a negative determinant &lt;script type=&quot;math/tex&quot;&gt;\det(M) = -5&lt;/script&gt;, which means it has the side effect of “flipping” the
+orientation of space each iteration. Now that we know that our fractal is linked to linear algebra,
+we can visualize the connection by overlying scaled grids representing how powers of &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; act on our “digit vectors”
+&lt;script type=&quot;math/tex&quot;&gt;\vec{1}&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\vec{2}&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\vec{3}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\vec{4}&lt;/script&gt; a la &lt;a href=&quot;https://www.3blue1brown.com/lessons/matrix-multiplication&quot;&gt;3Blue1Brown&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/gridoverlay.gif&quot; alt=&quot;Overlayed grid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To avoid the flipping behavior we would need to pick a matrix with a positive determinant,
+for example:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+M^\prime = \begin{bmatrix}
+           2 &amp; 1 \\
+           -1 &amp; 2\\
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\det(M^\prime) = 5&lt;/script&gt;
+
+&lt;p&gt;Visualizing this new choice of matrix:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/gridoverlayprime.gif&quot; alt=&quot;Overlayed grid for M'&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Instead of “flipping” and realigning with the axes every other iteration, this choice of
+base continually rotates our “digit vectors” clockwise.
+Wait, didn’t we see a version of the fractal like this way back at the start with the L-System?
+Sure enough, using &lt;script type=&quot;math/tex&quot;&gt;M^\prime&lt;/script&gt; as our base reproduces the L-System version.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/unwoops.jpg&quot; alt=&quot;Unwoops&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Mystery solved! The two fractals are &lt;em&gt;almost&lt;/em&gt; the same, but the one on my wall is generated using
+&lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; where &lt;script type=&quot;math/tex&quot;&gt;\det(M) = -5&lt;/script&gt;, while the more common one is generated from &lt;script type=&quot;math/tex&quot;&gt;M^\prime&lt;/script&gt;
+with determinant &lt;script type=&quot;math/tex&quot;&gt;\det(M^\prime) = 5&lt;/script&gt;. The choice of matrix also sheds some light on where the seemingly
+arbitrary “about 27 degrees” comes from. You may have noticed the the absolute value of both
+determinants is &lt;script type=&quot;math/tex&quot;&gt;5&lt;/script&gt;, which conveniently matches the way the fractal increases in size by a factor
+of 5 each iteration. If we picked a matrix with a larger determinant, our “digit vectors” would
+grow too quickly and leave behind “empty space” each iteration. For example adjusting &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; to give
+it a determinant of &lt;script type=&quot;math/tex&quot;&gt;-6&lt;/script&gt; results in:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/det6.jpg&quot; alt=&quot;Determinant 6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Meanwhile if we pick a matrix with a smaller determinant, our “digit vectors” would grow too
+slowly and iterations would overlap. Adjusting &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; to give it a determinant of &lt;script type=&quot;math/tex&quot;&gt;-4&lt;/script&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/det4.jpg&quot; alt=&quot;Determinant 4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So ostensibly we want a matrix base with determinant &lt;script type=&quot;math/tex&quot;&gt;\pm 5&lt;/script&gt;. Additionally, we want our
+matrix to have integer entries to ensure that it always maps our digit vectors onto
+whole number coordinates. It just so happens that the vector &lt;script type=&quot;math/tex&quot;&gt;\left\langle 1, 2 \right\rangle&lt;/script&gt;
+has integer entries and magnitude &lt;script type=&quot;math/tex&quot;&gt;\sqrt{5}&lt;/script&gt;, meaning we can use it and one of
+its 90 degree rotations as the columns of our matrix to satisfy the determinant
+and whole number constraint. Computing the angle of this vector we get &lt;script type=&quot;math/tex&quot;&gt;\arctan{\frac{2}{1}} \approx 63.43^\circ&lt;/script&gt;,
+i.e. “about 27 degrees” away from the y-axis.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-add-part-2&quot;&gt;How to add part 2&lt;/h2&gt;
+
+&lt;p&gt;Finally, you may have noticed that vector addition fails horribly in most cases other than
+the expanded form ones, e.g. &lt;script type=&quot;math/tex&quot;&gt;\vec{2} + \vec{2} \neq \vec{4}&lt;/script&gt;. This is expected, since the choice of &lt;script type=&quot;math/tex&quot;&gt;2&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;4&lt;/script&gt;
+were to help make the connection to base 5 number systems but unrelated to the
+actual direction the vectors point. It might be more appropriate to refer to the 1 through 4
+as up (&lt;script type=&quot;math/tex&quot;&gt;\vec{1}&lt;/script&gt;), right (&lt;script type=&quot;math/tex&quot;&gt;\vec{2}&lt;/script&gt;), down (&lt;script type=&quot;math/tex&quot;&gt;\vec{3}&lt;/script&gt;), and left (&lt;script type=&quot;math/tex&quot;&gt;\vec{4}&lt;/script&gt;). As you
+might expect, opposite directions cancel eachother out, i.e. &lt;script type=&quot;math/tex&quot;&gt;\vec{1} + \vec{3} = \vec{2} + \vec{4} = \vec{0}&lt;/script&gt;.
+But what about other combinations of additions? By looking closely at the base 5 numbering and following where
+combinations of unit vectors point:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/base5center.jpg&quot; alt=&quot;Base 5 numbering&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can build up a table based on where it appears the sum of unit vectors would fall:&lt;/p&gt;
+
+&lt;style&gt;
+table{
+    border-spacing: 0;
+    border:1px solid #000000;
+}
+
+th{
+    border:1px solid #000000;
+}
+
+td{
+    border:1px solid #000000;
+}
+&lt;/style&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;script type=&quot;math/tex&quot;&gt;+&lt;/script&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{0}\hspace{5pt}&lt;/script&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{1}\hspace{5pt}&lt;/script&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{2}\hspace{5pt}&lt;/script&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{3}\hspace{5pt}&lt;/script&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{4}\hspace{5pt}&lt;/script&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{0}\hspace{5pt}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{0}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{1}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{2}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{3}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{4}&lt;/script&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{1}\hspace{5pt}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{1}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{14}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{13}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{0}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{22}&lt;/script&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{2}\hspace{5pt}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{2}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{13}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{41}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{44}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{0}&lt;/script&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{3}\hspace{5pt}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{3}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{0}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{44}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{32}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{31}&lt;/script&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{4}\hspace{5pt}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{4}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{22}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{0}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{31}&lt;/script&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{23}&lt;/script&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Notably the table is symmetric across the diagonal meaning that addition is commutative, as expected
+for vector addition. More importantly, most additions result in 2 digit values. While it might
+not seem like a big deal, it means that when doing larger additions we have to worry about
+carrying over values to the next digit. For example, if we want to find the number directly
+above 22, we can compute &lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{22} + \overrightarrow{1}&lt;/script&gt;. Using
+traditional long addition and carrying notation:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{array}{cccc}
+	    &amp; \overset{1}{\vphantom{0}} &amp; \overset{1}{2} &amp; 2 \\
+	  + &amp;   &amp;   &amp; 1 \\
+        \hline
+	    &amp; 1 &amp; 3 &amp; 3 \\
+	\end{array} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;If you’re a bit confused, remember that &lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{2} + \overrightarrow{1} = \overrightarrow{13}&lt;/script&gt;.
+And if you’re suprised this works at all, join the club! Since this is a blog post and not a proof,
+I leave sanity checking that this addition scheme works in general to the reader.&lt;/p&gt;
+
+&lt;h2 id=&quot;related-topics&quot;&gt;Related topics&lt;/h2&gt;
+
+&lt;p&gt;The concept of using things outside of &lt;script type=&quot;math/tex&quot;&gt;\mathbb{N}&lt;/script&gt; in a number system wasn’t totally unfamiliar thanks to &lt;a href=&quot;https://en.wikipedia.org/wiki/Balanced_ternary&quot;&gt;Balanced Ternary&lt;/a&gt;
+which uses &lt;script type=&quot;math/tex&quot;&gt;-1&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt; as digits, and a base of &lt;script type=&quot;math/tex&quot;&gt;3&lt;/script&gt;. If you imagine balanced
+ternary as being 1 dimensional along the x-axis, the wallflower can be seen as its 2D analog
+by adding two new digits to account for the positive and negative directions in the y-axis.
+An alternative scheme for &lt;a href=&quot;https://en.wikipedia.org/wiki/Generalized_balanced_ternary&quot;&gt;generalized balanced ternary&lt;/a&gt;
+already exists, and generalizes to any number of dimensions using lattices of &lt;a href=&quot;https://en.wikipedia.org/wiki/Permutohedron&quot;&gt;permutahedrons&lt;/a&gt;
+(at least from what I’ve been able to dig up). In 2 dimensions, this ends up being the hexagonal lattice:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/hexagon.jpg&quot; alt=&quot;2D generalized balanced ternary with hexagons&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Visualization of generalized balanced ternary in 2D using hexagons from &lt;a href=&quot;https://en.wikipedia.org/wiki/Generalized_balanced_ternary#/media/File:Visualization_of_three-digit_2D_generalized_balanced_ternary_numbers.pngkipedia.org/wiki/Generalized_balanced_ternary#/media/File:Visualization_of_three-digit_2D_generalized_balanced_ternary_numbers.png&quot;&gt;Wikipedia&lt;/a&gt;. See also &lt;a href=&quot;https://en.wikipedia.org/wiki/Gosper_curve&quot;&gt;Gosper Curve&lt;/a&gt;,
+which is like a hexagonal wallflower.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Another exotic number system is &lt;a href=&quot;https://en.wikipedia.org/wiki/Quater-imaginary_base&quot;&gt;Quater-imaginary Base&lt;/a&gt;,
+which uses the imaginary value &lt;script type=&quot;math/tex&quot;&gt;2i&lt;/script&gt; as its base, and &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;2&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;3&lt;/script&gt; as digits.
+If you imagine complex numbers as vectors, and imagine &lt;script type=&quot;math/tex&quot;&gt;2i&lt;/script&gt; as a matrix that performs a scale and rotation,
+we can convert this number system into our cursed notation:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+M_{2i} = \begin{bmatrix}
+           0 &amp; -2 \\
+           2 &amp;  0\\
+         \end{bmatrix},
+\overrightarrow{0} = \begin{bmatrix}
+           0 \\
+           0 \\
+         \end{bmatrix},
+\overrightarrow{1} = \begin{bmatrix}
+           1 \\
+           0 \\
+         \end{bmatrix},
+\overrightarrow{2} = \begin{bmatrix}
+           2 \\
+           0 \\
+         \end{bmatrix},
+\overrightarrow{3} = \begin{bmatrix}
+           3 \\
+           0 \\
+         \end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Alternatively, we can convert the positive determinant matrix &lt;script type=&quot;math/tex&quot;&gt;M^\prime&lt;/script&gt; from earlier into its
+complex number equivalent to get a base &lt;script type=&quot;math/tex&quot;&gt;2+i&lt;/script&gt; number system. &lt;a href=&quot;https://ideophilus.wordpress.com/2016/10/17/balanced-base-2i-and-some-gratuitous-fractals/&quot;&gt;Balanced base 2+i (and some gratuitous fractals)&lt;/a&gt;
+by Timothy James McKenzie Makarios explores this concept. I ran into this while looking for visualizations of
+quater-imaginary base on Google images for this section, only to realize that this connection had been
+made back in 2016. Somewhat embarassingly I found this after I made the animation at the
+start, only to find that the author had already beaten me to that as well, although
+using the &lt;script type=&quot;math/tex&quot;&gt;M^\prime&lt;/script&gt; version of the fractal instead of &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; (as far as I know &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt;
+cannot be encoded as complex number).&lt;/p&gt;
+
+&lt;p&gt;When I realized that the matrix base number system worked at all and started
+searching around to see if anyone else had made the connection between fractals, tesselations, linear algebra
+and number systems. Digging around:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://math.stackexchange.com/questions/43054/is-there-a-number-system-with-matrix-base&quot;&gt;Project BinSys&lt;/a&gt; led by Attila Kovács
+is focused on finding matrix bases specifically where the determinant is 2, for a generalized form of binary.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://people.clas.ufl.edu/avince/files/SIDMARepTess.pdf&quot;&gt;Replicating Tesselations&lt;/a&gt;
+by Andrew Vince does all the rigorous math stuff to formalize what I’ve been trying to
+describe through vigorous handwaving, and generalizes to any lattice rather than just &lt;script type=&quot;math/tex&quot;&gt;\mathbb{Z}^2&lt;/script&gt;.
+    &lt;ul&gt;
+      &lt;li&gt;Here you can also find proofs for the alternative way to generalize balanced ternary
+  into higher dimensions.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Speaking of handwaving: the next section is now fully in the territory of “things I
+started to think about a week ago when is started writing this,” so any semblance of rigor
+that came from having had many years to think about the problem is out the window. Instead
+I’ll be relying on my mental model of linear algebra, which is “if it sounds like its true
+and looks like its true, its probably true.”&lt;/p&gt;
+
+&lt;h2 id=&quot;to-go-even-further-beyond&quot;&gt;To go even further beyond&lt;/h2&gt;
+
+&lt;p&gt;Middle school me was really into Minecraft, so naturally I always wondered: would the fractal work with
+cubes? Specifically, is there a way to create a 3D version of the fractal by
+starting with cube and copying outwards in groups of six to form a “3D plus”? This mostly
+comes down to what properties we want to include when we generalize to a 3x3 matrix. The
+ones that beckoned to me from the ether are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;All of the entries in the matrix must be integers. This is needed so when we apply
+the matrix base to our vector digits (6 unit vectors sitting on the axes) that they still
+have integer values for each component. In the Vince paper this is formalized as “endomorphism of &lt;script type=&quot;math/tex&quot;&gt;\Lambda&lt;/script&gt;”,
+i.e. a mapping from the lattice &lt;script type=&quot;math/tex&quot;&gt;\Lambda = \mathbb{Z}^3&lt;/script&gt; back onto itself.&lt;/li&gt;
+  &lt;li&gt;Each column vector in the matrix should have a Hamming distance of 3 from the origin.
+This constraint ensures that the 6 copies of the “3D plus” we create on the second
+iteration don’t overlap with the original centered on the origin, but are near enough to still
+be adjacent to it.&lt;/li&gt;
+  &lt;li&gt;We want a matrix with determinant &lt;script type=&quot;math/tex&quot;&gt;\pm&lt;/script&gt;7. Since each iteration of the fractal adds 6 new copies,
+we increase the size of the fractal by 7 times each step. If we want to “pack” together these
+copies efficiently we need to make sure the matrix we apply scales up
+inputs by a factor of 7 as well.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Brute forcing searching through triplets of vectors with Hamming distance of 3, we get this nifty 3x3
+matrix that checks all of the boxes:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+            2 &amp; -1 &amp; 0 \\
+           -1 &amp;  0 &amp; 2 \\
+            0 &amp; -2 &amp; 1 \\
+         \end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Visualizing gives us:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/3d.gif&quot; alt=&quot;3D iterations 0 through 3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Wow, it looks terrible! One problem that stands out immediately is later iterations seem to be “smooshed”
+resulting in spots where the previous iteration is exposed.
+Looking closely at iteration 2, you might notice that we can comb over the bald spots
+by adding two more “3D pluses” centered on &lt;script type=&quot;math/tex&quot;&gt;\left\langle 1, 1, 1\right\rangle&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\left\langle-1, -1, -1\right\rangle&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/bandaid.gif&quot; alt=&quot;Iteration 2 with bandaid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we added two new pluses marked in yellow, and visualize the location of the centers
+of all 8 pluses. For a bandaid fix it feels like it works a little too well. Looking at just
+center points of our 8 new pluses they are arranged like the vertices of a warped cube.
+I’m still not entirely sure what to make of this, although it feels like it’s related to
+the fact that cubes (8 vertices, 6 faces) are the dual solid to octahedrons (6 vertices, 8 faces).
+It’s obviously tempting to try to take this new cube and make 6 copies of it, but to avoid
+derailing this post too much let’s save that for another day.&lt;/p&gt;
+
+&lt;p&gt;Visually, the problem with iteration 2 seems to be that the 3D pluses aren’t placed “symmetrically”
+around the center, causing the fractal to expand in a non-uniform way. Manually trying to find a more symmetrical
+arrangement of 6 pluses is tricky, feeling a bit like trying to &lt;a href=&quot;https://en.wikipedia.org/wiki/Hairy_ball_theorem&quot;&gt;comb a hairy ball&lt;/a&gt;.
+A sufficient (and possibly necessary) condition to prevent the smooshing behavior is
+to pick a matrix where each column is mutually orthogonal and has the same magnitude. I suspect if
+we include this with the prior constaints it is impossible to satisfy in 3D, as each vector would need a
+magnitude of &lt;script type=&quot;math/tex&quot;&gt;\sqrt[3]{7}&lt;/script&gt;. So given &lt;script type=&quot;math/tex&quot;&gt;x, y&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt; are integers, we must solve:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sqrt{x^2+y^2+z^2} = \sqrt[3]{7}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x^2 + y^2 + z^2 = 7^{2/3}&lt;/script&gt;
+
+&lt;p&gt;This can never be true since the left hand side is always an integer, while the right hand
+side is irrational. Luckily, if we go up to four dimensions the math works out in our favor. In 4 dimensions
+the components of each vector must satisfy:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sqrt{x^2 + y^2 + z^2 + w^2} = \sqrt[4]{9}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x^2 + y^2 + z^2 + w^2 = 3&lt;/script&gt;
+
+&lt;p&gt;Which works if we let 3 out of 4 of the entries to be &lt;script type=&quot;math/tex&quot;&gt;\pm 1&lt;/script&gt;,
+and set the last to &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;. It turns out there’s a plenty of space in hyperspace, giving us many
+possible matrices with columns of this form that satisfy all previous conditions. The
+following matrix one additional special property that we’ll cover briefly near the end:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+0 &amp; -1 &amp; -1 &amp; -1 \\
+1 &amp;  0 &amp; -1 &amp;  1 \\
+1 &amp;  1 &amp;  0 &amp; -1 \\
+1 &amp; -1 &amp;  1 &amp;  0 \\
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Now that we have a suitable matrix, we can prepare for the most ambitious visualization
+attempt of the post. I imagine this is the sort of thing my higher dimensional analog would
+put up on the 4D hypersurface of their room’s 5D walls, so I’m dubbing it “the orthotopeflower.” Unfortunately
+my apartment’s size is measured in square feet and not hypercubic feet, so I came up with
+the following 7x7 grid of 7x7 grids to visualize it:&lt;/p&gt;
+
+&lt;p&gt;Each smaller grid shows a slice -3 to 3 on the x and y axes. The “grid of grids” represent
+-3 to 3 along the z and w axes. Whenever a square across from one small grid
+to another its really being translated through the z or w axis.
+I opted for a 2D grid of 2D grids to visualize 4D rather than a line of 3D “slices” since it
+lets you see colors in the interior the structure that would otherwise be encased and blocked
+from view 3D. Plus this design would go nicely with the existing fractal on my wall.&lt;/p&gt;
+
+&lt;p&gt;A natural question is if we can continue into higher dimensions. Sadly I suspect the
+answer is no. Applying all our constraints from earlier we need a dimension &lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt; such that:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sqrt[d]{2d+1} \in \{\sqrt{3^2}, \sqrt{1^2 + 2^2}, \sqrt{1^2+1^2+1^2}\}&lt;/script&gt;
+
+&lt;p&gt;The left hand side is the magnitude each column vector needs to be for a matrix with &lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt; mutually
+orthogonal columns to have determinant &lt;script type=&quot;math/tex&quot;&gt;2d+1&lt;/script&gt;, so that it scales inputs enough to fit the &lt;script type=&quot;math/tex&quot;&gt;2d&lt;/script&gt; copies added each iteration.
+The right hand side is the set of magnitudes of integer valued vectors that have a Hamming distance of 3 away from the origin, so
+that the copies created in the second iteration touch but don’t intersect with the first iteration.
+Graphing this, it looks like the only dimensions where these can be satisifed are 1 (balanced
+ternary), 2 (the wallflower), and 4 (the orthotopeflower).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fractal/desmos.jpg&quot; alt=&quot;Demos graph of viable dimensions&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally, as mentioned earlier, the choice of matrix to use as the base was special. In particular
+it encodes the quaternion &lt;script type=&quot;math/tex&quot;&gt;i+j+k&lt;/script&gt;, meaning similar to quater imaginary base we now
+have a way to encode quaternions in “balanced nonary quaternion base”. In this scheme
+the 9 possible digits are &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\pm1&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\pm i&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\pm j&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\pm k&lt;/script&gt;, with base &lt;script type=&quot;math/tex&quot;&gt;i+j+k&lt;/script&gt;. Since I’m not too familiar
+with quaternions and still not entirely sure if this actually works, I’ll be delegating
+this problem to a future version of me who knows more math. This strategy seemed to work
+pretty well last time.&lt;/p&gt;
+
+&lt;h2 id=&quot;closing-thoughts&quot;&gt;Closing thoughts&lt;/h2&gt;
+
+&lt;p&gt;I had a faint glimmer of hope that I would be able to stumble upon something novel &lt;em&gt;and&lt;/em&gt; useful while
+doing this investigation. For example, at one point I realized that the “spiral” construction
+of the Koch snowflake could be used as an alternative to Knuth’s Quater-imaginary base
+(using $1 + 2i$ as the base instead of $2i$) only to find out that
+&lt;a href=&quot;https://ideophilus.wordpress.com/2016/10/17/balanced-base-2i-and-some-gratuitous-fractals/&quot;&gt;it was already discovered and documented back in 2016&lt;/a&gt;.
+I had a bit of retroactive FOMO realizing that a sharper 8th grade could have come across
+it first in 2013, but realistically I wouldn’t have known enough about linear algebra or
+complex numbers until much later, and wouldn’t have had the necessary intuition about
+either without the videos on linear algebra by 3blue1brown (whose influence can be seen
+all over this post). My consolation prize is that chasing the fractal across domains revealed
+connections that I never would have thought of otherwise, and that seem relatively obscure.
+Hopefully by writing and visualizing them here I’m able to make the connections a bit more accessible
+for future fractal fiddlers finding themselves falling face first down the same rabbit hole.&lt;/p&gt;
+
+&lt;p&gt;If this post comes off as a bit rambly thanks to the many twists and hops between domains its
+because I tried to follow the path I took while haphazardly picking up and forgetting
+about the problem over the years. There are a handful of spots where you might ask “how did you know
+doing this specific thing would lead to that?” The simple answer is I had know clue where it would
+lead, I just tried different things on a whim over the years and this post outlines the parts that stuck.&lt;/p&gt;
+
+&lt;p&gt;As you may have noticed, a good chunk of that journey (discovering two variations of the fractal, discovering the matrix base number system)
+took place &lt;em&gt;as&lt;/em&gt; I was writing this post, remniscent of how the Feynman Technique recommends
+teaching a subject to truly grasp it. An unwanted side effect is that the level of rigor
+and expected background knowledge is “person who happens to be familiar with the same random assortment
+of math and intuition as me.” If you want to read up on these concepts in a more
+rigorous and to the point style the Vince paper is probably the right place to get started.&lt;/p&gt;
+
+&lt;p&gt;As a final twist, an astute reader may have
+noticed that none of the visualizations in this post up until this point have
+matched with what’s up on my wall in the post’s thumbnail. The 4th iteration (green) is copied about 27
+degrees in the &lt;em&gt;wrong&lt;/em&gt; direction:&lt;/p&gt;
+
+&lt;p&gt;In a fun case of “why do I remember this, but not what I ate for dinner 2 days ago,” I
+remember my exact reasoning for doing this over a decade ago: I thought that fractal
+might unalign itself off the cardinal directions if I always tilted it off the axes in the
+same direction. As we’ve seen my intuition to compensate for tilt was almost right, other
+than the fact that the tilt already corrects itself in alternating steps. I was a bit
+embarassed about this until I remembered that Donald Knuth made a similar mixup
+&lt;a href=&quot;https://www.youtube.com/watch?v=v678Em6qyzk&quot;&gt;in his own attempt to put a fractal up on his wall&lt;/a&gt;.
+Fools rarely differ :)&lt;/p&gt;</content><author><name></name></author><summary type="html">Content Warning: Math, Handwaving I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are supposed to be doing. Somewhere between the cool S’s and Penrose triangles I stumbled upon a neat way to fill up graph paper by repeatedly combining and copying squares. I suspected there might have been more to the doodle, but wasn’t quite sure how to analyze it. Deciding to delegate to a future version of me that knows more math, I put it up on the wall behind my desk where it has followed me from high school to college to the present day.</summary></entry><entry><title type="html">Unintuitive observations from teaching</title><link href="http://localhost:4000/2021/07/02/Teaching/" rel="alternate" type="text/html" title="Unintuitive observations from teaching" /><published>2021-07-02T00:00:00-07:00</published><updated>2021-07-02T00:00:00-07:00</updated><id>http://localhost:4000/2021/07/02/Teaching</id><content type="html" xml:base="http://localhost:4000/2021/07/02/Teaching/">&lt;p&gt;Welp, I zoned out for another year. Luckily I’m pretty sure no one reads this stuff, except maybe CS 186 students who want to investigate the TA who answers debugging questions at 4 AM instead of teaching a discussion section. Which brings us to today’s topic!&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;teaching-and-other-paradoxes&quot;&gt;Teaching, and other paradoxes&lt;/h2&gt;
+
+&lt;p&gt;Disclaimer: these aren’t going to be real paradoxes as much as they are catch-22s or surprising results a la &lt;a href=&quot;https://en.wikipedia.org/wiki/Simpson%27s_paradox&quot;&gt;Simpson’s paradox&lt;/a&gt;, although I did leave a real paradox in my bio on the &lt;a href=&quot;https://cs186berkeley.net/sp21/staff/&quot;&gt;class website&lt;/a&gt;. For background, from spring 2020 to spring 2021 I TA’d for CS 186, Berkeley’s databases course of roughly 600 students per semester. Starting in fall 2020 I was a head TA, which is a fancy way to say I answered more emails and worked extra hours.&lt;/p&gt;
+
+&lt;p&gt;An important piece of context is that the course’s assignments are a term-long project implementing various components of a database: query optimizer, indices, concurrency control, etc… Three of my main goals as a TA were:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Decrease friction on the student’s end. A bit of a conflicting goal to go for since falling into debugging session rabbit holes or stumbling waist-deep in a flawed design are important things to be aware of when writing software. But, the primary goal of the assignments was to help students &lt;a href=&quot;https://en.wikipedia.org/wiki/Grok#In_computer_programmer_culture&quot;&gt;grok&lt;/a&gt; the algorithms presented in lecture, and getting caught in the weeds isn’t conducive to that goal.&lt;/li&gt;
+  &lt;li&gt;Help students help themselves. There are a lot of students compared to TAs, and that ratio isn’t getting any better thanks to &lt;a href=&quot;https://www.dailycal.org/2022/04/08/a-personal-view-of-uc-berkeleys-eecs-crisis/&quot;&gt;budget cuts&lt;/a&gt;. On top of that, the pandemic made it difficult for students in distant time zones to get help directly. So a nice way to alleviate both issues was to make it easier for students to work out problems on their own.&lt;/li&gt;
   &lt;li&gt;Reduce TA workload, again thanks to budget cuts.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;While I think I did a pretty good job at hacking away towards these goals, there were a few counterintuitive observations made along the way.&lt;/p&gt;
+&lt;p&gt;While I think I did a pretty good job at hacking away toward these goals, there were a few counterintuitive observations made along the way.&lt;/p&gt;
 
-&lt;h3 id=&quot;paradox-1-making-stuff-less-confusing-lead-to-more-confused-students&quot;&gt;Paradox 1: Making stuff less confusing lead to more confused students?&lt;/h3&gt;
+&lt;h3 id=&quot;1-making-things-clearer-leads-to-more-confused-students&quot;&gt;1. Making things clearer leads to more confused students&lt;/h3&gt;
 
-&lt;p&gt;Bugs and inconsistencies naturally crop up over time, and the programming assignments for 186 were no exception. In the semesters previous to when I started working almost every term a new assignment would be introduced, which would take time away from fixing problems in existing assignments. Or in the words of Vonnegut, “Everyone wants to build, but no one wants to maintain.” After every project I started taking time to scan through common problems and try to iron things out a bit. This could entail:&lt;/p&gt;
+&lt;p&gt;Bugs and inconsistencies naturally crop up over time in any code, and the programming assignments are no exception. In the past, a large amount of time was spent on developing new assignments instead of fixing problems in the existing assignments. Or in the words of Vonnegut, “Everyone wants to build, but no one wants to maintain.” Eventually, we shifted towards improving the existing the assignments by:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Adjusting the given APIs to be less foot-shooty&lt;/li&gt;
   &lt;li&gt;Adding tips in the documentation and specification with advice for common errors&lt;/li&gt;
-  &lt;li&gt;Leaving in more structure in the existing code&lt;/li&gt;
+  &lt;li&gt;Leaving in more structure in the provided code&lt;/li&gt;
   &lt;li&gt;Introducing very, very detailed error output on unit tests&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;So, after three semesters worth of these changes the amount of confusion decreased, right? Sort of. Overall, projects went a lot smoother – there were significantly less questions on Piazza, the Q&amp;amp;A platform for the class. Survey results showed a drop in complaints about workload and median time spent on assignments went down. But the amount of confusion in office hours became &lt;em&gt;worse&lt;/em&gt;. Huh, weird. This was almost certainly due to sampling bias. Consider the two types of students who might come to office hours for help on a programming assignments:&lt;/p&gt;
+&lt;p&gt;So, after three semesters’ worth of these changes, the amount of confusion surely decreased? Sort of. Overall, projects went a lot smoother – there were significantly fewer questions on &lt;a href=&quot;https://piazza.com/&quot;&gt;Piazza&lt;/a&gt;, the Q&amp;amp;A platform for the class. Survey results showed a drop in complaints about workload and median time spent on assignments went down. But the amount of confusion in office hours became &lt;em&gt;worse&lt;/em&gt;. Huh, weird. This was almost certainly due to sampling bias. Consider the two types of students who might come to office hours for help on a programming assignment:&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;A student who understands the material well, but is confused about the assignment because of poor documentation, confusing APIs, or ambiguous specifications&lt;/li&gt;
+  &lt;li&gt;A student who understands the material well, but is confused by poor documentation, confusing APIs, or ambiguous specifications&lt;/li&gt;
   &lt;li&gt;A student who is confused about the material, and subsequently extra confused about the assignment.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Type 1 students used to make up the majority of office hour tickets, and were the type I thought I could target with improvements to help reduce workload on the TA end. And ultimately, helping those students worked. Even when Type 1 students came in it was usually just a matter of pointing out parts of the documentation or the material to rereview – easy!&lt;/p&gt;
+&lt;p&gt;Type 1 students used to make up the majority of office hour tickets and were the kind many of the improvements were targeted towards. And ultimately, helping those students worked. Even when Type 1 students came in it was usually just a matter of pointing out parts of the documentation or the material to re-review – easy!&lt;/p&gt;
 
-&lt;p&gt;Helping Type 2 is a bit more involved, since confusions about the assignments would usually be rooted in deeper misunderstandings about the concepts in the course – rather than pointing towards material to rereview, fixing the problem would require an ad hoc lesson, followed by a review of their code to fix anything that was written on false assumptions, all before even getting to the original bug! By cutting down on Type 1 students, the proportion of Type 2 students increased, creating the illusion of students being more confused.&lt;/p&gt;
+&lt;p&gt;Helping Type 2 is a bit more involved since confusion about the assignments would usually be rooted in deeper misunderstandings about the concepts in the course. Rather than pointing towards material to re-review, fixing the problem would require an ad hoc lesson, followed by a code review to fix anything that was written on false assumptions, all before even getting to the original bug! By cutting down on Type 1 students, the observed proportion of Type 2 students increased, creating the illusion of students being more confused.&lt;/p&gt;
 
-&lt;h3 id=&quot;paradox-2-removing-60-of-students-would-have-cut-wait-times-by-0&quot;&gt;Paradox 2. Removing 60% of students would have cut wait times by… 0%&lt;/h3&gt;
+&lt;h3 id=&quot;2-removing-60-of-students-would-cut-wait-times-by-0&quot;&gt;2. Removing 60% of students would cut wait times by… 0%&lt;/h3&gt;
 
-&lt;p&gt;One of the “quality of life” metrics for a course is how long someone has to wait to get help. Thanks to the power of software and an international pandemic, it because pretty easy to measure by means of an online ticket queuing system. The online system also made it easier to analyze information about where tickets were coming from.&lt;/p&gt;
+&lt;p&gt;One of the “quality of life” metrics for a course is how long someone has to wait to get help. During the pandemic, it became pretty easy to measure thanks to the introduction of an online ticket queuing system. The online system also made it easier to analyze information about where tickets were coming from:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/zipf.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The above graph shows number of tickets per student in descending order, and is a classic zipf distribution – let &lt;code class=&quot;highlighter-rouge&quot;&gt;T&lt;/code&gt; be the number of tickets created by the most frequent student. Then the 2nd most frequent student generated roughly half of &lt;code class=&quot;highlighter-rouge&quot;&gt;T&lt;/code&gt;, the 3rd most generated roughly one third of &lt;code class=&quot;highlighter-rouge&quot;&gt;T&lt;/code&gt;, etc… Ultimately we found that semester that the top 1% of students accounted for 35% of the tickets, while the bottom 80% accounted for about 7.5%. A least it’s still better than the distribution of wealth!&lt;/p&gt;
+&lt;p&gt;The above graph shows the number of tickets per student in descending order and is a classic &lt;a href=&quot;https://en.wikipedia.org/wiki/Zipf%27s_law&quot;&gt;zipf distribution&lt;/a&gt;. Ultimately we found that semester that the top 1% of students accounted for 35% of the tickets while the bottom 80% accounted for about 7.5%, with almost 60% of students never filing a ticket at any point.&lt;/p&gt;
 
-&lt;h3 id=&quot;paradox-3-the-duality-of-man&quot;&gt;Paradox 3. The duality of man&lt;/h3&gt;
+&lt;h3 id=&quot;3-the-duality-of-man&quot;&gt;3. The duality of man&lt;/h3&gt;
 
-&lt;p&gt;As mentioned before, many of the changes I introduced as a TA were aimed at making the projects &lt;em&gt;less bad&lt;/em&gt;, which often times included changes that closed off certain pitfalls at the expense of freedom in design choice. These weren’t really changes I was happy with – my favorite assignments at Berkeley were the open-ended ones, and when I took the course I never really ran into issues coming up with implementations. But, anonymous feedback made it pretty clear that a non-trivial portion of the class was getting caught in design ruts, and caused many to give up on assignments prematurely or skip them outright. It could argued that these are acceptable losses, but to me it was preferable to sacrifice some difficulty for higher completion rates – the difficulty was secondary to the main goal of having students apply the material.&lt;/p&gt;
+&lt;p&gt;Many of the changes I introduced as a TA were aimed at making the projects Less Bad™, which oftentimes included changes that closed off certain pitfalls at the expense of freedom in design choice. These weren’t really changes I was happy with – my favorite assignments at Cal were the open-ended ones, and when I took the course I never ran into any severe design blocks. But, anonymous feedback made it pretty clear that a non-trivial portion of the class was getting caught in design ruts, and caused many to give up on assignments prematurely or skip them outright. It could be argued that these are acceptable losses, but to me, it was preferable to sacrifice some difficulty for higher completion rates – difficulty is secondary to the main goal of having students apply the material.&lt;/p&gt;
 
-&lt;p&gt;While historically feedback on assignments was skewed towards “too difficult! make it easier,” by my third semester teaching we hit about 90% “too hard!” and 10% “too easy” – it would be tricky to please everyone. A few ways to do it would be:&lt;/p&gt;
+&lt;p&gt;While historically feedback on assignments was skewed towards “too difficult! make it easier,” by my third semester of teaching we hit about 90% “too hard!” and 10% “too easy” – it would be tricky to please everyone. A few ways to do it would be:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Have students work out mandatory design docs before programming, and get review from TAs. This is a bit foiled though by our already stretched staff allocation.&lt;/li&gt;
-  &lt;li&gt;Have open-ended extra credit assignments that do allow for more student creativity. This is in the works, probably, since it’s on the list of cans I’ve kicked to future generations of software TAs.&lt;/li&gt;
+  &lt;li&gt;Have students work out mandatory design docs before programming, and get a review from TAs. This is a bit foiled though by our already stretched staff allocation.&lt;/li&gt;
+  &lt;li&gt;Have open-ended extra credit assignments that do allow for more student creativity. This is in the works, probably, since it’s on the list of cans I’ve kicked to future generations of TAs.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Even with those changes though, I imagine we’d still be somewhere where complaints come from both ends of the spectrum. Which is a good spot to be in! The class’s Fall 20 professor based their speed of lecturing at the point when compaints about being too fast and too slow hit equilibrium. Not being able to satisfy everyone is hardly a paradox, just a fact of life. The real paradox here is one of a particular piece of feedback received along the lines of “the project is too difficult” and eventually concluding in “don’t make it any easier!” You can’t satisfy everyone, and sometimes you can’t even satisfy one!&lt;/p&gt;
+&lt;p&gt;Even with those changes though, I imagine we’d still be somewhere where complaints come from both ends of the spectrum. Which is a good spot to be in! A past professor based their lecture pace at the point when complaints about being too fast and too slow hit equilibrium. Not being able to satisfy everyone is hardly a paradox, just a fact of life. The real paradox here is a piece of feedback received that argued that “the projects handhold too much!” and later concluded with “the projects are too open-ended.” You can never satisfy everyone, and in some cases, you can’t even satisfy one!&lt;/p&gt;
 
-&lt;h3 id=&quot;paradox-4-good-news-is-no-news&quot;&gt;Paradox 4. Good news is no news&lt;/h3&gt;
+&lt;h3 id=&quot;4-good-news-is-no-news&quot;&gt;4. Good news is no news&lt;/h3&gt;
 
-&lt;p&gt;The last “paradox” is more of just a psychological observation, but one that I think is important to acknowledge, especially for other TAs who might find themselves falling into the same pattern. A large part of what I think makes CS 186 a relatively good (or perhaps just a “not bad”) course is that we rely heavily on student feedback. This is what motivated most of the things I worked on as a TA. A common theme I noticed with feedback was that as teaching staff we mainly focused on the negatives – our job was to fix things that weren’t working, and positive feedback didn’t provide any hints towards that end. Positive feedback could sometimes be perceived not as “you’re doing good” but as “you’re not doing anything wrong.”&lt;/p&gt;
+&lt;p&gt;This last observation is less of a “paradox” and more of just a quirk with how feedback is viewed, but one that I think is important for other educators who might fall in the same trap. A large part of what I think makes CS 186 a Not Too Bad™ course is that we rely heavily on student feedback. A common theme I noticed when receiving feedback is that we tended to focus on the negatives – our job is to fix things that aren’t working, and positive feedback didn’t provide any hints towards that end.&lt;/p&gt;
 
-&lt;p&gt;I think in retrospect, if I’d spent more time focusing on positive feedback instead of micro-optimizing for the negative, I could have enjoyed my time teaching a lot more and cut down on stress. So, some quick advice: good news is good news! By no means should you always be resting on your laurels, but it’s beneficial to take a break now and then :)&lt;/p&gt;</content><author><name></name></author><summary type="html">Woops, I zoned out for another year. Thankfully I’m pretty sure no one actually reads most of this stuff, except maybe CS186 students who wanted to look into that one TA who doesn’t teach a live section and who primarily answers debugging questions at 4 AM. Which brings us to today’s topic!</summary></entry><entry><title type="html">What happened</title><link href="http://localhost:4000/2020/07/31/What/" rel="alternate" type="text/html" title="What happened" /><published>2020-07-31T00:00:00-07:00</published><updated>2020-07-31T00:00:00-07:00</updated><id>http://localhost:4000/2020/07/31/What</id><content type="html" xml:base="http://localhost:4000/2020/07/31/What/">&lt;p&gt;I woke up the other day and noticed that I was missing about 7 months of memories. I’m pretty sure now that memory, sense of passage of time, and novelty are closely intertwined and I’m sure there’s research out there to back it up (completely unverified claim). Anyway, what happened?&lt;!--more--&gt; I don’t think my year was particularly  eventful relative to its backdrop, but I think it’ll be nice to look back on and might give some nice insight into how not-particularly-interesting people (me) experienced it.&lt;/p&gt;
+&lt;p&gt;On the other side of the spectrum, many of the biggest improvements will likely never receive much acknowledgment. Since most improvements are based on feedback &lt;em&gt;after&lt;/em&gt; an assignment is submitted, only students in future iterations of the class get to enjoy the fixes without ever knowing of the original problems. Rarely does anyone ever notice the &lt;em&gt;absence&lt;/em&gt; of a bug and likewise, it’s easy to miss the &lt;em&gt;absence&lt;/em&gt; of once common complaints. In other words, when you do things right, people (including yourself) won’t be sure you’ve done anything at all.&lt;/p&gt;
 
-&lt;h2 id=&quot;covid-19&quot;&gt;COVID-19&lt;/h2&gt;
-&lt;p&gt;You probably already know the gist of the situation, especially if you’re in the states where due to poor, if not outright malicious decisions made by the current administration exasperated the situation to the point where we’re still in pseudo-quarantine despite other countries having already reopened months prior. &lt;a href=&quot;https://www.worldometers.info/coronavirus/&quot;&gt;This website&lt;/a&gt; tells me that today there were 50,000 new cases and 980 new deaths since yesterday. The total number of reported deaths is a bit over 150,000.&lt;/p&gt;
+&lt;h2 id=&quot;related-reading&quot;&gt;Related Reading&lt;/h2&gt;
 
-&lt;p&gt;I vastly underestimated the situation at first as well. In February I assumed that the cases would be relatively contained to China, where claims were made that it was already on the decline. At the beginning of March, one of my professors sent a mass email that seemed to gain notoriety outside the class and even the campus. I think the level of notoriety was a mix people who thought it was over-reaction and those who thought it was a model for how all schools should be reacting. It actually aged quite well. Leave it the machine learning prof to make good predictions.&lt;/p&gt;
-
-&lt;p&gt;By that time I was pretty convinced that the school would have to close for the remainder of the semester due to the PR risks of any student getting infected, especially those in the dorms. At Cal the housing situation has reached the point where dorm housing is guaranteed only for freshman, and most (if not all) rooms once used for doubles have been converted into triples, perfect kindling for an epidemic. By mid-March the university was closed and all classes were transitioned to online. I only know of one case being reported for a student on campus before everyone moved back, though I would be surprised if that was truly the sole case. In mid-July it was announced that Fall semester would also be completely online.&lt;/p&gt;
-
-&lt;h2 id=&quot;classes&quot;&gt;Classes&lt;/h2&gt;
-
-&lt;p&gt;In Spring I took 5 classes:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;EECS16B (Designing Information Devices and Systems II)&lt;/li&gt;
-  &lt;li&gt;CS100 (Principles and Techniques of Data Science)&lt;/li&gt;
-  &lt;li&gt;CS182 (Designing, Visualizing and Understanding Deep Neural Networks)&lt;/li&gt;
-  &lt;li&gt;CS189 (Introduction to Machine Learning)&lt;/li&gt;
-  &lt;li&gt;CS375 (Teaching Techniques for Computer Science)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www2.eecs.berkeley.edu/Pubs/TechRpts/2019/EECS-2019-99.html&quot;&gt;A Berkeley View of Teaching CS at Scale&lt;/a&gt;: In case any of the following thoughts crossed your mind while reading this:
+    &lt;ul&gt;
+      &lt;li&gt;Undergrad TAs?&lt;/li&gt;
+      &lt;li&gt;Head TAs??&lt;/li&gt;
+      &lt;li&gt;600 students???&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Induced_demand&quot;&gt;Induced demand&lt;/a&gt;: I didn’t include this in the list because there isn’t a good way to measure its effect, but I suspect that even if we continued to make the assignments easier, the effect on how many students need help wouldn’t decrease proportionally. That is to say, students that might have avoided/dropped the class because of limited support availability and long office hours waits would remain enrolled, and so the amount of support needed would stay roughly the same. A class’s reputation for difficulty is a surprisingly big factor in who takes it!&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Thanks to COVID-19 I ended up taking all of these classes on a pass/fail basis, which was nice since a pass in the class this semester would still count towards the degree where normally a letter grade would be required. For many of these classes this was a huge stress relief since for all of them I was already nearly at the threshold to pass the class by the start of April, and so could focus on my own housing and work situations without having to worry about throwing off my degree schedule. I will say, the administration took much longer than it needed to in order to make this decision which I think caused quite a bit of undue stress.&lt;/p&gt;
-
-&lt;p&gt;With respect to variety, yeah, I took all CS courses this semester (the past three semesters, in fact). At this point I’ve completed almost all of my non-CS requirements and if I had taken a single philosophy course with nothing else I could’ve graduated this semester. But, I’m under the impression that university is the last major chance I’ll get to pick up all of these things so I figured I might as well keep churning through what the department has to offer. In hindsight I sort of regret taking ML track courses (CS100, CS182, and CS189) since the main thing they taught was that I like systems stuff way more, but I think I would’ve ended up taking them eventually anyway for Data Science requirements.&lt;/p&gt;
-
-&lt;h3 id=&quot;eecs16b&quot;&gt;EECS16B&lt;/h3&gt;
-&lt;p&gt;I didn’t even remember I took this class when I made the list above and only recalled it because I knew I had taken 5 classes and one was missing. I think this is largely due to having taken EECS127 before this class, which is the reverse of the recommended order. Most of the linear algebra in the class was a strict subset of what 127 covered in far greater depth, and the circuit stuff was tricky (I self studied what was supposed to be learned from EE16A) but not impossible. The class has a reputation for its difficulty but I think even if I bombed the circuit topics completely I still could have made it out with a pass just from my linear algebra and calculus background from other classes.&lt;/p&gt;
-
-&lt;p&gt;I do think this class is rather poorly designed for freshman (which is supposedly its target audience) given that the lectures seem to be a rushed survey of topics that rarely covered any single with long enough for the average student to get to know the material unless they already had a strong intuition for it beforehand. This seems to be a major symptom of the intro courses (CS61A and CS70 hit the same notes) and at this point I question if the courses are like this intentionally to weed students out, which I really hope isn’t the case.&lt;/p&gt;
-
-&lt;p&gt;In terms of handling the transition to online, I believe this was the only course I managed to take a midterm in person for, spaced out and mask clad in a lecture hall. Afterwards the remaining midterm and the final were administered remotely via bcourses, and both times faced major technical difficulties as apparently the infrastructure wasn’t prepped for the load, which was beyond the staffs control. Most of the exams were given a pretty significant curve as well, although I’m not sure if this was general policy or specific to that semester.&lt;/p&gt;
-
-&lt;h3 id=&quot;cs100&quot;&gt;CS100&lt;/h3&gt;
-
-&lt;p&gt;CS100, also known as Data 100, is the main data science upper division course which preps students for the rest of their coursework. From my perspective it was a subset of CS189, CS70, and a dash of EECS127 and CS186, all of which I was pretty familiar with by the time their respective counterparts in the curriculum was reached. I admittedly haven’t seen a single lecture for this course bar a guest lecture on data visualization, but I did really enjoy the course’s textbook which I referenced often to see how much depth of knowledge was needed for certain topics.&lt;/p&gt;
-
-&lt;p&gt;My somewhat pessimistic interpretation of the class is that if you’ve already gotten familiar with the classes its intended to preface its mostly just an exercise in learning how to &lt;code class=&quot;highlighter-rouge&quot;&gt;import pandas as pd&lt;/code&gt; and do neat tricks with &lt;code class=&quot;highlighter-rouge&quot;&gt;DataFrame&lt;/code&gt;’s, but I’m very likely in the minority of students taking it in the order that I did. I think the typical student would have a great experience with the class, especially if its their first delve into the topics covered.&lt;/p&gt;
-
-&lt;p&gt;During the transition to online the midterm was converted into an online “checkpoint” with a day long window to complete, and the final was converted into an open ended project. I ended up foregoing the final project as I was already well into the pass threshold without it and wanted to focus more on making sure the class I was TAing for wrapped up the semester smoothly.&lt;/p&gt;
-
-&lt;h3 id=&quot;cs182&quot;&gt;CS182&lt;/h3&gt;
-
-&lt;p&gt;This class was taught by none other than Professor John Canny, namesake of the Canny edge detector! I discovered this when I read about the Canny edge detector, thought “haha just like the 182 prof,” and then realized it was probably the same guy. The class in general felt like a brief matrix calculus warm-up followed be a sprint through a zoo of neural net architectures and topics. The first half of the class mostly consisted of somewhat outdated slides from Stanford’s CS229, while the second half was a bit more open ended and covered more recent work. I enjoyed the second half way more than the first. The first half was at an odd intersection of mathematical rigor at a level, but pure heuristic and handwaved hacks at a high level, which at this point I’m fairly certain is a reflection of the subject at hand.&lt;/p&gt;
-
-&lt;p&gt;I mentioned somewhere above that ML classes mainly taught me that I prefer systems, and to some extent I think its because of the style at a high level. When something works, I like to know &lt;em&gt;why&lt;/em&gt; it works, or at least be able to introspect deep enough to get a feel for why it might work. The later half of the class addressed this in its unit on interpretable AI, but even in the field as a whole interpretability seems to often be left as an afterthought. Don’t get me wrong: results are cool and useful! But I think most of the joy I derive from learning is finding out &lt;em&gt;why&lt;/em&gt; things work, not finding out &lt;em&gt;that&lt;/em&gt; they work.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/woops/pong.gif&quot; alt=&quot;Pong&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Reinforcement learning agent (on the right) that I got to work, but that I’m not entirely certain as to why it does work.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;cs189&quot;&gt;CS189&lt;/h3&gt;
-
-&lt;p&gt;For some reason I have the strongest sense of amnesia with this class, likely because a good chunk of the work was frontloaded to before everything moved online and it didn’t have any memorable projects (unlike 182). Another contributing factor is the large overlap with both 127 topics (SVMs, SVD, Gradient Descent) and Andrew Ng’s machine learning course that I took over the summer. I think the most memorable thing from the class was Professor Shewchuk’s mass email regarding covid (mentioned above), and one of his quips during the last in-person lecture:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/woops/curve.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Lecture Audio: Here’s sort of a classic example where the blue points are the U.S. population in the censuses that happened once per decade going up to 1990. And so somebody has fit a fourth degree polynomial to that data to try to give us a sense of what the population might have looked like in between years and you’ll notice that this has has one glaring surprise in it which is that extrapoloating out into the future it has actually correctly predicted the coronavirus epidemic.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;cs-375&quot;&gt;CS 375&lt;/h3&gt;
-
-&lt;p&gt;375 was more or less a weekly discussion section where all the fellow students were TA’s, and definitey one of the most pleasant and interactive courses I’ve taken in the department. Following the move to online classes each week started with a half-hour to 45-minute discussion of just talking about what was going on with the transition in the classes everyone was TA’ing for. All-in-all I’m impressed as ever with Professor Dan Garcia’s dedication to inclusiveness and teaching as well as his boundless enthusiasm. The other instructors Andrew Phuong and Christopher Hunn also both did fantastic jobs facilitating discussions and bringing in relevant research results and ongoing studies into the mix.&lt;/p&gt;
-
-&lt;h2 id=&quot;teaching&quot;&gt;Teaching&lt;/h2&gt;
-
-&lt;p&gt;This semester I worked as a 15-hour TA for CS W186: Introduction to Database Systems. This was my first time TA’ing for a Berkeley class so I was pretty excited, although my role on course staff was a bit removed from the traditional teaching experience. Most CS courses seem to have the broad categories of discussion TAs (who lead discussion/recitation sections on a weekly or biweekly basis), administrative TAs (who help the instructors with student affairs, extensions, exam logistics, etc…) and content TAs (who help create and maintain assignments, notes, discussion worksheets and manage autograding). Other classes will occasionally also have readers, who help with grading, though this isn’t the case with 186 where projects are graded automatically and exams are handled by the existing staff.&lt;/p&gt;
-
-&lt;p&gt;My role was closest to a pure content TA, although I barely touched the course notes and discussion worksheets. Most of my time was spent on the semester long project: Moocbase. Moocbase is a pedagogical database implementation, i.e. a bare bones database with functionality that can be added throughout the semester by students after each topic is covered in lecture. I helped create a new section for &lt;a href=&quot;https://en.wikipedia.org/wiki/Hash_join#Grace_hash_join&quot;&gt;Grace Hash Joins&lt;/a&gt;, which was a lot of fun. I was surprised how pleasant it was to extend Moocbase, and while I’m sure some credit goes to the foresight of the original authors I think it might just be a product of traditional RDBMS implementations. Because one of the selling points of database’s are their declarative style of interfacing with users, under the hood things tend to be built around modularity so that the underlying optimizer can mix and match methods to accommodate the predicted workload. I also worked on adding a CLI and parser on top of the existing DB to hopefully make the significance of finishing each project more apparent to students in future iterations of the course.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/woops/moocbase.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;I demo’d this in the closing lecture of the semester, but given the first few seconds of the recording were me saying “oh no, I’m being recorded” I don’t think I’ll be sharing that :^)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;The transition to online was pretty smooth at the start. The W in CS W186 stands for web, i.e. all of our are prerecorded and delivered asynchronously anyway. Since my role was pretty independent of in-person discussion sections as well, I saw almost no impact except for the move of office hours to online and a few hiccups with the autograding system as edX grinded to a near halt at one point from what I imagine was a sudden influx of customers. While we had access to extra tooling (we could now download and execute student code locally to pinpoint problems) the process was a bit slower since at least in my experience because I couldn’t work asynchronously – in normal office hours you can give some advice and then check back later to see how the student has progressed while helping others in the meantime. With remote office hours help had to be given serially, and having to sit in a call watching someone try to livecode your tips is somewhat unideal for both parties involved.&lt;/p&gt;
-
-&lt;p&gt;Despite the setbacks, overall it was a great experience and I look forward to returning in for the Fall semester. My biggest takeaway is definitely that there’s so much to be learned from taking another lap through material and that the best way to reinforce knowledge is to practice explaining it to others.&lt;/p&gt;
-
-&lt;h2 id=&quot;other-stuff&quot;&gt;Other stuff&lt;/h2&gt;
-
-&lt;h3 id=&quot;campus-life&quot;&gt;Campus Life&lt;/h3&gt;
-&lt;p&gt;I’ll be honest, I’m not usually on campus since most of my classes are webcast so the closing of the main locations wasn’t super impactful for me. Two major things for me were the closing of the RSF (the campus gym) and dining halls. I’m sure this isn’t uncommon but I’ve been pretty restless, at least physically, during quarantine since access to the gym and going on jogs is far more limited. While the campus dining halls get mixed reviews I’ve always liked them. They were open for takeout to a limited extent after campus closed, but I definitely missed the usual variety and unlimited access to coffee.&lt;/p&gt;
-
-&lt;h3 id=&quot;housing&quot;&gt;Housing&lt;/h3&gt;
-&lt;p&gt;I renewed my lease on my current housing in Berkeley for another year before quarantine started, so I’ve been in Berkeley since quarantine started and will be here through May of 2021. I think this ended up working out in my favor since both me and my dad would prefer to remain separate due to the risks of disease transmission, and the fact that I can’t bring myself to be productive while in my hometown ever since graduating high school.&lt;/p&gt;
-
-&lt;h3 id=&quot;hobbies&quot;&gt;Hobbies&lt;/h3&gt;
-&lt;p&gt;I got into pen plotting, which I’ll probably save for another post. I’ve also gotten a small amount of reading done, although much less than I’d prefer and most of it being manga. The most recent thing I’ve read is the series of short series in Ted Chiang’s &lt;em&gt;Exhalations&lt;/em&gt; which I highly recommend.&lt;/p&gt;
-
-&lt;h3 id=&quot;internship&quot;&gt;Internship&lt;/h3&gt;
-&lt;p&gt;I’ve been working at Cisco AppDynamics over the summer. It’s pretty neat, and it pays twice as much as last summer which is a cool perk. I feel like I’d have to read what part of the company of the roadmap is public to say more, but reading and writing simultaneously is hard so I’ll probably refrain.&lt;/p&gt;
-
-&lt;h3 id=&quot;protests&quot;&gt;Protests&lt;/h3&gt;
-&lt;p&gt;Maybe this should warrant its own section given the importance of the matter, but honestly it feels out of place for my usual writing topics. I guess I’ll briefly leave my subjective experience: as an Asian American the topic of race relations in the US have always been awkward for me. The narrative from elementary to high school is always written in terms of black vs. white, occasionally drawing in Native Americans and Hispanics though those are often marginalized as well. Asian Americans are usually left as a footnote or perhaps as a paragraph for the sole purpose of comparing and contrasting. Even in college the introductory class to Asian American studies felt strangely disconnected from black-white race relations: opportunities for joint protest were often not notable (AA protests in general are thought to be uncommon due to a historical fear of standing out excessively, most notably victims of Japanese internment) and the myth of the model minority created a different breed of harmful stereotyping. I feel like an outsider in these events and I think that’s why I refrain from getting too deeply involved. That said, I am on the side of the protesters and think that police reform is absolutely necessary. As far as I’m concerned George Floyd was publicly executed and the protesters have the right to express their feelings of disenfranchisement and fear through their demonstrations.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;May we live in interesting times.&lt;/p&gt;</content><author><name></name></author><summary type="html">I woke up the other day and noticed that I was missing about 7 months of memories. I’m pretty sure now that memory, sense of passage of time, and novelty are closely intertwined and I’m sure there’s research out there to back it up (completely unverified claim). Anyway, what happened?</summary></entry><entry><title type="html">Blursing Python</title><link href="http://localhost:4000/2019/12/06/blursed-python/" rel="alternate" type="text/html" title="Blursing Python" /><published>2019-12-06T00:00:00-08:00</published><updated>2019-12-06T00:00:00-08:00</updated><id>http://localhost:4000/2019/12/06/blursed-python</id><content type="html" xml:base="http://localhost:4000/2019/12/06/blursed-python/">&lt;p&gt;&lt;em&gt;“&lt;strong&gt;blursed&lt;/strong&gt; (adj): Simultaneously blessed and cursed by a situation, object, person, etc…”&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;And if you’re in the mood to doom scroll:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dynomight.net/teaching/&quot;&gt;Teaching is a slow process of becoming everything you hate&lt;/a&gt;: A very relateable read (although I did genuinely enjoy teaching!)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.pamelafox.org/2022/05/my-experience-as-unit-18-berkeley.html&quot;&gt;My experience as a Unit-18 Berkeley Lecturer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Welp, I zoned out for another year. Luckily I’m pretty sure no one reads this stuff, except maybe CS 186 students who want to investigate the TA who answers debugging questions at 4 AM instead of teaching a discussion section. Which brings us to today’s topic!</summary></entry><entry><title type="html">Blursing Python</title><link href="http://localhost:4000/2019/12/06/blursed-python/" rel="alternate" type="text/html" title="Blursing Python" /><published>2019-12-06T00:00:00-08:00</published><updated>2019-12-06T00:00:00-08:00</updated><id>http://localhost:4000/2019/12/06/blursed-python</id><content type="html" xml:base="http://localhost:4000/2019/12/06/blursed-python/">&lt;p&gt;&lt;em&gt;“&lt;strong&gt;blursed&lt;/strong&gt; (adj): Simultaneously blessed and cursed by a situation, object, person, etc…”&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;– &lt;a href=&quot;https://www.urbandictionary.com/define.php?term=Blursed&quot;&gt;Urban Dictionary&lt;/a&gt;&lt;/p&gt;
 
@@ -451,227 +1135,7 @@ Float indexing
 18.0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Hopefully you now have a good idea of what I mean when I say blursed! The source for this can be found &lt;a href=&quot;https://github.com/ckw017/blursed&quot;&gt;here&lt;/a&gt;. If you want to experience this travesty firsthand, Python 3.5+ should be able to take use this properly after running &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install blursed&lt;/code&gt;. And as always, thanks for reading.&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="Fun" /><summary type="html">“blursed (adj): Simultaneously blessed and cursed by a situation, object, person, etc…” – Urban Dictionary I recently discovered something incredibly blursed while reading an article by faehnrick in PagedOut Volume 2.</summary></entry><entry><title type="html">Starting my own personal wiki</title><link href="http://localhost:4000/2019/11/22/TiddlyWiki/" rel="alternate" type="text/html" title="Starting my own personal wiki" /><published>2019-11-22T00:00:00-08:00</published><updated>2019-11-22T00:00:00-08:00</updated><id>http://localhost:4000/2019/11/22/TiddlyWiki</id><content type="html" xml:base="http://localhost:4000/2019/11/22/TiddlyWiki/">&lt;p&gt;&lt;em&gt;“Think of the @TiddlyWiki as a markdown processor with a Turing-complete turbo-charged hyper-drive that becomes your external brain. Start intertwingling your ideas. Simple TWs use just markdown - but advanced TWs can do virtually anything.”&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;– &lt;a href=&quot;https://twitter.com/joeerl/status/1083249244897796096?s=20&quot;&gt;Joe Armstrong&lt;/a&gt;, creator of erlang&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;Disclaimer: leading with this quote makes it feel like I’m trying to sell you on this tool as some kind of organizational panacea. I’m not. The introduction to this post is just really long so I needed a way to convince you to keep reading : )&lt;/p&gt;
-
-&lt;p&gt;Recently one of my friends had their backpack stolen along with their work laptop, phone, and wallet. While upset about the loss of their hardware and valuables, it wasn’t their main concern – both sets of items were replaceable. What they were more concerned about were the photos on their phone and, to my surprise, their journal.&lt;/p&gt;
-
-&lt;p&gt;There’s a large stretch of my life that’s pretty much undocumented outside of my memories ranging from around 2003 to 2013. The first three years of my life are pretty fleshed out in my family’s scrapbooks. And after 2013 most of my peers had gotten access to smartphones and social media, so some form of what I was up to exists out there. But between those two times not many photos of me were taken, or at least preserved, outside of group photos of extended families and middle school yearbooks. This didn’t really bother me for most of my life. In fact, there’s &lt;a href=&quot;https://well.blogs.nytimes.com/2016/03/08/dont-post-about-me-on-social-media-children-say/&quot;&gt;a lot of concern today&lt;/a&gt; about parents over-documenting their child’s upbringing on social media when the kid is still too young to consent to the release of information that will be more or less impossible to retract from the clutches of indexers and dataminers unaffiliated with the original site. Imagine in 35 years when tabloids dig up videos of toddler tantrums as ammunition against the temperment of presidential candidates!&lt;/p&gt;
-
-&lt;p&gt;On the other hand, personal documentation is largely beneficial. Being able to keep track of day-to-day events, how time was spent, and how you felt gives a lot of great information that you can use to get to know yourself and to keep track of beneficial or harmful patterns in your life. Moreover a scheduled recap at the end of every day is a nice memory exercise. Relying purely on memory works sometimes, but for me anything after a week tends to deteriorate rapidly. I’ve tried journaling in the past but to put it plainly I’m really bad at managing physical mediums: notebooks inevitably get repurposed and notepads blink out of existence. And even if I were worthy of handling real, non-digital, non-e-prefixed paper, scheduling in a time at the end of the day to just write things out is sort of out of place with my workflow for school which revolves around a lot of markdown files, repos, and other things from removed from the domain of dead trees.*&lt;/p&gt;
-
-&lt;p&gt;* A &lt;a href=&quot;https://journals.sagepub.com/doi/abs/10.1177/154193120905302218?casa_token=3sRkvfe5L-EAAAAA%3AfvzReNSf5xZLCSf7yyA4_dhhRgAIej7ZpF86wJ6zhG_JwNVXnE1pjJIA97wRiXsBwYPSui6o_Q&amp;amp;&quot;&gt;study&lt;/a&gt; suggests that writing on dead trees is better for memory&lt;/p&gt;
-
-&lt;p&gt;Introducing TiddlyWiki: “a non-linear personal notebook.”
-You can read all about it &lt;a href=&quot;https://tiddlywiki.com/&quot;&gt;here&lt;/a&gt;, which is itself a TiddlyWiki that documents its own features. To summarize what it is to me:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A journal that won’t get crumpled in my bag and can embed images&lt;/li&gt;
-  &lt;li&gt;A flexible data store with search and tagging for text documents, PDFs, images, and generic file types&lt;/li&gt;
-  &lt;li&gt;A notetaking tool that doesn’t require me to recompile LaTeX every time I forget a \end statement&lt;/li&gt;
-  &lt;li&gt;A more flexible Google Drive that I don’t have to entrust the confidentiality of to a cloud service&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Other people use it as a TODO list and task manager, but I don’t quite see it as the best choice of tool for that.&lt;/p&gt;
-
-&lt;p&gt;Personal wiki’s aren’t a new idea whatsoever, dating back to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Memex&quot;&gt;Memex&lt;/a&gt; in 1945. The Memex was imagined to be a device in the far future that could compress documents encoding a person’s knowledge and indexing it for rapid retrieval, not a farfetched idea at all in hindsight! &lt;a href=&quot;https://en.wikipedia.org/wiki/MyLifeBits&quot;&gt;MyLifeBits&lt;/a&gt; is an ongoing project by &lt;a href=&quot;https://en.wikipedia.org/wiki/Gordon_Bell&quot;&gt;Gordon Bell&lt;/a&gt; inspired by Memex to document everything he’s encountered. While my wiki and Bell’s are personal for privacy reasons, people on &lt;a href=&quot;https://github.com/RichardLitt/meta-knowledge&quot;&gt;this list&lt;/a&gt; have entirely open ones, (hopefully) cleansed of any sensitive information.&lt;/p&gt;
-
-&lt;p&gt;So far I’m really enjoying the experience. Journals are easy to create, format, and update either throughout the day or as I recall details. Tag’s allow hierachies to be formed, so at the end of each week I can link all the journal entries to a larger summary of the week, and as I approach the end of years and months the same techniques can be applied recursively.  Inline LaTeX means that I can actually take notes and the fact that it is a “wiki” means I can hyperlink together internal information.&lt;/p&gt;
-
-&lt;p&gt;One thing I’m excited to use is tagging a journal entry with “future” to mark it as something that I want to reflect on at a certain time. For example, right now most of my stress comes from a combination of summer job search and exam season. By the time these problems are resolved, I think it would be nice to have a one-for-one correspondence between present and future me. I found that by far my favorite writing assignment in high school was one of the first: to write a letter to myself at graduation, and then “write back” when the time came. I think both ends of the correspondence forced me to really consider my life holistically and in longer term than I’m ever forced to on a day-to-day basis. In particular, it was somewhat reassuring to see that all the worry’s my freshman year incarnation had worked out in one way another.&lt;/p&gt;
-
-&lt;p&gt;As I mentioned, for now this is a purely personal wiki. I don’t plan to make any of it public, though the version I use is hosted off a node server and displayed in browser. If I get good enough with the tools I might just fork off the notetaking and course related stuff to a separate public entity for the pedagogical greater good. Moreover, I can see this becoming a nice place to prototype ideas for more blog posts. As you may notice, there’s a very apparent gap in content here! Part of the reason I’ve been hesitant to publish anything is because there’s a lot of careful checking that I do before I put anything out, and these formalisms make me reluctant to start at all. Being able to just write out ideas lazily (no full sentences, grammar structure, special formats) let’s me get started easily, and starting tends to be half the battle for writing.&lt;/p&gt;
-
-&lt;p&gt;Because I’m bad at conclusions, enjoy some snippets of how I’m currently using my personal wiki! And thanks for reading.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/tiddlywiki/fstring.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Notetaking on a particularly interesting python library, as well as a hint towards a future post : )&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/tiddlywiki/journal.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Journal entry aggregation and some nice $\LaTeX$ rendering&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/tiddlywiki/lecture.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;I’m almost good enough to keep with lectures that don’t have heavy notation&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/tiddlywiki/fullview.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Images (shoutout to the Berkeley Alum artist Yuumeii) can be uploaded and tagged. Side bar on the side has search, recently used, and other tools (which can be extended programmatically from within the wiki!)&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><category term="Tools" /><category term="Workflow" /><summary type="html">“Think of the @TiddlyWiki as a markdown processor with a Turing-complete turbo-charged hyper-drive that becomes your external brain. Start intertwingling your ideas. Simple TWs use just markdown - but advanced TWs can do virtually anything.” – Joe Armstrong, creator of erlang</summary></entry><entry><title type="html">Python Decorators: Not just for decoration</title><link href="http://localhost:4000/2019/01/14/Decorators/" rel="alternate" type="text/html" title="Python Decorators: Not just for decoration" /><published>2019-01-14T00:00:00-08:00</published><updated>2019-01-14T00:00:00-08:00</updated><id>http://localhost:4000/2019/01/14/Decorators</id><content type="html" xml:base="http://localhost:4000/2019/01/14/Decorators/">&lt;p&gt;Python decorators are syntactic sugar that most people will
-run into while working with web frameworks such as Flask or Bottle.
-For example, the following snippet from the Bottle documentation uses
-decorators to specify a route:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/hello/&amp;lt;name&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;lt;b&amp;gt;Hello &amp;lt;/b&amp;gt;!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;#Equivalent to index = route('/hello/&amp;lt;name&amp;gt;')(index)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In fact the most common use of decorators is to allow framework users
-to hook into some interesting functionality. Of course, there
-are some uses in more common cases. Consider the following decorator:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;memoize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;memoized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;memoized&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;memoize&lt;/code&gt; is a higher order function that takes &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; (another function) as
-input. It creates a dictionary &lt;code class=&quot;highlighter-rouge&quot;&gt;cache&lt;/code&gt;, then returns the function &lt;code class=&quot;highlighter-rouge&quot;&gt;memoized&lt;/code&gt;. Upon closer inspection, &lt;code class=&quot;highlighter-rouge&quot;&gt;memoized&lt;/code&gt; checks whether &lt;code class=&quot;highlighter-rouge&quot;&gt;cache&lt;/code&gt; already contains
-its arguments. If not, it computes the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;cache[args]&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;This function is incredibly useful for recursive routines without side-effects.
-For example, consider the textbook example of “there’s a time and place for
-recursion, but not now!”:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This function would normally sport an elegantly inefficient 2^n runtime.
-However, applying the memoize decorator would cache the result of each call
-to &lt;code class=&quot;highlighter-rouge&quot;&gt;fib(n)&lt;/code&gt; for n in [0..n-1]. This caching procedure reduces the runtime from
-exponential to linear (at the cost of memory).&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;A pragmatist would argue to solve the problem iteratively (and a
-hyper-pragmatist would suggest exploiting matrix multiplies), but in such
-a case I wouldn’t have an excuse to use decorators.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;This however, is just the surface of decorators. Back to the framework
-examples, I recently put together a &lt;a href=&quot;https://github.com/ckw017/showdown.py/&quot;&gt;python module for writing Pokemon Showdown chat clients&lt;/a&gt; (you can read about why I’ve done so &lt;a href=&quot;/Rock-Paper-Scissors/&quot;&gt;here&lt;/a&gt;). One of the challenges of writing
-a module for other’s people use is the necessity for consistent documentation.
-Consider the following two function docstrings (apologies in advance for asking you to read documentation):&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;private_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
-    Sends a private message with content to the user specified by user_name.
-    The client must be logged in for this to work.
-
-    Params:
-        user_name (:obj:`str`) : The name of the user the client will send
-            the message to.
-        content (:obj:`str`) : The content of the message.
-        strict (:obj:`bool`, optional) : If this flag is set, passing in
-            content more than 300 characters will raise an error. Otherwise,
-            the message will be senttruncated with a warning. This paramater
-            defaults to False.
-
-    Notes:
-        Content should be less than 300 characters long. Longer messages
-        will be concatenated. If the strict flag is set, an error will be
-        raised instead.
-    &quot;&quot;&quot;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
-    Sends a chat message to the room specified by room_id. The client must
-    be logged in for this to work
-
-    Params:
-        room_id (:obj:`str`) : The id of the room the client will send the
-            message to.
-        content (:obj:`str`) : The content of the message.
-        strict (:obj:`bool`, optional) : If this flag is set, passing in
-            content more than 300 characters will raise an error. Otherwise,
-            the message will be sent truncated with a warning. This
-            paramater defaults to False.
-
-    Notes:
-        Content should be less than 300 characters long. Longer messages
-        will be concatenated. If the strict flag is set, an error will be
-        raised instead.
-
-    &quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;There’s something wrong here. Very, very wrong. Can you spot it? That’s right,
-we’re repeating ourselves all over the place! The two functions involved,
-&lt;code class=&quot;highlighter-rouge&quot;&gt;private_message&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;say&lt;/code&gt; both do essentially the same thing: send a
-message somewhere. As such, their parameters and docstrings bear nearly
-identical content, in two different parts of the code base. This violates a
-basic rule of programming best practice: &lt;strong&gt;D&lt;/strong&gt;on’t &lt;strong&gt;R&lt;/strong&gt;epeat &lt;strong&gt;Y&lt;/strong&gt;ourself.
-The problem lies in trying to update individual parts of the docstring. What
-if at some point I chose to concatenate messages at the 350 character limit? I
-would have to update the “Notes:” entry of the docstrings in two different
-places. This shall not stand.&lt;/p&gt;
-
-&lt;p&gt;As you may have guessed from the previous article content, the solution here is
-decorators! If you take a look at the source code for &lt;code class=&quot;highlighter-rouge&quot;&gt;showdown.client&lt;/code&gt;, the
-actual function declarations look like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@docutils.format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
-    Sends a chat message to the room specified by room_id. The client must
-    be logged in for this to work
-
-    Params:
-        {room_id}
-        {content}
-        {strict}
-
-    Notes:
-        {strict_notes}
-    &quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;What’s going on here? I will take this moment to comment on the fact that the
-Python language allows users to do some deep, dark acts of programmatic black
-magic. The answer to any question of the form “Hey, can I do {unspeakable act usually involving self-modifying code} in python?” is “Yes, however &lt;code class=&quot;highlighter-rouge&quot;&gt;PEP 666 + 2/3&lt;/code&gt; recommends that you reread Goethe’s &lt;em&gt;Faust&lt;/em&gt; before proceeding.” The
- feature
-used here barely qualifies as one of such acts, but might be classified as a
-first step towards future acts of Lovecraftian nature.&lt;/p&gt;
-
-&lt;p&gt;To be less dramatic, you can modify docstrings (and function signatures for
-that matter) programmatically, so that they display differently when calling
-&lt;code class=&quot;highlighter-rouge&quot;&gt;help()&lt;/code&gt; in the interpreter. We can use decorators here to do away with
-some of the repetition:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#in docutils.py&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;full_indent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;indent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'    '&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;partial_indent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'    '&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;docstrings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;full_indent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base_docstrings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# base_docstrings is a dict of prewritten docstrings&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__doc__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__doc__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;docstrings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapper&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;There are a few important details in this snippet. First of all, &lt;code class=&quot;highlighter-rouge&quot;&gt;format&lt;/code&gt; is
-a function that returns a function, &lt;code class=&quot;highlighter-rouge&quot;&gt;wrapper&lt;/code&gt;, which in turn returns another
-function (namely, the modified &lt;code class=&quot;highlighter-rouge&quot;&gt;func&lt;/code&gt;). Functions returning function-valued
-functions! Welcome to the world of decorators. The outermost function &lt;code class=&quot;highlighter-rouge&quot;&gt;format&lt;/code&gt; is necessary to deal with quirks of indentation in multiline strings. The
-inner function modifies the dunder attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;__doc__&lt;/code&gt; and formats in
-appropriate substitutions for &lt;code class=&quot;highlighter-rouge&quot;&gt;room_id&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;content&lt;/code&gt;, etc… as seen in
-the previous example. And there we have it! We can modify the part of the
-docstring in one place (the entry for &lt;code class=&quot;highlighter-rouge&quot;&gt;strict_notes&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;base_docstrings&lt;/code&gt;)
-and it will update everywhere it is mentioned in the docstrings.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;An extra astute reader might observe that we could automate the process
-further by automatically reading the parameters from the function signature
-and dynamically generating the “Params:” section of the docstring. While I
-considered this, there were various cases within the project where paramater
-name collisions would complicate things, so I chose to forgo it.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Whether you’re writing a framework or using one, decorators are definitely a
-handy tool to have in your metaphorical toolbox!&lt;/p&gt;</content><author><name></name></author><category term="Python" /><summary type="html">Python decorators are syntactic sugar that most people will run into while working with web frameworks such as Flask or Bottle. For example, the following snippet from the Bottle documentation uses decorators to specify a route:</summary></entry><entry><title type="html">Rock, Paper, Scissors, Fire, Water, Grass</title><link href="http://localhost:4000/2019/01/01/Rock-Paper-Scissors/" rel="alternate" type="text/html" title="Rock, Paper, Scissors, Fire, Water, Grass" /><published>2019-01-01T00:00:00-08:00</published><updated>2019-01-01T00:00:00-08:00</updated><id>http://localhost:4000/2019/01/01/Rock-Paper-Scissors</id><content type="html" xml:base="http://localhost:4000/2019/01/01/Rock-Paper-Scissors/">&lt;p&gt;For those unfamiliar with the finer details of competitive Pokemon, it’s basically just a fancy version of rock, paper, scissors. While RPS gives each player 3 options, a turn in pokemon consists of around 4-9 possibilities for each player. Each player then reveals his or her choice simultaneously, and the results of their actions play out. This makes it different than games like Tic Tac Toe, Chess, or Go where only one player is “in control” at a time, and instead more like a game of Poker where two players are forced to reveal their hands at the same time.&lt;/p&gt;
+&lt;p&gt;Hopefully you now have a good idea of what I mean when I say blursed! The source for this can be found &lt;a href=&quot;https://github.com/ckw017/blursed&quot;&gt;here&lt;/a&gt;. If you want to experience this travesty firsthand, Python 3.5+ should be able to take use this properly after running &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install blursed&lt;/code&gt;. And as always, thanks for reading.&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="Fun" /><summary type="html">“blursed (adj): Simultaneously blessed and cursed by a situation, object, person, etc…” – Urban Dictionary I recently discovered something incredibly blursed while reading an article by faehnrick in PagedOut Volume 2.</summary></entry><entry><title type="html">Rock, Paper, Scissors, Fire, Water, Grass</title><link href="http://localhost:4000/2019/01/01/Rock-Paper-Scissors/" rel="alternate" type="text/html" title="Rock, Paper, Scissors, Fire, Water, Grass" /><published>2019-01-01T00:00:00-08:00</published><updated>2019-01-01T00:00:00-08:00</updated><id>http://localhost:4000/2019/01/01/Rock-Paper-Scissors</id><content type="html" xml:base="http://localhost:4000/2019/01/01/Rock-Paper-Scissors/">&lt;p&gt;For those unfamiliar with the finer details of competitive Pokemon, it’s basically just a fancy version of rock, paper, scissors. While RPS gives each player 3 options, a turn in pokemon consists of around 4-9 possibilities for each player. Each player then reveals his or her choice simultaneously, and the results of their actions play out. This makes it different than games like Tic Tac Toe, Chess, or Go where only one player is “in control” at a time, and instead more like a game of Poker where two players are forced to reveal their hands at the same time.&lt;/p&gt;
 
 &lt;p&gt;If you’ve heard of Pokemon, you probably know that the game has a type system (&lt;a href=&quot;https://en.wikipedia.org/wiki/Type_system&quot;&gt;no, not that kind&lt;/a&gt;). For example, the franchise mascot Pikachu is an electric type, while the fan favorite Charizard is a combination of flying and fire type. Different attacks are also assigned types. As you might expect, a water type move does extra damage (super effective) when used against a fire type opponent, while an electric type moves do no damage to ground types. In this sense, the game really is just an elaborate version of rock, paper, scissors, but with 18 different objects (weapons? implements? tchotchkes?) instead of three.&lt;/p&gt;
 
@@ -916,4 +1380,50 @@ However, windows has a default command called &lt;code class=&quot;highlighter-r
 These changes should fix the problem.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/primitive-fix/campanile.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;/images/primitive-fix/campanile.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="Go" /><category term="Bugfix" /><summary type="html">This is just a quick fix for a problem I ran into while trying to use Primitive on Windows. While trying to create a gif, you might run into a message like this: writing test.gif 2018/06/08 14:07:20 exit status 4</summary></entry></feed>
+&lt;img src=&quot;/images/primitive-fix/campanile.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="Go" /><category term="Bugfix" /><summary type="html">This is just a quick fix for a problem I ran into while trying to use Primitive on Windows. While trying to create a gif, you might run into a message like this: writing test.gif 2018/06/08 14:07:20 exit status 4</summary></entry><entry><title type="html">Hog Contest (Part 1)</title><link href="http://localhost:4000/2018/06/01/Hog-Contest/" rel="alternate" type="text/html" title="Hog Contest (Part 1)" /><published>2018-06-01T00:00:00-07:00</published><updated>2018-06-01T00:00:00-07:00</updated><id>http://localhost:4000/2018/06/01/Hog-Contest</id><content type="html" xml:base="http://localhost:4000/2018/06/01/Hog-Contest/">&lt;p&gt;The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game
+&lt;a href=&quot;http://inst.eecs.berkeley.edu/~cs61a/fa17/proj/hog/&quot;&gt;Hog&lt;/a&gt;. The game itself is pretty simple (roll die to score points, first to 100 wins),
+and the project was more a less just a warm-up to get everyone used to Python syntax and higher order functions. The extra credit option,
+however, was a bit more interesting.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/hog-gui.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The extra credit option was to create a “strategy” to compete against other students’ submissions. In this context,
+a strategy is a function that takes the current score, and outputs a number of die to roll. A basic strategy might
+look something like ‘lambda my_score, opp_score: 4’, which would always roll 4. The suggested ideas included taking
+advantages of some of the game mechanics, such as “Swine Swap,” which switches the players’ scores if one is an integer
+multiple of another, and “Free Bacon,” which let you get a set amount of points by choosing to roll zero die. This
+sort of thing could be implemented through a whole lot of if-statements, but it begged the question: was there a more
+precise way to make a strategy?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/images/iteration0.jpg&quot;&gt;&lt;img src=&quot;/images/iteration0.jpg&quot; alt=&quot;&quot; width=&quot;320px&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A handmade strategy&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The answer was of course, yes! The process goes something like this: given a score state and “seed” opponent strategy, we want to know the optimal
+number of dice to roll to maximize our odds of winning. How can we determine that? By adding up the probability of winning
+in future score states. This is a recursive problem, with the base case being situations where a player is guaranteed to win
+on that turn, for example, if someone has 99 points. Paired with memoization, you could calculate the optimal strategy fairly
+quickly. This approach had one limitation however: the strategy was only an optimal counter strategy against the input strategy, and not necessarily
+all strategies.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/images/iteration1.jpg&quot;&gt;&lt;img src=&quot;/images/iteration1.jpg&quot; alt=&quot;&quot; width=&quot;320px&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The optimal counter strategy against the handmade strategy&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The solution to this is actually pretty interesting. To get a truly optimal strategy, we can take the output from one iteration as
+the seed for the next. An interesting trend emerges as we do this: the win rate of the counter strategy gradually went down, until
+it reached 50%. Additionally, once it reached 50%, the output strategy would be equivalent to the input strategy!&lt;/p&gt;
+
+&lt;iframe width=&quot;600&quot; height=&quot;371&quot; seamless=&quot;&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSHv20ef9STEktZIhsttsDrPg-5DBtHDcbIfyTbquh56xGqkVaOt5ZdGMhRZ5rx_AA16l3rpf198zzZ/pubchart?oid=1321489337&amp;amp;format=interactive&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;The implication of this is interesting. Consider this: If the output strategy is the same is the input strategy, then the best counter to that strategy is itself. If we have a strategy that is optimal against itself, then it must beat all other strategies.
+In other words, since the best counter strategy can only win 50% of the time, all other strategies must win less than 50% of the time. Which in the context of the contest means that this strategy was guaranteed to either win or tie against all other opponents1&lt;/p&gt;
+
+&lt;p&gt;So, anyone who discovered this optimal strategy would have tied for first, right? Well, for better and worse, the course staff had accounted
+for this, which I will continue in &lt;a href=&quot;/Hog-Contest-2/&quot;&gt;another post&lt;/a&gt;. For now, here’s some neat graphics of the strategies “evolving” and converging towards
+the optimal strategy.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/images/human_base.gif&quot;&gt;&lt;img src=&quot;/images/human_base.gif&quot; alt=&quot;&quot; width=&quot;320px&quot; /&gt;&lt;/a&gt;
+&lt;a href=&quot;/images/always_4_base.gif&quot;&gt;&lt;img src=&quot;/images/always_4_base.gif&quot; alt=&quot;&quot; width=&quot;320px&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Seeded with the handmade strategy and “always 4” strategy respectively&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="Berkeley" /><category term="Visualization" /><summary type="html">The first project of my first CS class at Berkeley was to write the logic for a modified version of the dice game Hog. The game itself is pretty simple (roll die to score points, first to 100 wins), and the project was more a less just a warm-up to get everyone used to Python syntax and higher order functions. The extra credit option, however, was a bit more interesting.</summary></entry><entry><title type="html">Hello World!</title><link href="http://localhost:4000/2018/05/25/Hello-World/" rel="alternate" type="text/html" title="Hello World!" /><published>2018-05-25T00:00:00-07:00</published><updated>2018-05-25T00:00:00-07:00</updated><id>http://localhost:4000/2018/05/25/Hello-World</id><content type="html" xml:base="http://localhost:4000/2018/05/25/Hello-World/">&lt;p&gt;Hello world! I just finished my first year at university, and I thought it would be neat to share some of the projects I undertook throughout the year somewhere, both personal and for classes. If you’re interested in anything you see or have any feedback, feel free to contact me at &lt;a href=&quot;mailto:chriswong21@berkeley.edu&quot;&gt;chriswong21@berkeley.edu&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="Meta" /><summary type="html">Hello world! I just finished my first year at university, and I thought it would be neat to share some of the projects I undertook throughout the year somewhere, both personal and for classes. If you’re interested in anything you see or have any feedback, feel free to contact me at chriswong21@berkeley.edu.</summary></entry></feed>

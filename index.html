@@ -13,6 +13,9 @@ layout: default
     {% endfor %}
   </article>
   {% for post in site.posts %}
+    {% if post.unlisted %}
+      {% continue %}
+    {% endif %}
     <article class="post">
 			  <div class="flex-container">
           <a href="{{ site.baseurl }}{{ post.url }}">

@@ -1,6 +1,6 @@
 ---
 layout: post
-img: https://images.thestar.com/content/dam/thestar/life/travel/2016/12/01/10-ways-to-enjoy-san-francisco/7-letters-1jpg.jpg.size-custom-crop.1086x0.jpg
+img: /images/nletters.jpg
 title: This title consists of  two a's, one b, tw...
 tags: Fun Meta
 excerpt_separator: <!--more-->

@@ -17,15 +17,15 @@ permalink: /about/
 
 ---
 
-Hi, I'm some guy! I graduated from UC Berkeley in 2021 where I studied Computer Science and Data Science, and currently work at [Anyscale](https://www.anyscale.com/).
-
+Hi, I'm some guy! I graduated from UC Berkeley in 2021 where I studied Computer Science and Data Science, and previously worked at [Anyscale](https://www.anyscale.com/).
+I am currently on sabbatical.
 In my freetime I enjoy [doodling with my fancy printer](/art), reading (I recommend Vonnegut, Ted Chiang, and Terry Pratchett), and playing competitive Pokemon.
 
 If you have any questions/critiques/feedback for me, feel free to contact me!
 
 ### 100% Bot Proof Contact Info
 
-[ude.yelekreb [ta] 12gnowsirhc](Hint: I graduate in 2021)
+`<website.domain>@gmail.com`
 
 ---
 # FAQs
@@ -53,7 +53,7 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 ---
 ## What is our purpose?
 
-During my stint at Berkeley's [Neuroecon lab](https://neuroecon.berkeley.edu/), one of the other undergrads asked me this in the sense of "wait what are we supposed to be doing this week?" At the time, I too had no idea what we were supposed to be doing that week.
+During my stint at Berkeley's [Neuroecon lab](https://neuroecon.berkeley.edu/), one of the other undergrads asked me "what is our purpose?" in the sense of "wait what are we supposed to be doing this week?" At the time, I too had no idea what we were supposed to be doing that week.
 
 In the broader sense though, I like to adhere to this philosophy:
 
@@ -73,7 +73,7 @@ And occasionally:
 
 "*I tell you, we are here on Earth to fart around, and don't let anybody tell you different.*"
 <br>
-― Also Kurt Vonnegut, *A Man Without a Country*
+― Kurt Vonnegut again, *A Man Without a Country*
 
 <a name="What's-with-the-background-image-for-this-site?"></a>
 
@@ -134,7 +134,7 @@ If you're interested or think you're interested in two letter hypeisms:
 ---
 ## How did you into programming?
 
-In high school I was relatively clueless about what I wanted to do in terms of career. I knew I wanted to some sort of STEM-related field, but I wasn't sure which one. My junior year I took the AP courses for CS and Chemistry, and actually really loved both of them! Unfortunately for chem, it was a lot easier to tinker with programming than it was with mass spectometry on my own time, and so I ended up leaning towards computer science.
+In high school I was relatively clueless about what I wanted to do in terms of career. I knew I wanted to some sort of STEM-related field, but I wasn't sure which one. My junior year I took the AP courses for CS and Chemistry, and really loved both of them! Unfortunately for chem, it was a lot easier to tinker with programming than it was with mass spectometry on my own time, and so I ended up leaning towards computer science.
 
 Admittedly, APCS is kind of useless in terms of preparation of Berkeley (and I imagine many other school's) CS curriculum. I hate to say it but a lot of CS courses "handhold" a bit too excessively. The most educational periods of my time during high school were spent trying get to simple graphical games to display and run at 30 FPS relying solely on StackOverflow, compiler vitriol, and Java's standard library documentation. This is the kind of suffering that the department of education and parts of the constitution tend to forbid, but I suspect that that kind of struggle working on a personal project builds a level of independence that many undergraduate or high school courses aren't able to provide.
 
@@ -175,4 +175,3 @@ People will of course give you impassioned reasons for why you shouldn't come to
 ## What does your middle initial stand for?
 
 Potassium.
-

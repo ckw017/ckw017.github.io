@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-22T09:18:25-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-22T09:23:17-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
 
 &lt;p&gt;I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are
 supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;Cool S&lt;/a&gt;’s
@@ -592,7 +592,7 @@ describe through vigorous handwaving, and generalizes to any lattice rather than
 &lt;/ul&gt;
 
 &lt;p&gt;Speaking of handwaving: the next section is now fully in the territory of “things I
-started to think about a week ago when is started writing this,” so any semblance of rigor
+started to think about a week ago when I started writing this,” so any semblance of rigor
 that came from having many years to think about the problem is out the window. Instead
 I’ll be relying on my mental model of linear algebra, which is “if it sounds like it’s true
 and looks like it’s true, it’s probably true.”&lt;/p&gt;

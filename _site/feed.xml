@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T23:50:18-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T23:54:39-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
 
 &lt;p&gt;I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are
 supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;Cool S&lt;/a&gt;’s
@@ -138,7 +138,7 @@ we get the previous grid but scooted up by 1 square:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/just5plus1s.jpg&quot; alt=&quot;Just 5n + 1&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;And if we look at just multiple of 25 we get another grid, scaled up even further:&lt;/p&gt;
+&lt;p&gt;And if we look at just multiples of 25 we get another grid, scaled up even further:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/just25s.jpg&quot; alt=&quot;Just multiples of 25&quot; /&gt;&lt;/p&gt;
 

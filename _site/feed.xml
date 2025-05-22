@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T22:58:08-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T23:02:38-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
 
 &lt;p&gt;I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are
 supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;Cool S&lt;/a&gt;’s
@@ -575,7 +575,7 @@ start, only to find the author had already beaten me to that as well, although
 using the &lt;script type=&quot;math/tex&quot;&gt;M^\prime&lt;/script&gt; version of the fractal instead of &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; (as far as I know &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt;
 cannot be encoded as a complex number).&lt;/p&gt;
 
-&lt;p&gt;When I realized the matrix base number system worked at all and started
+&lt;p&gt;When I realized the matrix base number system worked at all I started
 searching around to see if anyone else had made the connection between fractals, tesselations, linear algebra
 and number systems. Digging around:&lt;/p&gt;
 &lt;ul&gt;
@@ -648,12 +648,12 @@ the fact that cubes (8 vertices, 6 faces) are the dual solid to octahedrons (6 v
 It’s obviously tempting to try to take this new cube and make 6 copies of it, but to avoid
 derailing this post too much let’s save that for another day.&lt;/p&gt;
 
-&lt;p&gt;Visually, the problem with iteration 2 seems to be that the 3D pluses aren’t placed “symmetrically”
+&lt;p&gt;Visually, the problem with iteration 2 seems to be that the 3D pluses aren’t placed symmetrically
 around the center, causing the fractal to expand in a non-uniform way. Manually trying to find a more symmetrical
 arrangement of 6 pluses is tricky, feeling a bit like trying to &lt;a href=&quot;https://en.wikipedia.org/wiki/Hairy_ball_theorem&quot;&gt;comb a hairy ball&lt;/a&gt;.
 A sufficient (and possibly necessary) condition to prevent the smooshing behavior is
 to pick a matrix where each column is mutually orthogonal and has the same magnitude. I suspect if
-we include this with the prior constaints it is impossible to satisfy in 3D. Each integer valued
+we include this with the prior constaints it’s impossible to satisfy in 3D. Each integer valued
 column vector would need a magnitude of &lt;script type=&quot;math/tex&quot;&gt;\sqrt[3]{7}&lt;/script&gt;, so given that &lt;script type=&quot;math/tex&quot;&gt;x, y&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt; are integers,
 we must solve:&lt;/p&gt;
 

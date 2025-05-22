@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T23:10:45-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T23:34:42-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
 
 &lt;p&gt;I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are
 supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;Cool S&lt;/a&gt;’s
@@ -751,7 +751,7 @@ per tile in the fractal we can increase our viewing window up to 31x31x31x31:&lt
 &lt;p&gt;It’s a lot to take in, but at the very least seems to confirm that the fractal consistently
 expands outwards without excessive smooshing like we saw in 3D. And personally, I think
 it would make a lovely quilt or picnic blanket. In particular these slices near the very
-center:&lt;/p&gt;
+center are remarkably pleasant:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/quilt.png&quot; alt=&quot;Aesthetically pleasing slices 2D slices of the fractal&quot; /&gt;&lt;/p&gt;
 

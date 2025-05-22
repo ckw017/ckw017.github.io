@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T22:11:43-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T22:29:23-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
 
 &lt;p&gt;I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are
 supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;Cool S&lt;/a&gt;’s
@@ -267,29 +267,29 @@ pointing to where the number &lt;script type=&quot;math/tex&quot;&gt;n&lt;/scrip
 \end{cases}
 \end{equation} %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;This conditional formula based was
+&lt;p&gt;This conditional formula was
 how I initally wrote the visualization code. However it begged the question:
 is there a more elegant way to compute the values without needing a conditional?
 Ideally we want a transformation we could repeatedly apply to scale and rotate a vector
 based on the value of &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;, i.e. a matrix raised to the power of &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;. With some fiddling around, we can find the matrix &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; and its powers:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
 M = \begin{bmatrix}
            -2 &amp; 1 \\
            1 &amp; 2\\
-\end{bmatrix},
+\end{bmatrix}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
 M^2 = \begin{bmatrix}
            5 &amp; 0 \\
            0 &amp; 5\\
-\end{bmatrix},
+\end{bmatrix}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
 M^3 = \begin{bmatrix}
            -10 &amp; 5 \\
            5 &amp; 10\\
-\end{bmatrix},
+\end{bmatrix}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
 M^4 = \begin{bmatrix}
            25 &amp; 0 \\
            0 &amp; 25\\
-\end{bmatrix}, \text{etc...} %]]&gt;&lt;/script&gt;
+\end{bmatrix}, \text{etc...} %]]&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Which conveniently matches the values we’re expecting &lt;em&gt;without&lt;/em&gt; needing a conditional in the equation:&lt;/p&gt;
 
@@ -548,27 +548,23 @@ which uses the imaginary value &lt;script type=&quot;math/tex&quot;&gt;2i&lt;/sc
 If you imagine complex numbers as vectors, and imagine &lt;script type=&quot;math/tex&quot;&gt;2i&lt;/script&gt; as a matrix that performs a scale and rotation,
 we can convert this number system into our cursed notation:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
 M_{2i} = \begin{bmatrix}
            0 &amp; -2 \\
            2 &amp;  0\\
-         \end{bmatrix},
-\overrightarrow{0} = \begin{bmatrix}
+         \end{bmatrix}, %]]&gt;&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{0} = \begin{bmatrix}
            0 \\
            0 \\
-         \end{bmatrix},
-\overrightarrow{1} = \begin{bmatrix}
+         \end{bmatrix},&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{1} = \begin{bmatrix}
            1 \\
            0 \\
-         \end{bmatrix},
-\overrightarrow{2} = \begin{bmatrix}
+         \end{bmatrix},&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{2} = \begin{bmatrix}
            2 \\
            0 \\
-         \end{bmatrix},
-\overrightarrow{3} = \begin{bmatrix}
+         \end{bmatrix},&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{3} = \begin{bmatrix}
            3 \\
            0 \\
-         \end{bmatrix} %]]&gt;&lt;/script&gt;
+         \end{bmatrix}&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Alternatively, we can convert the positive determinant matrix &lt;script type=&quot;math/tex&quot;&gt;M^\prime&lt;/script&gt; from earlier into its
 complex number equivalent to get a base &lt;script type=&quot;math/tex&quot;&gt;2+i&lt;/script&gt; number system. &lt;a href=&quot;https://ideophilus.wordpress.com/2016/10/17/balanced-base-2i-and-some-gratuitous-fractals/&quot;&gt;Balanced base 2+i (and some gratuitous fractals)&lt;/a&gt;
@@ -759,7 +755,7 @@ it would make a rather interesting quilt or rug.&lt;/p&gt;
 &lt;p&gt;A natural question is if we can continue into higher dimensions. Sadly I suspect the
 answer is no. Applying all our constraints from earlier we need a dimension &lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt; such that:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sqrt[d]{2d+1} \in \{\sqrt{3^2}, \sqrt{1^2 + 2^2}, \sqrt{1^2+1^2+1^2}\}&lt;/script&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\sqrt[d]{2d+1} \in&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;\{\sqrt{3^2}, \sqrt{1^2 + 2^2}, \sqrt{1^2+1^2+1^2}\}&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;The left hand side is the magnitude each column vector needs to be for a matrix with &lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt; mutually
 orthogonal columns to have determinant &lt;script type=&quot;math/tex&quot;&gt;2d+1&lt;/script&gt; so that it scales inputs enough to fit the &lt;script type=&quot;math/tex&quot;&gt;2d&lt;/script&gt; copies added each iteration.

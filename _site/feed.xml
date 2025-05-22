@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-22T12:43:40-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-22T12:55:42-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
 
 &lt;p&gt;I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are
 supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;Cool S&lt;/a&gt;’s
@@ -597,7 +597,7 @@ that came from having many years to think about the problem is out the window. I
 I’ll be relying on my mental model of linear algebra, which is “if it sounds like it’s true
 and looks like it’s true, it’s probably true.”&lt;/p&gt;
 
-&lt;h2 id=&quot;to-go-even-further-beyond&quot;&gt;To go even further beyond&lt;/h2&gt;
+&lt;h2 id=&quot;the-quirks-of-3ding-a-wallflower&quot;&gt;The quirks of 3D’ing a wallflower&lt;/h2&gt;
 
 &lt;p&gt;Middle school me was really into Minecraft, so naturally I always wondered: would the fractal work with
 cubes? Specifically, is there a way to create a 3D version of the fractal by

@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T16:37:45-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/24/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-24T00:00:00-07:00</published><updated>2025-05-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/24/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/24/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T21:12:03-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/24/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-24T00:00:00-07:00</published><updated>2025-05-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/24/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/24/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
 
 &lt;p&gt;I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are
-supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;cool S&lt;/a&gt;’s
+supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;Cool S&lt;/a&gt;’s
 and &lt;a href=&quot;https://en.wikipedia.org/wiki/Penrose_triangle&quot;&gt;Penrose triangles&lt;/a&gt; I stumbled upon a neat
 way to fill up graph paper by repeatedly combining and copying squares. I suspected there might
 have been more to the doodle, but wasn’t quite sure how to analyze it. Deciding to delegate to a future version of me that
@@ -14,8 +14,8 @@ school to college to the present day.&lt;/p&gt;
 
 &lt;p&gt;Anyway, after a series of accidents I am now the prophesized future version of me that knows a bit more math.
 Due to its petal-like blooming structure and timeless presence scotch taped to my wall I’ll be referring to the
-fractal affectionately as “the wallflower,” although further down we’ll see that it’s closely related
-to a some well-known fractals. To start investigating it might help to run through
+fractal affectionately as “the wallflower,” although further down we’ll see it’s closely related
+to some well-known fractals. To start investigating it might help to run through
 the steps of how middle school me originally drew it:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -25,9 +25,11 @@ the steps of how middle school me originally drew it:&lt;/p&gt;
   &lt;li&gt;Alternate between steps 2 and 3 until you run out of graph paper.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;In animated form (shoutout to &lt;a href=&quot;https://www.manim.community/&quot;&gt;manim&lt;/a&gt; for making this possible!):&lt;/p&gt;
+&lt;p&gt;In animated form:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/wallflower.gif&quot; alt=&quot;Gif of the first 7 iterations of constructing the fractal&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Shoutout to &lt;a href=&quot;https://www.manim.community/&quot;&gt;manim&lt;/a&gt; and &lt;a href=&quot;https://www.3blue1brown.com/&quot;&gt;3Blue1Brown&lt;/a&gt; for making this and many other visualizations to come possible!&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Similar to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Gosper_curve&quot;&gt;Gosper Curve&lt;/a&gt;, the steps can
 be run repeatedly to eventually cover any part of the plane, and each intermediate state can tile the plane.
@@ -58,7 +60,7 @@ the L-System method a year ago I &lt;em&gt;thought&lt;/em&gt; it generated the s
 In other words, I tried drawing the fourth iteration and its many right angles free
 hand and gave up partway thinking “well it worked for the first 3 iterations, therefore it works in general &lt;script type=&quot;math/tex&quot;&gt;\text{Q.E.D.}&lt;/script&gt;”
 It was only when I started making the animations for this post that I realized
-that the two don’t quite match up. Comparing the 4th iteration from each method:&lt;/p&gt;
+the two don’t quite match up. Comparing the 4th iteration from each method:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/woops.jpg&quot; alt=&quot;Annotated comparison between two different versions of fourth iteration&quot; /&gt;&lt;/p&gt;
 
@@ -76,22 +78,22 @@ approach is already documented in a few places:&lt;/p&gt;
 
 &lt;p&gt;Meanwhile, the variation made from the drag and drop method doesn’t appear anywhere I can find
 via Google image search and Wikipedia surfing. Why would one way be so much more common than the other?
-With some fiddling around I was able to get a set of rules to generate my wall’s version of the fractal (&lt;script type=&quot;math/tex&quot;&gt;L \rightarrow RLR, R \rightarrow LLR&lt;/script&gt;), however it has a strange
+With some fiddling around I found rules to generate my wall’s version of the fractal (&lt;script type=&quot;math/tex&quot;&gt;L \rightarrow RLR, R \rightarrow LLR&lt;/script&gt;), however they have a strange
 effect that seems to “flip” the direction you draw the contour at each step, e.g. the first step
 goes from &lt;script type=&quot;math/tex&quot;&gt;RRRR&lt;/script&gt; (majority right turns) to &lt;script type=&quot;math/tex&quot;&gt;LLRLLRLLRLLR&lt;/script&gt; (majority left turns).
 Another natural question is if the original L-System doesn’t place copies aligned with
-the axes, what angle is it placing them at? It turns out that the “flipping” behavior,
+the axes, what angle is it placing them at? It turns out the “flipping” behavior,
 the L-System’s angles, and the seemingly arbitrary “about 27 degrees” from the beginning
 are connected in a surprising way. But before we get to that, lets take a detour to review an important topic:&lt;/p&gt;
 
 &lt;h2 id=&quot;how-to-count&quot;&gt;How to count&lt;/h2&gt;
 
 &lt;p&gt;Procrastinating for over a decade has given me plenty of opportunities to look at the fractal
-with fresh eyes as I learned new things. During freshman year of college I learned how to show that the cardinality
+with fresh eyes as I was introduced to new branches of math. During freshman year of college I learned how to show the cardinality
 of the natural numbers &lt;script type=&quot;math/tex&quot;&gt;\mathbb{N}&lt;/script&gt; is equal to the cardinality of pairs of natural
 numbers &lt;script type=&quot;math/tex&quot;&gt;\mathbb{N}^2&lt;/script&gt; using the &lt;a href=&quot;https://en.wikipedia.org/wiki/Pairing_function#Cantor_pairing_function&quot;&gt;Cantor pairing function&lt;/a&gt;
 to “dovetail” across the Cartesian plane. Similarly, I learned you could map the natural
-numbers onto a spiral to show that &lt;script type=&quot;math/tex&quot;&gt;\mathbb{N}&lt;/script&gt; has the same cardinality as pairs of integers &lt;script type=&quot;math/tex&quot;&gt;\mathbb{Z}^2&lt;/script&gt;.&lt;/p&gt;
+numbers onto a spiral to show &lt;script type=&quot;math/tex&quot;&gt;\mathbb{N}&lt;/script&gt; has the same cardinality as pairs of integers &lt;script type=&quot;math/tex&quot;&gt;\mathbb{Z}^2&lt;/script&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/cantorpairing.png&quot; alt=&quot;Cantor pairing function&quot; /&gt;
 &lt;img src=&quot;/images/fractal/z2spiral.jpg&quot; alt=&quot;Z^2 spiral&quot; /&gt;&lt;/p&gt;
@@ -100,10 +102,10 @@ numbers onto a spiral to show that &lt;script type=&quot;math/tex&quot;&gt;\math
 
 &lt;p&gt;Both of these reminded me of how the wallflower fills space in the Cartesian
 plane by building outwards from the origin. To use the wallflower’s structure as a pairing
-function we would need to find a way to assign an “order” to the way that we place each
+function we would need to find a way to assign an “order” when we place each
 square, preferably in a way that complements the recursive nature of its construction.
 A natural starting point would be to use the center of the fractal as 0. From there we can number
-the surrounding four squares created from the first iteration of copying as 1, 2, 3 and 4
+the surrounding four squares created added in the first iteration as 1, 2, 3 and 4
 in clockwise order:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/numbering1.jpg&quot; alt=&quot;Numbering 0 to 4&quot; /&gt;&lt;/p&gt;
@@ -115,7 +117,7 @@ way would be to number them in the order they appear scanning from top down, lef
 
 &lt;p&gt;For lack of better words, this doesn’t feel very fractally – the order here seems unrelated to recursive
 structure of fractal. What if instead we tried to reuse the “middle out” approach used for
-0 to 4? After all, each “petal” is a copy of the first iteration that we’ve
+0 to 4? After all, each “petal” is a copy of the first iteration we’ve
 already given an ordering to. Reusing the clockwise scheme from 0 to 4 within each blue
 petal, and &lt;em&gt;across&lt;/em&gt; each blue petal (the dashed lines):&lt;/p&gt;
 
@@ -143,7 +145,7 @@ we get the previous grid but scooted up by 1 square:&lt;/p&gt;
 &lt;p&gt;The number 5 appears to have a special relationship with the fractal. The reason becomes
 apparent if you look at the number of squares in each iteration. The 0th iteration
 is a single square, the first iteration has 5, the second has 25, the third has 125, etc… Since
-each iteration is constructed by taking the previous state and adding 4 additional copies
+each iteration is constructed by taking the previous state and adding 4 additional copies,
 it scales up by a factor of 5 in each step. Given the special relationship
 with multiples of 5 and powers and 5, it’s tempting to redo the labeling while counting
 in base 5 instead of base 10. Doing so we get this:&lt;/p&gt;
@@ -173,7 +175,7 @@ together to get the location of 231:&lt;/p&gt;
 
 &lt;p&gt;You can test out other numbers using the same strategy of breaking down the number into
 its 1s, 10s, 100s, etc… places and adding vectors. Assuming
-this works in general, all we need to know the position of any number on the grid is to know the position of each number
+this works in general, all we need to find the position of any number on the grid is to know the position of each number
 in its expanded form, and then add them together. Let’s &lt;del&gt;abuse&lt;/del&gt; introduce some notation, defining &lt;script type=&quot;math/tex&quot;&gt;\vec{n}&lt;/script&gt; as the vector
 pointing to where the number &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; sits on the grid. Using our 1 digit values as an example:&lt;/p&gt;
 
@@ -265,7 +267,7 @@ pointing to where the number &lt;script type=&quot;math/tex&quot;&gt;n&lt;/scrip
 \end{cases}
 \end{equation} %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;This conditional formula based on number of digits was
+&lt;p&gt;This conditional formula based was
 how I initally wrote the visualization code. However it begged the question:
 is there a more elegant way to compute the values without needing a conditional?
 Ideally we want a transformation we could repeatedly apply to scale and rotate a vector
@@ -367,10 +369,10 @@ of the fractal:&lt;/p&gt;
 
 &lt;h2 id=&quot;determinants&quot;&gt;Determinants&lt;/h2&gt;
 
-&lt;p&gt;You may have noticed that &lt;script type=&quot;math/tex&quot;&gt;20&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;40&lt;/script&gt;
-have switched positions compared to our original numbering. This is due to the fact that our choice
+&lt;p&gt;You may have noticed &lt;script type=&quot;math/tex&quot;&gt;20&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;40&lt;/script&gt;
+have switched positions compared to our original numbering. This is because our choice
 of &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; has a negative determinant &lt;script type=&quot;math/tex&quot;&gt;\det(M) = -5&lt;/script&gt;, which means it has the side effect of “flipping” the
-orientation of space each iteration. Now that we know that our fractal is linked to linear algebra,
+orientation of space each iteration. Now that we know our fractal is linked to linear algebra,
 we can visualize the connection by overlying scaled grids representing how powers of &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; act on our “digit vectors”
 &lt;script type=&quot;math/tex&quot;&gt;\vec{1}&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\vec{2}&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\vec{3}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\vec{4}&lt;/script&gt; a la &lt;a href=&quot;https://www.3blue1brown.com/lessons/matrix-multiplication&quot;&gt;3Blue1Brown&lt;/a&gt;.&lt;/p&gt;
 
@@ -400,8 +402,8 @@ Sure enough, using &lt;script type=&quot;math/tex&quot;&gt;M^\prime&lt;/script&g
 
 &lt;p&gt;Mystery solved! The two fractals are &lt;em&gt;almost&lt;/em&gt; the same, but the one on my wall is generated using
 &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; where &lt;script type=&quot;math/tex&quot;&gt;\det(M) = -5&lt;/script&gt;, while the more common one is generated from &lt;script type=&quot;math/tex&quot;&gt;M^\prime&lt;/script&gt;
-with determinant &lt;script type=&quot;math/tex&quot;&gt;\det(M^\prime) = 5&lt;/script&gt;. The choice of matrix also sheds some light on where the seemingly
-arbitrary “about 27 degrees” comes from. You may have noticed the the absolute value of both
+where &lt;script type=&quot;math/tex&quot;&gt;\det(M^\prime) = 5&lt;/script&gt;. The choice of matrix also sheds some light on where the seemingly
+arbitrary “about 27 degrees” comes from. You may have noticed the absolute value of both
 determinants is &lt;script type=&quot;math/tex&quot;&gt;5&lt;/script&gt;, which conveniently matches the way the fractal increases in size by a factor
 of 5 each iteration. If we picked a matrix with a larger determinant, our “digit vectors” would
 grow too quickly and leave behind “empty space” each iteration. For example adjusting &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; to give
@@ -415,8 +417,8 @@ slowly and iterations would overlap. Adjusting &lt;script type=&quot;math/tex&qu
 &lt;p&gt;&lt;img src=&quot;/images/fractal/det4.jpg&quot; alt=&quot;Determinant 4&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So ostensibly we want a matrix base with determinant &lt;script type=&quot;math/tex&quot;&gt;\pm 5&lt;/script&gt;. Additionally, we want our
-matrix to have integer entries to ensure that it always maps our digit vectors onto
-whole number coordinates. It just so happens that the vector &lt;script type=&quot;math/tex&quot;&gt;\left\langle 1, 2 \right\rangle&lt;/script&gt;
+matrix to have integer entries to ensure it always maps our digit vectors onto
+whole number coordinates. It just so happens the vector &lt;script type=&quot;math/tex&quot;&gt;\left\langle 1, 2 \right\rangle&lt;/script&gt;
 has integer entries and magnitude &lt;script type=&quot;math/tex&quot;&gt;\sqrt{5}&lt;/script&gt;, meaning we can use it and one of
 its 90 degree rotations as the columns of our matrix to satisfy the determinant
 and whole number constraint. Computing the angle of this vector we get &lt;script type=&quot;math/tex&quot;&gt;\arctan{\frac{2}{1}} \approx 63.43^\circ&lt;/script&gt;,
@@ -424,7 +426,7 @@ i.e. “about 27 degrees” away from the y-axis.&lt;/p&gt;
 
 &lt;h2 id=&quot;how-to-add-part-2&quot;&gt;How to add part 2&lt;/h2&gt;
 
-&lt;p&gt;Finally, you may have noticed that vector addition fails horribly in most cases other than
+&lt;p&gt;You may have noticed vector addition fails horribly in most cases other than
 the expanded form ones, e.g. &lt;script type=&quot;math/tex&quot;&gt;\vec{2} + \vec{2} \neq \vec{4}&lt;/script&gt;. This is expected, since the choice of &lt;script type=&quot;math/tex&quot;&gt;2&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;4&lt;/script&gt;
 were to help make the connection to base 5 number systems but unrelated to the
 actual direction the vectors point. It might be more appropriate to refer to the 1 through 4
@@ -507,9 +509,9 @@ td{
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Notably the table is symmetric across the diagonal meaning that addition is commutative, as expected
-for vector addition. More importantly, most additions result in 2 digit values. While it might
-not seem like a big deal, it means that when doing larger additions we have to worry about
+&lt;p&gt;The table is symmetric across the diagonal meaning addition is commutative, as expected
+for vector addition. More importantly, several additions result in 2 digit values. While it might
+not seem like a big deal, it means when doing larger additions we have to worry about
 carrying over values to the next digit. For example, if we want to find the number directly
 above 22, we can compute &lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{22} + \overrightarrow{1}&lt;/script&gt;. Using
 traditional long addition and carrying notation:&lt;/p&gt;
@@ -522,16 +524,16 @@ traditional long addition and carrying notation:&lt;/p&gt;
 	    &amp; 1 &amp; 3 &amp; 3 \\
 	\end{array} %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;If you’re a bit confused, remember that &lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{2} + \overrightarrow{1} = \overrightarrow{13}&lt;/script&gt;.
+&lt;p&gt;If you’re a bit confused, remember &lt;script type=&quot;math/tex&quot;&gt;\overrightarrow{2} + \overrightarrow{1} = \overrightarrow{13}&lt;/script&gt;.
 And if you’re suprised this works at all, join the club! Since this is a blog post and not a proof,
-I leave sanity checking that this addition scheme works in general to the reader.&lt;/p&gt;
+I leave sanity checking this addition scheme works in general to the reader.&lt;/p&gt;
 
-&lt;h2 id=&quot;related-topics&quot;&gt;Related topics&lt;/h2&gt;
+&lt;h2 id=&quot;intermission-related-topics&quot;&gt;Intermission: Related Topics&lt;/h2&gt;
 
 &lt;p&gt;The concept of using things outside of &lt;script type=&quot;math/tex&quot;&gt;\mathbb{N}&lt;/script&gt; in a number system wasn’t totally unfamiliar thanks to &lt;a href=&quot;https://en.wikipedia.org/wiki/Balanced_ternary&quot;&gt;Balanced Ternary&lt;/a&gt;
 which uses &lt;script type=&quot;math/tex&quot;&gt;-1&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt; as digits, and a base of &lt;script type=&quot;math/tex&quot;&gt;3&lt;/script&gt;. If you imagine balanced
 ternary as being 1 dimensional along the x-axis, the wallflower can be seen as its 2D analog
-by adding two new digits to account for the positive and negative directions in the y-axis.
+by adding two new digits to account for the positive and negative directions of the y-axis.
 An alternative scheme for &lt;a href=&quot;https://en.wikipedia.org/wiki/Generalized_balanced_ternary&quot;&gt;generalized balanced ternary&lt;/a&gt;
 already exists, and generalizes to any number of dimensions using lattices of &lt;a href=&quot;https://en.wikipedia.org/wiki/Permutohedron&quot;&gt;permutahedrons&lt;/a&gt;
 (at least from what I’ve been able to dig up). In 2 dimensions, this ends up being the hexagonal lattice:&lt;/p&gt;
@@ -571,13 +573,13 @@ M_{2i} = \begin{bmatrix}
 &lt;p&gt;Alternatively, we can convert the positive determinant matrix &lt;script type=&quot;math/tex&quot;&gt;M^\prime&lt;/script&gt; from earlier into its
 complex number equivalent to get a base &lt;script type=&quot;math/tex&quot;&gt;2+i&lt;/script&gt; number system. &lt;a href=&quot;https://ideophilus.wordpress.com/2016/10/17/balanced-base-2i-and-some-gratuitous-fractals/&quot;&gt;Balanced base 2+i (and some gratuitous fractals)&lt;/a&gt;
 by Timothy James McKenzie Makarios explores this concept. I ran into this while looking for visualizations of
-quater-imaginary base on Google images for this section, only to realize that this connection had been
+quater-imaginary base on Google images for this section, only to realize this connection had been
 made back in 2016. Somewhat embarassingly I found this after I made the animation at the
-start, only to find that the author had already beaten me to that as well, although
+start, only to find the author had already beaten me to that as well, although
 using the &lt;script type=&quot;math/tex&quot;&gt;M^\prime&lt;/script&gt; version of the fractal instead of &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; (as far as I know &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt;
 cannot be encoded as complex number).&lt;/p&gt;
 
-&lt;p&gt;When I realized that the matrix base number system worked at all and started
+&lt;p&gt;When I realized the matrix base number system worked at all and started
 searching around to see if anyone else had made the connection between fractals, tesselations, linear algebra
 and number systems. Digging around:&lt;/p&gt;
 &lt;ul&gt;
@@ -595,7 +597,7 @@ describe through vigorous handwaving, and generalizes to any lattice rather than
 
 &lt;p&gt;Speaking of handwaving: the next section is now fully in the territory of “things I
 started to think about a week ago when is started writing this,” so any semblance of rigor
-that came from having had many years to think about the problem is out the window. Instead
+that came from having many years to think about the problem is out the window. Instead
 I’ll be relying on my mental model of linear algebra, which is “if it sounds like its true
 and looks like its true, its probably true.”&lt;/p&gt;
 
@@ -608,11 +610,11 @@ comes down to what properties we want to include when we generalize to a 3x3 mat
 ones that beckoned to me from the ether are:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;All of the entries in the matrix must be integers. This is needed so when we apply
-the matrix base to our vector digits (6 unit vectors sitting on the axes) that they still
+the matrix base to our vector digits (6 unit vectors sitting on the axes) they still
 have integer values for each component. In the Vince paper this is formalized as “endomorphism of &lt;script type=&quot;math/tex&quot;&gt;\Lambda&lt;/script&gt;”,
 i.e. a mapping from the lattice &lt;script type=&quot;math/tex&quot;&gt;\Lambda = \mathbb{Z}^3&lt;/script&gt; back onto itself.&lt;/li&gt;
   &lt;li&gt;Each column vector in the matrix should have a Hamming distance of 3 from the origin.
-This constraint ensures that the 6 copies of the “3D plus” we create on the second
+This constraint ensures the 6 copies of the “3D plus” we create on the second
 iteration don’t overlap with the original centered on the origin, but are near enough to still
 be adjacent to it.&lt;/li&gt;
   &lt;li&gt;We want a matrix with determinant &lt;script type=&quot;math/tex&quot;&gt;\pm&lt;/script&gt;7. Since each iteration of the fractal adds 6 new copies,
@@ -621,7 +623,7 @@ copies efficiently we need to make sure the matrix we apply scales up
 inputs by a factor of 7 as well.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Brute forcing searching through triplets of vectors with Hamming distance of 3, we get this nifty 3x3
+&lt;p&gt;Brute force searching through triplets of vectors with Hamming distance of 3, we get this nifty 3x3
 matrix that checks all of the boxes:&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
@@ -636,15 +638,15 @@ matrix that checks all of the boxes:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/fractal/3d.gif&quot; alt=&quot;3D iterations 0 through 3&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Wow, it looks terrible! One problem that stands out immediately is later iterations seem to be “smooshed”
-resulting in spots where the previous iteration is exposed.
-Looking closely at iteration 2, you might notice that we can comb over the bald spots
+resulting in spots where previous iterations are exposed.
+Looking closely at iteration 2, you might notice we can comb over the bald spots
 by adding two more “3D pluses” centered on &lt;script type=&quot;math/tex&quot;&gt;\left\langle 1, 1, 1\right\rangle&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\left\langle-1, -1, -1\right\rangle&lt;/script&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/bandaid.gif&quot; alt=&quot;Iteration 2 with bandaid&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Here we added two new pluses marked in yellow, and visualize the location of the centers
 of all 8 pluses. For a bandaid fix it feels like it works a little too well. Looking at just
-center points of our 8 new pluses they are arranged like the vertices of a warped cube.
+the center points of our 8 new pluses they are arranged like the vertices of a warped cube.
 I’m still not entirely sure what to make of this, although it feels like it’s related to
 the fact that cubes (8 vertices, 6 faces) are the dual solid to octahedrons (6 vertices, 8 faces).
 It’s obviously tempting to try to take this new cube and make 6 copies of it, but to avoid
@@ -655,8 +657,9 @@ around the center, causing the fractal to expand in a non-uniform way. Manually 
 arrangement of 6 pluses is tricky, feeling a bit like trying to &lt;a href=&quot;https://en.wikipedia.org/wiki/Hairy_ball_theorem&quot;&gt;comb a hairy ball&lt;/a&gt;.
 A sufficient (and possibly necessary) condition to prevent the smooshing behavior is
 to pick a matrix where each column is mutually orthogonal and has the same magnitude. I suspect if
-we include this with the prior constaints it is impossible to satisfy in 3D, as each vector would need a
-magnitude of &lt;script type=&quot;math/tex&quot;&gt;\sqrt[3]{7}&lt;/script&gt;. So given &lt;script type=&quot;math/tex&quot;&gt;x, y&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt; are integers, we must solve:&lt;/p&gt;
+we include this with the prior constaints it is impossible to satisfy in 3D. Each integer valued
+column vector would need a magnitude of &lt;script type=&quot;math/tex&quot;&gt;\sqrt[3]{7}&lt;/script&gt;, so given that &lt;script type=&quot;math/tex&quot;&gt;x, y&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt; are integers,
+we must solve:&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\sqrt{x^2+y^2+z^2} = \sqrt[3]{7}&lt;/script&gt;
 
@@ -673,7 +676,7 @@ the components of each vector must satisfy:&lt;/p&gt;
 &lt;p&gt;Which works if we let 3 out of 4 of the entries to be &lt;script type=&quot;math/tex&quot;&gt;\pm 1&lt;/script&gt;,
 and set the last to &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;. It turns out there’s a plenty of space in hyperspace, giving us many
 possible matrices with columns of this form that satisfy all previous conditions. The
-following matrix one additional special property that we’ll cover briefly near the end:&lt;/p&gt;
+following matrix has one extra property that we’ll cover briefly near the end:&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{bmatrix}
@@ -684,12 +687,13 @@ following matrix one additional special property that we’ll cover briefly near
 \end{bmatrix} %]]&gt;&lt;/script&gt;
 
 &lt;p&gt;Now that we have a suitable matrix, we can attempt to visualize our 4D fractal.
-One way to do this is to take 3D “slices” of the four dimensional space by fixing the
+One way to do this is to take 3D “slices” of 4D space by fixing the
 value of &lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/4d_iter0.gif&quot; alt=&quot;4D iteration 0&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;It turns out that the base case is boring regardless of how many dimensions.&lt;/p&gt;
+&lt;p&gt;It turns out the base case is boring regardless of how many dimensions we give it. Moving
+on to iteration 1:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/4d_iter1.gif&quot; alt=&quot;4D iteration 1&quot; /&gt;&lt;/p&gt;
 
@@ -699,12 +703,14 @@ coordinates of &lt;script type=&quot;math/tex&quot;&gt;(0,0,0,-1)&lt;/script&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/4d_iter2.gif&quot; alt=&quot;4D iteration 2&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;We can see parts of iteration 1 still poking through in iteration 2, which is a bit concerning since this
+&lt;p&gt;We can see parts of iteration 1 still poking through in iteration 2, which is concerning given this
 was a symptom of the squishing behavior we saw in 3D. However looking closely, the squishing
 behavior doesn’t seem as bad yet. If you really twist your mind around the concept of 4
-dimensions, you might be able to see that while that the two pluses in &lt;script type=&quot;math/tex&quot;&gt;w=0&lt;/script&gt; don’t
+dimensions, you might be able to see that while the two pluses in &lt;script type=&quot;math/tex&quot;&gt;w=0&lt;/script&gt; don’t
 seem to be balanced, there are 3 pluses sitting to the left (&lt;script type=&quot;math/tex&quot;&gt;w=-1&lt;/script&gt;) and 3 more to the
-right (&lt;script type=&quot;math/tex&quot;&gt;w=1&lt;/script&gt;) that you could imagine as being orthogonal to the &lt;script type=&quot;math/tex&quot;&gt;w=0&lt;/script&gt; ones.&lt;/p&gt;
+right (&lt;script type=&quot;math/tex&quot;&gt;w=1&lt;/script&gt;) that you could imagine as being orthogonal to the &lt;script type=&quot;math/tex&quot;&gt;w=0&lt;/script&gt; ones. The trios
+of cubes sitting at each side (&lt;script type=&quot;math/tex&quot;&gt;w=\pm 2&lt;/script&gt;) are part of the 4D pluses that poke through
+the 4th dimension into the slices on the ends.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/4d_iter3.gif&quot; alt=&quot;4D iteration 3&quot; /&gt;&lt;/p&gt;
 
@@ -712,26 +718,26 @@ right (&lt;script type=&quot;math/tex&quot;&gt;w=1&lt;/script&gt;) that you coul
 can still be seen, iteration 1 has now been completely covered.
 Technically iteration 3 extends farther out in the &lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt; dimension, but at this point its
 difficult to comprehend the fractal anyway. I imagine this is the sort of thing my higher dimensional analog would
-put up on the 4D hypersurface of their room’s 5D walls to admire in its full glory, so I’m dubbing it “the orthotopeflower.”&lt;/p&gt;
-
-&lt;p&gt;Unfortunately my apartment is measured in square feet and not hypercubic feet, so
+put up on the 4D hypersurface of their room’s 5D walls to admire in its full glory, so I’m dubbing it “the orthotopeflower.”
+Unfortunately my apartment is measured in square feet and not hypercubic feet, so
 it’s difficult for me to fully appreciate it. There are a couple of issues with the “3D slices”
 approach of visualizing in 4D:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;It extends way too quickly in the horizontal direction, wasting precious screen
 (or wall) real estate. Notably in iteration 3 we
-would have had to add 2 more slices to the left and to the right to visualize the whole
-thing.&lt;/li&gt;
+need to add 2 more slices to each side to visualize the whole thing.&lt;/li&gt;
   &lt;li&gt;My inferior 3 dimensional eyes can’t see the interior of 3D objects (unlike how I’m
 able to see the interior of colored in 2D squares on a piece of paper), making it
 hard to fully appreciate the structure.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;To get around both of these we can use the following 7x7 grid of 7x7 grids to visualize it
+&lt;p&gt;To get around both of these limitations we can use the following 7x7 grid of 7x7 grids to visualize it
 a la the very first animation of this post:&lt;/p&gt;
 
-&lt;p&gt;Each smaller grid shows a slice -3 to 3 on the x and y axes. The “grid of grids” represent
--3 to 3 along the z and w axes. Whenever a square across from one small grid
+&lt;p&gt;&lt;img src=&quot;/images/fractal/grow4d.gif&quot; alt=&quot;Flat 4D animation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Each smaller grid shows a slice of -3 to 3 on the x and y axes. The “grid of grids” represent
+-3 to 3 along the z and w axes. Whenever a square crosses from one small grid
 to another its really being translated through the z or w axis. Squares that appear to
 fade in or fade out are moving in or out of the 7x7x7x7 “viewing frame” in 4 dimensions.
 Compared to the line of 3D slices, this approach uses screen real estate a bit better
@@ -739,24 +745,21 @@ Compared to the line of 3D slices, this approach uses screen real estate a bit b
 fractal without obscuring previous iterations. Plus this design would go nicely with
 the existing fractal on my wall.&lt;/p&gt;
 
-&lt;p&gt;With this method we can visualize a 21x21x21x21 area by cutting out some of the stylistic flourishes, and setting each
-square to the size of a single pixel:&lt;/p&gt;
-
 &lt;p&gt;A natural question is if we can continue into higher dimensions. Sadly I suspect the
 answer is no. Applying all our constraints from earlier we need a dimension &lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt; such that:&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\sqrt[d]{2d+1} \in \{\sqrt{3^2}, \sqrt{1^2 + 2^2}, \sqrt{1^2+1^2+1^2}\}&lt;/script&gt;
 
 &lt;p&gt;The left hand side is the magnitude each column vector needs to be for a matrix with &lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt; mutually
-orthogonal columns to have determinant &lt;script type=&quot;math/tex&quot;&gt;2d+1&lt;/script&gt;, so that it scales inputs enough to fit the &lt;script type=&quot;math/tex&quot;&gt;2d&lt;/script&gt; copies added each iteration.
-The right hand side is the set of magnitudes of integer valued vectors that have a Hamming distance of 3 away from the origin, so
-that the copies created in the second iteration touch but don’t intersect with the first iteration.
+orthogonal columns to have determinant &lt;script type=&quot;math/tex&quot;&gt;2d+1&lt;/script&gt; so that it scales inputs enough to fit the &lt;script type=&quot;math/tex&quot;&gt;2d&lt;/script&gt; copies added each iteration.
+The right hand side is the set of possible magnitudes of integer valued vectors that have a Hamming distance of 3 away from the origin, so
+the copies created in the second iteration touch but don’t intersect with the first iteration.
 Graphing this, it looks like the only dimensions where these can be satisifed are 1 (balanced
 ternary), 2 (the wallflower), and 4 (the orthotopeflower).&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/desmos.jpg&quot; alt=&quot;Demos graph of viable dimensions&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Finally, as mentioned earlier, the choice of matrix to use as the base was special. In particular
+&lt;p&gt;Finally, as mentioned earlier, the choice of matrix to use as the base of our 4D number system was special. In particular
 it encodes the quaternion &lt;script type=&quot;math/tex&quot;&gt;i+j+k&lt;/script&gt;, meaning similar to quater imaginary base we now
 have a way to encode quaternions in “balanced nonary quaternion base”. In this scheme
 the 9 possible digits are &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\pm1&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\pm i&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\pm j&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\pm k&lt;/script&gt;, with base &lt;script type=&quot;math/tex&quot;&gt;i+j+k&lt;/script&gt;. Since I’m not too familiar
@@ -766,54 +769,43 @@ pretty well last time.&lt;/p&gt;
 
 &lt;h2 id=&quot;closing-thoughts&quot;&gt;Closing thoughts&lt;/h2&gt;
 
-&lt;p&gt;I once dreamt about a post-scarcity society that had to work around the problem of
+&lt;p&gt;I once had a dream about a post-scarcity society that had to work around the problem of
 people not having any motivation to do anything, since all their basic needs were met.
 To give people something to do, every few years everyone over a certain age was expected
-to report on something beautiful that they learned or discovered about the world, otherwise
-they’d be executed or something (Note: post-scarcity &lt;script type=&quot;math/tex&quot;&gt;\neq&lt;/script&gt; utopia). Anyway, I’d like to
-imagine the formulation of a strange flower with jigsaw-like petals blooming through 4
+to report on something beautiful they learned or discovered about the world, otherwise
+they’d be turned into soylent or something (Note: post-scarcity &lt;script type=&quot;math/tex&quot;&gt;\neq&lt;/script&gt; utopia). Anyway, I’d like to
+imagine the discovery of a strange flower with jigsaw-like petals blooming endlessly across 4
 dimensional space would be enough to keep me off the chopping block for awhile.&lt;/p&gt;
 
-&lt;p&gt;I had a faint glimmer of hope that I would be able to stumble upon something novel &lt;em&gt;and&lt;/em&gt; useful while
-doing this investigation. For example, at one point I realized that the “spiral” construction
-of the Koch snowflake could be used as an alternative to Knuth’s Quater-imaginary base
-(using $1 + 2i$ as the base instead of $2i$) only to find out that
-&lt;a href=&quot;https://ideophilus.wordpress.com/2016/10/17/balanced-base-2i-and-some-gratuitous-fractals/&quot;&gt;it was already discovered and documented back in 2016&lt;/a&gt;.
-I had a bit of retroactive FOMO realizing that a sharper 8th grade could have come across
-it first in 2013, but realistically I wouldn’t have known enough about linear algebra or
-complex numbers until much later, and wouldn’t have had the necessary intuition about
-either without the videos on linear algebra by 3blue1brown (whose influence can be seen
-all over this post). My consolation prize is that chasing the fractal across domains revealed
-connections that I never would have thought of otherwise, and that seem relatively obscure.
-Hopefully by writing and visualizing them here I’m able to make the connections a bit more accessible
-for future fractal fiddlers finding themselves falling face first down the same rabbit hole.&lt;/p&gt;
+&lt;p&gt;Recently I’ve been feeling a bit burnt out and finally got around to this in an
+attempt to reignite some passion for math and programming. It turns out my younger
+self left behind the perfect gift in the form of a wild goose chase across the domains of fractals, number systems,
+linear algebra and higher dimensions. It makes me curious about how many other interesting
+ideas other people have lying around in plain sight as sketches or To Do’s.&lt;/p&gt;
 
-&lt;p&gt;If this post comes off as a bit rambly thanks to the many twists and hops between domains its
+&lt;p&gt;If this post comes off as a bit rambly from the many twists and turns between domains its
 because I tried to follow the path I took while haphazardly picking up and forgetting
 about the problem over the years. There are a handful of spots where you might ask “how did you know
-doing this specific thing would lead to that?” The simple answer is I had know clue where it would
-lead, I just tried different things on a whim over the years and this post outlines the parts that stuck.&lt;/p&gt;
-
-&lt;p&gt;As you may have noticed, a good chunk of that journey (discovering two variations of the fractal, discovering the matrix base number system)
-took place &lt;em&gt;as&lt;/em&gt; I was writing this post, remniscent of how the Feynman Technique recommends
-teaching a subject to truly grasp it. An unwanted side effect is that the level of rigor
-and expected background knowledge is “person who happens to be familiar with the same random assortment
-of math and intuition as me.” If you want to read up on these concepts in a more
-rigorous and to the point style the Vince paper is probably the right place to get started.&lt;/p&gt;
+doing this specific thing would lead to that?” The simple answer is I had no clue if any of this
+would lead anywhere, I just tried different things on a whim and this post outlines the parts that stuck.
+Hopefully by writing and visualizing my lines of reasoning I’m able to make the connections a bit more accessible
+for future fractal fiddlers finding themselves falling face first down the same rabbit hole.&lt;/p&gt;
 
 &lt;p&gt;As a final twist, an astute reader may have
-noticed that none of the visualizations in this post up until this point have
-matched with what’s up on my wall in the post’s thumbnail. The 4th iteration (green) is copied about 27
+noticed none of the visualizations made for this post
+matched the fractal on my wall in the post’s thumbnail. The 4th iteration (green) is copied about 27
 degrees in the &lt;em&gt;wrong&lt;/em&gt; direction:&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/images/fractal/closingwoops.jpg&quot; alt=&quot;Closing woops&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;In a fun case of “why do I remember this, but not what I ate for dinner 2 days ago,” I
-remember my exact reasoning for doing this over a decade ago: I thought that fractal
-might unalign itself off the cardinal directions if I always tilted it off the axes in the
-same direction. As we’ve seen my intuition to compensate for tilt was almost right, other
-than the fact that the tilt already corrects itself in alternating steps. I was a bit
-embarassed about this until I remembered that Donald Knuth made a similar mixup
-&lt;a href=&quot;https://www.youtube.com/watch?v=v678Em6qyzk&quot;&gt;in his own attempt to put a fractal up on his wall&lt;/a&gt;.
-Fools rarely differ :)&lt;/p&gt;</content><author><name></name></author><summary type="html">Content Warning: Math, Handwaving I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are supposed to be doing. Somewhere between the cool S’s and Penrose triangles I stumbled upon a neat way to fill up graph paper by repeatedly combining and copying squares. I suspected there might have been more to the doodle, but wasn’t quite sure how to analyze it. Deciding to delegate to a future version of me that knows more math, I put it up on the wall behind my desk where it has followed me from high school to college to the present day.</summary></entry><entry><title type="html">Unintuitive observations from teaching</title><link href="http://localhost:4000/2021/07/02/Teaching/" rel="alternate" type="text/html" title="Unintuitive observations from teaching" /><published>2021-07-02T00:00:00-07:00</published><updated>2021-07-02T00:00:00-07:00</updated><id>http://localhost:4000/2021/07/02/Teaching</id><content type="html" xml:base="http://localhost:4000/2021/07/02/Teaching/">&lt;p&gt;Welp, I zoned out for another year. Luckily I’m pretty sure no one reads this stuff, except maybe CS 186 students who want to investigate the TA who answers debugging questions at 4 AM instead of teaching a discussion section. Which brings us to today’s topic!&lt;!--more--&gt;&lt;/p&gt;
+remember my exact reasoning for doing this over a decade ago: I thought the fractal
+would unalign itself from the cardinal directions if I always tilted it off the axes in the
+same direction. As we saw earlier with &lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; vs &lt;script type=&quot;math/tex&quot;&gt;M^\prime&lt;/script&gt; my intuition to compensate for tilt almost made sense, other
+than the fact it already corrects itself in alternating steps. I was a bit
+embarassed about this until I remembered even Donald Knuth
+&lt;a href=&quot;https://www.youtube.com/watch?v=v678Em6qyzk&quot;&gt;has made a wrong turn&lt;/a&gt; when putting up a fractal on his wall.
+Fools rarely differ!&lt;/p&gt;</content><author><name></name></author><summary type="html">Content Warning: Math, Handwaving I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are supposed to be doing. Somewhere between the Cool S’s and Penrose triangles I stumbled upon a neat way to fill up graph paper by repeatedly combining and copying squares. I suspected there might have been more to the doodle, but wasn’t quite sure how to analyze it. Deciding to delegate to a future version of me that knows more math, I put it up on the wall behind my desk where it has followed me from high school to college to the present day.</summary></entry><entry><title type="html">Unintuitive observations from teaching</title><link href="http://localhost:4000/2021/07/02/Teaching/" rel="alternate" type="text/html" title="Unintuitive observations from teaching" /><published>2021-07-02T00:00:00-07:00</published><updated>2021-07-02T00:00:00-07:00</updated><id>http://localhost:4000/2021/07/02/Teaching</id><content type="html" xml:base="http://localhost:4000/2021/07/02/Teaching/">&lt;p&gt;Welp, I zoned out for another year. Luckily I’m pretty sure no one reads this stuff, except maybe CS 186 students who want to investigate the TA who answers debugging questions at 4 AM instead of teaching a discussion section. Which brings us to today’s topic!&lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;teaching-and-other-paradoxes&quot;&gt;Teaching, and other paradoxes&lt;/h2&gt;
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T22:35:23-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-21T22:40:33-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Content Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
 
 &lt;p&gt;I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are
 supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;Cool S&lt;/a&gt;’s
@@ -594,8 +594,8 @@ describe through vigorous handwaving, and generalizes to any lattice rather than
 &lt;p&gt;Speaking of handwaving: the next section is now fully in the territory of “things I
 started to think about a week ago when is started writing this,” so any semblance of rigor
 that came from having many years to think about the problem is out the window. Instead
-I’ll be relying on my mental model of linear algebra, which is “if it sounds like its true
-and looks like its true, its probably true.”&lt;/p&gt;
+I’ll be relying on my mental model of linear algebra, which is “if it sounds like it’s true
+and looks like it’s true, it’s probably true.”&lt;/p&gt;
 
 &lt;h2 id=&quot;to-go-even-further-beyond&quot;&gt;To go even further beyond&lt;/h2&gt;
 
@@ -712,7 +712,7 @@ the 4th dimension into the slices on the ends.&lt;/p&gt;
 
 &lt;p&gt;My main takeaway from this is that while iteration 2
 can still be seen, iteration 1 has now been completely covered.
-Technically iteration 3 extends farther out in the &lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt; dimension, but at this point its
+Technically iteration 3 extends farther out in the &lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt; dimension, but at this point it’s
 difficult to comprehend the fractal anyway. I imagine this is the sort of thing my higher dimensional analog would
 put up on the 4D hypersurface of their room’s 5D walls to admire in its full glory, so I’m dubbing it “the orthotopeflower.”
 Unfortunately my apartment is measured in square feet and not hypercubic feet, so
@@ -736,7 +736,7 @@ a la the very first animation of this post:&lt;/p&gt;
 
 &lt;p&gt;Each smaller grid shows a slice of -3 to 3 on the x and y axes. The “grid of grids” represent
 -3 to 3 along the z and w axes. Whenever a square crosses from one small grid
-to another its really being translated through the z or w axis. Squares that appear to
+to another it’s really being translated through the z or w axis. Squares that appear to
 fade in or fade out are moving in or out of the 7x7x7x7 “viewing window” in 4 dimensions.
 Compared to the line of 3D slices, this approach uses screen real estate a bit better
 (growing as a square instead of in a line), and lets you see the interior of the entire
@@ -790,7 +790,7 @@ self left behind the perfect gift in the form of a wild goose chase across the d
 linear algebra and higher dimensions. It makes me curious about how many other interesting
 ideas other people have lying around in plain sight as sketches or To Do’s.&lt;/p&gt;
 
-&lt;p&gt;If this post comes off as a bit rambly from the many twists and turns between domains its
+&lt;p&gt;If this post comes off as a bit rambly from the many twists and turns between domains it’s
 because I tried to follow the path I took while haphazardly picking up and forgetting
 about the problem over the years. There are a handful of spots where you might ask “how did you know
 doing this specific thing would lead to that?” The simple answer is I had no clue if any of this

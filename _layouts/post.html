@@ -28,6 +28,11 @@ layout: default
 
   <div class="date">
     Written on {{ page.date | date: "%B %e, %Y" }}
+
+    {% if page.hackernews %}
+    <br>
+    Hacker News discussion: <a href="{{ page.hackernews }}">{{ page.hackernews }}</a>
+    {% endif %}
   </div>
 
   {% include disqus.html %}

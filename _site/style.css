@@ -341,14 +341,23 @@ tr a {
 }
 .post blockquote {
   margin: 1.8em .8em;
-  border-left: 2px solid #666;
-  padding: 0.1em 1em;
-  color: #666;
-  font-size: 22px;
+  border-left: 4px solid #888888;
+  padding: 0em 1em;
+  color: #202020;
   font-style: italic;
 }
 .post .comments {
   margin-top: 10px;
+}
+.post .footnote {
+  vertical-align: super;
+  font-size: 65%;
+}
+.post .footnote:before {
+  content: "[";
+}
+.post .footnote:after {
+  content: "]";
 }
 .post .read-more {
   text-transform: uppercase;

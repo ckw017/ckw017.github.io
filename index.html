@@ -19,9 +19,11 @@ layout: default
     {% endif %}
     <article class="post">
 			  <div class="flex-container">
+          {% if post.img %}
           <a href="{{ site.baseurl }}{{ post.url }}">
             <img class="post-preview" src="{{ post.img }}">
           </a>
+          {% endif %}
           <div class="text-preview">
             <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
             <i>{{post.date | date: "%B %e, %Y" }}</i><br>

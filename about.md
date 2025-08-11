@@ -13,11 +13,11 @@ permalink: /about/
 <img src="/images/about/triangles.png" width="20%" height="auto">
 <img src="/images/about/bridge.png" width="20%" height="auto">
 
-*(Approximate) photos of me.*
+*Me, approximately.*
 
 ---
 
-Hi, I'm some guy! I graduated from UC Berkeley in 2021 where I studied Computer *Science* and Data *Science*,
+Hi, I'm some guy! I graduated from UC Berkeley where I double majored in Computer *Science* and Data *Science*,
 in the College of Letters & *Science*, and received a Bachelor of *Arts*.
 I previously worked on platform engineering, distributed computing, observability, and container orchestration at [Anyscale](https://www.anyscale.com/).
 I am currently on sabbatical.
@@ -35,17 +35,11 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 <br>
 [What's with the background image for this site?](#What's-with-the-background-image-for-this-site?)
 <br>
-<!-- [Why is everything so dark?](#Why-is-everything-so-dark?) -->
-<!-- <br> -->
-[Class recommendations?](#Class-recommendations?)
-<br>
 [Can machines think?](#Can-machines-think?)
 <br>
 [How did you get into programming?](#How-did-you-get-into-programming?)
 <br>
 [I got a 404 error. Who is this "Debug Dog"?](#I-got-a-404-error.-Who-is-this-"Debug-Dog"?)
-<br>
-[What's Berkeley CS like/should I apply?](#What's-Berkeley-CS-like/should-I-apply?)
 <br>
 [What does your middle initial stand for?](#What-does-your-middle-initial-stand-for?)
 
@@ -84,43 +78,6 @@ And occasionally:
 
 That's a picture of Berkeley's Campanile, with a few rounds of [primitive](https://github.com/fogleman/primitive) run on top of it to try to approximate it using geometric primitives. I personally really like the aesthetic, though I'll admit without looking closely it kind of seems like a blown-up low fidelity JPEG.
 
-<a name="Class-recommendations?"></a>
-
----
-## Class recommendations?
-
-I came into Berkeley with above average programming maturity and average math maturity and I'm personally biased towards classes with heavy emphasis on programming, so take this list with a grain of salt
-
-Definitely take:
-* CS162 - Operating Systems
-    * Requires: CS61ABC, I recommend taking 161 prior as well
-* CS170 - Algorithms
-    * Requires: CS70
-* CS194 - Linux System Administration DeCal
-    * Requires: Enrollment Luck
-    * This is a DeCal run by the awesome students down in the OCF! Enrollment is usually really tight though, but the members of the OCF are generally enthusiastic enough to help you out with Linux stuff if you show up during regular hours
-
-If you like programming:
-* CS161 - Computer Security
-    * Requires: CS61C, high acronym tolerance
-* CS186 - Databases
-    * Requires: CS61BC, strong emotions about disk latency
-
-If you're interested or think you're interested in two letter hypeisms:
-* CS188 - Artificial Intelligence
-    * Requires: CS61AB
-* CS189 - Machine Learning
-    * Requires: EE126\*, EE127\*, Any STAT upperdiv\*, MATH54, MATH53,
-    * I really recommend taking at least one of the asterisked things before this class
-* EECS127 - Optimization Models in Engineering
-    * Requires: Math54
-    * I think this technically requires the EE16 series but I didn't take them when I took this class and it was mostly fine
-* CS182 - Neural Networks
-    * Requires: Math53, Math54 (127 also works), CS70
-    * By the time I took this class my interest had almost vanished, but its an
-    interesting survey of architectures, intuition behind why some are effective,
-    lots of linalg and lots and lots of little hacks to get things working
-
 <a name='Can-machines-think?'></a>
 
 ---
@@ -158,20 +115,6 @@ See the third quote in the "What is our purpose?" section for more on this.
 Debug Dog is my dog-in-law who came with me to Berkeley to study CS. In general I do my best to [explain code to line-to-line to him](https://en.wikipedia.org/wiki/Rubber_duck_debugging) during debugging sessions while he stares back at me in judgemental silence. Thanks to the power of Berkeley's recorded lectures he has approximately the same level of CS knowledge and programming maturity as me, but severely lacks in communication skills (presumably because he doesn't have a mouth).
 
 <a name="What's-Berkeley-CS-like/should-I-apply?"></a>
-
----
-## What's Berkeley CS like/should I apply?
-
-Yes, you should apply (if it's within your financial capacity). I really don't have a universal answer to this, any curriculum will really have a completely different effect for different people. There are a few things that I do think stand out:
-
-* There is a hill you have to get over. Although advertised as no prior experience required, the intro CS course CS61A has been accused of being a weeder course along with CS61B (Data Structures) and CS70 (Discrete Math). The requirement to declare the computer science major is a 3.3 GPA in these classes, i.e. 2 A's and  B, or 3 B+'s, etc... This is, as far as I know, the highest GPA cutoff at Berkeley, and it's been trending upwards (though I doubt, knock on wood, that it will get any higher). I know that roughly 25% students a semester are barred from the major by this cutoff, and I would bet that even more are diverted away before even getting through all three courses by performance in the first ones they take.
-* The bar is high because the staff believes in you. Since our CS department has grown a bit slower than Moore's law in the past few years it might seem like resources are getting spread thin. That's not really the whole story though. Many undergraduates TA, tutor, and mentor other undergraduates. This is often times equally if not more effective than help from graduate student instructors and professors, since many profs and grads tend to be a bit too experienced to empathize with a lower-div undergrad. I implore you to take advantage of your peers both enrolled in the class and acting as course staff.
-* Classes tend to get easier in upper div! The curves are kinder, class sizes are smaller, and the professors tend to have genuine interest in the material. Since you've made it through lower-divs by this point, the projects get a lot more interesting as well since you should have decent programming/problem-solving maturity
-* Check out the coursework tab of my [portfolio](/portfolio#coursework) for cool classes and associated projects I've had the chance to take
-
-People will of course give you impassioned reasons for why you shouldn't come to Berkeley, usually regarding difficulty and class sizes. I think you should take their words in to consideration as well.
-
-<a name="What-does-your-middle-initial-stand-for?"></a>
 
 ---
 ## What does your middle initial stand for?

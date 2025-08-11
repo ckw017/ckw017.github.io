@@ -298,10 +298,9 @@ tr {
   margin: 30px;
   blockquote {
     margin: 1.8em .8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
-    color: $gray;
-    font-size: 22px;
+    border-left: 4px solid #888888;
+    padding: 0em 1em;
+    color: #202020;
     font-style: italic;
   }
 
@@ -309,10 +308,24 @@ tr {
     margin-top: 10px;
   }
 
+  .footnote {
+    vertical-align: super;
+    font-size: 65%;
+  }
+
+  .footnote:before {
+    content: "[";
+  }
+
+  .footnote:after {
+    content: "]";
+  }
+
   .read-more {
     text-transform: uppercase;
     font-size: 15px;
   }
+
 }
 
 .page {

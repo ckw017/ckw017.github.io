@@ -169,7 +169,7 @@ of our secret words to build up a histogram of how this strategy tends to perfor
 
 <img src="/images/wordle/histograms.jpg" style="max-height:30vh; width:auto;"/>
 
-On the left, we have the result of mixing the two strategies without using any detheduction
+On the left, we have the result of mixing the two strategies without using any deduction
 tricks. This produces a vaguely Gaussian looking distribution averaging a score of 15,
 the same as using `MAJOR` or `LEAKS` on their own.
 On the right, we have the result of mixing the two strategies and using
@@ -222,6 +222,8 @@ Some interesting open questions are:
   they must be somewhere else. Is there a way to "fuzzily" refine our possibilities
   to values other than 0, e.g. "this word is likely to be in position A,
   so it's less likely to be in position B"?
+* In the version of Hyper-Wordle played in this writeup, guesses are permutations with replacement.
+  What do strategies look if we limit guesses to be permutations *without* replacement?
 * Are there any other games/scenarios where combining multiple suboptimal strategies outcompetes
   a strategy which would normally be stronger?
 * Should I find less convoluted things to do with my free time?

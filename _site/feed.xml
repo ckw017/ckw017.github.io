@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-23T12:04:22-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-23T12:05:50-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
 a version of Wordle where you solve two words at once. If you’re looking for more of a challenge,
 Merriam-Webster has you covered with &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
 where you solve four words at once. Of course any Wordler worth their salt should be able
@@ -76,7 +76,7 @@ with a suboptimal strategy and eventually get lucky enough to beat better strate
 &lt;p&gt;&lt;img src=&quot;/images/wordle/hist.png&quot; style=&quot;max-height:50vh; width:auto;&quot; /&gt;&lt;br /&gt;
 &lt;em&gt;Central limit theory in action.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;Only testing against permutations of the 2315 secret words without replacement seemed like
+&lt;p&gt;Testing against permutations of the 2315 secret words without replacement seemed like
 it might negate any chance of abusing variance.
 For example, if you used the optimal&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle&quot;&gt;Wordle strategy starting with the word &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;&lt;/a&gt;
 which solves the game in an average of ~3.4212 guesses,
@@ -96,7 +96,7 @@ from the fact that each strategy has its own strengths and weaknesses. For examp
 &lt;/ul&gt;
 
 &lt;p&gt;If you spam enough submissions, you can retry until you’re tested against permutations where each
-strategy covers for the other’s weaknesses, e.g. words like &lt;code class=&quot;highlighter-rouge&quot;&gt;SAUTE&lt;/code&gt; end up in the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; half,
+strategy covers for the other’s weaknesses, i.e. words like &lt;code class=&quot;highlighter-rouge&quot;&gt;SAUTE&lt;/code&gt; end up in the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; half,
 and words like &lt;code class=&quot;highlighter-rouge&quot;&gt;ROUTE&lt;/code&gt; end up in the &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; half.&lt;/p&gt;
 
 &lt;p&gt;While we could intentionally inject variance like this and spam submit,

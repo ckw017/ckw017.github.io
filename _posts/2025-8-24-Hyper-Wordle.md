@@ -63,7 +63,7 @@ with a suboptimal strategy and eventually get lucky enough to beat better strate
 <img src="/images/wordle/hist.png" style="max-height:50vh; width:auto;"/><br>
 *Central limit theory in action.*
 
-Only testing against permutations of the 2315 secret words without replacement seemed like
+Testing against permutations of the 2315 secret words without replacement seemed like
 it might negate any chance of abusing variance.
 For example, if you used the optimal[^2] [Wordle strategy starting with the word `SALET`](https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle)
 which solves the game in an average of ~3.4212 guesses,
@@ -81,7 +81,7 @@ from the fact that each strategy has its own strengths and weaknesses. For examp
 * `REAST` solves `ROUTE` in 2 guesses, while `SALET` solves it in 4.
 
 If you spam enough submissions, you can retry until you're tested against permutations where each
-strategy covers for the other's weaknesses, e.g. words like `SAUTE` end up in the `SALET` half,
+strategy covers for the other's weaknesses, i.e. words like `SAUTE` end up in the `SALET` half,
 and words like `ROUTE` end up in the `REAST` half.
 
 While we could intentionally inject variance like this and spam submit,

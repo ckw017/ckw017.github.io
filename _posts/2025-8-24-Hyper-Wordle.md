@@ -88,8 +88,9 @@ While we could intentionally inject variance like this and spam submit,
 there isn't much merit in being the contestant who submits the most times. In particular,
 the mixed strategy scores ≈7921.5 on average (the average of `SALET`'s score and `REAST`'s
 score) which is worse than `SALET`'s score of 7920 by itself.
-What if we could find a way to outperform the `SALET` strategy *on average*? After all,
-just because `SALET` is optimal for *Wordle* doesn't mean its optimal for *Hyper-Wordle*.
+What if we could find a way to outperform the `SALET` strategy *on average*? For example,
+can we take advantage of the fact that the secrets are permuted *without replacement* to
+gain extra information?
 
 ## Wacky Trick Leaks Extra State
 

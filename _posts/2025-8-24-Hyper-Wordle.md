@@ -19,7 +19,7 @@ and [Hexadecordle](https://quordle-wordle.com/hexadecordle). And no, it doesn't 
 *Sexaginta-quattuordle isn't real, it can't hurt yo--*
 
 One logical extreme of this trend would be to take the [list of 2315 valid secret words](https://scourway.com/wordle/zez8el/wordle-answers-list-2315-words-5-letters)
-to create duomilia-trecenti-quindecirdle, where each day the puzzle is a different permutation of those 2315[^1] words.
+to create duomilia-trecenti-quindecordle, where each day the puzzle is a different permutation of those 2315[^1] words.
 Despite how chaotic the user interface would need to be, this variant wouldn't be much of a challenge: since
 the same guess is applied to *all* 2315 words every turn, entering each of the 2315 secret words
 in any order will always solve it with a perfect score of 2315 guesses.

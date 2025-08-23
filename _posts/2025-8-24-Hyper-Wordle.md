@@ -54,7 +54,7 @@ td{
 | Feedback is given in the form of $$5$$ colored squares.                         | Feedback is given in the form of $$5 \times 2315 = 11575$$ colored squares.                           |
 | Your score is the number of 5-letter guesses needed to identify the secret. | Your score is the total number of 5-letter guesses needed to identify each word in the secret permutation.      |
 
-Believe it or not, this is a real Wordle variant that I ran into back in 2022 [as part of a competition](https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv)
+Believe it or not, this is a real Wordle variant I ran into back in 2022 [as part of a competition](https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv)
 to see who could write the best Wordle solving program. Originally, the competition
 tested programs against a sample of 1000 words chosen randomly with replacement.
 Since some secret words are easier to solve than others, you could spam submissions repeatedly
@@ -100,8 +100,8 @@ where `LEAKS` is our starting word:
 
 <img src="/images/wordle/leaks-tree.jpg" style="max-height:30vh; width:auto;"/>
 
-Note that this is a deterministic strategy, meaning that our guess for each word is
-based solely on feedback we've received for that word so far. For example, we
+Note this is a deterministic strategy, meaning our guess for each word is
+based solely on feedback we've received for the word so far. For example, we
 guess `THIRD` in all three positions where the feedback from the first guess was five gray squares.
 While we show the secret words in order here, since the strategy is deterministic it always
 requires a total of 15 guesses to solve all the words regardless of how they're permuted. Next,
@@ -119,19 +119,19 @@ with `MAJOR` for the first three positions and `LEAKS` for the last three:
 To put you in the mindset of the puzzle, the actual value of each secret word is kept, well, secret.
 The only information you have is that each of the six secret words appears
 only once, but can be in any order. The possibilities column lists the possible secret
-word that can be in a position based on the feedback from guess 1,
+words which can be in a position based on the feedback from guess 1,
 using `1`, `2`, `3`, `4`, `5`, and `6` as shorthand for `FIRST`, `DEUCE`, `THIRD`, `FORTH`,
 `FIFTH`, and `SIXTH` respectively.
 
 Before we make any more guesses, is there anything we can do to narrow down the values in
 the possibilities column? Looking closely, we already know the position of `2`: it
-*must* be in the fourth position, since it's the only secret that matches that feedback pattern
+*must* be in the fourth position, since it's the only secret which matches that feedback pattern
 for `LEAKS`. This allows us to remove `2` it from the lists of possibilities in the first
 two positions:
 
 <img src="/images/wordle/major-leaks-1.jpg" style="max-height:30vh; width:auto;"/>
 
-Now that we've removed `2` as a possibility in the first and second positions, we see that
+Now that we've removed `2` as a possibility in the first and second positions, we see
 the first position must be either `5` or `6`. Consider the following two scenarios:
 * If `5` is in the first position, `6` must be in the second position, since there would be
   no other option that could go there.
@@ -144,7 +144,7 @@ must be in the first two positions, allowing us to rule them out from any other 
 
 <img src="/images/wordle/major-leaks-2.jpg" style="max-height:30vh; width:auto;"/>
 
-After this deduction, we know that `1` must be in the fifth position, since it's the only viable
+After this deduction, we know `1` must be in the fifth position, since it's the only viable
 option. This allows us to remove it from the list of possibilities for the third
 position.
 
@@ -155,7 +155,7 @@ possibilities for the sixth position.
 
 <img src="/images/wordle/major-leaks-4.jpg" style="max-height:30vh; width:auto;"/>
 
-Finally, we can deduce that `4` must be in the sixth position. Initially we only knew the position
+Finally, we can deduce `4` must be in the sixth position. Initially we only knew the position
 of `2`, however after applying deductions we learn the exact position of four out of the six
 secrets! If we submit guesses tuned to take advantage of our updated knowledge:
 
@@ -173,22 +173,22 @@ tricks. This produces a vaguely Gaussian looking distribution averaging a score 
 the same as using `MAJOR` or `LEAKS` on their own.
 On the right, we have the result of mixing the two strategies and using
 deduction tricks to refine our guesses, with an average score of 13.9. In
-other words, we have a way to mix starting words that performs *better* than the sum of
+other words, we have a way to mix starting words which performs *better* than the sum of
 their parts!
 
 ## Scaling up
 
 Now that we've seen this work with permutations of six secret words, let's see how we
 do against permutations of the complete list 2315 secret words. We can start off with the
-`SALET`/`REAST` mixed strategy that we showed earlier:
+`SALET`/`REAST` mixed strategy we showed earlier:
 
 <img src="/images/wordle/salet-reast-hist.jpg" style="max-height:40vh; width:auto;"/>
 
-The values on the right are the same from earlier, showing the score distribution `SALET`/`REAST`
+The values on the right are the same from earlier, showing the score distribution of the `SALET`/`REAST`
 mixed strategy on 1000 random permutations of the 2315 secret words.
 On the left we have the results on the same 1000 permutations after eliminating possible
-states via deduction and refining our guessing strategy accordingly. Deduction moves our
-score from 7921.5 to 7768.8, a 150 point improvement!
+states via deduction and refining our guessing strategy accordingly. Deduction takes our
+average score from 7921.5 to 7768.8, a 150 point improvement!
 
 `SALET` and `REAST` were chosen since they're the top two deterministic Wordle strategies,
 but what about mixing other strategies? During the competition, the best combination of
@@ -210,18 +210,18 @@ how long I've procrastinated on doing this writeup. If you want to tinker with i
 generated all the data for the strategy histograms in this post using [this very adhoc Rust code](https://github.com/ckw017/hyper-wordle).
 Some interesting open questions are:
 * What's the best mix of two starting words (i.e. lowest average score)? Intuitively,
-  some strategies might "synergize" with each other better than others depending on if
+  some starting words might "synergize" with each other better than others if
   the structure of their decision trees tend to lead to more deductions.
 * My winning strategy only behaves non-deterministically on the first turn, when we randomly
   use 10 different guesses despite every word having identical feedback at that point (i.e.
   no feedback). Can we get further improvements by behaving non-deterministically on later
   turns?
 * The deduction strategy only removes words from the possibility pool when we're *certain*
-  that they must be somewhere else. Is there a way to "fuzzily" refine our possibilities
+  they must be somewhere else. Is there a way to "fuzzily" refine our possibilities
   to values other than 0, e.g. "this word is likely to be in position A,
   so it's less likely to be in position B"?
 * Are there any other games/scenarios where combining multiple suboptimal strategies outcompetes
-  a strategy that would normally be stronger?
+  a strategy which would normally be stronger?
 * Should I find less convoluted things to do with my free time?
 
 If you enjoyed reading this, this entire writeup was actually much longer before
@@ -240,18 +240,18 @@ Anyway, thanks for reading!
 
 <!--
 
-The example given only considers mixing two strategies, however my best submission involved mixing the ten best strategies and sharing information between them, netting a score of 7574, a 4.4% improvement over the best performance for a single deterministic strategy. I found that mixing more than ten strategies started to yield diminishing returns. Possible explanations for this are:
+The example given only considers mixing two strategies, however my best submission involved mixing the ten best strategies and sharing information between them, netting a score of 7574, a 4.4% improvement over the best performance for a single deterministic strategy. I found mixing more than ten strategies started to yield diminishing returns. Possible explanations for this are:
 * As we introduce more strategies, we need to involve "worse" starting words (strategies in the top 10 are mostly good, strategies in the top 50 not so much). This makes it harder for the new strategy to reveal enough useful information to other strategies to compensate for how bad it is in isolation
-* The more strategies we introduce, the lower the chance that any single strategy has enough "samples" to reveal actionable information
+* The more strategies we introduce, the lower the chance any single strategy has enough "samples" to reveal actionable information
 
 ## Open questions
 
 Anyway, this was enough to secure the win for the final Wordle competition, and leads to some interesting open questions:
-* The information sharing strategy described only removes words from the pool of strategy if we're *certain* that the word is already somewhere else. In reality, you might be able to determine the probability that a word is somewhere based on how many valid spots it can be in, and use this information when doing the next round's guesses.
-* What's the best mix of two starting words (nets lowest expected number of guesses)? I imagine this is harder than just mixing the two best strategies -- some strategy pairs might have better "synergy", i.e. reveal information that others might find "useful" more frequently. For what it's worth, I'm pretty sure computing this exactly is extremely intractable, but I'm frequently wrong about this sort of thing.
+* The information sharing strategy described only removes words from the pool of strategy if we're *certain* that the word is already somewhere else. In reality, you might be able to determine the probability a word is somewhere based on how many valid spots it can be in, and use this information when doing the next round's guesses.
+* What's the best mix of two starting words (nets lowest expected number of guesses)? I imagine this is harder than just mixing the two best strategies -- some strategy pairs might have better "synergy", i.e. reveal information others might find "useful" more frequently. For what it's worth, I'm pretty sure computing this exactly is extremely intractable, but I'm frequently wrong about this sort of thing.
 * What's the optimal mix of any number of starting words? (Probably super-duper intractable)
 * My last submission only mixed strategies during the first turn. Can we do better by mixing strategies on other turns as well?
-* Other than the information sharing at the end of each round, the strategies act entirely independently. Can the strategies somehow leverage knowledge about what the other strategies will do to adjust their own guesses, essentially betting that the other strategies are likely to uncover extra info?
+* Other than the information sharing at the end of each round, the strategies act entirely independently. Can the strategies somehow leverage knowledge about what the other strategies will do to adjust their own guesses, essentially betting the other strategies are likely to uncover extra info?
 * Are there any other games/scenarios with analogous properties to this kind of Wordle, i.e. where running multiple suboptimal strategies outcompetes a single strategy?
 * Should I find less convoluted things to do in my free time?
 

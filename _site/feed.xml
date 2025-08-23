@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-23T01:30:26-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-23T01:43:26-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
 a version of Wordle where you solve two words at once. If you’re looking for more of a challenge,
 Merriam-Webster has you covered with &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
 where you solve four words at once. Of course any Wordler worth their salt should be able
@@ -67,7 +67,7 @@ td{
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Believe it or not, this is a real Wordle variant that I ran into back in 2022 &lt;a href=&quot;https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv&quot;&gt;as part of a competition&lt;/a&gt;
+&lt;p&gt;Believe it or not, this is a real Wordle variant I ran into back in 2022 &lt;a href=&quot;https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv&quot;&gt;as part of a competition&lt;/a&gt;
 to see who could write the best Wordle solving program. Originally, the competition
 tested programs against a sample of 1000 words chosen randomly with replacement.
 Since some secret words are easier to solve than others, you could spam submissions repeatedly
@@ -115,8 +115,8 @@ where &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; is our 
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/leaks-tree.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Note that this is a deterministic strategy, meaning that our guess for each word is
-based solely on feedback we’ve received for that word so far. For example, we
+&lt;p&gt;Note this is a deterministic strategy, meaning our guess for each word is
+based solely on feedback we’ve received for the word so far. For example, we
 guess &lt;code class=&quot;highlighter-rouge&quot;&gt;THIRD&lt;/code&gt; in all three positions where the feedback from the first guess was five gray squares.
 While we show the secret words in order here, since the strategy is deterministic it always
 requires a total of 15 guesses to solve all the words regardless of how they’re permuted. Next,
@@ -134,19 +134,19 @@ with &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; for the 
 &lt;p&gt;To put you in the mindset of the puzzle, the actual value of each secret word is kept, well, secret.
 The only information you have is that each of the six secret words appears
 only once, but can be in any order. The possibilities column lists the possible secret
-word that can be in a position based on the feedback from guess 1,
+words which can be in a position based on the feedback from guess 1,
 using &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt; as shorthand for &lt;code class=&quot;highlighter-rouge&quot;&gt;FIRST&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;DEUCE&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;THIRD&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FORTH&lt;/code&gt;,
 &lt;code class=&quot;highlighter-rouge&quot;&gt;FIFTH&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;SIXTH&lt;/code&gt; respectively.&lt;/p&gt;
 
 &lt;p&gt;Before we make any more guesses, is there anything we can do to narrow down the values in
 the possibilities column? Looking closely, we already know the position of &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;: it
-&lt;em&gt;must&lt;/em&gt; be in the fourth position, since it’s the only secret that matches that feedback pattern
+&lt;em&gt;must&lt;/em&gt; be in the fourth position, since it’s the only secret which matches that feedback pattern
 for &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt;. This allows us to remove &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt; it from the lists of possibilities in the first
 two positions:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-1.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Now that we’ve removed &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt; as a possibility in the first and second positions, we see that
+&lt;p&gt;Now that we’ve removed &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt; as a possibility in the first and second positions, we see
 the first position must be either &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt;. Consider the following two scenarios:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; is in the first position, &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt; must be in the second position, since there would be
@@ -161,7 +161,7 @@ must be in the first two positions, allowing us to rule them out from any other 
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-2.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;After this deduction, we know that &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; must be in the fifth position, since it’s the only viable
+&lt;p&gt;After this deduction, we know &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; must be in the fifth position, since it’s the only viable
 option. This allows us to remove it from the list of possibilities for the third
 position.&lt;/p&gt;
 
@@ -172,7 +172,7 @@ possibilities for the sixth position.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-4.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Finally, we can deduce that &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt; must be in the sixth position. Initially we only knew the position
+&lt;p&gt;Finally, we can deduce &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt; must be in the sixth position. Initially we only knew the position
 of &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;, however after applying deductions we learn the exact position of four out of the six
 secrets! If we submit guesses tuned to take advantage of our updated knowledge:&lt;/p&gt;
 
@@ -190,22 +190,22 @@ tricks. This produces a vaguely Gaussian looking distribution averaging a score 
 the same as using &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; on their own.
 On the right, we have the result of mixing the two strategies and using
 deduction tricks to refine our guesses, with an average score of 13.9. In
-other words, we have a way to mix starting words that performs &lt;em&gt;better&lt;/em&gt; than the sum of
+other words, we have a way to mix starting words which performs &lt;em&gt;better&lt;/em&gt; than the sum of
 their parts!&lt;/p&gt;
 
 &lt;h2 id=&quot;scaling-up&quot;&gt;Scaling up&lt;/h2&gt;
 
 &lt;p&gt;Now that we’ve seen this work with permutations of six secret words, let’s see how we
 do against permutations of the complete list 2315 secret words. We can start off with the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; mixed strategy that we showed earlier:&lt;/p&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; mixed strategy we showed earlier:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/salet-reast-hist.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The values on the right are the same from earlier, showing the score distribution &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt;
+&lt;p&gt;The values on the right are the same from earlier, showing the score distribution of the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt;
 mixed strategy on 1000 random permutations of the 2315 secret words.
 On the left we have the results on the same 1000 permutations after eliminating possible
-states via deduction and refining our guessing strategy accordingly. Deduction moves our
-score from 7921.5 to 7768.8, a 150 point improvement!&lt;/p&gt;
+states via deduction and refining our guessing strategy accordingly. Deduction takes our
+average score from 7921.5 to 7768.8, a 150 point improvement!&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; were chosen since they’re the top two deterministic Wordle strategies,
 but what about mixing other strategies? During the competition, the best combination of
@@ -228,18 +228,18 @@ generated all the data for the strategy histograms in this post using &lt;a href
 Some interesting open questions are:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;What’s the best mix of two starting words (i.e. lowest average score)? Intuitively,
-some strategies might “synergize” with each other better than others depending on if
+some starting words might “synergize” with each other better than others if
 the structure of their decision trees tend to lead to more deductions.&lt;/li&gt;
   &lt;li&gt;My winning strategy only behaves non-deterministically on the first turn, when we randomly
 use 10 different guesses despite every word having identical feedback at that point (i.e.
 no feedback). Can we get further improvements by behaving non-deterministically on later
 turns?&lt;/li&gt;
   &lt;li&gt;The deduction strategy only removes words from the possibility pool when we’re &lt;em&gt;certain&lt;/em&gt;
-that they must be somewhere else. Is there a way to “fuzzily” refine our possibilities
+they must be somewhere else. Is there a way to “fuzzily” refine our possibilities
 to values other than 0, e.g. “this word is likely to be in position A,
 so it’s less likely to be in position B”?&lt;/li&gt;
   &lt;li&gt;Are there any other games/scenarios where combining multiple suboptimal strategies outcompetes
-a strategy that would normally be stronger?&lt;/li&gt;
+a strategy which would normally be stronger?&lt;/li&gt;
   &lt;li&gt;Should I find less convoluted things to do with my free time?&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -261,18 +261,18 @@ Wordle.&lt;/li&gt;
 
 &lt;!--
 
-The example given only considers mixing two strategies, however my best submission involved mixing the ten best strategies and sharing information between them, netting a score of 7574, a 4.4% improvement over the best performance for a single deterministic strategy. I found that mixing more than ten strategies started to yield diminishing returns. Possible explanations for this are:
+The example given only considers mixing two strategies, however my best submission involved mixing the ten best strategies and sharing information between them, netting a score of 7574, a 4.4% improvement over the best performance for a single deterministic strategy. I found mixing more than ten strategies started to yield diminishing returns. Possible explanations for this are:
 * As we introduce more strategies, we need to involve &quot;worse&quot; starting words (strategies in the top 10 are mostly good, strategies in the top 50 not so much). This makes it harder for the new strategy to reveal enough useful information to other strategies to compensate for how bad it is in isolation
-* The more strategies we introduce, the lower the chance that any single strategy has enough &quot;samples&quot; to reveal actionable information
+* The more strategies we introduce, the lower the chance any single strategy has enough &quot;samples&quot; to reveal actionable information
 
 ## Open questions
 
 Anyway, this was enough to secure the win for the final Wordle competition, and leads to some interesting open questions:
-* The information sharing strategy described only removes words from the pool of strategy if we're *certain* that the word is already somewhere else. In reality, you might be able to determine the probability that a word is somewhere based on how many valid spots it can be in, and use this information when doing the next round's guesses.
-* What's the best mix of two starting words (nets lowest expected number of guesses)? I imagine this is harder than just mixing the two best strategies -- some strategy pairs might have better &quot;synergy&quot;, i.e. reveal information that others might find &quot;useful&quot; more frequently. For what it's worth, I'm pretty sure computing this exactly is extremely intractable, but I'm frequently wrong about this sort of thing.
+* The information sharing strategy described only removes words from the pool of strategy if we're *certain* that the word is already somewhere else. In reality, you might be able to determine the probability a word is somewhere based on how many valid spots it can be in, and use this information when doing the next round's guesses.
+* What's the best mix of two starting words (nets lowest expected number of guesses)? I imagine this is harder than just mixing the two best strategies -- some strategy pairs might have better &quot;synergy&quot;, i.e. reveal information others might find &quot;useful&quot; more frequently. For what it's worth, I'm pretty sure computing this exactly is extremely intractable, but I'm frequently wrong about this sort of thing.
 * What's the optimal mix of any number of starting words? (Probably super-duper intractable)
 * My last submission only mixed strategies during the first turn. Can we do better by mixing strategies on other turns as well?
-* Other than the information sharing at the end of each round, the strategies act entirely independently. Can the strategies somehow leverage knowledge about what the other strategies will do to adjust their own guesses, essentially betting that the other strategies are likely to uncover extra info?
+* Other than the information sharing at the end of each round, the strategies act entirely independently. Can the strategies somehow leverage knowledge about what the other strategies will do to adjust their own guesses, essentially betting the other strategies are likely to uncover extra info?
 * Are there any other games/scenarios with analogous properties to this kind of Wordle, i.e. where running multiple suboptimal strategies outcompetes a single strategy?
 * Should I find less convoluted things to do in my free time?
 

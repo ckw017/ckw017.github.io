@@ -11,8 +11,7 @@ permalink: /about/
 <img src="/images/about/git_profile.png" width="20%" height="auto">
 <img src="/images/about/hill.png" width="20%" height="auto">
 <img src="/images/about/triangles.png" width="20%" height="auto">
-<img src="/images/about/bridge.png" width="20%" height="auto">
-
+<img src="/images/about/bridge.png" width="20%" height="auto"><br>
 *Me, approximately.*
 
 ---

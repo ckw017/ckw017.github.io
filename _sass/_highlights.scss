@@ -5,6 +5,12 @@
   padding: 2px 2px 2px 10px;
   margin: 0;
   overflow: auto;
+
+  code {
+    border: none;
+    background-color: #f7f7f7;
+    color: #1A1A1A;
+  }
 }
 
 div.highlight {
@@ -12,7 +18,11 @@ div.highlight {
 }
 
 code {
-  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+  font-family: "Menlo", "Monaco", "Andale Mono", "lucida console", "Courier New", monospace;
+  padding: 0px 2px 0px 2px;
+  border: 1px solid #a0a0a0;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000000;
 }
 
 .highlight .c { color: #586E75 } /* Comment */

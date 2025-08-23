@@ -1,200 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-15T22:19:20-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Beating Hyper-Wordle by mixing suboptimal Wordle strategies</title><link href="http://localhost:4000/2025/08/21/Hyper-Wordle/" rel="alternate" type="text/html" title="Beating Hyper-Wordle by mixing suboptimal Wordle strategies" /><published>2025-08-21T00:00:00-07:00</published><updated>2025-08-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/21/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/21/Hyper-Wordle/">&lt;p&gt;Wordle: the &lt;a href=&quot;https://play2048.co/&quot;&gt;2048&lt;/a&gt; of &lt;a href=&quot;https://en.wikipedia.org/wiki/2022&quot;&gt;2022&lt;/a&gt;,
-although it’s had considerably more staying power. Before explaining what
-Hyper-Wordle is, I want to provide some background on where and why I encountered
-it, though if you’re itching to find out or have already fallen down the
-Wordle optimization rabbit hole, you’re free to &lt;a href=&quot;&quot;&gt;skip ahead&lt;/a&gt;. &lt;!--more--&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-23T01:17:08-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
+a version of Wordle where you solve two words at once. If you’re looking for more of a challenge,
+Merriam-Webster has you covered with &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
+where you solve four words at once. Of course any Wordler worth their salt should be able
+to handle eight words, like in Britannica’s &lt;a href=&quot;https://www.britannica.com/games/octordle/&quot;&gt;Octordle&lt;/a&gt;.
+And if you want to do sixteen words at once, you’re spoiled for choice between &lt;a href=&quot;https://sedecordlegame.org/&quot;&gt;Sedecordle&lt;/a&gt;
+and &lt;a href=&quot;https://quordle-wordle.com/hexadecordle&quot;&gt;Hexadecordle&lt;/a&gt;. And no, it doesn’t &lt;a href=&quot;https://duotrigordle.com/&quot;&gt;stop&lt;/a&gt; &lt;a href=&quot;https://64ordle.au/&quot;&gt;there&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Shortly after Wordle became an overnight sensation, a natural question arose: what’s the best guessing strategy?
-Many theories and debates sprung up as people claimed to have found the optimal
-way to beat Wordle, often times using the word optimal loosely. While scrolling through
-the comments of one of these allegedly Wordle posts I spotted &lt;a href=&quot;https://news.ycombinator.com/item?id=29928263#29928609&quot;&gt;a comment&lt;/a&gt; by &lt;a href=&quot;https://github.com/colinmsaunders/&quot;&gt;Colin Saunders&lt;/a&gt; promoting a botting competition to see who could put their money where their mouth was.
-Scoring worked as follows:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;For every submission, 1000 secret words would be chosen randomly with replacement from the set of 12972 valid Wordle words.&lt;/li&gt;
-  &lt;li&gt;The bot picks a first guess for each of the 1000 words, and submits them as a batch.&lt;/li&gt;
-  &lt;li&gt;The bot is given feedback about each guess in the form of the green/yellow/gray positions.&lt;/li&gt;
-  &lt;li&gt;This continues until the bot has correctly guessed each of the 1000 secrets.&lt;/li&gt;
-  &lt;li&gt;The overall score is the total number of guesses used to determine all 1000 secrets&lt;/li&gt;
-&lt;/ol&gt;
+&lt;!--more--&gt;
 
-&lt;p&gt;Of course with so many people claiming to already have the optimal strategy, there was no
-way I could win. Right?&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://64ordle.au/&quot;&gt;&lt;img src=&quot;/images/wordle/64-dle.jpg&quot; alt=&quot;What hath God wrought?&quot; /&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;em&gt;Sexaginta-quattuordle isn’t real, it can’t hurt yo–&lt;/em&gt;&lt;/p&gt;
 
-&lt;!--
-In this system, the best possible score would be 1000 if your bot somehow managed to
-correctly guess each of the 1000 secrets on the first turn. Impossible, right?
+&lt;p&gt;One logical extreme of this trend would be to take the &lt;a href=&quot;https://scourway.com/wordle/zez8el/wordle-answers-list-2315-words-5-letters&quot;&gt;list of 2315 valid secret words&lt;/a&gt;
+to create duomilia-trecenti-quindecidle, where each day the puzzle is a different permutation of those 2315&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; words.
+Despite how chaotic the user interface would need to be, this variant wouldn’t be much of a challenge: since
+the same guess is applied to &lt;em&gt;all&lt;/em&gt; 2315 words every turn, entering each of the 2315 secret words
+in any order will always solve it with a perfect score of 2315 guesses.&lt;/p&gt;
 
-## All's fair in love and Wordle
-
-I normally don't join competitions unless I'm pretty sure I can either win or do
-something funny, usually the latter. When I heard about the Wordle bot competition,
-I had an idea for how to do both. In a past life I was a [TA for a programming class](/2021/07/02/Teaching/)
-where I worked on the autograder for scoring student submitted code. Running arbitrary
-code from potentially adversarial students meant I had a great excuse to practice pentesting
-on our grading infrastructure:
-
-![Screenshot of autograder output, scored 1337 points out of 100](/images/wordle/zoinks.jpg)
-
-*Note to students: don't try this sort of thing without permission : )*
-
-My first instinct was to find a way to cheese the competition's scoring system.
-The contest came with a [Python SDK](https://github.com/botfights/botfights-sdk/)
-for creating and submitting bots. One ~~cursed~~ neat utility in Python's standard library
-lets you inspect the call stack at runtime. For example:
-
-```python
-import inspect
-
-def outer():
-    outer_variable = 42
-    inner()
-
-def inner():
-    outer_frame = inspect.stack()[1][0]
-    print(
-      &quot;Inner function:&quot;,
-      outer_frame.f_locals[&quot;outer_variable&quot;]
-    )
-
-outer() # stdout: &quot;Inner function: 42&quot;
-```
-
-To cheese the scoring mechanism we can inspect caller frames, which should at
-some point contain the value of the secret:
-
-```python
-import inspect
-
-def play(_):
-    outer_frame = inspect.stack()[2][0]
-    return outer_frame.f_locals[&quot;secret&quot;]
-```
-
-Running this locally yielded a perfect score of 1000! However upon submitting:
-
-```python
-Creating fight on botfights.io ...
-Fight created: https://botfights.io/fight/fksbk7qu
-Traceback (most recent call last):
-  File &quot;cheat.py&quot;, line 4, in play
-    return inspect.stack()[2][0].f_locals[&quot;secret&quot;]
-KeyError: 'secret'
-```
-
-Oof, what happened? One major assumption was that the contest would score submissions
-running the bot code on the server in a containerized environment, similar to
-[Gradescope](https://www.gradescope.com/) or [Kaggle](https://www.kaggle.com/). In
-reality, the bot code was executed entirely client side while the secret words were kept
-entirely on the server. All hopes of cheesing the contest were out the window.
-
-## Sunk cost fallacy
-
-At this point I had already sunk ten minutes of my life trying to secure
-first place illegitimately, so naturally I dedicated an entire weekend to trying to
-get first place legitimately. --&gt;
-
-&lt;h2 id=&quot;heuristics-are-approximations&quot;&gt;Heuristics are approximations&lt;/h2&gt;
-
-&lt;p&gt;Many of the people who claimed to have found the optimal
-strategy had done so by &lt;a href=&quot;https://en.wikipedia.org/wiki/Information_gain_(decision_tree)&quot;&gt;maximizing information gain&lt;/a&gt;
-by guessing words which minimize the expected amount of entropy.
-One surprising event during all of this was when the popular math educator
-&lt;a href=&quot;https://en.wikipedia.org/wiki/3Blue1Brown&quot;&gt;3Blue1Brown&lt;/a&gt; uploaded an ambitiously titled
-video “The mathematically optimal Wordle strategy” using this method:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=v68zYyaEmEA&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
-&lt;img src=&quot;/images/wordle/woops2.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; alt=&quot;Thumbnail of a video titled The mathematically optimal Wordle strategy&quot; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;This was retitled a few days later to &lt;a href=&quot;https://www.youtube.com/watch?v=v68zYyaEmEA&quot;&gt;“Solving Wordle using information theory”&lt;/a&gt;
-when &lt;a href=&quot;https://www.youtube.com/watch?v=fRed0Xmc2Wg&quot;&gt;bugs in the original implementation&lt;/a&gt;
-were found, although even without the bugs the solution generated wasn’t necessarily optimal.
-This is by no means a knock against 3Blue1Brown, and I highly recommend watching his video
-as it does fantastic job explaining the information theory behind Wordle which I’m going
-to skip over in this writeup.&lt;/p&gt;
-
-&lt;p&gt;One problem with every entropy based approach is that when a guess “partitions” the
-possible values of the secret word based on feedback, the entropy formula assumes smaller partitions
-are &lt;em&gt;always&lt;/em&gt; better than larger ones for getting closer to the answer. In reality, the
-asymmetric nature of the English language means some subsets of words are trickier to deal
-with even if they have the same or fewer number of elements as another subset. Borrowing from
-&lt;a href=&quot;https://alexpeattie.com/blog/establishing-minimum-guesses-wordle/&quot;&gt;Alex Peattie’s elegant proof regarding minimizing maximum guesses&lt;/a&gt;,
-imagine a scenario where the secret word has been narrowed down to four options:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;BILLS&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;CILLS&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;DILLS&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;GILLS&lt;/code&gt;. An optimal guess here is &lt;code class=&quot;highlighter-rouge&quot;&gt;DEBUG&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Word    Guess 1
-------|--------|
-BILLS | DEBUG  |
-CILLS |
-DILLS |
-GILLS |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The feedback from guessing &lt;code class=&quot;highlighter-rouge&quot;&gt;DEBUG&lt;/code&gt; immediately tells us which of the four is the secret
-word, allowing us to guess the correct word on the next turn. On average, we can solve this
-subset of Wordle in exactly 2 guesses. Now consider the case where the
-secret words are &lt;code class=&quot;highlighter-rouge&quot;&gt;WACKY&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;TRICK&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;EXTRA&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;STATE&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Word    Guess 1
-------|--------|
-WACKY | EXTRA  |
-TRICK |
-LEAKS |
-EXTRA |
-STATE |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Tallying it up, we can expect to solve the 5-word subset (2.3 bits of entropy)
-in 1.8 guesses, an improvement over the 4-word subset’s (2 bits of entropy) 2 guesses. Now
-that we know the information gain strategy isn’t necessarily optimal, what can we
-do to improve it? My strategy for the competition was nearly identical to the entropy minimization strategy,
-except it included an additional layer of &lt;a href=&quot;https://en.wikipedia.org/wiki/Beam_search&quot;&gt;beam search&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Rather than greedily choosing the guess which minimizes entropy, we can instead recursively explore the top N guesses
-ranked by entropy and choose the one which ultimately minimizes the expected number of guesses
-to identify all the possible words.
-This explores parts of the search space which superficially appear
-worse but may actually be easier to solve, like in the 4-word vs. 5-word case. In practice,
-a beam width of 50 is enough to correctly generate the optimal decision tree in classic Wordle (see &lt;a href=&quot;http://sonorouschocolate.com/notes/index.php?title=The_best_strategies_for_Wordle&quot;&gt;Alex Selby’s excellent write-up for details&lt;/a&gt;), although for the competition I only used 10.&lt;/p&gt;
-
-&lt;h2 id=&quot;and-the-winner-is&quot;&gt;And the winner is…&lt;/h2&gt;
-
-&lt;p&gt;After three weeks, the contest ended and &lt;a href=&quot;https://web.archive.org/web/20220521050613/https://botfights.ai/tournament/botfights_i&quot;&gt;I came out on top&lt;/a&gt;. Nice! Although to be
-take with a grain of salt. There were only 20 or so other competitors, many of whom
-had converged on the same entropy minimization idea. A few of the other contestants
-also discussed beam search but never implemented it, thinking it would be intractable in pure Python.
-Their intuition was right, and my Python code was basically just a wrapper around a precomputed
-decision tree generated with Rust and a handful of caching tricks (both L3 and application level)
-so the strategy would be ready before the heat death of the universe.&lt;/p&gt;
-
-&lt;p&gt;Over the next few weeks, &lt;a href=&quot;https://web.archive.org/web/20220521065315/https://botfights.ai/tournament/botfights_ii&quot;&gt;Botfights II&lt;/a&gt;
-and &lt;a href=&quot;https://web.archive.org/web/20220521055448/https://botfights.ai/tournament/botfights_iii&quot;&gt;Botfights III&lt;/a&gt;
-began, which used 6-letter words and arbitrary length words as secrets respectively. In
-both cases I won by reusing the same beam search approach with the new words to get
-reasonably effective decision trees, and then lived happily ever after. But wait, didn’t
-the title of this post clickbait you with something called Hyper-Wordle?&lt;/p&gt;
-
-&lt;h2 id=&quot;introducing-hyper-wordle&quot;&gt;Introducing Hyper-Wordle&lt;/h2&gt;
-
-&lt;p&gt;As you might guess, the next event was
-&lt;a href=&quot;https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv&quot;&gt;Botfights IV&lt;/a&gt;.
-Previous iterations of the contest kept things interesting by increasing the number and
-length of potential hidden words. The twist in this contest was a bit different:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The contest would return to the original list of 12972 five-letter words&lt;/li&gt;
-  &lt;li&gt;All of the secret words would be chosen from the 2315 words in the
-&lt;a href=&quot;https://www.wordunscrambler.net/word-list/wordle-word-list&quot;&gt;secret list&lt;/a&gt; which
-the original Wordle website uses (rather than being sampled from every valid
-five-letter word)&lt;/li&gt;
-  &lt;li&gt;Instead of testing the submission against a random sample (with replacement) of 1000 words,
-each submission is tested against all 2315 of the possible secret words (sampled without
-replacement). In other words, each submission was tested against a permutation of the
-2315 secret words.&lt;/li&gt;
-  &lt;li&gt;The 2315 secret words still need to be solved “in parallel” (submit 2315 first guesses,
-receive 2315 pieces of feedback, submit 2315 second guesses, etc…)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I call this Hyper-Wordle, since it can be viewed as a much larger, much more intractable
+&lt;p&gt;But what if you could enter &lt;em&gt;different&lt;/em&gt; guesses for each of the 2315 words each turn?
+I call this Hyper-Wordle, since it can be viewed as a much larger, comedically intractable
 version of normal Wordle:&lt;/p&gt;
 
 &lt;style&gt;
@@ -219,7 +43,7 @@ td{
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt;&lt;strong&gt;Wordle&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Normal Wordle&lt;/strong&gt;&lt;/th&gt;
       &lt;th&gt;&lt;strong&gt;Hyper-Wordle&lt;/strong&gt;&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
@@ -229,123 +53,458 @@ td{
       &lt;td&gt;Secrets are chosen from the &lt;script type=&quot;math/tex&quot;&gt;2315!&lt;/script&gt; possible permutations of 5-letter secret words.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Guesses can be chosen from &lt;script type=&quot;math/tex&quot;&gt;12972&lt;/script&gt; possible 5-letter words.&lt;/td&gt;
-      &lt;td&gt;Guesses can be chosen from &lt;script type=&quot;math/tex&quot;&gt;12972^{2315}&lt;/script&gt; possible permutations with repetition of 5-letter words.&lt;/td&gt;
+      &lt;td&gt;Guesses are chosen from &lt;script type=&quot;math/tex&quot;&gt;12972&lt;/script&gt; possible 5-letter words.&lt;/td&gt;
+      &lt;td&gt;Guesses are chosen from &lt;script type=&quot;math/tex&quot;&gt;12972^{2315}&lt;/script&gt; permutations (with replacement) of possible 5-letter words.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Feedback is given in the form of 5 colored squares.&lt;/td&gt;
       &lt;td&gt;Feedback is given in the form of &lt;script type=&quot;math/tex&quot;&gt;5 \times 2315 = 11575&lt;/script&gt; colored squares.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Your score is the number of guesses needed to identify the secret.&lt;/td&gt;
-      &lt;td&gt;Your score is the sum of the number of guesses needed to identify every word in the secret permutation.&lt;/td&gt;
+      &lt;td&gt;Your score is the number of 5-letter guesses needed to identify the secret.&lt;/td&gt;
+      &lt;td&gt;Your score is the total number of 5-letter guesses needed to identify each word in the secret permutation.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;At first glance, this looked like it would solve one of the problems with the earlier contests: there was
-a non-trivial amount of luck involved in each submission. Some secret words are easier to
-solve than others, so your score depended on which of the secret words were randomly selected.
-In the first competition one of the other contestants ran a simulation to
-find the expected number of times they would need to submit to beat my submission with
-the greedy heuristic approach. Despite having a worse average score, there was enough variance
-in their strategy that they could eventually succeed if they got lucky enough:&lt;/p&gt;
+&lt;p&gt;Believe it or not, this is a real Wordle variant that I ran into back in 2022 &lt;a href=&quot;https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv&quot;&gt;as part of a competition&lt;/a&gt;
+to see who could write the best Wordle solving program. Originally, the competition
+tested programs against a sample of 1000 words chosen randomly with replacement.
+Since some secret words are easier to solve than others, you could spam submissions repeatedly
+with a suboptimal strategy and eventually get lucky enough to beat better strategies:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/wordle/hist.jpg&quot; style=&quot;max-height:50vh; width:auto;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/wordle/hist.png&quot; style=&quot;max-height:50vh; width:auto;&quot; /&gt;&lt;br /&gt;
+&lt;em&gt;Central limit theory in action.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;It was a pleasant surprise to see such a direct result of Central Limit Theorem emerge&lt;/em&gt;
-&lt;em&gt;outside of a classroom.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Only testing against permutations of the 2315 secret words without replacement seemed like
+it might negate any chance of abusing variance.
+For example, if you used the optimal&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle&quot;&gt;Wordle strategy starting with the word &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;&lt;/a&gt;
+which solves the game in an average of ~3.4212 guesses,
+every submission would always score exactly &lt;script type=&quot;math/tex&quot;&gt;3.4212 \times 2315 = 7920&lt;/script&gt;
+since every secret word always appears exactly once. Unfortunately,
+there were still ways to introduce variance:&lt;/p&gt;
 
-&lt;p&gt;Testing every submission against the full set of secret words seems like it would mitigate
-the effect of luck, but there were still ways to introduce variance under these new rules.
-A common scenario near the “leaves” of a decision tree is when a pair of unknowns
-are narrowed down to only two possibilities, for example &lt;code class=&quot;highlighter-rouge&quot;&gt;FILLS&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;PILLS&lt;/code&gt;. When we’re
-solving all of the words in parallel, a deterministic strategy here could guess &lt;code class=&quot;highlighter-rouge&quot;&gt;FILLS&lt;/code&gt;
-at both possible locations. The entry that was &lt;code class=&quot;highlighter-rouge&quot;&gt;FILLS&lt;/code&gt; will be solved, and the next turn
-you can guess &lt;code class=&quot;highlighter-rouge&quot;&gt;PILLS&lt;/code&gt; for the other, solving the two entries in 1.5 guesses on average.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/wordle/salet-reast-mix.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;Alternatively, you could use a non-deterministic strategy that guesses &lt;code class=&quot;highlighter-rouge&quot;&gt;FILLS&lt;/code&gt; for
-the first entry, and &lt;code class=&quot;highlighter-rouge&quot;&gt;PILLS&lt;/code&gt; for the second. If you’re lucky, there’s a 50% chance you
-guessed correctly and solve both entries on the first guess. Otherwise, there’s a 50% chance
-that you guessed both entries wrong, and solve both of them on the second turn. Note
-this still takes 1.5 guesses on average, but the non-deterministic strategy has some
-variance that can be exploited by submitting over and over until you get lucky.&lt;/p&gt;
-
-&lt;p&gt;Well great, just add some variance to your strategy and spam submit until you get a good score by luck! While possible, this felt unsatisfying – there isn’t much merit in being the contestant who submitted the most times. What would be satisfying would be to find a method that could outperform the best known deterministic strategy’s score of 7920 &lt;em&gt;on average&lt;/em&gt;, and not solely by getting lucky. By definition this couldn’t be done with a deterministic strategy. But what if we took deterministic two strategies and “mixed” them? For example, use one strategy for the first 1000 entries, and use a second strategy for the rest?&lt;/p&gt;
-
-&lt;p&gt;In the first three contests, there was no advantage to using a mixed strategy – if the best strategy took 3.421 guesses on average, mixing it with the second best strategy that performs at 3.422 guesses on average would only make the expected value of your score worse. The fourth contest had a subtle, but important difference: secret words were sampled &lt;em&gt;without&lt;/em&gt; replacement – as soon as we identify a word we can remove it from the pool of possibilities for any unresolved entries. When using a single strategy this information is totally useless, since when we receive feedback that uniquely identifies a word the feedback from the rest of the secrets would have already ruled it out anyway. With multiple strategies, there’s a chance that one strategy can find information thats still pertinent for the &lt;em&gt;other&lt;/em&gt; strategies.&lt;/p&gt;
-
-&lt;p&gt;Consider the following scenario:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;TODO: generate a scenario lol&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Viz idea: TODO: cheat with prefixes using *ills&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Secret&lt;/td&gt;
-      &lt;td&gt;Guess 1&lt;/td&gt;
-      &lt;td&gt;Feedback 1&lt;/td&gt;
-      &lt;td&gt;Possible&lt;/td&gt;
-      &lt;td&gt;Guess 2&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;WORD0            GUESS      GGYGY
-WORD1            GUESS      GGYGY
-WORD2            GUESS      GGYGY
-WORD3            GUESS      GGGGY
-WORD4            GUESS      GGGGY
-WORD5            GUESS      GGYYY
-WORD6            GUESS      GGYYY
-WORD7            GUESS      GGYYY
-WORD8            GUESS      GGYYY
-WORD9            GUESS      GGYYY&lt;/p&gt;
-
-&lt;p&gt;^ add separator lines&lt;/p&gt;
-
-&lt;p&gt;The example given only considers mixing two strategies, however my best submission involved mixing the ten best strategies and sharing information between them, netting a score of 7574, a 4.4% improvement over the best performance for a single deterministic strategy. I found that mixing more than ten strategies started to yield diminishing returns. Possible explanations for this are:&lt;/p&gt;
+&lt;p&gt;The histogram above shows the score distribution when using the optimal Wordle strategy
+starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; (score of 7920) on the first 1158 words in the permutation, and using the second best
+strategy starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; (score of 7923) on the remaining 1157 words. Variance comes
+from the fact that each strategy has its own strengths and weaknesses. For example:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;As we introduce more strategies, we need to involve “worse” starting words (strategies in the top 10 are mostly good, strategies in the top 50 not so much). This makes it harder for the new strategy to reveal enough useful information to other strategies to compensate for how bad it is in isolation&lt;/li&gt;
-  &lt;li&gt;The more strategies we introduce, the lower the chance that any single strategy has enough “samples” to reveal actionable information&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; solves &lt;code class=&quot;highlighter-rouge&quot;&gt;SAUTE&lt;/code&gt; in 2 guesses, while &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; solves it in 4.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; solves &lt;code class=&quot;highlighter-rouge&quot;&gt;ROUTE&lt;/code&gt; in 2 guesses, while &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; solves it in 4.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Anyway, this was enough to secure the win for the final Wordle competition, and lead to some interesting open questions:&lt;/p&gt;
+&lt;p&gt;If you spam enough submissions, you can retry until you’re tested against permutations where each
+strategy covers for the other’s weaknesses, e.g. words like &lt;code class=&quot;highlighter-rouge&quot;&gt;SAUTE&lt;/code&gt; end up in the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; half,
+and words like &lt;code class=&quot;highlighter-rouge&quot;&gt;ROUTE&lt;/code&gt; end up in the &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; half.&lt;/p&gt;
+
+&lt;p&gt;While we could intentionally inject variance like this and spam submit,
+there isn’t much merit in being the contestant who submits the most times. In particular,
+the mixed strategy scores ≈7921.5 on average (the average of &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;’s score and &lt;code class=&quot;highlighter-rouge&quot;&gt;REASTS&lt;/code&gt;
+score) which is worse than &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;’s score of 7920 by itself.
+What if we could find a way to outperform the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; strategy &lt;em&gt;on average&lt;/em&gt;? After all,
+just because &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; is optimal for &lt;em&gt;Wordle&lt;/em&gt; doesn’t mean its optimal for &lt;em&gt;Hyper-Wordle&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;wacky-trick-leaks-extra-state&quot;&gt;Wacky Trick Leaks Extra State&lt;/h2&gt;
+
+&lt;p&gt;Before we try to solve a permutation of 2315 words, let’s consider a simpler scenario
+where we’re solving a permutation of six secret words in parallel:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;FIRST&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;DEUCE&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;THIRD&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FORTH&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FIFTH&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;SIXTH&lt;/code&gt;. Let’s take a look at a strategy
+where &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; is our starting word:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/leaks-tree.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that this is a deterministic strategy, meaning that our guess for each word is
+based solely on feedback we’ve received for that word so far. For example, we
+guess &lt;code class=&quot;highlighter-rouge&quot;&gt;THIRD&lt;/code&gt; in all three positions where the feedback from the first guess was five gray squares.
+While we show the secret words in order here, since the strategy is deterministic it always
+requires a total of 15 guesses to solve all the words regardless of how they’re permuted. Next,
+consider a strategy with &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; as our starting word:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/major-tree.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Again, this deterministic strategy requires 15 guesses to solve any permutation of the 6 chosen secret words.
+Nether the &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; strategy nor &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; strategy are particularly impressive on their own. Let’s
+try to solve an unknown permutation of our secret words while mixing the two starting words,
+with &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; for the first three positions and &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; for the last three:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-0.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To put you in the mindset of the puzzle, the actual value of each secret word is kept, well, secret.
+The only information you have is that each of the six secret words appears
+only once, but can be in any order. The possibilities column lists the possible secret
+word that can be in a position based on the feedback from guess 1,
+using &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt; as shorthand for &lt;code class=&quot;highlighter-rouge&quot;&gt;FIRST&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;DEUCE&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;THIRD&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FORTH&lt;/code&gt;,
+&lt;code class=&quot;highlighter-rouge&quot;&gt;FIFTH&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;SIXTH&lt;/code&gt; respectively.&lt;/p&gt;
+
+&lt;p&gt;Before we make any more guesses, is there anything we can do to narrow down the values in
+the possibilities column? Looking closely, we already know the position of &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;: it
+&lt;em&gt;must&lt;/em&gt; be in the fourth position, since it’s the only secret that matches that feedback pattern
+for &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt;. This allows us to remove &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt; it from the lists of possibilities in the first
+two positions:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-1.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that we’ve removed &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt; as a possibility in the first and second positions, we see that
+the first position must be either &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt;. Consider the following two scenarios:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;The information sharing strategy described only removes words from the pool of strategy if we’re &lt;em&gt;certain&lt;/em&gt; that the word is already somewhere else. In reality, you might be able to determine the probability that a word is somewhere based on how many valid spots it can be in, and use this information when doing the next round’s guesses. I suspect this might turn the game into an incredibly convoluted version of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Monty_Hall_problem&quot;&gt;Monte Hall Problem&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;What’s the best mix of two starting words (nets lowest expected number of guesses)? I imagine this is harder than just mixing the two best strategies – some strategy pairs might have better “synergy”, i.e. reveal information that others might find “useful” more frequently. For what it’s worth, I’m pretty sure computing this exactly is extremely intractable, but I’m frequently wrong about this sort of thing.&lt;/li&gt;
-  &lt;li&gt;What’s the optimal mix of any number of starting words? (Probably super-duper intractable)&lt;/li&gt;
-  &lt;li&gt;My last submission only mixed strategies during the first turn. Can we do better by mixing strategies at other turns as well?&lt;/li&gt;
-  &lt;li&gt;Other than the information sharing at the end of each round, the strategies act entirely independently. Can the strategies somehow leverage knowledge about what the other strategies will do to adjust their own guesses, essentially betting that the other strategies are likely to uncover extra info?&lt;/li&gt;
-  &lt;li&gt;Are there any other games/scenarios with analogous properties to this kind of Wordle, i.e. where running multiple suboptimal strategies outcompetes a single strategy?&lt;/li&gt;
-  &lt;li&gt;What are the necessary conditions for mixed strategies to outperform a single strategy? One thought experiment is to imagine a version Wordle where every possible 26^5 letter combination is treated as valid word. My intuition here would be that this version would be too “symmetric” to beat&lt;/li&gt;
-  &lt;li&gt;Should I find less convoluted things to do in my free time?&lt;/li&gt;
+  &lt;li&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; is in the first position, &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt; must be in the second position, since there would be
+no other option that could go there.&lt;/li&gt;
+  &lt;li&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt; is in the first position, &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; must be in the second position, since there would be
+no other option that could go there.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;retrospective-was-all-of-this-effort-worth-it&quot;&gt;Retrospective: was all of this effort worth it?&lt;/h1&gt;
+&lt;p&gt;In Sudoku&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; puzzles this is known as a &lt;a href=&quot;https://www.sudokuwiki.org/naked_candidates&quot;&gt;Naked Pair&lt;/a&gt;.
+While we don’t know which of the two scenarios we’re in yet, in every scenario &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt;
+must be in the first two positions, allowing us to rule them out from any other position:&lt;/p&gt;
 
-&lt;p&gt;Probably not, although a handful of good things came out of it:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-2.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After this deduction, we know that &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; must be in the fifth position, since it’s the only viable
+option. This allows us to remove it from the list of possibilities for the third
+position.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-3.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By the same logic, &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt; must be in the third position, and we can remove it from the
+possibilities for the sixth position.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-4.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally, we can deduce that &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt; must be in the sixth position. Initially we only knew the position
+of &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;, however after applying deductions we learn the exact position of four out of the six
+secrets! If we submit guesses tuned to take advantage of our updated knowledge:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-solve.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We’re able to solve every word in a total of 13 guesses, an improvement over 15 guesses
+for both the &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; strategy and the &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; strategy on their own. We can
+brute force over all &lt;script type=&quot;math/tex&quot;&gt;6! = 720&lt;/script&gt; possible permutations
+of our secret words to build up a histogram of how this strategy tends to perform:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/histograms.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the left, we have the result of mixing the two strategies without using any of deduction
+tricks. This produces a vaguely Gaussian looking distribution averaging a score of 15,
+the same as using &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; on their own.
+On the right, we have the result of mixing the two strategies and using
+deduction tricks to refine our guesses, with an average score of 13.9. In
+other words, we have a way to mix starting words that performs &lt;em&gt;better&lt;/em&gt; than the sum of
+their parts!&lt;/p&gt;
+
+&lt;h2 id=&quot;scaling-up&quot;&gt;Scaling up&lt;/h2&gt;
+
+&lt;p&gt;Now that we’ve seen this work with permutations of six secret words, let’s see how we
+do against permutations of the full 2315 secret words. We can start off with the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; mixed strategy that we showed earlier:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/salet-reast-hist.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The values on the right are the same from earlier, showing the score distribution &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt;
+mixed strategy on 1000 random permutations of the 2315 secret words.
+On the left we have the results on the same 1000 permutations after eliminating possible
+states via deduction and refining our guessing strategy accordingly. Deduction moves our
+score from 7921.5 to 7768.8, a 150 point improvement!&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; were chosen since they’re the top two deterministic Wordle strategies,
+but what about mixing other strategies? During the competition, the best combination of
+strategies I found was by assigning 10% of the permutation to each of the top 10
+Wordle starting words: &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;CRATE&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;TRACE&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;SLATE&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;CRANE&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;CARLE&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;SLANE&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;CARTE&lt;/code&gt;,
+and &lt;code class=&quot;highlighter-rouge&quot;&gt;TORSE&lt;/code&gt;. Plotting this against the previous two histograms:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/top-10-hist.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Mixing the Top 10 Wordle starting words and using deduction tricks brings us to an average
+score of 7628.0, an additional 130 point improvement over the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; deduction strategy!
+This is the strategy I ultimately used in the competition mentioned earlier, &lt;a href=&quot;https://web.archive.org/web/20220628055213/https://botfights.ai/leaderboard/botfights_iv?results=1&quot;&gt;winning
+with a score of 7574&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;closing-thoughts&quot;&gt;Closing thoughts&lt;/h2&gt;
+
+&lt;p&gt;I haven’t looked very closely at this problem since three years ago, which is approximately
+how long I’ve procrastinated on doing this writeup. If you want to tinker with ideas, I
+generated all the data for the strategy histograms in this post using &lt;a href=&quot;https://github.com/ckw017/hyper-wordle&quot;&gt;this very adhoc Rust code&lt;/a&gt;.
+Some interesting open questions are:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;I suspect that using Python has done irreparable damage to my ability to estimate just how fast things &lt;em&gt;can&lt;/em&gt; be. The act of switching from Python to Rust without doing any application level optimization tricks sped up the time to build decision trees by an order of magnitude. It took me another hour before I recalled the words of my &lt;a href=&quot;https://twitter.com/exists_forall?lang=en&quot;&gt;government assigned Rust evangelist&lt;/a&gt;: “Did you remember to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;--release&lt;/code&gt; flag?” This gave me another order of magnitude improvement for free, and was a nice wake-up call about just how slow Python is.&lt;/li&gt;
-  &lt;li&gt;It gave me a funny story and something worth doing a write-up on.&lt;/li&gt;
-  &lt;li&gt;I received some prize money for winning each of the competitions, about $80 of BTC in total. In itself this isn’t worth a ton to me, but watching it decay in value by about 55% over the last few months was a valuable lesson in just how volatile cryptocurrency is, without having to stake any of my own money.&lt;/li&gt;
+  &lt;li&gt;What’s the best mix of two starting words (i.e. lowest average score)? Intuitively,
+some strategies might “synergize” with each other better than others depending on if
+the structure of their decision trees tend to lead to more deductions.&lt;/li&gt;
+  &lt;li&gt;My winning strategy only behaves non-deterministically on the first turn, when we randomly
+use 10 different guesses despite every word having identical feedback at that point (i.e.
+no feedback). Can we get further improvements by behaving non-deterministically on later
+turns?&lt;/li&gt;
+  &lt;li&gt;The deduction strategy only removes words from the possibility pool when we’re &lt;em&gt;certain&lt;/em&gt;
+that they must be somewhere else. Is there a way to “fuzzily” refine our possibilities
+to values other than 0, e.g. “this word is likely to be in position A,
+so it’s less likely to be in position B”?&lt;/li&gt;
+  &lt;li&gt;Are there any other games/scenarios where combining multiple suboptimal strategies outcompetes
+a strategy that would normally be stronger?&lt;/li&gt;
+  &lt;li&gt;Should I find less convoluted things to do with my free time?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;On the downside, I now have an overwhelming amount of incredibly useless knowledge about optimal Wordle. While I’d heard the phrase “cursed for knowledge” before, I never truly understood it until Wordle came up while I was getting my teeth cleaned:&lt;/p&gt;
+&lt;p&gt;If you enjoyed reading this, this entire writeup was actually much longer before
+I broke it into three standalone parts. Excluding the one you’re reading right now, the other two
+are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/2025/08/11/Wine/&quot;&gt;The Sixteen Bottles of Wine Riddle&lt;/a&gt; – I thought of this riddle while trying to think of a
+simpler version Hyper-Wordle to use as a toy example to introduce some concepts. Despite
+trying to make it as simple and symmetrical as possible, it still ended up having a surprising
+amount of depth!&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2025/08/23/Wordle/&quot;&gt;Writing Wordle bots for fun and profit&lt;/a&gt; – This gives some context
+on some of the other stages of the Wordle strategy competition, which I also happened
+to win. Nothing super novel to share there, but it’s a fun story anyway if you’re into
+Wordle.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Oral Hygienist&lt;/strong&gt;: Have you heard of a game called Wordle? My whole family loves it!&lt;br /&gt;
-&lt;strong&gt;Me&lt;/strong&gt;: Mhmha uhuh&lt;br /&gt;
-&lt;strong&gt;Oral Hygienist&lt;/strong&gt;: My go to starting word is “ocean”, but my daughter always starts with “raise”&lt;br /&gt;
-&lt;strong&gt;Me&lt;/strong&gt;: &lt;em&gt;Mentally gauging how hard it would be to talk about optimal Wordle strategies with a regular person&lt;/em&gt;&lt;br /&gt;
-&lt;strong&gt;Me&lt;/strong&gt;: Mmhm&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
-
-&lt;p&gt;Aiyah is a five-letter word.&lt;/p&gt;
+&lt;p&gt;Anyway, thanks for reading!&lt;/p&gt;
 
 &lt;!--
+
+The example given only considers mixing two strategies, however my best submission involved mixing the ten best strategies and sharing information between them, netting a score of 7574, a 4.4% improvement over the best performance for a single deterministic strategy. I found that mixing more than ten strategies started to yield diminishing returns. Possible explanations for this are:
+* As we introduce more strategies, we need to involve &quot;worse&quot; starting words (strategies in the top 10 are mostly good, strategies in the top 50 not so much). This makes it harder for the new strategy to reveal enough useful information to other strategies to compensate for how bad it is in isolation
+* The more strategies we introduce, the lower the chance that any single strategy has enough &quot;samples&quot; to reveal actionable information
+
+## Open questions
+
+Anyway, this was enough to secure the win for the final Wordle competition, and leads to some interesting open questions:
+* The information sharing strategy described only removes words from the pool of strategy if we're *certain* that the word is already somewhere else. In reality, you might be able to determine the probability that a word is somewhere based on how many valid spots it can be in, and use this information when doing the next round's guesses.
+* What's the best mix of two starting words (nets lowest expected number of guesses)? I imagine this is harder than just mixing the two best strategies -- some strategy pairs might have better &quot;synergy&quot;, i.e. reveal information that others might find &quot;useful&quot; more frequently. For what it's worth, I'm pretty sure computing this exactly is extremely intractable, but I'm frequently wrong about this sort of thing.
+* What's the optimal mix of any number of starting words? (Probably super-duper intractable)
+* My last submission only mixed strategies during the first turn. Can we do better by mixing strategies on other turns as well?
+* Other than the information sharing at the end of each round, the strategies act entirely independently. Can the strategies somehow leverage knowledge about what the other strategies will do to adjust their own guesses, essentially betting that the other strategies are likely to uncover extra info?
+* Are there any other games/scenarios with analogous properties to this kind of Wordle, i.e. where running multiple suboptimal strategies outcompetes a single strategy?
+* Should I find less convoluted things to do in my free time?
+
+--&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+
+      &lt;p&gt;2315 was the original number of Wordle secret words. After the New York Times acquired
+Wordle, it was revised down to only 2309 secret words. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+
+      &lt;p&gt;Leading with &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; was the best strategy in early 2022, but since the New York Times changed
+the word list and secret list after acquiring Wordle, it is &lt;a href=&quot;https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle,_part_2#Updated_best_starting_words_using_New_York_Times_word_lists_as_of_30_August_2022&quot;&gt;no longer optimal&lt;/a&gt;. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+
+      &lt;p&gt;You can think of the deduction steps between guesses as very oblong Sudoku puzzles,
+where instead of a 9x9 grid with uniqueness constraints on 1 to 9, you have a
+2315x1 line with uniqueness constraints on 1 to 2315. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">If you’ve fallen far enough down the Wordle rabbit hole you may have heard of Dordle, a version of Wordle where you solve two words at once. If you’re looking for more of a challenge, Merriam-Webster has you covered with Quordle, where you solve four words at once. Of course any Wordler worth their salt should be able to handle eight words, like in Britannica’s Octordle. And if you want to do sixteen words at once, you’re spoiled for choice between Sedecordle and Hexadecordle. And no, it doesn’t stop there.</summary></entry><entry><title type="html">Writing Wordle bots for fun and profit</title><link href="http://localhost:4000/2025/08/23/Wordle/" rel="alternate" type="text/html" title="Writing Wordle bots for fun and profit" /><published>2025-08-23T00:00:00-07:00</published><updated>2025-08-23T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/23/Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/23/Wordle/">&lt;p&gt;Shortly after &lt;a href=&quot;https://www.nytimes.com/games/wordle/index.html&quot;&gt;Wordle&lt;/a&gt; became an overnight
+sensation, a natural question arose: what’s the best guessing strategy?
+Many theories sprung up as people claimed to have found the optimal
+way to beat Wordle, often times using the word optimal loosely. While scrolling through
+the comments of one of these allegedly optimal Wordle posts I spotted &lt;a href=&quot;https://news.ycombinator.com/item?id=29928263#29928609&quot;&gt;a comment&lt;/a&gt;
+promoting a botting competition to see who could put their money where their mouth was. &lt;!--more--&gt;
+Scoring worked as follows:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;For every submission, 1000 secret words would be chosen randomly with replacement from the set of 12972 valid Wordle words.&lt;/li&gt;
+  &lt;li&gt;The bot picks a first guess for each of the 1000 words, and submits them as a batch.&lt;/li&gt;
+  &lt;li&gt;The bot is given feedback about each guess in the form of green/yellow/gray positions.&lt;/li&gt;
+  &lt;li&gt;This continues until the bot has correctly guessed each of the 1000 secrets.&lt;/li&gt;
+  &lt;li&gt;The overall score is the total number of guesses used to determine all 1000 secrets&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In this system, the best possible score would be 1000 if your bot somehow managed to
+correctly guess each of the 1000 secrets on the first turn. Impossible, right?&lt;/p&gt;
+
+&lt;h2 id=&quot;alls-fair-in-love-and-wordle&quot;&gt;All’s fair in love and Wordle&lt;/h2&gt;
+
+&lt;p&gt;I normally don’t join competitions unless I’m pretty sure I can either win, or do
+something funny (usually the latter). When I heard about the Wordle bot competition,
+I had an idea for how to do both. In a past life I was a &lt;a href=&quot;/2021/07/02/Teaching/&quot;&gt;TA for a programming class&lt;/a&gt;
+where I worked on autograding student submitted code. Running arbitrary
+code from potentially adversarial students meant I had a great excuse to practice pentesting
+on our grading infrastructure:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/zoinks.jpg&quot; alt=&quot;Screenshot of autograder output, scored 1337 points out of 100&quot; /&gt;&lt;br /&gt;
+&lt;em&gt;Note to students: don’t try this sort of thing without permission : )&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;My first instinct was to find a way to cheese the competition’s scoring system.
+The contest came with a &lt;a href=&quot;https://github.com/botfights/botfights-sdk/&quot;&gt;Python SDK&lt;/a&gt;
+for creating and submitting bots, and one &lt;del&gt;cursed&lt;/del&gt; neat utility in Python’s standard library
+lets you inspect the call stack at runtime. For example, if we wanted a function that
+conveniently always guessed the correct value of a secret stored two stack frames above
+it, we could do something like:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;inspect&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;play&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;outer_frame&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outer_frame&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f_locals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;secret&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Running this in the SDK’s local testing mode yielded a perfect score of 1000! However upon submitting:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Creating&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fight&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;botfights&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Fight&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;created&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;botfights&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fksbk7qu&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Traceback&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;most&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;cheat.py&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;play&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f_locals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;secret&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;KeyError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'secret'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Oof, what happened? I falsely assumed the contest would score submissions
+by running the bot code in a server side environment, similar to
+&lt;a href=&quot;https://www.gradescope.com/&quot;&gt;Gradescope&lt;/a&gt; or &lt;a href=&quot;https://www.kaggle.com/&quot;&gt;Kaggle&lt;/a&gt;. In
+reality, the bot code was executed entirely client side while the secret words were kept
+entirely on the server. At this point I had already sunk ten minutes of my life trying to secure
+first place illegitimately, so naturally I decided to spend an entire weekend
+getting first place legitimately. Of course with so many people claiming to already have the
+optimal strategy, there was no way I could win. Right?&lt;/p&gt;
+
+&lt;h2 id=&quot;heuristics-are-approximations&quot;&gt;Heuristics are approximations&lt;/h2&gt;
+
+&lt;p&gt;Many of the people who claimed to have found the optimal strategy were &lt;a href=&quot;https://en.wikipedia.org/wiki/Information_gain_(decision_tree)&quot;&gt;maximizing information gain&lt;/a&gt;
+by guessing words which minimize the expected amount of &lt;a href=&quot;https://en.wikipedia.org/wiki/Entropy_(information_theory)&quot;&gt;Shannon entropy&lt;/a&gt;
+once the guess’s feedback is returned. The popular math educator
+&lt;a href=&quot;https://en.wikipedia.org/wiki/3Blue1Brown&quot;&gt;3Blue1Brown&lt;/a&gt; even uploaded an ambitiously titled
+video “The mathematically optimal Wordle strategy” using this method:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=v68zYyaEmEA&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+&lt;img src=&quot;/images/wordle/woops2.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; alt=&quot;Thumbnail of a video titled The mathematically optimal Wordle strategy&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This was retitled a few days later to &lt;a href=&quot;https://www.youtube.com/watch?v=v68zYyaEmEA&quot;&gt;“Solving Wordle using information theory”&lt;/a&gt;
+when &lt;a href=&quot;https://www.youtube.com/watch?v=fRed0Xmc2Wg&quot;&gt;bugs in the original implementation&lt;/a&gt;
+were found. This is by no means a knock against 3Blue1Brown, and I highly recommend watching his video.
+The rest of this section requires a high-level understanding of the information
+theory behind Wordle, and the video does an incredible job of explaining it.&lt;/p&gt;
+
+&lt;p&gt;The issue with the entropy heuristic is when a guess “partitions” the
+possible values of the secret word based on feedback, the entropy formula assumes smaller partitions
+are &lt;em&gt;always&lt;/em&gt; better than larger ones for getting closer to the answer. In reality, the
+asymmetric nature of the English lexicon means some subsets of words are trickier to deal
+with even if they have the same or fewer number of elements as another subset. Borrowing from
+&lt;a href=&quot;https://alexpeattie.com/blog/establishing-minimum-guesses-wordle/&quot;&gt;Alex Peattie’s elegant proof regarding minimizing maximum guesses&lt;/a&gt;,
+imagine a scenario where the secret word has been narrowed down to four options:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;BILLS&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;CILLS&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;DILLS&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;GILLS&lt;/code&gt;. An optimal guess here is &lt;code class=&quot;highlighter-rouge&quot;&gt;DEBUG&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/subset-4.jpg&quot; style=&quot;max-height:25vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The feedback from guessing &lt;code class=&quot;highlighter-rouge&quot;&gt;DEBUG&lt;/code&gt; always gives us enough information to distinguish which of the
+four is the secret word, allowing us to guess the correct word on the next turn. On average, we can solve this
+subset of Wordle in exactly 2 guesses. Now consider the case where the
+secret words are &lt;code class=&quot;highlighter-rouge&quot;&gt;WACKY&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;TRICK&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;EXTRA&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;STATE&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/subset-5.jpg&quot; style=&quot;max-height:29.5vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can immediately guess &lt;code class=&quot;highlighter-rouge&quot;&gt;EXTRA&lt;/code&gt;, which has a 20% chance of being correct, otherwise we
+always receive enough information to get the correct answer on the second guess.
+On average we can expect to solve the 5-word subset (2.3 bits of entropy)
+in 1.8 guesses, an improvement over the 4-word subset (2 bits of entropy) in 2 guesses.
+If we know the entropy minimization strategy isn’t necessarily optimal, what can we
+do to improve it? My strategy was nearly identical to the entropy minimization strategy,
+except it incorporated &lt;a href=&quot;https://en.wikipedia.org/wiki/Beam_search&quot;&gt;beam search&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;Rather than greedily choosing the guess which minimizes entropy, we can instead explore the top N guesses
+(ranked by entropy) and choose the one which ultimately minimizes the expected number of guesses
+by recursively looking ahead in the decision tree.
+This explores parts of the search space which superficially appear
+worse but may be faster to solve, like in the 4-word vs. 5-word case. In practice,
+a beam width of 50 is enough to correctly generate the optimal decision tree in classic Wordle (see &lt;a href=&quot;http://sonorouschocolate.com/notes/index.php?title=The_best_strategies_for_Wordle&quot;&gt;Alex Selby’s excellent write-up for details&lt;/a&gt;), though for the competition I only used 10.&lt;/p&gt;
+
+&lt;h2 id=&quot;and-the-winner-is&quot;&gt;And the winner is…&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/winner.jpg&quot; style=&quot;max-height:20vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After three weeks, the contest ended and &lt;a href=&quot;https://web.archive.org/web/20220521050613/https://botfights.ai/tournament/botfights_i&quot;&gt;I came out on top&lt;/a&gt;! Nice, Although to be
+take with a grain of salt. There were only 20 or so other competitors, many of whom
+had converged on the same entropy minimization idea. A few of the other contestants
+also discussed beam search but never implemented it, thinking it would be intractable in pure Python.
+Their intuition was right, and my Python code was basically just a wrapper around a decision tree
+precomputed in Rust with a handful of caching tricks so the strategy would be ready
+before the heat death of the universe.&lt;/p&gt;
+
+&lt;p&gt;Over the next couple of weeks, &lt;a href=&quot;https://web.archive.org/web/20220521065315/https://botfights.ai/tournament/botfights_ii&quot;&gt;Botfights II&lt;/a&gt;
+and &lt;a href=&quot;https://web.archive.org/web/20220521055448/https://botfights.ai/tournament/botfights_iii&quot;&gt;Botfights III&lt;/a&gt;
+began, which used 6-letter words and arbitrary length words as secrets respectively. In
+both cases I won by reusing the same beam search approach to get
+reasonably effective decision trees that outperformed the greedy entropy minimization approach.
+By then I had won about 60 bucks in Bitcoin as the organizer started the final competition…&lt;/p&gt;
+
+&lt;p&gt;Continued in the next post: &lt;a href=&quot;/2025/08/24/Hyper-Wordle/&quot;&gt;Hyper-Wordle&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!--
+## Wacky trick leaks extra state
+
+As you might guess, the next event was
+[Botfights IV](https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv).
+Previous iterations of the contest kept things interesting by increasing the number of
+potential hidden words. The twist in the final contest was a bit different:
+* The contest would returned to the original list of 12972 five-letter words.
+* All of the secret words were chosen from the 2315 words in the
+  [secret list](https://www.wordunscrambler.net/word-list/wordle-word-list) which
+  the original Wordle website used.
+* Each submission was tested against all 2315 of the possible secret words (**sampled without
+  replacement**). In other words, each submission was tested against a permutation of the
+  2315 secret words.
+* The 2315 secret words still needed to be solved &quot;in parallel&quot; (submit 2315 first guesses,
+  receive 2315 pieces of feedback, submit 2315 second guesses, etc...).
+
+
+I call this Hyper-Wordle, since it can be viewed as a much larger, much more intractable
+version of normal Wordle:
+--&gt;
+&lt;style&gt;
+table{
+    border-spacing: 50px;
+    border:1px solid #000000;
+}
+
+th{
+    border: 1px solid #000000;
+    padding: 3px;
+    max-width: 40vw;
+}
+
+td{
+    border:1px solid #000000;
+    padding: 3px;
+    max-width: 40vw;
+}
+&lt;/style&gt;
+
+&lt;!--
+| **Wordle**                                                                   | **Hyper-Wordle**                                                                                          |
+|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| Secrets are chosen from the $$2315$$ possible 5-letter secret words.     | Secrets are chosen from the $$2315!$$ possible permutations of 5-letter secret words.                 |
+| Guesses can be chosen from $$12972$$ possible 5-letter words.            | Guesses can be chosen from $$12972^{2315}$$ possible permutations with repetition of 5-letter words. |
+| Feedback is given in the form of 5 colored squares.                      | Feedback is given in the form of $$5 \times 2315 = 11575$$ colored squares.                           |
+| Your score is the number of guesses needed to identify the secret.       | Your score is the sum of the number of guesses needed to identify every word in the secret permutation.      |
+
+--&gt;
+&lt;!--
+# Retrospective: was all of this effort worth it?
+
+Probably not, although a handful of good things came out of it:
+* It gave me some funny stories and something worth doing a writeup on.
+* I received some prize money for winning each of the competitions, about $80 of BTC in total. In itself this isn't worth a ton to me, but watching it decay in value by 55% in the first few months after receiving it was a neat lesson in cryptocurrency volatility, without having to stake any of my own money.
+* Inspired me to write the 16 bottles of wine riddle.
+
+On the downside, I now have an overwhelming amount of incredibly useless knowledge about
+optimal Wordle. While I'd heard the phrase &quot;cursed for knowledge&quot; before, I never
+truly understood it until Wordle came up while I was getting my teeth cleaned:
+
+**Oral Hygienist**: Have you heard of a game called Wordle? My whole family loves it!&lt;br&gt;
+**Me**: Mhmha uhuh&lt;br&gt;
+**Oral Hygienist**: My go to starting word is &quot;ocean&quot;, but my daughter always starts with &quot;raise&quot;&lt;br&gt;
+**Me**: *Mentally gauging how hard it would be to talk about optimal Wordle strategies with a regular person*&lt;br&gt;
+**Me**: Hmm mhm&lt;br&gt;
+
+# Conclusion
+
+Aiyah is a five-letter word.
+
 # What is optimal Wordle?
 
 I'm just going to assume you already know what Wordle is. But what is optimal Wordle? It turns out to be a controversial topic:
@@ -360,7 +519,19 @@ One surprising event in all of this was when the popular math educator [3Blue1Br
  This was retitled a few days later to [Solving Wordle using information theory](https://www.youtube.com/watch?v=v68zYyaEmEA) when [bugs in the original implementation](https://www.youtube.com/watch?v=fRed0Xmc2Wg) were found, although even without the bugs the solution generated wasn't necessarily optimal. This isn't meant to be a knock at 3B1B, but rather an example of how tricky it is to get the definition right. In particular, the 3B1B video used a *very* effective heuristic to generate the decision tree, but at the end of the day heuristics usually aren't the real optimization criteria.
 
 For real optimality results, Laurent Porrier compiled a [list of all the Wordle optimality results so far](https://www.poirrier.ca/notes/wordle-optimal/) which is still being actively updated as of when this is being written! In this post, optimal refers to any strategy that minimizes the expected number of guesses needed to solve a word uniformly sampled from the secret list, and with no limit on the number of guesses.
---&gt;</content><author><name></name></author><summary type="html">Wordle: the 2048 of 2022, although it’s had considerably more staying power. Before explaining what Hyper-Wordle is, I want to provide some background on where and why I encountered it, though if you’re itching to find out or have already fallen down the Wordle optimization rabbit hole, you’re free to skip ahead.</summary></entry><entry><title type="html">Sixteen bottles of wine riddle</title><link href="http://localhost:4000/2025/08/11/Wine/" rel="alternate" type="text/html" title="Sixteen bottles of wine riddle" /><published>2025-08-11T00:00:00-07:00</published><updated>2025-08-11T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/11/Wine</id><content type="html" xml:base="http://localhost:4000/2025/08/11/Wine/">&lt;p&gt;Imagine the typical everyday scenario in which you have been imprisoned in the wine cellar
+
+
+Probably not, although a handful of good things came out of it:
+* I suspect that using Python has done irreparable damage to my ability to estimate just how fast things *can* be. The act of switching from Python to Rust without doing any application level optimization tricks sped up the time to build decision trees by an order of magnitude. It took me another hour before I recalled the words of my [government assigned Rust evangelist](https://twitter.com/exists_forall?lang=en): &quot;Did you remember to use the `--release` flag?&quot; This gave me another order of magnitude improvement for free, and was a nice wake-up call about just how slow Python is.
+* It gave me a funny story and something worth doing a write-up on.
+* I received some prize money for winning each of the competitions, about $80 of BTC in total. In itself this isn't worth a ton to me, but watching it decay in value by about 55% over the last few months was a valuable lesson in just how volatile cryptocurrency is, without having to stake any of my own money.
+
+I suspect this might turn the game into an incredibly convoluted version of the [Monte Hall Problem](https://en.wikipedia.org/wiki/Monty_Hall_problem).
+
+* What are the necessary conditions for mixed strategies to outperform a single strategy? One thought experiment is to imagine a version Wordle where every possible 26^5 letter combination is treated as valid word. My intuition here would be that this version would be too &quot;symmetric&quot; to beat
+
+* I suspect that using Python has done irreparable damage to my ability to estimate just how fast things *can* be. The act of switching from Python to Rust without doing any application level optimization tricks sped up the time to build decision trees by an order of magnitude. It took me another hour before I recalled the words of my [government assigned Rust evangelist](https://twitter.com/exists_forall?lang=en): &quot;Did you remember to use the `--release` flag?&quot; This gave me another order of magnitude improvement for free, and was a nice wake-up call about just how slow Python is.
+--&gt;</content><author><name></name></author><summary type="html">Shortly after Wordle became an overnight sensation, a natural question arose: what’s the best guessing strategy? Many theories sprung up as people claimed to have found the optimal way to beat Wordle, often times using the word optimal loosely. While scrolling through the comments of one of these allegedly optimal Wordle posts I spotted a comment promoting a botting competition to see who could put their money where their mouth was.</summary></entry><entry><title type="html">Sixteen bottles of wine riddle</title><link href="http://localhost:4000/2025/08/11/Wine/" rel="alternate" type="text/html" title="Sixteen bottles of wine riddle" /><published>2025-08-11T00:00:00-07:00</published><updated>2025-08-11T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/11/Wine</id><content type="html" xml:base="http://localhost:4000/2025/08/11/Wine/">&lt;p&gt;Imagine the typical everyday scenario in which you have been imprisoned in the wine cellar
 of an evil combinatorialist. She promises to let you go, but only if you can solve her riddle.&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -831,7 +1002,7 @@ of certain matrices. My best guess to approximate the values would be by throwin
   &lt;/li&gt;
   &lt;li&gt;If someone smarter than me knows of a better approximation it would be handy for a different
 problem I’ve been staring at. This puzzle was meant to be a toy example
-in a different writeup which involves a much larger, much less symmetric, slightly less
+in a &lt;a href=&quot;/2025/08/24/Hyper-Wordle/&quot;&gt;different writeup&lt;/a&gt; which involves a much larger, much less symmetric, slightly less
 contrived problem. (Hint: what if the 16 wine bottles were, say, ~2300 5-letter words?).&lt;/li&gt;
 &lt;/ul&gt;</content><author><name></name></author><summary type="html">Imagine the typical everyday scenario in which you have been imprisoned in the wine cellar of an evil combinatorialist. She promises to let you go, but only if you can solve her riddle.</summary></entry><entry><title type="html">That fractal that’s been up on my wall for 12 years</title><link href="http://localhost:4000/2025/05/21/Fractal/" rel="alternate" type="text/html" title="That fractal that's been up on my wall for 12 years" /><published>2025-05-21T00:00:00-07:00</published><updated>2025-05-21T00:00:00-07:00</updated><id>http://localhost:4000/2025/05/21/Fractal</id><content type="html" xml:base="http://localhost:4000/2025/05/21/Fractal/">&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; Math, Handwaving&lt;/p&gt;
 
@@ -2222,53 +2393,4 @@ After about 300+ iterations, the best win rate was around 0.537, almost halfway 
 hours, and a couple of attempt were ruined midway from problems with the memoization system I was using running out of memory. If I had more time,
 and I may look into these approaches now that I do have time, I would have tried out a few different approaches. The main ones that come to mind are
 creating what would be the optimal strategy if we did have complete information then “flattening” down into a 2D strategy, or doing an incremental
-approach where only a few outputs are changed each time. If I ever get around to that, I’ll make a part three to this saga, but for now that’s all for hog!&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="Berkeley" /><summary type="html">Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first. Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic method by forcing the strategies to work with incomplete information.</summary></entry><entry><title type="html">Fix for “exit status 4” when writing Primitive Gif</title><link href="http://localhost:4000/2018/06/08/Primitive-Gif-Fix/" rel="alternate" type="text/html" title="Fix for &quot;exit status 4&quot; when writing Primitive Gif" /><published>2018-06-08T00:00:00-07:00</published><updated>2018-06-08T00:00:00-07:00</updated><id>http://localhost:4000/2018/06/08/Primitive-Gif-Fix</id><content type="html" xml:base="http://localhost:4000/2018/06/08/Primitive-Gif-Fix/">&lt;p&gt;This is just a quick fix for a problem I ran into while trying to use &lt;a href=&quot;https://github.com/fogleman/primitive&quot;&gt;Primitive&lt;/a&gt;
-on Windows. While trying to create a gif, you might run into a message like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;writing test.gif
-2018/06/08 14:07:20 &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;status 4
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;!--more--&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Make sure that you have &lt;a href=&quot;[https://www.imagemagick.org/script/download.php&quot;&gt;ImageMagick&lt;/a&gt; installed.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Locate the “utils.go” file in the source for primitive. On my computer it was located at &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Users\Me\go\src\github.com\fogleman\primitive\primitive\utils.go&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Look for this section:
-    &lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;x&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-loop&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-delay&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filepath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-delay&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lastDelay&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filepath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sprintf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%06d.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
- &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
- &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cmd&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;convert&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Move &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;convert&quot;&lt;/code&gt; to the beginning of args, and change the command name to &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;magick&quot;&lt;/code&gt;
-    &lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;x&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;convert&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-loop&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-delay&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filepath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-delay&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lastDelay&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filepath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sprintf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%06d.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-     &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
- &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
- &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cmd&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;magick&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Reinstall primitive with &lt;code class=&quot;highlighter-rouge&quot;&gt;go install github.com/fogleman/primitive&lt;/code&gt; (or whatever your path is in go\src)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Basically, to create the gifs primitive tries to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;magick convert&lt;/code&gt; command.
-However, windows has a default command called &lt;code class=&quot;highlighter-rouge&quot;&gt;convert&lt;/code&gt; that gets used instead.
-These changes should fix the problem.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/primitive-fix/campanile.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;/images/primitive-fix/campanile.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="Go" /><category term="Bugfix" /><summary type="html">This is just a quick fix for a problem I ran into while trying to use Primitive on Windows. While trying to create a gif, you might run into a message like this: writing test.gif 2018/06/08 14:07:20 exit status 4</summary></entry></feed>
+approach where only a few outputs are changed each time. If I ever get around to that, I’ll make a part three to this saga, but for now that’s all for hog!&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="Berkeley" /><summary type="html">Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first. Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic method by forcing the strategies to work with incomplete information.</summary></entry></feed>

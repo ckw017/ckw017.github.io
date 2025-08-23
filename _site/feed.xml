@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-23T01:17:08-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-23T01:30:26-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
 a version of Wordle where you solve two words at once. If you’re looking for more of a challenge,
 Merriam-Webster has you covered with &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
 where you solve four words at once. Of course any Wordler worth their salt should be able
@@ -57,7 +57,7 @@ td{
       &lt;td&gt;Guesses are chosen from &lt;script type=&quot;math/tex&quot;&gt;12972^{2315}&lt;/script&gt; permutations (with replacement) of possible 5-letter words.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Feedback is given in the form of 5 colored squares.&lt;/td&gt;
+      &lt;td&gt;Feedback is given in the form of &lt;script type=&quot;math/tex&quot;&gt;5&lt;/script&gt; colored squares.&lt;/td&gt;
       &lt;td&gt;Feedback is given in the form of &lt;script type=&quot;math/tex&quot;&gt;5 \times 2315 = 11575&lt;/script&gt; colored squares.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
@@ -196,7 +196,7 @@ their parts!&lt;/p&gt;
 &lt;h2 id=&quot;scaling-up&quot;&gt;Scaling up&lt;/h2&gt;
 
 &lt;p&gt;Now that we’ve seen this work with permutations of six secret words, let’s see how we
-do against permutations of the full 2315 secret words. We can start off with the
+do against permutations of the complete list 2315 secret words. We can start off with the
 &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; mixed strategy that we showed earlier:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/salet-reast-hist.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; /&gt;&lt;/p&gt;
@@ -215,12 +215,12 @@ and &lt;code class=&quot;highlighter-rouge&quot;&gt;TORSE&lt;/code&gt;. Plotting
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/top-10-hist.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Mixing the Top 10 Wordle starting words and using deduction tricks brings us to an average
+&lt;p&gt;The top 10 mix with deduction is shown in green with an average
 score of 7628.0, an additional 130 point improvement over the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; deduction strategy!
 This is the strategy I ultimately used in the competition mentioned earlier, &lt;a href=&quot;https://web.archive.org/web/20220628055213/https://botfights.ai/leaderboard/botfights_iv?results=1&quot;&gt;winning
 with a score of 7574&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&quot;closing-thoughts&quot;&gt;Closing thoughts&lt;/h2&gt;
+&lt;h2 id=&quot;thoughts&quot;&gt;Thoughts&lt;/h2&gt;
 
 &lt;p&gt;I haven’t looked very closely at this problem since three years ago, which is approximately
 how long I’ve procrastinated on doing this writeup. If you want to tinker with ideas, I
@@ -253,7 +253,7 @@ trying to make it as simple and symmetrical as possible, it still ended up havin
 amount of depth!&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/2025/08/23/Wordle/&quot;&gt;Writing Wordle bots for fun and profit&lt;/a&gt; – This gives some context
 on some of the other stages of the Wordle strategy competition, which I also happened
-to win. Nothing super novel to share there, but it’s a fun story anyway if you’re into
+to win. No novel discoveries to share there, but it’s a fun story anyway if you’re into
 Wordle.&lt;/li&gt;
 &lt;/ul&gt;
 

@@ -51,7 +51,7 @@ td{
 |-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 | Secrets are chosen from the $$2315$$ possible 5-letter secret words.        | Secrets are chosen from the $$2315!$$ possible permutations of 5-letter secret words.                 |
 | Guesses are chosen from $$12972$$ possible 5-letter words.                  | Guesses are chosen from $$12972^{2315}$$ permutations (with replacement) of possible 5-letter words. |
-| Feedback is given in the form of 5 colored squares.                         | Feedback is given in the form of $$5 \times 2315 = 11575$$ colored squares.                           |
+| Feedback is given in the form of $$5$$ colored squares.                         | Feedback is given in the form of $$5 \times 2315 = 11575$$ colored squares.                           |
 | Your score is the number of 5-letter guesses needed to identify the secret. | Your score is the total number of 5-letter guesses needed to identify each word in the secret permutation.      |
 
 Believe it or not, this is a real Wordle variant that I ran into back in 2022 [as part of a competition](https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv)
@@ -179,7 +179,7 @@ their parts!
 ## Scaling up
 
 Now that we've seen this work with permutations of six secret words, let's see how we
-do against permutations of the full 2315 secret words. We can start off with the
+do against permutations of the complete list 2315 secret words. We can start off with the
 `SALET`/`REAST` mixed strategy that we showed earlier:
 
 <img src="/images/wordle/salet-reast-hist.jpg" style="max-height:40vh; width:auto;"/>
@@ -198,12 +198,12 @@ and `TORSE`. Plotting this against the previous two histograms:
 
 <img src="/images/wordle/top-10-hist.jpg" style="max-height:40vh; width:auto;"/>
 
-Mixing the Top 10 Wordle starting words and using deduction tricks brings us to an average
+The top 10 mix with deduction is shown in green with an average
 score of 7628.0, an additional 130 point improvement over the `SALET`/`REAST` deduction strategy!
 This is the strategy I ultimately used in the competition mentioned earlier, [winning
 with a score of 7574](https://web.archive.org/web/20220628055213/https://botfights.ai/leaderboard/botfights_iv?results=1).
 
-## Closing thoughts
+## Thoughts
 
 I haven't looked very closely at this problem since three years ago, which is approximately
 how long I've procrastinated on doing this writeup. If you want to tinker with ideas, I
@@ -233,7 +233,7 @@ are:
   amount of depth!
 * [Writing Wordle bots for fun and profit](/2025/08/23/Wordle/) -- This gives some context
   on some of the other stages of the Wordle strategy competition, which I also happened
-  to win. Nothing super novel to share there, but it's a fun story anyway if you're into
+  to win. No novel discoveries to share there, but it's a fun story anyway if you're into
   Wordle.
 
 Anyway, thanks for reading!

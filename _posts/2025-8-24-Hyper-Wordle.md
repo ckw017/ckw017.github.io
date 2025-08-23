@@ -74,8 +74,8 @@ there were still ways to introduce variance:
 <img src="/images/wordle/salet-reast-mix.jpg" style="max-height:40vh; width:auto;"/><br>
 
 The histogram above shows the score distribution when using the optimal Wordle strategy
-starting with `SALET` (score of 7920) on the first 1158 words in the permutation, and using the second best
-strategy starting with `REAST` (score of 7923) on the remaining 1157 words. Variance comes
+starting with `SALET` (score of 7920) on half of the words in the permutation, and using the second best
+strategy starting with `REAST` (score of 7923) on the other half. Variance comes
 from the fact that each strategy has its own strengths and weaknesses. For example:
 * `SALET` solves `SAUTE` in 2 guesses, while `REAST` solves it in 4.
 * `REAST` solves `ROUTE` in 2 guesses, while `SALET` solves it in 4.
@@ -86,7 +86,7 @@ and words like `ROUTE` end up in the `REAST` half.
 
 While we could intentionally inject variance like this and spam submit,
 there isn't much merit in being the contestant who submits the most times. In particular,
-the mixed strategy scores ≈7921.5 on average (the average of `SALET`'s score and `REASTS`
+the mixed strategy scores ≈7921.5 on average (the average of `SALET`'s score and `REAST`'s
 score) which is worse than `SALET`'s score of 7920 by itself.
 What if we could find a way to outperform the `SALET` strategy *on average*? After all,
 just because `SALET` is optimal for *Wordle* doesn't mean its optimal for *Hyper-Wordle*.
@@ -168,7 +168,7 @@ of our secret words to build up a histogram of how this strategy tends to perfor
 
 <img src="/images/wordle/histograms.jpg" style="max-height:30vh; width:auto;"/>
 
-On the left, we have the result of mixing the two strategies without using any of deduction
+On the left, we have the result of mixing the two strategies without using any detheduction
 tricks. This produces a vaguely Gaussian looking distribution averaging a score of 15,
 the same as using `MAJOR` or `LEAKS` on their own.
 On the right, we have the result of mixing the two strategies and using
@@ -200,13 +200,14 @@ and `TORSE`. Plotting this against the previous two histograms:
 
 The top 10 mix with deduction is shown in green with an average
 score of 7628.0, an additional 130 point improvement over the `SALET`/`REAST` deduction strategy!
-This is the strategy I ultimately used in the competition mentioned earlier, [winning
+Trying to mix in more words (e.g. top 20) seems to have diminishing returns, since introducing
+less efficient starting words drags the expected score without deductions up.
+The top 10 strategy is what I ultimately used in the competition mentioned earlier, [winning
 with a score of 7574](https://web.archive.org/web/20220628055213/https://botfights.ai/leaderboard/botfights_iv?results=1).
 
 ## Thoughts
 
-I haven't looked very closely at this problem since three years ago, which is approximately
-how long I've procrastinated on doing this writeup. If you want to tinker with ideas, I
+If you want to tinker with ideas, I
 generated all the data for the strategy histograms in this post using [this very adhoc Rust code](https://github.com/ckw017/hyper-wordle).
 Some interesting open questions are:
 * What's the best mix of two starting words (i.e. lowest average score)? Intuitively,

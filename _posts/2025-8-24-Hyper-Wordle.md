@@ -218,7 +218,7 @@ Trying to mix in more words (e.g. top 20) seems to have diminishing returns, sin
 less efficient starting words drags the expected score without deductions up.
 The top 10 mixed strategy is what I ultimately used in the competition mentioned earlier, [winning
 with a score of 7574](https://web.archive.org/web/20220628055213/https://botfights.ai/leaderboard/botfights_iv?results=1)
--- a 4.4% improvement over the optimal Wordle strategy!
+-- a 4.4% improvement over the optimal Wordle strategy by itself!
 
 ## Final Words
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 img: /images/wordle/wordle.jpg
-title: Hyper-Wordle
+title: Hyper-Wordle strategies
 excerpt_separator: <!--more-->
 ---
 
@@ -24,7 +24,7 @@ Despite how chaotic the user interface would need to be, this variant wouldn't b
 the same guess is applied to *all* 2315 words every turn, entering each of the 2315 secret words
 in any order will always solve it with a perfect score of 2315 guesses.
 
-But what if you could enter *different* guesses for each of the 2315 words each turn?
+But what if you could enter *different* guesses for each of the 2315 secrets each turn?
 I call this Hyper-Wordle, since it can be viewed as a much larger, comedically intractable
 version of normal Wordle:
 
@@ -66,9 +66,9 @@ with a suboptimal strategy and eventually get lucky enough to beat better strate
 Testing against permutations of the 2315 secret words without replacement seemed like
 it might negate any chance of abusing variance.
 For example, if you used the optimal[^2] [Wordle strategy starting with the word `SALET`](https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle)
-which solves the game in an average of ~3.4212 guesses,
-every submission would always score exactly $$3.4212 \times 2315 = 7920$$
-since every secret word always appears exactly once. Unfortunately,
+(average score of ≈3.4212 guesses) against every secret in the permutation,
+submissions would score exactly $$3.4212 \times 2315 = 7920$$ regardless of the permutation
+since every potential secret word always appears exactly once. Despite this,
 there were still ways to introduce variance:
 
 <img src="/images/wordle/salet-reast-mix.jpg" style="max-height:40vh; width:auto;"/><br>
@@ -177,7 +177,7 @@ deduction tricks to refine our guesses, with an average score of 13.9. In
 other words, we have a way to mix starting words which performs *better* than the sum of
 their parts!
 
-## Scaling up
+## Widen Scope
 
 Now that we've seen this work with permutations of six secret words, let's see how we
 do against permutations of the complete list 2315 secret words. We can start off with the
@@ -203,11 +203,11 @@ The top 10 mix with deduction is shown in green with an average
 score of 7628.0, an additional 130 point improvement over the `SALET`/`REAST` deduction strategy!
 Trying to mix in more words (e.g. top 20) seems to have diminishing returns, since introducing
 less efficient starting words drags the expected score without deductions up.
-The top 10 strategy is what I ultimately used in the competition mentioned earlier, [winning
+The top 10 mixed strategy is what I ultimately used in the competition mentioned earlier, [winning
 with a score of 7574](https://web.archive.org/web/20220628055213/https://botfights.ai/leaderboard/botfights_iv?results=1)
 -- a 4.4% improvement over the optimal Wordle strategy!
 
-## Thoughts
+## Final Words
 
 If you want to tinker with ideas, I
 generated all the data for the strategy histograms in this post using [this very adhoc Rust code](https://github.com/ckw017/hyper-wordle).
@@ -234,7 +234,7 @@ I broke it into three standalone parts. Excluding the one you're reading right n
 are:
 * [The Sixteen Bottles of Wine Riddle](/2025/08/11/Wine/) -- I thought of this riddle while trying to think of a
   simpler version Hyper-Wordle to use as a toy example to introduce some concepts. Despite
-  trying to make it as simple and symmetrical as possible, it still ended up having a surprising
+  trying to make it as simple and symmetric as possible, it still ended up having a surprising
   amount of depth!
 * [Writing Wordle bots for fun and profit](/2025/08/23/Wordle/) -- This gives some context
   on some of the other stages of the Wordle strategy competition, which I also happened

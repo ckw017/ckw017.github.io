@@ -111,7 +111,7 @@ consider a strategy with `MAJOR` as our starting word:
 <img src="/images/wordle/major-tree.jpg" style="max-height:30vh; width:auto;"/>
 
 Again, this deterministic strategy requires 15 guesses to solve any permutation of the 6 chosen secret words.
-Nether the `MAJOR` strategy nor `LEAKS` strategy are particularly impressive on their own. Let's
+Neither the `MAJOR` strategy nor `LEAKS` strategy are particularly impressive on their own. Let's
 try to solve an unknown permutation of our secret words while mixing the two starting words,
 with `MAJOR` for the first three positions and `LEAKS` for the last three:
 

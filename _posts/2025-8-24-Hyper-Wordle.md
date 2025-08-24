@@ -25,7 +25,7 @@ the same guess is applied to *all* 2315 words every turn, entering each of the 2
 in any order will always solve it with a perfect score of 2315 guesses.
 
 But what if you could enter *different* guesses for each of the 2315 secrets each turn?
-I call this Hyper-Wordle, since it can be viewed as an exponentially larger
+I call this Hyper-Wordle since it can be viewed as an exponentially larger
 version of normal Wordle:
 
 <style>
@@ -126,7 +126,7 @@ using `1`, `2`, `3`, `4`, `5`, and `6` as shorthand for `FIRST`, `DEUCE`, `THIRD
 
 Before we make any more guesses, is there anything we can do to narrow down the values in
 the possibilities column? Looking closely, we already know the position of `2`: it
-*must* be in the fourth position, since it's the only secret which matches that feedback pattern
+*must* be in the fourth position since it's the only secret which matches that feedback pattern
 for `LEAKS`. This allows us to remove `2` from the lists of possibilities in the first
 two positions:
 
@@ -134,9 +134,9 @@ two positions:
 
 Now that we've removed `2` as a possibility in the first and second positions, we see
 the first position must be either `5` or `6`. Consider the following two scenarios:
-* If `5` is in the first position, `6` must be in the second position, since there would be
+* If `5` is in the first position, `6` must be in the second position since there would be
   no other option that could go there.
-* If `6` is in the first position, `5` must be in the second position, since there would be
+* If `6` is in the first position, `5` must be in the second position since there would be
   no other option that could go there.
 
 In Sudoku[^3] puzzles this is known as a [Naked Pair](https://www.sudokuwiki.org/naked_candidates).
@@ -145,7 +145,7 @@ must be in the first two positions, allowing us to rule them out from any other 
 
 <img src="/images/wordle/major-leaks-2.jpg" style="max-height:30vh; width:auto;"/>
 
-After this deduction, we know `1` must be in the fifth position, since it's the only viable
+After this deduction, we know `1` must be in the fifth position since it's the only viable
 option. This allows us to remove it from the list of possibilities for the third
 position.
 
@@ -214,7 +214,7 @@ and `TORSE`. Plotting this against the previous two histograms:
 
 The top 10 mix with deduction is shown in green with an average
 score of 7628.0, an additional 130 point improvement over the `SALET`/`REAST` deduction strategy!
-Trying to mix in more words (e.g. top 20) seems to have diminishing returns, since introducing
+Trying to mix in more words (e.g. top 20) seems to have diminishing returns since introducing
 less efficient starting words drags the expected score without deductions up.
 The top 10 mixed strategy is what I ultimately used in the competition mentioned earlier, [winning
 with a score of 7574](https://web.archive.org/web/20220628055213/https://botfights.ai/leaderboard/botfights_iv?results=1)

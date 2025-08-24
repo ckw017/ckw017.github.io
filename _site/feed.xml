@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-24T08:36:48-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle strategies</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle strategies" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-24T08:50:30-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle strategies</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle strategies" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
 a version of Wordle where you solve two words at once. If you’re looking for more of a challenge,
 Merriam-Webster has you covered with &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
 where you solve four words at once. Of course any Wordler worth their salt should be able
@@ -18,7 +18,7 @@ the same guess is applied to &lt;em&gt;all&lt;/em&gt; 2315 words every turn, ent
 in any order will always solve it with a perfect score of 2315 guesses.&lt;/p&gt;
 
 &lt;p&gt;But what if you could enter &lt;em&gt;different&lt;/em&gt; guesses for each of the 2315 secrets each turn?
-I call this Hyper-Wordle, since it can be viewed as an exponentially larger
+I call this Hyper-Wordle since it can be viewed as an exponentially larger
 version of normal Wordle:&lt;/p&gt;
 
 &lt;style&gt;
@@ -141,7 +141,7 @@ using &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;, &lt;code c
 
 &lt;p&gt;Before we make any more guesses, is there anything we can do to narrow down the values in
 the possibilities column? Looking closely, we already know the position of &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;: it
-&lt;em&gt;must&lt;/em&gt; be in the fourth position, since it’s the only secret which matches that feedback pattern
+&lt;em&gt;must&lt;/em&gt; be in the fourth position since it’s the only secret which matches that feedback pattern
 for &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt;. This allows us to remove &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt; from the lists of possibilities in the first
 two positions:&lt;/p&gt;
 
@@ -150,9 +150,9 @@ two positions:&lt;/p&gt;
 &lt;p&gt;Now that we’ve removed &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt; as a possibility in the first and second positions, we see
 the first position must be either &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt;. Consider the following two scenarios:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; is in the first position, &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt; must be in the second position, since there would be
+  &lt;li&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; is in the first position, &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt; must be in the second position since there would be
 no other option that could go there.&lt;/li&gt;
-  &lt;li&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt; is in the first position, &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; must be in the second position, since there would be
+  &lt;li&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt; is in the first position, &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; must be in the second position since there would be
 no other option that could go there.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -162,7 +162,7 @@ must be in the first two positions, allowing us to rule them out from any other 
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-2.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;After this deduction, we know &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; must be in the fifth position, since it’s the only viable
+&lt;p&gt;After this deduction, we know &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; must be in the fifth position since it’s the only viable
 option. This allows us to remove it from the list of possibilities for the third
 position.&lt;/p&gt;
 
@@ -233,7 +233,7 @@ and &lt;code class=&quot;highlighter-rouge&quot;&gt;TORSE&lt;/code&gt;. Plotting
 
 &lt;p&gt;The top 10 mix with deduction is shown in green with an average
 score of 7628.0, an additional 130 point improvement over the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; deduction strategy!
-Trying to mix in more words (e.g. top 20) seems to have diminishing returns, since introducing
+Trying to mix in more words (e.g. top 20) seems to have diminishing returns since introducing
 less efficient starting words drags the expected score without deductions up.
 The top 10 mixed strategy is what I ultimately used in the competition mentioned earlier, &lt;a href=&quot;https://web.archive.org/web/20220628055213/https://botfights.ai/leaderboard/botfights_iv?results=1&quot;&gt;winning
 with a score of 7574&lt;/a&gt;

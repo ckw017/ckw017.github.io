@@ -25,7 +25,7 @@ the same guess is applied to *all* 2315 words every turn, entering each of the 2
 in any order will always solve it with a perfect score of 2315 guesses.
 
 But what if you could enter *different* guesses for each of the 2315 secrets each turn?
-I call this Hyper-Wordle, since it can be viewed as a much larger, comedically intractable
+I call this Hyper-Wordle, since it can be viewed as an exponentially larger
 version of normal Wordle:
 
 <style>

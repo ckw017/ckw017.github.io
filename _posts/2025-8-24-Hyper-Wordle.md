@@ -201,7 +201,7 @@ do against permutations of the complete list 2315 secret words. We can start off
 The values on the right are the same from earlier, showing the score distribution of the `SALET`/`REAST`
 mixed strategy on 1000 random permutations of the 2315 secret words.
 On the left we have the results on the same 1000 permutations after eliminating possible
-states via deduction and refining our guessing strategy accordingly. Deduction takes our
+states via deduction each turn and refining our guessing strategy accordingly. Deduction takes our
 average score from 7921.5 to 7768.8, a 150 point improvement!
 
 `SALET` and `REAST` were chosen since they're the top two deterministic Wordle strategies,

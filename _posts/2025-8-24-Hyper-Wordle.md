@@ -174,13 +174,13 @@ own strengths and weaknesses:
 
 In the example we worked through above, notice how the first deduction uses information
 from the `LEAKS` half of the puzzle to rule out the location of `DEUCE` (`2`) in
-the `MAJOR` half of the puzzle earlier than usual. In other words, `LEAKS`' strength covers for `MAJOR`'s
-weakness, which in turn gives `MAJOR` enough information to cover `LEAKS`' weaknesses.
+the `MAJOR` half of the puzzle earlier than it normally could. In other words, `LEAKS`' strengths covers for `MAJOR`'s
+weaknesses, which in turn gives `MAJOR` enough information to cover `LEAKS`' weaknesses.
 By exploiting the asymmetry in the strengths and weaknesses of each strategy,
 we're able to iteratively refine both strategies to perform *better* than the sum of their parts!
 
 We can brute force over all $$6! = 720$$ possible permutations
-of our secret words to build up a histograms showing how much improvement deduction gives us on average:
+of our secret words to build up histograms showing how much improvement deduction gives us on average:
 
 <img src="/images/wordle/histograms.jpg" style="max-height:30vh; width:auto;"/>
 

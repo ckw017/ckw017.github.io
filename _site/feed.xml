@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-23T21:28:13-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle strategies</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle strategies" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-24T08:18:09-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle strategies</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle strategies" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
 a version of Wordle where you solve two words at once. If you’re looking for more of a challenge,
 Merriam-Webster has you covered with &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
 where you solve four words at once. Of course any Wordler worth their salt should be able
@@ -142,7 +142,7 @@ using &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;, &lt;code c
 &lt;p&gt;Before we make any more guesses, is there anything we can do to narrow down the values in
 the possibilities column? Looking closely, we already know the position of &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;: it
 &lt;em&gt;must&lt;/em&gt; be in the fourth position, since it’s the only secret which matches that feedback pattern
-for &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt;. This allows us to remove &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt; it from the lists of possibilities in the first
+for &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt;. This allows us to remove &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt; from the lists of possibilities in the first
 two positions:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-1.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
@@ -180,9 +180,26 @@ secrets! If we submit guesses tuned to take advantage of our updated knowledge:&
 &lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-solve.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We’re able to solve every word in a total of 13 guesses, an improvement over 15 guesses
-for both the &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; strategy and the &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; strategy on their own. We can
-brute force over all &lt;script type=&quot;math/tex&quot;&gt;6! = 720&lt;/script&gt; possible permutations
-of our secret words to build up a histogram of how this strategy tends to perform:&lt;/p&gt;
+for both the &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; strategy and the &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; strategy on their own.
+Taking a step back, where did this improvement come from? Like with the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt;
+example from earlier, the individual &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; strategies each have their
+own strengths and weaknesses:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; always knows the location of &lt;code class=&quot;highlighter-rouge&quot;&gt;FORTH&lt;/code&gt; after submitting guess 1, while &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt;
+doesn’t find this out until after guess 2.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; always knows the location of &lt;code class=&quot;highlighter-rouge&quot;&gt;DEUCE&lt;/code&gt; after submitting guess 1, while &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt;
+doesn’t find this out until after guess 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the example we worked through above, notice how the first deduction uses information
+from the &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; half of the puzzle to rule out the location of &lt;code class=&quot;highlighter-rouge&quot;&gt;DEUCE&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;) in
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; half of the puzzle earlier than usual. In other words, &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt;’ strength covers for &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt;’s
+weakness, which in turn gives &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; enough information to cover &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt;’ weaknesses.
+By exploiting the asymmetry in the strengths and weaknesses of each strategy,
+we’re able to iteratively refine both strategies to perform &lt;em&gt;better&lt;/em&gt; than the sum of their parts!&lt;/p&gt;
+
+&lt;p&gt;We can brute force over all &lt;script type=&quot;math/tex&quot;&gt;6! = 720&lt;/script&gt; possible permutations
+of our secret words to build up a histograms showing how much improvement deduction gives us on average:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/histograms.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
@@ -190,9 +207,7 @@ of our secret words to build up a histogram of how this strategy tends to perfor
 tricks. This produces a vaguely Gaussian looking distribution averaging a score of 15,
 the same as using &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; on their own.
 On the right, we have the result of mixing the two strategies and using
-deduction tricks to refine our guesses, with an average score of 13.9. In
-other words, we have a way to mix starting words which performs &lt;em&gt;better&lt;/em&gt; than the sum of
-their parts!&lt;/p&gt;
+deduction tricks to refine our guesses with an average score of 13.9, a 1.1 point improvement!&lt;/p&gt;
 
 &lt;h2 id=&quot;widen-scope&quot;&gt;Widen Scope&lt;/h2&gt;
 

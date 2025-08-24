@@ -127,7 +127,7 @@ using `1`, `2`, `3`, `4`, `5`, and `6` as shorthand for `FIRST`, `DEUCE`, `THIRD
 Before we make any more guesses, is there anything we can do to narrow down the values in
 the possibilities column? Looking closely, we already know the position of `2`: it
 *must* be in the fourth position, since it's the only secret which matches that feedback pattern
-for `LEAKS`. This allows us to remove `2` it from the lists of possibilities in the first
+for `LEAKS`. This allows us to remove `2` from the lists of possibilities in the first
 two positions:
 
 <img src="/images/wordle/major-leaks-1.jpg" style="max-height:30vh; width:auto;"/>
@@ -163,9 +163,24 @@ secrets! If we submit guesses tuned to take advantage of our updated knowledge:
 <img src="/images/wordle/major-leaks-solve.jpg" style="max-height:30vh; width:auto;"/>
 
 We're able to solve every word in a total of 13 guesses, an improvement over 15 guesses
-for both the `MAJOR` strategy and the `LEAKS` strategy on their own. We can
-brute force over all $$6! = 720$$ possible permutations
-of our secret words to build up a histogram of how this strategy tends to perform:
+for both the `MAJOR` strategy and the `LEAKS` strategy on their own.
+Taking a step back, where did this improvement come from? Like with the `SALET`/`REAST`
+example from earlier, the individual `MAJOR` and `LEAKS` strategies each have their
+own strengths and weaknesses:
+* `MAJOR` always knows the location of `FORTH` after submitting guess 1, while `LEAKS`
+  doesn't find this out until after guess 2.
+* `LEAKS` always knows the location of `DEUCE` after submitting guess 1, while `MAJOR`
+  doesn't find this out until after guess 2.
+
+In the example we worked through above, notice how the first deduction uses information
+from the `LEAKS` half of the puzzle to rule out the location of `DEUCE` (`2`) in
+the `MAJOR` half of the puzzle earlier than usual. In other words, `LEAKS`' strength covers for `MAJOR`'s
+weakness, which in turn gives `MAJOR` enough information to cover `LEAKS`' weaknesses.
+By exploiting the asymmetry in the strengths and weaknesses of each strategy,
+we're able to iteratively refine both strategies to perform *better* than the sum of their parts!
+
+We can brute force over all $$6! = 720$$ possible permutations
+of our secret words to build up a histograms showing how much improvement deduction gives us on average:
 
 <img src="/images/wordle/histograms.jpg" style="max-height:30vh; width:auto;"/>
 
@@ -173,9 +188,7 @@ On the left, we have the result of mixing the two strategies without using any d
 tricks. This produces a vaguely Gaussian looking distribution averaging a score of 15,
 the same as using `MAJOR` or `LEAKS` on their own.
 On the right, we have the result of mixing the two strategies and using
-deduction tricks to refine our guesses, with an average score of 13.9. In
-other words, we have a way to mix starting words which performs *better* than the sum of
-their parts!
+deduction tricks to refine our guesses with an average score of 13.9, a 1.1 point improvement!
 
 ## Widen Scope
 

@@ -5,12 +5,12 @@ title: Playing every game of Wordle simultaneously
 excerpt_separator: <!--more-->
 ---
 
-If you've fallen far enough down the Wordle rabbit hole you may have heard of [Dordle](https://dordlewordle.com/),
-a version of Wordle where you solve two words at once. If you're looking for more of a challenge,
-Merriam-Webster has you covered with [Quordle](https://www.merriam-webster.com/games/quordle/#/),
-where you solve four words at once. Of course any Wordler worth their salt should be able
-to handle eight words, like in Britannica's [Octordle](https://www.britannica.com/games/octordle/).
-And no, it [doesn't](https://sedecordlegame.org/) [stop](https://duotrigordle.com/) [there](https://64ordle.au/).
+If you've fallen far enough down the Wordle rabbit hole you may have heard of [Quordle](https://www.merriam-webster.com/games/quordle/#/),
+a version of Wordle where you solve four words at once. If you're looking for more of a challenge,
+Britannica has you covered with [Octordle](https://www.britannica.com/games/octordle/),
+where you solve eight words at once. Of course any Wordler worth their salt should be able
+to handle sixteen words, like in [Sedecordle](https://sedecordlegame.org).
+And no, it doesn't [stop](https://duotrigordle.com/) [there](https://64ordle.au/):
 
 <!--more-->
 

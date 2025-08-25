@@ -203,7 +203,7 @@ tricks. This produces a vaguely Gaussian looking distribution averaging a score 
 the same as using `MAJOR` or `LEAKS` on their own. Note that variance comes from the
 fact that `MAJOR` and `LEAKS` each have their own strengths and weaknesses:
 * The score is lower for permutations where secrets `MAJOR`/`LEAKS` solve quickly are shuffled into their halves.
-* The score is higher for permutations where secrets`MAJOR`/`LEAKS` solve slowly are shuffled into their halves.
+* The score is higher for permutations where secrets `MAJOR`/`LEAKS` solve slowly are shuffled into their halves.
 
 On the right, we have the result of mixing the two strategies and using
 deduction tricks to refine our guesses with an average score of 13.9, a 1.1 point improvement!

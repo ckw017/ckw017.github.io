@@ -1,7 +1,7 @@
 ---
 layout: post
 img: /images/wordle/wordle.jpg
-title: Hyper-Wordle strategies
+title: Playing every game of Wordle simultaneously
 excerpt_separator: <!--more-->
 ---
 

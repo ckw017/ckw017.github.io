@@ -54,6 +54,21 @@ td{
 | Your score is the number of 5-letter guesses needed to identify the secret. | Your score is the total number of 5-letter guesses needed to identify each word in the secret permutation.      |
 
 Believe it or not, this is a real Wordle variant I ran into back in 2022 [as part of a competition](https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv)
+to see who could write the best Wordle solving program.
+One way to play would be to treat each secret word in the permutation as its own game,
+effectively playing 2315 independent games of Wordle. For example, if you used the optimal[^3] [Wordle strategy starting with the word `SALET`](https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle)
+(average score of ≈3.4212 guesses) against every secret in the permutation,
+submissions would score exactly $$3.4212 \times 2315 = 7920$$ regardless of the permutation
+since every potential secret word always appears exactly once.
+
+7920 is by no means a bad score, but can we do better? For example,
+can we take advantage of the fact that the secrets are permuted *without replacement* to
+gain extra information? After all, just because `SALET` is optimal for *normal Wordle*,
+that doesn't mean it's optimal for *Hyper Wordle*.
+
+<!--
+
+Believe it or not, this is a real Wordle variant I ran into back in 2022 [as part of a competition](https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv)
 to see who could write the best Wordle solving program. Originally, the competition
 tested programs against a sample of 1000 words chosen randomly with replacement.
 Since some secret words are easier to solve than others, you could spam submissions repeatedly
@@ -90,6 +105,8 @@ What if we could find a way to outperform the `SALET` strategy *on average*? For
 can we take advantage of the fact that the secrets are permuted *without replacement* to
 gain extra information?
 
+-->
+
 ## Wacky Trick Leaks Extra State
 
 Before we try to solve a permutation of 2315 words, let's consider a simpler scenario
@@ -99,16 +116,16 @@ where `LEAKS` is our starting word:
 
 <img src="/images/wordle/leaks-tree.jpg" style="max-height:30vh; width:auto;"/>
 
-Note this is a deterministic strategy, meaning our guess for each word is
+This is strategy treats each secret independently, meaning our guess for each word is
 based solely on feedback we've received for the word so far. For example, we
 guess `THIRD` in all three positions where the feedback from the first guess was five gray squares.
-While we show the secret words in order here, since the strategy is deterministic it always
+While we show the secret words in order here, since the strategy treats each secret independently it always
 requires a total of 15 guesses to solve all the words regardless of how they're permuted. Next,
 consider a strategy with `MAJOR` as our starting word:
 
 <img src="/images/wordle/major-tree.jpg" style="max-height:30vh; width:auto;"/>
 
-Again, this deterministic strategy requires 15 guesses to solve any permutation of the 6 chosen secret words.
+Again, this strategy requires 15 guesses to solve any permutation of the 6 chosen secret words.
 Neither the `MAJOR` strategy nor `LEAKS` strategy are particularly impressive on their own. Let's
 try to solve an unknown permutation of our secret words while mixing the two starting words,
 with `MAJOR` for the first three positions and `LEAKS` for the last three:
@@ -162,9 +179,8 @@ secrets! If we submit guesses tuned to take advantage of our updated knowledge:
 
 We're able to solve every word in a total of 13 guesses, an improvement over 15 guesses
 for both the `MAJOR` strategy and the `LEAKS` strategy on their own.
-Taking a step back, where did this improvement come from? Like with the `SALET`/`REAST`
-example from earlier, the individual `MAJOR` and `LEAKS` strategies each have their
-own strengths and weaknesses:
+Taking a step back, where did this improvement come from? Note that the individual
+`MAJOR` and `LEAKS` strategies each have their own strengths and weaknesses:
 * `MAJOR` always knows the location of `FORTH` after submitting guess 1, while `LEAKS`
   doesn't find this out until after guess 2.
 * `LEAKS` always knows the location of `DEUCE` after submitting guess 1, while `MAJOR`
@@ -191,13 +207,14 @@ deduction tricks to refine our guesses with an average score of 13.9, a 1.1 poin
 ## Widen Scope
 
 Now that we've seen this work with permutations of six secret words, let's see how we
-do against permutations of the complete list 2315 secret words. We can start off with the
-`SALET`/`REAST` mixed strategy we showed earlier:
+do against permutations of the complete list 2315 secret words. We can start off by mixing
+the best Wordle strategy starting with `SALET` (score of 7920) with the second best strategy starting with
+`REAST` (score of 7923):
 
 <img src="/images/wordle/salet-reast-hist.jpg" style="max-height:40vh; width:auto;"/>
 
-The values on the right are the same from earlier, showing the score distribution of the `SALET`/`REAST`
-mixed strategy on 1000 random permutations of the 2315 secret words.
+The values on the right are show the score distribution of the `SALET`/`REAST`
+mixed strategy on 1000 random permutations of the 2315 secret words without any deduction.
 On the left we have the results on the same 1000 permutations after eliminating possible
 states via deduction each turn and refining our guessing strategy accordingly. Deduction takes our
 average score from ≈7921.5 to ≈7768.8, a 150 point improvement!

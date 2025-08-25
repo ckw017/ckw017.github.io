@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-25T13:04:07-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Playing every game of Wordle simultaneously</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Playing every game of Wordle simultaneously" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the &lt;a href=&quot;https://www.nytimes.com/games/wordle/index.html&quot;&gt;Wordle&lt;/a&gt; rabbit hole you may have heard of &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-25T13:31:39-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Playing every game of Wordle simultaneously</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Playing every game of Wordle simultaneously" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the &lt;a href=&quot;https://www.nytimes.com/games/wordle/index.html&quot;&gt;Wordle&lt;/a&gt; rabbit hole you may have heard of &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
 a version of Wordle where you solve four words at once. If you’re looking for more of a challenge,
 Britannica has you covered with &lt;a href=&quot;https://www.britannica.com/games/octordle/&quot;&gt;Octordle&lt;/a&gt;,
 where you solve eight words at once. And of course any Wordler worth their salt should be able
@@ -67,43 +67,58 @@ td{
 &lt;/table&gt;
 
 &lt;p&gt;Believe it or not, this is a real Wordle variant I ran into back in 2022 &lt;a href=&quot;https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv&quot;&gt;as part of a competition&lt;/a&gt;
+to see who could write the best Wordle solving program.
+One way to play would be to treat each secret word in the permutation as its own game,
+effectively playing 2315 independent games of Wordle. For example, if you used the optimal&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle&quot;&gt;Wordle strategy starting with the word &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;&lt;/a&gt;
+(average score of ≈3.4212 guesses) against every secret in the permutation,
+submissions would score exactly &lt;script type=&quot;math/tex&quot;&gt;3.4212 \times 2315 = 7920&lt;/script&gt; regardless of the permutation
+since every potential secret word always appears exactly once.&lt;/p&gt;
+
+&lt;p&gt;7920 is by no means a bad score, but can we do better? For example,
+can we take advantage of the fact that the secrets are permuted &lt;em&gt;without replacement&lt;/em&gt; to
+gain extra information? After all, just because &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; is optimal for &lt;em&gt;normal Wordle&lt;/em&gt;,
+that doesn’t mean it’s optimal for &lt;em&gt;Hyper Wordle&lt;/em&gt;.&lt;/p&gt;
+
+&lt;!--
+
+Believe it or not, this is a real Wordle variant I ran into back in 2022 [as part of a competition](https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv)
 to see who could write the best Wordle solving program. Originally, the competition
 tested programs against a sample of 1000 words chosen randomly with replacement.
 Since some secret words are easier to solve than others, you could spam submissions repeatedly
-with a suboptimal strategy and eventually get lucky enough to beat better strategies:&lt;/p&gt;
+with a suboptimal strategy and eventually get lucky enough to beat better strategies:
 
-&lt;p&gt;&lt;img src=&quot;/images/wordle/hist.png&quot; style=&quot;max-height:50vh; width:auto;&quot; /&gt;&lt;br /&gt;
-&lt;em&gt;Central limit theory in action.&lt;/em&gt;&lt;/p&gt;
+&lt;img src=&quot;/images/wordle/hist.png&quot; style=&quot;max-height:50vh; width:auto;&quot;/&gt;&lt;br&gt;
+*Central limit theory in action.*
 
-&lt;p&gt;Testing against permutations of the 2315 secret words without replacement seemed like
+Testing against permutations of the 2315 secret words without replacement seemed like
 it might negate any chance of abusing variance.
-For example, if you used the optimal&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle&quot;&gt;Wordle strategy starting with the word &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;&lt;/a&gt;
+For example, if you used the optimal[^3] [Wordle strategy starting with the word `SALET`](https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle)
 (average score of ≈3.4212 guesses) against every secret in the permutation,
-submissions would score exactly &lt;script type=&quot;math/tex&quot;&gt;3.4212 \times 2315 = 7920&lt;/script&gt; regardless of the permutation
+submissions would score exactly $$3.4212 \times 2315 = 7920$$ regardless of the permutation
 since every potential secret word always appears exactly once. Despite this,
-there were still ways to introduce variance:&lt;/p&gt;
+there were still ways to introduce variance:
 
-&lt;p&gt;&lt;img src=&quot;/images/wordle/salet-reast-mix.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;img src=&quot;/images/wordle/salet-reast-mix.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot;/&gt;&lt;br&gt;
 
-&lt;p&gt;The histogram above shows the score distribution when using the optimal Wordle strategy
-starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; (score of 7920) on half of the words in the permutation, and using the second best
-strategy starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; (score of 7923) on the other half. Variance comes
-from the fact that each strategy has its own strengths and weaknesses. For example:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; solves &lt;code class=&quot;highlighter-rouge&quot;&gt;SAUTE&lt;/code&gt; in 2 guesses, while &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; solves it in 4.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; solves &lt;code class=&quot;highlighter-rouge&quot;&gt;ROUTE&lt;/code&gt; in 2 guesses, while &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; solves it in 4.&lt;/li&gt;
-&lt;/ul&gt;
+The histogram above shows the score distribution when using the optimal Wordle strategy
+starting with `SALET` (score of 7920) on half of the words in the permutation, and using the second best
+strategy starting with `REAST` (score of 7923) on the other half. Variance comes
+from the fact that each strategy has its own strengths and weaknesses. For example:
+* `SALET` solves `SAUTE` in 2 guesses, while `REAST` solves it in 4.
+* `REAST` solves `ROUTE` in 2 guesses, while `SALET` solves it in 4.
 
-&lt;p&gt;If you spam enough submissions, you can retry until you’re tested against permutations where words like &lt;code class=&quot;highlighter-rouge&quot;&gt;SAUTE&lt;/code&gt; end up in the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; half,
-and words like &lt;code class=&quot;highlighter-rouge&quot;&gt;ROUTE&lt;/code&gt; end up in the &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; half.&lt;/p&gt;
+If you spam enough submissions, you can retry until you're tested against permutations where words like `SAUTE` end up in the `SALET` half,
+and words like `ROUTE` end up in the `REAST` half.
 
-&lt;p&gt;While we could intentionally inject variance like this and spam submit,
-there isn’t much merit in being the contestant who submits the most times. In particular,
-the mixed strategy scores ≈7921.5 on average (the average of &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;’s score and &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt;’s
-score) which is worse than &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;’s score of 7920 by itself.
-What if we could find a way to outperform the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; strategy &lt;em&gt;on average&lt;/em&gt;? For example,
-can we take advantage of the fact that the secrets are permuted &lt;em&gt;without replacement&lt;/em&gt; to
-gain extra information?&lt;/p&gt;
+While we could intentionally inject variance like this and spam submit,
+there isn't much merit in being the contestant who submits the most times. In particular,
+the mixed strategy scores ≈7921.5 on average (the average of `SALET`'s score and `REAST`'s
+score) which is worse than `SALET`'s score of 7920 by itself.
+What if we could find a way to outperform the `SALET` strategy *on average*? For example,
+can we take advantage of the fact that the secrets are permuted *without replacement* to
+gain extra information?
+
+--&gt;
 
 &lt;h2 id=&quot;wacky-trick-leaks-extra-state&quot;&gt;Wacky Trick Leaks Extra State&lt;/h2&gt;
 
@@ -114,16 +129,16 @@ where &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; is our 
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/leaks-tree.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Note this is a deterministic strategy, meaning our guess for each word is
+&lt;p&gt;This is strategy treats each secret independently, meaning our guess for each word is
 based solely on feedback we’ve received for the word so far. For example, we
 guess &lt;code class=&quot;highlighter-rouge&quot;&gt;THIRD&lt;/code&gt; in all three positions where the feedback from the first guess was five gray squares.
-While we show the secret words in order here, since the strategy is deterministic it always
+While we show the secret words in order here, since the strategy treats each secret independently it always
 requires a total of 15 guesses to solve all the words regardless of how they’re permuted. Next,
 consider a strategy with &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; as our starting word:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/major-tree.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Again, this deterministic strategy requires 15 guesses to solve any permutation of the 6 chosen secret words.
+&lt;p&gt;Again, this strategy requires 15 guesses to solve any permutation of the 6 chosen secret words.
 Neither the &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; strategy nor &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; strategy are particularly impressive on their own. Let’s
 try to solve an unknown permutation of our secret words while mixing the two starting words,
 with &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; for the first three positions and &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; for the last three:&lt;/p&gt;
@@ -179,9 +194,8 @@ secrets! If we submit guesses tuned to take advantage of our updated knowledge:&
 
 &lt;p&gt;We’re able to solve every word in a total of 13 guesses, an improvement over 15 guesses
 for both the &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; strategy and the &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; strategy on their own.
-Taking a step back, where did this improvement come from? Like with the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt;
-example from earlier, the individual &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; strategies each have their
-own strengths and weaknesses:&lt;/p&gt;
+Taking a step back, where did this improvement come from? Note that the individual
+&lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; strategies each have their own strengths and weaknesses:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; always knows the location of &lt;code class=&quot;highlighter-rouge&quot;&gt;FORTH&lt;/code&gt; after submitting guess 1, while &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt;
 doesn’t find this out until after guess 2.&lt;/li&gt;
@@ -210,13 +224,14 @@ deduction tricks to refine our guesses with an average score of 13.9, a 1.1 poin
 &lt;h2 id=&quot;widen-scope&quot;&gt;Widen Scope&lt;/h2&gt;
 
 &lt;p&gt;Now that we’ve seen this work with permutations of six secret words, let’s see how we
-do against permutations of the complete list 2315 secret words. We can start off with the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; mixed strategy we showed earlier:&lt;/p&gt;
+do against permutations of the complete list 2315 secret words. We can start off by mixing
+the best Wordle strategy starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; (score of 7920) with the second best strategy starting with
+&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; (score of 7923):&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/wordle/salet-reast-hist.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The values on the right are the same from earlier, showing the score distribution of the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt;
-mixed strategy on 1000 random permutations of the 2315 secret words.
+&lt;p&gt;The values on the right are show the score distribution of the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt;
+mixed strategy on 1000 random permutations of the 2315 secret words without any deduction.
 On the left we have the results on the same 1000 permutations after eliminating possible
 states via deduction each turn and refining our guessing strategy accordingly. Deduction takes our
 average score from ≈7921.5 to ≈7768.8, a 150 point improvement!&lt;/p&gt;

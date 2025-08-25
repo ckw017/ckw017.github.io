@@ -63,8 +63,8 @@ since every potential secret word always appears exactly once.
 
 7920 is by no means a bad score, but can we do better? For example,
 can we take advantage of the fact that the secrets are permuted *without replacement* to
-gain extra information? After all, just because `SALET` is optimal for *normal Wordle*,
-that doesn't mean it's optimal for *Hyper Wordle*.
+gain extra information? After all, even if `SALET` is optimal for *normal* Wordle
+it isn't necessarily optimal for *Hyper* Wordle.
 
 <!--
 
@@ -117,8 +117,8 @@ where `LEAKS` is our starting word:
 <img src="/images/wordle/leaks-tree.jpg" style="max-height:30vh; width:auto;"/>
 
 This strategy treats each secret independently, meaning our guess for each word is
-based solely on feedback we've received for the word so far. For example, we
-guess `THIRD` in all three positions where the feedback from the first guess was five gray squares.
+based solely on feedback we've received for the word so far.<!-- For example, we-->
+<!--guess `THIRD` in all three positions where the feedback from the first guess was five gray squares.-->
 While we show the secret words in order here, since the strategy treats each secret independently it always
 requires a total of 15 guesses to solve all the words regardless of how they're permuted. Next,
 consider a strategy with `MAJOR` as our starting word:

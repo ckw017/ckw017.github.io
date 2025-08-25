@@ -335,18 +335,18 @@ nav a:visited {
   }
 }
 
-tr a {
+tr a:not(.footnote) {
   margin-left: 20px;
   color: black;
   text-align: right;
   font-weight: 300;
   letter-spacing: 1px;
 }
-tr a:visited {
+tr a:not(.footnote):visited {
   color: black;
 }
 @media screen and (max-width: 640px) {
-  tr a {
+  tr a:not(.footnote) {
     margin: 0 10px;
   }
 }

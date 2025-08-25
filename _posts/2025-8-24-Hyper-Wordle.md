@@ -48,7 +48,7 @@ td{
 
 | **Normal Wordle**                                                           | **Hyper Wordle**                                                                                          |
 |-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| Secrets are chosen from the $$2315$$ possible 5-letter secret words.        | Secrets are chosen from the $$2315!$$ possible permutations of 5-letter secret words.                 |
+| Secrets are chosen from the $$2315$$ possible 5-letter secret words.        | 2315 secrets are chosen from the $$2315!$$ possible permutations of 5-letter secret words.                 |
 | Each turn a guess is chosen from $$12972$$ possible 5-letter words.         | Each turn 2315 guesses are chosen from $$12972^{2315}$$ possible tuples of 5-letter words. |
 | Feedback is given in the form of $$5$$ colored squares.                         | Feedback is given in the form of $$5 \times 2315 = 11575$$ colored squares.                           |
 | Your score is the number of 5-letter guesses needed to identify the secret. | Your score is the total number of 5-letter guesses needed to identify each word in the secret permutation.      |

@@ -309,7 +309,7 @@ Anyway, this was enough to secure the win for the final Wordle competition, and 
     there are now 3200 secret words.
 
 [^2]:
-    12972 was the original of valid Wordle guess words. After the New York Times acquired
+    12972 was the original number of valid Wordle guess words. After the New York Times acquired
     Wordle, it was [increased to 14855](https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle,_part_2).
 
 [^3]:

@@ -5,7 +5,7 @@ title: Playing every game of Wordle simultaneously
 excerpt_separator: <!--more-->
 ---
 
-If you've fallen far enough down the Wordle rabbit hole you may have heard of [Quordle](https://www.merriam-webster.com/games/quordle/#/),
+If you've fallen far enough down the [Wordle](https://www.nytimes.com/games/wordle/index.html) rabbit hole you may have heard of [Quordle](https://www.merriam-webster.com/games/quordle/#/),
 a version of Wordle where you solve four words at once. If you're looking for more of a challenge,
 Britannica has you covered with [Octordle](https://www.britannica.com/games/octordle/),
 where you solve eight words at once. And of course any Wordler worth their salt should be able
@@ -262,8 +262,8 @@ Some interesting open questions are:
   they must be somewhere else. Is there a way to "fuzzily" refine our possibilities
   to values other than 0, e.g. "this word is likely to be in position A,
   so it's less likely to be in position B"?
-* In the version of Hyper Wordle played in this writeup, guesses are permutations with replacement.
-  What do strategies look if we limit guesses to be permutations *without* replacement?
+* In the version of Hyper Wordle played in this writeup, each batch of 2315 guesses can contain duplicates.
+  What do strategies look like if we don't allow duplicates?
 * Are there any other games/scenarios where combining multiple suboptimal strategies outcompetes
   a strategy which would normally be stronger?
 * Should I find less convoluted things to do with my free time?

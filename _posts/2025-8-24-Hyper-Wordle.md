@@ -173,7 +173,7 @@ own strengths and weaknesses:
 
 In the example we worked through above, notice how the first deduction uses information
 from the `LEAKS` half of the puzzle to rule out the location of `DEUCE` (`2`) in
-the `MAJOR` half of the puzzle earlier than it normally could. In other words, `LEAKS`' strengths covers for `MAJOR`'s
+the `MAJOR` half of the puzzle earlier than it normally could. In other words, `LEAKS`' strengths cover for `MAJOR`'s
 weaknesses, which in turn gives `MAJOR` enough information to cover `LEAKS`' weaknesses.
 By exploiting the asymmetry in the strengths and weaknesses of each strategy,
 we're able to iteratively refine both strategies to perform *better* than the sum of their parts!

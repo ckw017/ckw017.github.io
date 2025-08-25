@@ -58,7 +58,7 @@ to see who could write the best Wordle solving program.
 One way to play would be to treat each secret word in the permutation as its own game,
 effectively playing 2315 independent games of Wordle. For example, if you used the optimal[^3] [Wordle strategy starting with the word `SALET`](https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle)
 (average score of ≈3.4212 guesses) against every secret in the permutation,
-submissions would score exactly $$3.4212 \times 2315 = 7920$$ regardless of the permutation
+submissions would score always exactly $$3.4212 \times 2315 = 7920$$
 since every potential secret word always appears exactly once.
 
 7920 is by no means a bad score, but can we do better? For example,

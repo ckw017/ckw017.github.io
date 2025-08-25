@@ -49,7 +49,7 @@ td{
 | **Normal Wordle**                                                           | **Hyper Wordle**                                                                                          |
 |-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 | Secrets are chosen from the $$2315$$ possible 5-letter secret words.        | 2315 secrets are chosen from the $$2315!$$ possible permutations of 5-letter secret words.                 |
-| Each turn a guess is chosen from $$12972$$ possible 5-letter words.         | Each turn 2315 guesses are chosen from $$12972^{2315}$$ possible tuples of 5-letter words. |
+| Each turn a guess is chosen from $$12972$$[^2] possible 5-letter words.         | Each turn 2315 guesses are chosen from $$12972^{2315}$$ possible tuples of 5-letter words. |
 | Feedback is given in the form of $$5$$ colored squares.                         | Feedback is given in the form of $$5 \times 2315 = 11575$$ colored squares.                           |
 | Your score is the number of 5-letter guesses needed to identify the secret. | Your score is the total number of 5-letter guesses needed to identify each word in the secret permutation.      |
 
@@ -64,7 +64,7 @@ with a suboptimal strategy and eventually get lucky enough to beat better strate
 
 Testing against permutations of the 2315 secret words without replacement seemed like
 it might negate any chance of abusing variance.
-For example, if you used the optimal[^2] [Wordle strategy starting with the word `SALET`](https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle)
+For example, if you used the optimal[^3] [Wordle strategy starting with the word `SALET`](https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle)
 (average score of ≈3.4212 guesses) against every secret in the permutation,
 submissions would score exactly $$3.4212 \times 2315 = 7920$$ regardless of the permutation
 since every potential secret word always appears exactly once. Despite this,
@@ -138,7 +138,7 @@ the first position must be either `5` or `6`. Consider the following two scenari
 * If `6` is in the first position, `5` must be in the second position since there would be
   no other option that could go there.
 
-In Sudoku[^3] puzzles these are known as [Naked Candidates](https://www.sudokuwiki.org/naked_candidates).
+In Sudoku[^4] puzzles these are known as [Naked Candidates](https://www.sudokuwiki.org/naked_candidates).
 While we don't know which of the two scenarios we're in yet, in every scenario `5` and `6`
 must be in the first two positions, allowing us to rule them out from any other position:
 
@@ -304,18 +304,18 @@ Anyway, this was enough to secure the win for the final Wordle competition, and 
 ---
 
 [^1]:
-    2315 was the original number of Wordle secret words. After the New York Times acquired
-    Wordle, it was revised down to only 2309 secret words.
-
+    2315 was the original number of possible secret words before being acquired by the New York Times. According
+    to the NYT [Wordle FAQ](https://www.nytimes.com/interactive/2024/02/16/upshot/wordlebot-faq.html)
+    there are now 3200 secret words.
 [^2]:
+    12972 was the original of valid Wordle guess words. After the New York Times acquired
+    Wordle, it was [increased to 14855](https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle,_part_2).
+
+[^3]:
     Leading with `SALET` was the best strategy in early 2022, but since the New York Times changed
     the word list and secret list after acquiring Wordle, it is [no longer optimal](https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle,_part_2#Updated_best_starting_words_using_New_York_Times_word_lists_as_of_30_August_2022).
 
-[^3]:
+[^4]:
     You can think of the deduction steps between guesses as very oblong Sudoku puzzles,
     where instead of a 9x9 grid with uniqueness constraints on 1 to 9, you have a
     2315x1 line with uniqueness constraints on 1 to 2315.
-
-[^4]:
-    To put this into perspective, 320 points is the difference between the best Wordle strategy
-    and the [3334th best Wordle strategy](https://github.com/alex1770/wordle/blob/main/normal.some3593.proven#L3334).

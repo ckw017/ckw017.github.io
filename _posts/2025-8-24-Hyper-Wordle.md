@@ -242,7 +242,9 @@ we can incorporate it into the top 10 mixed strategy to squeeze out some extra p
 
 <img src="/images/wordle/hidden-deductions-hist.jpg" style="max-height:40vh; width:auto;"/>
 
-This takes our average from ≈7628.0 to ≈7598.3, another 30 point improvement!
+This takes our average from ≈7628.0 to ≈7598.3, averaging a 320 point improvement over
+the optimal Wordle strategy's score of 7920. To put this into perspective, this is the same
+as the amount improvement between the best Wordle strategy and the [*3334th* best Wordle strategy](https://github.com/alex1770/wordle/blob/main/normal.some3593.proven#L3334)!
 
 ## Final Words
 
@@ -313,3 +315,7 @@ Anyway, this was enough to secure the win for the final Wordle competition, and 
     You can think of the deduction steps between guesses as very oblong Sudoku puzzles,
     where instead of a 9x9 grid with uniqueness constraints on 1 to 9, you have a
     2315x1 line with uniqueness constraints on 1 to 2315.
+
+[^4]:
+    To put this into perspective, 320 points is the difference between the best Wordle strategy
+    and the [3334th best Wordle strategy](https://github.com/alex1770/wordle/blob/main/normal.some3593.proven#L3334).

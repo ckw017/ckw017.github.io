@@ -116,7 +116,7 @@ where `LEAKS` is our starting word:
 
 <img src="/images/wordle/leaks-tree.jpg" style="max-height:30vh; width:auto;"/>
 
-This is strategy treats each secret independently, meaning our guess for each word is
+This strategy treats each secret independently, meaning our guess for each word is
 based solely on feedback we've received for the word so far. For example, we
 guess `THIRD` in all three positions where the feedback from the first guess was five gray squares.
 While we show the secret words in order here, since the strategy treats each secret independently it always

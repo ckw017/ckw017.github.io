@@ -24,7 +24,7 @@ the same guess is applied to *all* 2315 words every turn, entering each of the 2
 in any order will always solve it with a perfect score of 2315 guesses.
 
 But what if you could enter *different* guesses for each of the 2315 secrets each turn?
-I call this Hyper-Wordle since it can be viewed as an exponentially larger
+I call this Hyper Wordle since it can be viewed as an exponentially larger
 version of normal Wordle:
 
 <style>
@@ -46,7 +46,7 @@ td{
 }
 </style>
 
-| **Normal Wordle**                                                           | **Hyper-Wordle**                                                                                          |
+| **Normal Wordle**                                                           | **Hyper Wordle**                                                                                          |
 |-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 | Secrets are chosen from the $$2315$$ possible 5-letter secret words.        | Secrets are chosen from the $$2315!$$ possible permutations of 5-letter secret words.                 |
 | Guesses are chosen from $$12972$$ possible 5-letter words.                  | Guesses are chosen from $$12972^{2315}$$ possible tuples of 2315 5-letter words. |
@@ -262,7 +262,7 @@ Some interesting open questions are:
   they must be somewhere else. Is there a way to "fuzzily" refine our possibilities
   to values other than 0, e.g. "this word is likely to be in position A,
   so it's less likely to be in position B"?
-* In the version of Hyper-Wordle played in this writeup, guesses are permutations with replacement.
+* In the version of Hyper Wordle played in this writeup, guesses are permutations with replacement.
   What do strategies look if we limit guesses to be permutations *without* replacement?
 * Are there any other games/scenarios where combining multiple suboptimal strategies outcompetes
   a strategy which would normally be stronger?
@@ -272,7 +272,7 @@ If you enjoyed reading this, this entire writeup was actually much longer before
 I broke it into three standalone parts. Excluding the one you're reading right now, the other two
 are:
 * [The Sixteen Bottles of Wine Riddle](/2025/08/11/Wine/) -- I thought of this riddle while trying to think of a
-  simpler version Hyper-Wordle to use as a toy example to introduce some concepts. Despite
+  simpler version Hyper Wordle to use as a toy example to introduce some concepts. Despite
   trying to make it as simple and symmetric as possible, it still ended up having a surprising
   amount of depth!
 * [Writing Wordle bots for fun and profit](/2025/08/23/Wordle/) -- This gives some context

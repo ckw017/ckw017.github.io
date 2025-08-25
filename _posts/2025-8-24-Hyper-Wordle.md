@@ -79,8 +79,7 @@ from the fact that each strategy has its own strengths and weaknesses. For examp
 * `SALET` solves `SAUTE` in 2 guesses, while `REAST` solves it in 4.
 * `REAST` solves `ROUTE` in 2 guesses, while `SALET` solves it in 4.
 
-If you spam enough submissions, you can retry until you're tested against permutations where each
-strategy covers for the other's weaknesses, i.e. words like `SAUTE` end up in the `SALET` half,
+If you spam enough submissions, you can retry until you're tested against permutations where words like `SAUTE` end up in the `SALET` half,
 and words like `ROUTE` end up in the `REAST` half.
 
 While we could intentionally inject variance like this and spam submit,

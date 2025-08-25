@@ -10,8 +10,7 @@ a version of Wordle where you solve two words at once. If you're looking for mor
 Merriam-Webster has you covered with [Quordle](https://www.merriam-webster.com/games/quordle/#/),
 where you solve four words at once. Of course any Wordler worth their salt should be able
 to handle eight words, like in Britannica's [Octordle](https://www.britannica.com/games/octordle/).
-And if you want to do sixteen words at once, you're spoiled for choice between [Sedecordle](https://sedecordlegame.org/)
-and [Hexadecordle](https://quordle-wordle.com/hexadecordle). And no, it doesn't [stop](https://duotrigordle.com/) [there](https://64ordle.au/).
+And no, it [doesn't](https://sedecordlegame.org/) [stop](https://duotrigordle.com/) [there](https://64ordle.au/).
 
 <!--more-->
 

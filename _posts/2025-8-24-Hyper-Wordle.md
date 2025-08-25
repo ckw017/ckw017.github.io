@@ -139,7 +139,7 @@ the first position must be either `5` or `6`. Consider the following two scenari
 * If `6` is in the first position, `5` must be in the second position since there would be
   no other option that could go there.
 
-In Sudoku[^3] puzzles this is known as a [Naked Pair](https://www.sudokuwiki.org/naked_candidates).
+In Sudoku[^3] puzzles these are known as [Naked Candidates](https://www.sudokuwiki.org/naked_candidates).
 While we don't know which of the two scenarios we're in yet, in every scenario `5` and `6`
 must be in the first two positions, allowing us to rule them out from any other position:
 
@@ -202,7 +202,7 @@ The values on the right are the same from earlier, showing the score distributio
 mixed strategy on 1000 random permutations of the 2315 secret words.
 On the left we have the results on the same 1000 permutations after eliminating possible
 states via deduction each turn and refining our guessing strategy accordingly. Deduction takes our
-average score from 7921.5 to 7768.8, a 150 point improvement!
+average score from ≈7921.5 to ≈7768.8, a 150 point improvement!
 
 `SALET` and `REAST` were chosen since they're the top two deterministic Wordle strategies,
 but what about mixing other strategies? During the competition, the best combination of
@@ -213,12 +213,37 @@ and `TORSE`. Plotting this against the previous two histograms:
 <img src="/images/wordle/top-10-hist.jpg" style="max-height:40vh; width:auto;"/>
 
 The top 10 mix with deduction is shown in green with an average
-score of 7628.0, an additional 130 point improvement over the `SALET`/`REAST` deduction strategy!
+score of ≈7628.0, an additional 130 point improvement over the `SALET`/`REAST` deduction strategy!
 Trying to mix in more words (e.g. top 20) seems to have diminishing returns since introducing
 less efficient starting words drags the expected score without deductions up.
 The top 10 mixed strategy is what I ultimately used in the competition mentioned earlier, [winning
 with a score of 7574](https://web.archive.org/web/20220628055213/https://botfights.ai/leaderboard/botfights_iv?results=1)
--- a 4.4% improvement over the optimal Wordle strategy by itself!
+-- a ≈4.4% improvement over the optimal Wordle strategy by itself!
+
+## Bonus Trick
+
+While proofreading the diagrams for the smaller 6-secret word case, I realized there's
+a second deduction strategy commonly known as [Hidden Candidates](https://www.sudokuwiki.org/hidden_candidates)
+which is "dual" to the Naked Candidates trick. Going back to the diagram:
+
+<img src="/images/wordle/major-leaks-0.jpg" style="max-height:30vh; width:auto;"/>
+
+Given the feedback from guess 1, notice there's only 1 possible location where `4` can go,
+meaning `4` must be in the 6th position:
+
+<img src="/images/wordle/major-leaks-hidden-1.jpg" style="max-height:30vh; width:auto;"/>
+
+After updating the possibilities in the 6th position, notice that the only valid location
+for `3` is in the third position, meaning it must be there:
+
+<img src="/images/wordle/major-leaks-hidden-2.jpg" style="max-height:30vh; width:auto;"/>
+
+And so on. After generalizing this trick for subsets of N words with only N possible locations,
+we can incorporate it into the top 10 mixed strategy to squeeze out some extra performance:
+
+<img src="/images/wordle/hidden-deductions-hist.jpg" style="max-height:40vh; width:auto;"/>
+
+This takes our average from ≈7628.0 to ≈7598.3, another 30 point improvement!
 
 ## Final Words
 

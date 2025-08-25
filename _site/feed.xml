@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-24T08:50:30-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle strategies</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle strategies" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-24T22:09:59-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Hyper-Wordle strategies</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Hyper-Wordle strategies" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the Wordle rabbit hole you may have heard of &lt;a href=&quot;https://dordlewordle.com/&quot;&gt;Dordle&lt;/a&gt;,
 a version of Wordle where you solve two words at once. If you’re looking for more of a challenge,
 Merriam-Webster has you covered with &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
 where you solve four words at once. Of course any Wordler worth their salt should be able
@@ -156,7 +156,7 @@ no other option that could go there.&lt;/li&gt;
 no other option that could go there.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;In Sudoku&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; puzzles this is known as a &lt;a href=&quot;https://www.sudokuwiki.org/naked_candidates&quot;&gt;Naked Pair&lt;/a&gt;.
+&lt;p&gt;In Sudoku&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; puzzles these are known as &lt;a href=&quot;https://www.sudokuwiki.org/naked_candidates&quot;&gt;Naked Candidates&lt;/a&gt;.
 While we don’t know which of the two scenarios we’re in yet, in every scenario &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt;
 must be in the first two positions, allowing us to rule them out from any other position:&lt;/p&gt;
 
@@ -221,7 +221,7 @@ do against permutations of the complete list 2315 secret words. We can start off
 mixed strategy on 1000 random permutations of the 2315 secret words.
 On the left we have the results on the same 1000 permutations after eliminating possible
 states via deduction each turn and refining our guessing strategy accordingly. Deduction takes our
-average score from 7921.5 to 7768.8, a 150 point improvement!&lt;/p&gt;
+average score from ≈7921.5 to ≈7768.8, a 150 point improvement!&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; were chosen since they’re the top two deterministic Wordle strategies,
 but what about mixing other strategies? During the competition, the best combination of
@@ -232,12 +232,37 @@ and &lt;code class=&quot;highlighter-rouge&quot;&gt;TORSE&lt;/code&gt;. Plotting
 &lt;p&gt;&lt;img src=&quot;/images/wordle/top-10-hist.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The top 10 mix with deduction is shown in green with an average
-score of 7628.0, an additional 130 point improvement over the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; deduction strategy!
+score of ≈7628.0, an additional 130 point improvement over the &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;REAST&lt;/code&gt; deduction strategy!
 Trying to mix in more words (e.g. top 20) seems to have diminishing returns since introducing
 less efficient starting words drags the expected score without deductions up.
 The top 10 mixed strategy is what I ultimately used in the competition mentioned earlier, &lt;a href=&quot;https://web.archive.org/web/20220628055213/https://botfights.ai/leaderboard/botfights_iv?results=1&quot;&gt;winning
 with a score of 7574&lt;/a&gt;
-– a 4.4% improvement over the optimal Wordle strategy by itself!&lt;/p&gt;
+– a ≈4.4% improvement over the optimal Wordle strategy by itself!&lt;/p&gt;
+
+&lt;h2 id=&quot;bonus-trick&quot;&gt;Bonus Trick&lt;/h2&gt;
+
+&lt;p&gt;While proofreading the diagrams for the smaller 6-secret word case, I realized there’s
+a second deduction strategy commonly known as &lt;a href=&quot;https://www.sudokuwiki.org/hidden_candidates&quot;&gt;Hidden Candidates&lt;/a&gt;
+which is “dual” to the Naked Candidates trick. Going back to the diagram:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-0.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Given the feedback from guess 1, notice there’s only 1 possible location where &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt; can go,
+meaning &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt; must be in the 6th position:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-hidden-1.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After updating the possibilities in the 6th position, notice that the only valid location
+for &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt; is in the third position, meaning it must be there:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/major-leaks-hidden-2.jpg&quot; style=&quot;max-height:30vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And so on. After generalizing this trick for subsets of N words with only N possible locations,
+we can incorporate it into the top 10 mixed strategy to squeeze out some extra performance:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wordle/hidden-deductions-hist.jpg&quot; style=&quot;max-height:40vh; width:auto;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This takes our average from ≈7628.0 to ≈7598.3, another 30 point improvement!&lt;/p&gt;
 
 &lt;h2 id=&quot;final-words&quot;&gt;Final Words&lt;/h2&gt;
 

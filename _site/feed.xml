@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-25T12:45:37-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Playing every game of Wordle simultaneously</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Playing every game of Wordle simultaneously" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the &lt;a href=&quot;https://www.nytimes.com/games/wordle/index.html&quot;&gt;Wordle&lt;/a&gt; rabbit hole you may have heard of &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-25T12:46:07-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Playing every game of Wordle simultaneously</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Playing every game of Wordle simultaneously" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the &lt;a href=&quot;https://www.nytimes.com/games/wordle/index.html&quot;&gt;Wordle&lt;/a&gt; rabbit hole you may have heard of &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
 a version of Wordle where you solve four words at once. If you’re looking for more of a challenge,
 Britannica has you covered with &lt;a href=&quot;https://www.britannica.com/games/octordle/&quot;&gt;Octordle&lt;/a&gt;,
 where you solve eight words at once. And of course any Wordler worth their salt should be able
@@ -52,7 +52,7 @@ td{
       &lt;td&gt;2315 secrets are chosen from the &lt;script type=&quot;math/tex&quot;&gt;2315!&lt;/script&gt; possible permutations of 5-letter secret words.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Each turn a guess is chosen from &lt;script type=&quot;math/tex&quot;&gt;12972&lt;/script&gt;[^2] possible 5-letter words.&lt;/td&gt;
+      &lt;td&gt;Each turn a guess is chosen from &lt;script type=&quot;math/tex&quot;&gt;12972&lt;/script&gt;&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; possible 5-letter words.&lt;/td&gt;
       &lt;td&gt;Each turn 2315 guesses are chosen from &lt;script type=&quot;math/tex&quot;&gt;12972^{2315}&lt;/script&gt; possible tuples of 5-letter words.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
@@ -77,7 +77,7 @@ with a suboptimal strategy and eventually get lucky enough to beat better strate
 
 &lt;p&gt;Testing against permutations of the 2315 secret words without replacement seemed like
 it might negate any chance of abusing variance.
-For example, if you used the optimal&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle&quot;&gt;Wordle strategy starting with the word &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;&lt;/a&gt;
+For example, if you used the optimal&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle&quot;&gt;Wordle strategy starting with the word &lt;code class=&quot;highlighter-rouge&quot;&gt;SALET&lt;/code&gt;&lt;/a&gt;
 (average score of ≈3.4212 guesses) against every secret in the permutation,
 submissions would score exactly &lt;script type=&quot;math/tex&quot;&gt;3.4212 \times 2315 = 7920&lt;/script&gt; regardless of the permutation
 since every potential secret word always appears exactly once. Despite this,
@@ -155,7 +155,7 @@ no other option that could go there.&lt;/li&gt;
 no other option that could go there.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;In Sudoku&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; puzzles these are known as &lt;a href=&quot;https://www.sudokuwiki.org/naked_candidates&quot;&gt;Naked Candidates&lt;/a&gt;.
+&lt;p&gt;In Sudoku&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; puzzles these are known as &lt;a href=&quot;https://www.sudokuwiki.org/naked_candidates&quot;&gt;Naked Candidates&lt;/a&gt;.
 While we don’t know which of the two scenarios we’re in yet, in every scenario &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt;
 must be in the first two positions, allowing us to rule them out from any other position:&lt;/p&gt;
 
@@ -332,10 +332,12 @@ Anyway, this was enough to secure the win for the final Wordle competition, and 
 
       &lt;p&gt;2315 was the original number of possible secret words before being acquired by the New York Times. According
 to the NYT &lt;a href=&quot;https://www.nytimes.com/interactive/2024/02/16/upshot/wordlebot-faq.html&quot;&gt;Wordle FAQ&lt;/a&gt;
-there are now 3200 secret words.
-[^2]:
-12972 was the original of valid Wordle guess words. After the New York Times acquired
-Wordle, it was &lt;a href=&quot;https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle,_part_2&quot;&gt;increased to 14855&lt;/a&gt;. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+there are now 3200 secret words. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+
+      &lt;p&gt;12972 was the original of valid Wordle guess words. After the New York Times acquired
+Wordle, it was &lt;a href=&quot;https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle,_part_2&quot;&gt;increased to 14855&lt;/a&gt;. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:3&quot;&gt;
 

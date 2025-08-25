@@ -63,7 +63,7 @@ since every potential secret word always appears exactly once.
 
 7920 is by no means a bad score, but can we do better? For example,
 can we take advantage of the fact that the secrets are permuted *without replacement* to
-gain extra information? After all, even if `SALET` is optimal for *normal* Wordle
+gain extra information? After all, even if `SALET` is optimal for Wordle,
 it isn't necessarily optimal for *Hyper* Wordle.
 
 <!--

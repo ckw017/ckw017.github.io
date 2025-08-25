@@ -219,7 +219,7 @@ On the left we have the results on the same 1000 permutations after eliminating 
 states via deduction each turn and refining our guessing strategy accordingly. Deduction takes our
 average score from ≈7921.5 to ≈7768.8, a 150 point improvement!
 
-`SALET` and `REAST` were chosen since they're the top two deterministic Wordle strategies,
+`SALET` and `REAST` were chosen since they're the top two Wordle strategies,
 but what about mixing other strategies? During the competition, the best combination of
 strategies I found was by assigning 10% of the permutation to each of the top 10
 Wordle starting words: `SALET`, `REAST`, `CRATE`, `TRACE`, `SLATE`, `CRANE`, `CARLE`, `SLANE`, `CARTE`,

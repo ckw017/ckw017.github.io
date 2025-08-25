@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 If you've fallen far enough down the Wordle rabbit hole you may have heard of [Quordle](https://www.merriam-webster.com/games/quordle/#/),
 a version of Wordle where you solve four words at once. If you're looking for more of a challenge,
 Britannica has you covered with [Octordle](https://www.britannica.com/games/octordle/),
-where you solve eight words at once. Of course any Wordler worth their salt should be able
+where you solve eight words at once. And of course any Wordler worth their salt should be able
 to handle sixteen words, like in [Sedecordle](https://sedecordlegame.org).
 And no, it doesn't [stop](https://duotrigordle.com/) [there](https://64ordle.au/):
 

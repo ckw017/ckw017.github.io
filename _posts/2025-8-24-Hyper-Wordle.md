@@ -200,7 +200,11 @@ of our secret words to build up histograms showing how much improvement deductio
 
 On the left, we have the result of mixing the two strategies without using any deduction
 tricks. This produces a vaguely Gaussian looking distribution averaging a score of 15,
-the same as using `MAJOR` or `LEAKS` on their own.
+the same as using `MAJOR` or `LEAKS` on their own. Note that variance comes from the
+fact that `MAJOR` and `LEAKS` each have their own strengths and weaknesses:
+* The score is lower for permutations where words `MAJOR`/`LEAKS` solve quickly are shuffled into their halves.
+* The score is higher for permutations where words `MAJOR`/`LEAKS` solve slowly are shuffled into their halves.
+
 On the right, we have the result of mixing the two strategies and using
 deduction tricks to refine our guesses with an average score of 13.9, a 1.1 point improvement!
 

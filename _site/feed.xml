@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-25T13:34:43-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Playing every game of Wordle simultaneously</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Playing every game of Wordle simultaneously" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the &lt;a href=&quot;https://www.nytimes.com/games/wordle/index.html&quot;&gt;Wordle&lt;/a&gt; rabbit hole you may have heard of &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-25T13:39:02-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Playing every game of Wordle simultaneously</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Playing every game of Wordle simultaneously" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the &lt;a href=&quot;https://www.nytimes.com/games/wordle/index.html&quot;&gt;Wordle&lt;/a&gt; rabbit hole you may have heard of &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
 a version of Wordle where you solve four words at once. If you’re looking for more of a challenge,
 Britannica has you covered with &lt;a href=&quot;https://www.britannica.com/games/octordle/&quot;&gt;Octordle&lt;/a&gt;,
 where you solve eight words at once. And of course any Wordler worth their salt should be able
@@ -217,8 +217,14 @@ of our secret words to build up histograms showing how much improvement deductio
 
 &lt;p&gt;On the left, we have the result of mixing the two strategies without using any deduction
 tricks. This produces a vaguely Gaussian looking distribution averaging a score of 15,
-the same as using &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; on their own.
-On the right, we have the result of mixing the two strategies and using
+the same as using &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; on their own. Note that variance comes from the
+fact that &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; each have their own strengths and weaknesses:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The score is lower for permutations where words &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; solve quickly are shuffled into their halves.&lt;/li&gt;
+  &lt;li&gt;The score is higher for permutations where words &lt;code class=&quot;highlighter-rouge&quot;&gt;MAJOR&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;LEAKS&lt;/code&gt; solve slowly are shuffled into their halves.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On the right, we have the result of mixing the two strategies and using
 deduction tricks to refine our guesses with an average score of 13.9, a 1.1 point improvement!&lt;/p&gt;
 
 &lt;h2 id=&quot;widen-scope&quot;&gt;Widen Scope&lt;/h2&gt;

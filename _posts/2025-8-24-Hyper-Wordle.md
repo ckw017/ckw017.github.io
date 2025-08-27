@@ -55,7 +55,7 @@ td{
 
 Believe it or not, this is a real Wordle variant I ran into back in 2022 [as part of a competition](https://web.archive.org/web/20220521064114/https://botfights.ai/tournament/botfights_iv)
 to see who could write the best Wordle solving program.
-One way to play would be to treat each secret word in the permutation as its own game,
+The intended way to play was to treat each secret word in the permutation as its own game,
 effectively playing 2315 independent games of Wordle. For example, if you used the optimal[^3] [Wordle strategy starting with the word `SALET`](https://sonorouschocolate.com/notes/index.php/The_best_strategies_for_Wordle)
 (average score of ≈3.4212 guesses) against every secret in the permutation,
 submissions would always score exactly $$3.4212 \times 2315 = 7920$$

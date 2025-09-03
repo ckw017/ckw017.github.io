@@ -26,7 +26,7 @@ You may have also seen this meme:
 
 While putting together my own quiz it occured to me that instead of spending half
 an hour manually skimming through hundreds of Pokémon and startup names, I could spend several hours trying to get a computer to do it for me.
-To do this we would need some kind of probabilistic model of natural language to quantify
+To do this we would need some kind of statistical model of natural language to quantify
 how much a name sounds like it would be a Pokémon or startup -- farfetch'd right?
 Conveniently, it just so happens a handful of obscure tech companies and researchers have
 quietly advanced the state of the art for language modeling over the last few years.

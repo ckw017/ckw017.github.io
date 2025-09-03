@@ -5,8 +5,8 @@ title: Pokémon or startup?
 excerpt_separator: <!--more-->
 ---
 
-[![](/images/pkmn/sporcle.jpg)](https://www.sporcle.com/games/netcat/pokemon-or-startup-quiz)<br>
-*If you want to take the quiz you can find it [here](https://www.sporcle.com/games/netcat/pokemon-or-startup-quiz), the*
+<a href="https://www.sporcle.com/games/netcat/pokemon-or-startup-quiz" target="_blank" rel="noopener noreferrer">![](/images/pkmn/sporcle.jpg)</a><br>
+*If you want to take the quiz you can find it <a href="https://www.sporcle.com/games/netcat/pokemon-or-startup-quiz" target="_blank" rel="noopener noreferrer">here</a>, the*
 *rest of this post describes how names were chosen and contains spoilers for the answers.*
 <!--more-->
 
@@ -22,7 +22,7 @@ no shortage of quizzes like these either, for example:
 
 You may have also seen this meme:
 
-[![](/images/pkmn/recruiting.jpg)](https://youtu.be/0hR4peP9V4A?si=0WSqu63v4ko5U_WK&t=66)<br>(I see a total of seven Pokémon.)
+<a href="https://youtu.be/0hR4peP9V4A?si=0WSqu63v4ko5U_WK&t=66" target="_blank" rel="noopener noreferrer">![](/images/pkmn/recruiting.jpg)</a><br>(I see a total of seven Pokémon.)
 
 While putting together my own quiz it occured to me that instead of spending half
 an hour manually skimming through hundreds of Pokémon and startup names, I could spend several hours trying to get a computer to do it for me.

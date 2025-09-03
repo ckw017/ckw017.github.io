@@ -205,7 +205,7 @@ Cleaning up the dataset to remove literal animals and Pokémon, we get:
 
 Some highlights for me:
 * [Lollipuff](https://www.ycombinator.com/companies/lollipuff), a luxury goods auction service, which sounds like it would fit right in with Pokémon like [Igglybuff](https://bulbapedia.bulbagarden.net/wiki/Igglybuff_(Pok%C3%A9mon)), [Jigglypuff](https://bulbapedia.bulbagarden.net/wiki/Jigglypuff_(Pok%C3%A9mon)), [Wigglytuff](https://bulbapedia.bulbagarden.net/wiki/Wigglytuff_(Pok%C3%A9mon)), and [Jumpluff](https://bulbapedia.bulbagarden.net/wiki/Jumpluff_(Pok%C3%A9mon)).
-* [Skyvern](https://www.ycombinator.com/companies/skyvern), an "open source AI agent" not to be confused with [Noivern](https://bulbapedia.bulbagarden.net/wiki/Noivern_(Pok%C3%A9mon)) and or other Flying/Dragon type Pokémon.
+* [Skyvern](https://www.ycombinator.com/companies/skyvern), an "open source AI agent" not to be confused with [Noivern](https://bulbapedia.bulbagarden.net/wiki/Noivern_(Pok%C3%A9mon)) and other Flying/Dragon type Pokémon.
 * [Inkling](https://www.ycombinator.com/companies/inkling), a "collective intelligence solutions" service which sounds like it could be a squid or an octopus Pokémon, and shares a name with the mascots of [a different Nintendo franchise](https://splatoon.fandom.com/wiki/Inklings).
 
 ## Final thoughts

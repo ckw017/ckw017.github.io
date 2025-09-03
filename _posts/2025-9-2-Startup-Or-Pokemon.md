@@ -148,7 +148,7 @@ This list mostly makes sense to me other than Polteageist[^3], Morgrem and Hattr
 Looking closely, those three and six others (Applin, Dottler, Silicobra, Corvisquire, Arctozolt, and Thievul) all come
 from the most recent games included in the dataset, [Sword and Shield](https://en.wikipedia.org/wiki/Pok%C3%A9mon_Sword_and_Shield).
 I suspect since newer Pokémon appear less frequently
-in Llama 3's training data, they're more likely to be confused for a startup than classic Pokémon like
+in Llama 3's training data, they're more likely to be confused for a startup than older, well-known Pokémon like
 Pikachu or Charizard. Some highlights for me are:
 * [Silicobra](https://bulbapedia.bulbagarden.net/wiki/Silicobra_(Pok%C3%A9mon)), which is so straightforward ("silicon" + an animal) it almost sounds like it was made up just for the quiz.
 * [Applin](https://bulbapedia.bulbagarden.net/wiki/Applin_(Pok%C3%A9mon)), which I initially thought was ranked highly because of Apple, only to realize it could also be a play on software "apps".

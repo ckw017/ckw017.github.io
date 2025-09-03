@@ -1,4 +1,592 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-26T23:28:54-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Playing every game of Wordle simultaneously</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Playing every game of Wordle simultaneously" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the &lt;a href=&quot;https://www.nytimes.com/games/wordle/index.html&quot;&gt;Wordle&lt;/a&gt; rabbit hole you may have heard of &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-02T21:10:48-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Pokémon or startup?</title><link href="http://localhost:4000/2025/09/02/Startup-Or-Pokemon/" rel="alternate" type="text/html" title="Pokémon or startup?" /><published>2025-09-02T00:00:00-07:00</published><updated>2025-09-02T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/02/Startup-Or-Pokemon</id><content type="html" xml:base="http://localhost:4000/2025/09/02/Startup-Or-Pokemon/">&lt;p&gt;&lt;a href=&quot;https://www.sporcle.com/games/netcat/pokemon-or-startup-quiz&quot;&gt;&lt;img src=&quot;/images/pkmn/sporcle.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;em&gt;If you want to take the quiz you can find it &lt;a href=&quot;https://www.sporcle.com/games/netcat/pokemon-or-startup-quiz&quot;&gt;here&lt;/a&gt;, the&lt;/em&gt;
+&lt;em&gt;rest of this post describes how names were chosen and contains spoilers for the answers.&lt;/em&gt;
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;A while back a friend showed me &lt;a href=&quot;https://www.bizjournals.com/boston/pulse/quiz/is-it-a-drug-or-is-it-a-pokemon/15969731&quot;&gt;a quiz&lt;/a&gt;
+posing the age old question: is it a Pokémon, or a pharmaceutical drug? The quiz
+is surprisingly challenging, possibly because both drug names and Pokémon names
+attempt to take biology terminology and make it sound cute and marketable. There’s
+no shortage of quizzes like these either, for example:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.sporcle.com/games/hellofromUK/pokecheese&quot;&gt;Pokémon or Cheese?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.sporcle.com/games/Minibiggles/pokmon-or-ikea-furniture&quot;&gt;Pokémon or IKEA furniture?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pixelastic.github.io/pokemonorbigdata/&quot;&gt;Pokémon or Big Data?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.sporcle.com/games/Qaqaq/rupoke&quot;&gt;Pokémon or RuPaul’s Drag Race?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You may have also seen this meme:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://youtu.be/0hR4peP9V4A?si=0WSqu63v4ko5U_WK&amp;amp;t=66&quot;&gt;&lt;img src=&quot;/images/pkmn/recruiting.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;br /&gt;(I see a total of seven Pokémon.)&lt;/p&gt;
+
+&lt;p&gt;While putting together my own quiz it occured to me that instead of spending half
+an hour manually skimming through hundreds of Pokémon and startup names, I could spend several hours trying to get a computer to do it for me.
+To do this we would need some kind of probabilistic model of natural language to quantify
+how much a name sounds like it would be a Pokémon or startup – farfetch’d right?
+Conveniently, it just so happens a handful of obscure tech companies and researchers have
+quietly advanced the state of the art for language modeling over the last few years.&lt;/p&gt;
+
+&lt;h2 id=&quot;llms-and-confidence&quot;&gt;LLMs and confidence&lt;/h2&gt;
+
+&lt;p&gt;One approach would be to ask an LLM directly how likely it thinks each word is in one
+category or another. For example:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Prompt&lt;/strong&gt;: Does “&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Beartic_(Pok%C3%A9mon)&quot;&gt;Beartic&lt;/a&gt;” sound like a Pokémon or a tech startup? Respond with one of: “Pokémon” or “Tech Startup” and state your confidence as a percentage.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Llama 3.2&lt;/strong&gt;: Pokémon, 80%&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;While we could take this at face value, keep in mind the LLM isn’t
+doing any “introspection” on its own internal workings to come up with “80%”, but rather
+states a level of confidence that the model would expect to appear in this context. It’s a subtle
+distinction, but consider what happens if you ask the model a few more times, clearing
+the context window between attempts:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Llama 3.2&lt;/strong&gt;: Pokémon (80%)&lt;br /&gt;
+&lt;strong&gt;Llama 3.2&lt;/strong&gt;: Tech Startup (80%)&lt;br /&gt;
+&lt;strong&gt;Llama 3.2&lt;/strong&gt;: Tech Startup (70%)&lt;br /&gt;
+&lt;strong&gt;Llama 3.2&lt;/strong&gt;: Pokémon, 70%&lt;br /&gt;
+&lt;strong&gt;Llama 3.2&lt;/strong&gt;: Tech Startup. 80%&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Despite outputting “Pokémon, 80%” earlier, the odds of it responding
+with Tech Startup or Pokémon seem closer to 50/50. Also note that regardless of which option it picks,
+it always claims 70% or 80% confidence in its answer&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. If we can’t trust the LLM’s
+own evaluation of its confidence, how can we measure it? Rather than asking the model
+about it’s confidence and relying on its response, we can look directly at the
+underlying probability distribution that the model samples tokens from. Rerunning with
+&lt;a href=&quot;https://cookbook.openai.com/examples/using_logprobs&quot;&gt;logprobs&lt;/a&gt;
+enabled, the top 5 options for the first token are:&lt;/p&gt;
+
+&lt;!-- It's a subtle distinction, but consider the simpler case of flipping a coin:
+
+&gt; **Prompt**: Toss a fair coin. Respond with one of: &quot;Heads&quot; or &quot;Tails&quot; and state the probability of the outcome as a percentage.
+&gt;
+&gt; **Llama 3.2**: Heads, 50%
+
+While almost every LLM will state that the odds of each side of the coin are 50%,
+in practice [LLMs are biased towards heads upwards of 70% of the time](https://rnikhil.com/2025/04/26/llm-coin-toss-odd-even).
+If we can't trust the accuracy of the LLM's response, how can we gauge its confidence?
+Rather than asking the model about it's confidence and checking its response, we can instead
+look directly at the underlying probability distribution that the model samples tokens
+from. Rerunning with [logprobs](https://cookbook.openai.com/examples/using_logprobs)
+enabled, the top 5 options for the first token are: --&gt;
+
+&lt;style&gt;
+table{
+    border-spacing: 50px;
+    border:1px solid #000000;
+}
+
+th {
+    border: 1px solid #000000;
+    padding: 0px 10px 0px 10px;
+    max-width: 40vw;
+}
+
+td{
+    border:1px solid #000000;
+    padding: 0px 10px 0px 10px;
+    max-width: 40vw;
+}
+&lt;/style&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;&lt;strong&gt;First Token&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;logprob&lt;/strong&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\textbf{e}^\textbf{logprob}&lt;/script&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Tech&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;-0.45017755&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;63.75%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Pok&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;-1.1627344&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;31.26%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Be&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;-4.1083674&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1.64%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Startup&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;-4.659017&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.95%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Start&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;-4.826072&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;0.80%&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Based on the first token, it appears the model has a 63.75% chance of responding with
+“&lt;strong&gt;Tech&lt;/strong&gt; Startup”, and a 31.26% chance of responding with “&lt;strong&gt;Pok&lt;/strong&gt;émon&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. The remaining
+5% of the time the model ignores our instruction to respond only with “Tech Startup” or
+“Pokémon”, which for the sake of simplicity we will ignore. Excluding answers
+that don’t fit the expected format and normalizing, we find that the model answers
+“Tech Startup” 67.11% of the time, and “Pokémon” 32.89% of the time.&lt;/p&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/pkmn/applin.png&quot; style=&quot;max-width: 20%&quot; /&gt;
+&lt;img src=&quot;/images/pkmn/silicobra.png&quot; style=&quot;max-width: 20%&quot; /&gt;
+&lt;img src=&quot;/images/pkmn/klang.png&quot; style=&quot;max-width: 20%&quot; /&gt;
+&lt;img src=&quot;/images/pkmn/grubbin.png&quot; style=&quot;max-width: 20%&quot; /&gt;&lt;br /&gt;&lt;em&gt;Applin, Silicobra, Klang and Grubbin.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that we can measure how likely an LLM is to categorize a name as
+a Pokémon or a startup, we can go through lists of both categories and search for good candidates for the quiz. In
+order to make the quiz as difficult as possible, we want to find Pokémon that sound like
+they could be a startup, and startups that sound like they could be a Pokémon.
+For the list of Pokémon, I included everything up to &lt;a href=&quot;https://en.wikipedia.org/wiki/Pok%C3%A9mon_Sword_and_Shield&quot;&gt;Sword and Shield&lt;/a&gt;
+(2019), since the next major releases &lt;a href=&quot;https://en.wikipedia.org/wiki/Pok%C3%A9mon_Scarlet_and_Violet&quot;&gt;Scarlet and Violet&lt;/a&gt; (2022)
+came out fairly close to Llama 3’s knowledge cutoff date. Our top 15 are:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Pokémon&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Tech Startup&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Applin_(Pok%C3%A9mon)&quot;&gt;Applin&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;12.69%&lt;/td&gt;
+      &lt;td&gt;87.31%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Electrode_(Pok%C3%A9mon)&quot;&gt;Electrode&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;16.04%&lt;/td&gt;
+      &lt;td&gt;83.96%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Melmetal_(Pok%C3%A9mon)&quot;&gt;Melmetal&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;23.45%&lt;/td&gt;
+      &lt;td&gt;76.55%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Dottler_(Pok%C3%A9mon)&quot;&gt;Dottler&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;26.49%&lt;/td&gt;
+      &lt;td&gt;73.51%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Silicobra_(Pok%C3%A9mon)&quot;&gt;Silicobra&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;26.75%&lt;/td&gt;
+      &lt;td&gt;73.25%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Corvisquire_(Pok%C3%A9mon)&quot;&gt;Corvisquire&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;26.82%&lt;/td&gt;
+      &lt;td&gt;73.18%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Polteageist_(Pok%C3%A9mon)&quot;&gt;Polteageist&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;27.13%&lt;/td&gt;
+      &lt;td&gt;72.87%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Eelektrik_(Pok%C3%A9mon)&quot;&gt;Eelektrik&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;27.23%&lt;/td&gt;
+      &lt;td&gt;72.77%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Arctozolt_(Pok%C3%A9mon)&quot;&gt;Arctozolt&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;28.63%&lt;/td&gt;
+      &lt;td&gt;71.37%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Morgrem_(Pok%C3%A9mon)&quot;&gt;Morgrem&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;29.85%&lt;/td&gt;
+      &lt;td&gt;70.15%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Hattrem_(Pok%C3%A9mon)&quot;&gt;Hattrem&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;30.10%&lt;/td&gt;
+      &lt;td&gt;69.90%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Volbeat_(Pok%C3%A9mon)&quot;&gt;Volbeat&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;30.11%&lt;/td&gt;
+      &lt;td&gt;69.89%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Thievul_(Pok%C3%A9mon)&quot;&gt;Thievul&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;30.41%&lt;/td&gt;
+      &lt;td&gt;69.59%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Armaldo_(Pok%C3%A9mon)&quot;&gt;Armaldo&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;30.77%&lt;/td&gt;
+      &lt;td&gt;69.23%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Klang_(Pok%C3%A9mon)&quot;&gt;Klang&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;31.48%&lt;/td&gt;
+      &lt;td&gt;68.52%&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;This list mostly makes sense to me other than Polteageist&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, Morgrem and Hattrem.
+Looking closely, those three and six others (Applin, Dottler, Silicobra, Corvisquire, Arctozolt, and Thievul) all come
+from the most recent games included in the dataset, &lt;a href=&quot;https://en.wikipedia.org/wiki/Pok%C3%A9mon_Sword_and_Shield&quot;&gt;Sword and Shield&lt;/a&gt;.
+I suspect since newer Pokémon appear less frequently
+in Llama 3’s training data, they’re more likely to be confused for a startup than classic Pokémon like
+Pikachu or Charizard. Some highlights for me are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Silicobra_(Pok%C3%A9mon)&quot;&gt;Silicobra&lt;/a&gt;, which is so straightforward (“silicon” + an animal) it almost sounds like it was made up just for the quiz.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Applin_(Pok%C3%A9mon)&quot;&gt;Applin&lt;/a&gt;, which I initially thought was ranked highly because of Apple, only to realize it could also be a play on software “apps”.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Klang_(Pok%C3%A9mon)&quot;&gt;Klang&lt;/a&gt;, which is robotic sounding but also remniscent of abbreviations for “programming language” like in &lt;a href=&quot;https://en.wikipedia.org/wiki/Clang&quot;&gt;Clang&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Erlang_(programming_language)&quot;&gt;Erlang&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Go_(programming_language)&quot;&gt;Golang&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Honorable mention to &lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Grubbin_(Pok%C3%A9mon)&quot;&gt;Grubbin&lt;/a&gt; in 16th place, which sounds like it could be yet another food delivery or meal kit startup.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Switching our attention to startups that sound like Pokémon, I took startup names
+from &lt;a href=&quot;https://www.kaggle.com/datasets/sashakorovkina/ycombinator-all-funded-companies-dataset?select=companies.csv&quot;&gt;this dataset&lt;/a&gt;
+of &lt;a href=&quot;https://www.ycombinator.com/&quot;&gt;Y Combinator&lt;/a&gt; backed companies. Our top 15 are:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Pokémon&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Tech Startup&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/ditto&quot;&gt;Ditto&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;85.89%&lt;/td&gt;
+      &lt;td&gt;14.11%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/wren&quot;&gt;Wren&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;73.82%&lt;/td&gt;
+      &lt;td&gt;26.18%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/koala&quot;&gt;Koala&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;72.13%&lt;/td&gt;
+      &lt;td&gt;27.87%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/protego&quot;&gt;Protego&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;70.91%&lt;/td&gt;
+      &lt;td&gt;29.09%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/nexu&quot;&gt;Nexu&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;70.30%&lt;/td&gt;
+      &lt;td&gt;29.70%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/manatee&quot;&gt;Manatee&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;70.24%&lt;/td&gt;
+      &lt;td&gt;29.76%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/hedgehog&quot;&gt;Hedgehog&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;69.57%&lt;/td&gt;
+      &lt;td&gt;30.43%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/hedgehog-2&quot;&gt;Hedgehog&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;69.57%&lt;/td&gt;
+      &lt;td&gt;30.43%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/remora&quot;&gt;Remora&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;68.75%&lt;/td&gt;
+      &lt;td&gt;31.25%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/wasp&quot;&gt;Wasp&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;68.52%&lt;/td&gt;
+      &lt;td&gt;31.48%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/okani&quot;&gt;Okani&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;68.51%&lt;/td&gt;
+      &lt;td&gt;31.49%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/platypus&quot;&gt;Platypus&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;66.89%&lt;/td&gt;
+      &lt;td&gt;33.11%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/lollipuff&quot;&gt;Lollipuff&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;65.26%&lt;/td&gt;
+      &lt;td&gt;34.74%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/corgi&quot;&gt;Corgi&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;65.14%&lt;/td&gt;
+      &lt;td&gt;34.86%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/skyvern&quot;&gt;Skyvern&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;62.58%&lt;/td&gt;
+      &lt;td&gt;37.42%&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The number one spot goes to &lt;a href=&quot;https://www.dittowords.com/&quot;&gt;Ditto&lt;/a&gt;, a startup making
+devtools for localization and legal copy. This makes sense, since it’s also literally
+the &lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Ditto_(Pok%C3%A9mon)&quot;&gt;name of a Pokémon&lt;/a&gt;.
+Most of the other spots are filled by the names of real life animals, including two different
+startups named Hedgehog: one that tried to make &lt;a href=&quot;https://www.ycombinator.com/companies/hedgehog&quot;&gt;“a crypto robo-adviser”&lt;/a&gt;
+and one working on &lt;a href=&quot;https://www.ycombinator.com/companies/hedgehog-2&quot;&gt;“robotic mushroom farms”&lt;/a&gt;.
+Cleaning up the dataset to remove literal animals and Pokémon, we get:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Pokémon&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Tech Startup&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/protego&quot;&gt;Protego&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;70.91%&lt;/td&gt;
+      &lt;td&gt;29.09%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/nexu&quot;&gt;Nexu&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;70.30%&lt;/td&gt;
+      &lt;td&gt;29.70%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/okani&quot;&gt;Okani&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;68.51%&lt;/td&gt;
+      &lt;td&gt;31.49%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/lollipuff&quot;&gt;Lollipuff&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;65.26%&lt;/td&gt;
+      &lt;td&gt;34.74%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/skyvern&quot;&gt;Skyvern&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;62.58%&lt;/td&gt;
+      &lt;td&gt;37.42%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/inkling&quot;&gt;Inkling&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;62.27%&lt;/td&gt;
+      &lt;td&gt;37.73%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/linkana&quot;&gt;Linkana&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;62.12%&lt;/td&gt;
+      &lt;td&gt;37.88%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/bristle&quot;&gt;Bristle&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;62.11%&lt;/td&gt;
+      &lt;td&gt;37.89%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/trebol&quot;&gt;Trébol&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;61.01%&lt;/td&gt;
+      &lt;td&gt;38.99%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/usul&quot;&gt;Usul&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;58.58%&lt;/td&gt;
+      &lt;td&gt;41.42%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/flike&quot;&gt;Flike&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;58.29%&lt;/td&gt;
+      &lt;td&gt;41.71%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/markhor&quot;&gt;Markhor&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;58.25%&lt;/td&gt;
+      &lt;td&gt;41.75%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/balto&quot;&gt;Balto&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;56.74%&lt;/td&gt;
+      &lt;td&gt;43.26%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/hazel-2&quot;&gt;Hazel&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;55.91%&lt;/td&gt;
+      &lt;td&gt;44.09%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/wolfia&quot;&gt;Wolfia&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;55.89%&lt;/td&gt;
+      &lt;td&gt;44.11%&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Some highlights for me:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/lollipuff&quot;&gt;Lollipuff&lt;/a&gt;, a luxury goods auction service, which sounds like it would fit right in with Pokémon like &lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Igglybuff_(Pok%C3%A9mon)&quot;&gt;Igglybuff&lt;/a&gt;, &lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Jigglypuff_(Pok%C3%A9mon)&quot;&gt;Jigglypuff&lt;/a&gt;, &lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Wigglytuff_(Pok%C3%A9mon)&quot;&gt;Wigglytuff&lt;/a&gt;, and &lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Jumpluff_(Pok%C3%A9mon)&quot;&gt;Jumpluff&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/skyvern&quot;&gt;Skyvern&lt;/a&gt;, an “open source AI agent” not to be confused with &lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Noivern_(Pok%C3%A9mon)&quot;&gt;Noivern&lt;/a&gt; and or other Flying/Dragon type Pokémon.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ycombinator.com/companies/inkling&quot;&gt;Inkling&lt;/a&gt;, a “collective intelligence solutions” service which sounds like it could be a squid or an octopus Pokémon, and shares a name with the mascots of &lt;a href=&quot;https://splatoon.fandom.com/wiki/Inklings&quot;&gt;a different Nintendo franchise&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;final-thoughts&quot;&gt;Final thoughts&lt;/h2&gt;
+
+&lt;p&gt;I came up with this idea on a whim and it worked out surprisingly well. If you want
+to play around with your own ideas, everything was done with a &lt;a href=&quot;https://github.com/ggml-org/llama.cpp&quot;&gt;llama.cpp&lt;/a&gt; and a simple
+Python script uploaded &lt;a href=&quot;https://github.com/ckw017/pokemon-or-startup&quot;&gt;here&lt;/a&gt;. Anyway, thanks for reading!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;!--
+We can get a feel for this problem by asking the LLM a simpler question: [heads or tails](https://rnikhil.com/2025/04/26/llm-coin-toss-odd-even)?
+
+&gt; **Prompt**: Toss a fair coin. Respond with one of: &quot;Heads&quot; or &quot;Tails&quot; and state the probability of the outcome as a percentage.
+&gt;
+&gt; **Llama 3.2**: Heads, 50%
+
+That sounds reasonable, but what happens if we ask a few more times?[^1]
+
+&gt; **Llama 3.2**: Heads 50%&lt;br&gt;
+&gt; **Llama 3.2**: Heads (50%)&lt;br&gt;
+&gt; **Llama 3.2**: Heads, 50%&lt;br&gt;
+&gt; **Llama 3.2**: Heads (50%)&lt;br&gt;
+&gt; **Llama 3.2**: Heads (50.0%)&lt;br&gt;
+&gt; **Llama 3.2**: Heads 50%&lt;br&gt;
+&gt; **Llama 3.2**: Tails - 50.0%&lt;br&gt;
+&gt; **Llama 3.2**: \*\*Heads\*\* (50%).\n\nWould you like to simulate another coin toss?&lt;br&gt;
+&gt; **Llama 3.2**: Tails, 50%&lt;br&gt;
+&gt; **Llama 3.2**: Heads (50%)&lt;br&gt;
+
+It seems like the model has a bias towards reporting &quot;Heads&quot; in our sample
+size of 10. While we could increase the sample size to see if a pattern
+emerges, it might be more insightful to look directly at the distribution the model is sampling
+from. Rerunning with [logprobs](https://cookbook.openai.com/examples/using_logprobs)
+enabled, the top 5 options for the first token are:
+
+&lt;style&gt;
+table{
+    border-spacing: 50px;
+    border:1px solid #000000;
+}
+
+th {
+    border: 1px solid #000000;
+    padding: 5px;
+    max-width: 40vw;
+}
+
+td{
+    border:1px solid #000000;
+    padding: 5px;
+    max-width: 40vw;
+}
+&lt;/style&gt;
+
+| **Token 1**   | **logprob**            |
+|----------|-------------------:|
+| `He`     | -0.4107096 (66.3%) |
+| `T`      | -1.8492415 (15.7%) |
+| `**`     | -1.9469111 (14.3%) |
+| `Result` | -4.807211  (0.8%)  |
+| `The`    | -5.658432  (0.3%)  |
+
+Based on the first token it appears the model is biased towards saying
+&quot;**He**ads&quot; 66.3% of the time, and &quot;**T**ails&quot; 15.7% of the time, although we can't be totally sure yet. For example:
+* `He` might be the start of &quot;**He**y look, it landed on Tails&quot;.
+* `T` might be the start of &quot;**T**he coin landed on Heads&quot;.
+* `**` is the LLM adding bold formatting to it's answer, however we don't if the answer is heads or tails yet.
+
+To remove ambiguity, we can feed the first token options back into the LLM and examine the logprobs
+for the next tokens:
+
+
+| **Tokens**         | **logprob 1**          | **logprob 2**           | **Joint Probability** |
+|----------------|------------------:|--------------------:|------------------:|
+| `He`, `ads`    | -0.4107096 (66.3%) | -0.000002  (100.0%) | 66.3%             |
+| `T`, `ails`    | -1.8492415 (15.7%) | -0.0000839 (100.0%) | 15.7%             |
+| `**`, `He`     | -1.9469111 (14.3%) | -1.0628203 (34.5%)  | 4.9%              |
+| `**`, `Result` | -1.9469111 (14.3%) | -1.2099322 (29.8%)  | 4.3%              |
+| `**`, `T`      | -1.9469111 (14.3%) | -1.3429335 (26.1%)  | 3.7%              |
+
+
+| **Token 1**  | **Token 2** | **Joint Probability** |
+|--------------|------------------|-------------------|
+| `He` (66.3%) | `ads` (100.0%)   | 66.3%             |
+| `T` (15.7%)  | `ails` (100.0%)  | 15.7%             |
+| `**` (14.3%) | `He` (34.5%)     | 4.9%              |
+| `**` (14.3%) | `Result` (29.8%) | 4.3%              |
+| `**` (14.3%) | `T` (26.1%)      | 3.7%              |
+
+When `He` or `T` are output as the first token, the next token is
+practically guaranteed to be `ads` or `ails` to form `Heads` or `Tails` respectively. For
+`**`, the odds of the next token are roughly split between `He`, `T`, and `Result`.
+We can continue feeding in ambiguous results and examining logprobs to form a tree structure representing
+the different sequences of tokens the LLM might output:
+
+&lt;img src=&quot;/images/pkmn/heads-tails-sankey.jpg&quot; style=&quot;max-height:50vh;&quot;&gt;&lt;br&gt;*Diagram made with [Sankeymatic](https://sankeymatic.com/build/?i=PTAEFEDsBcFMCdQDEA2B7A7gZ1AI1tBrLJKAHJoAmsWANKCgJYDWso0AFo1gFwBQIUEOHCAymgCu8AMZsA2gEEAsgHkAqmQAqAXVCaAhvADmBPnwA8o6IegA%2BUHIBsjgHQBmXQAk2AYjcBWfQsrG3s5AEZ%2DFwB2XU1QH30A4Ot4OwdwgBZ3XQAqXIT9QJTQhzcY3XMVTgR7RP0gvm8HZxzQb31KHD9ivniIqNi9fUYUbqT%2DM3yHbIBOPNzmnqDpuXKh%2DPjE5NXsj1B8gCUaCRRoQuLV8JdMhaqa%2BDqGxvzmuTmFjq6EgJXc%2DvWCwMo3GyT4RxOZwcACYbgtjlhTtAeO1YJ1ur9wbkEUiMi5HPDIci9IUdtiiQ4AAxtCGIs48cxoB5PBpTcl04n9a4Eg7spEo4FjUmTPg8JaYsVo77LUWvXwSuXon7FHi0%2DmopUy1UFRIqtVQ3VBBkhNJPXo8LYTWX%2DYXWnH0knbSba%2B2ckZCp2iwWg52bd0%2BsyCADq%2BhMOAGlMpugAQhJKCZoAIwNUOAgYf4o6BY%2DHTEms3GEzMM3F9AAPGh57OF97QzOeSRYRiQIyVgsEGaR3RINBUVs585yaH%2BfxxeD6SBYAAOaDS%2BmgjDQkEDYAAmpJQNJx6AsO39OQqLAAOQ4aRodDwehMVjsLi8PM8KvtnyU%2DzRPMiD9CFzfmegPen89QAAM1%2DPdG2bFA2FQTB%2BEER8B3CRxMxTNMyFgWQsEbecaASJDHGXUAACI5FybRCNAABbNEJyItQdz%2DSAAE8%2DwoyQYAYWAgPONAADcEEI2CwHghxSNAUR9B4psjCwAi6LYGoN0XaB4DPHB8HQDB2DQDcJCwaA0AoxgAC9YDzRjJEQShGFDMcKOPP9J0nNEx0gWRvxcPhGxM0BNIADkjPhQA4UAkMpPgKMMIwmwYUBwmhQLEDiwLznCXzAtwUBaz4XAjEUwCfGoSgiqCdgXKnQwSHOMg%2BEgA8fNi%2BKgtADNAvK6QpNAaJJjwGdqEQMKb1gKjQFqyBTLy38fF86aZsCtBJ30droGY8I%2BCAjSdPgHi5ykNhqWcQKm1TeBGGgICVIo0BJGgRtqAAWibQKAMm2ZXreuaFqW5jqUmFB9HMiRuPgPrQFgUtFsTUAACtdPnIDzJOqKaOq6HYcYeGSG%2BFH4FgPj4B3Iwx0nYKUbnaxpC4VyDMnSC4D07SxoqvS%2BD%2B9STzPSbIy5gauGochAq4IwOCYIXzmpLrApAmAgMWtgsHHLA7p3E6gMCpgxrajrqUanG%2DvnPivLYcJwgGiKjEgdGVoC1nYBQSB9GG%2DRHOcnAV1a4yjfwnzYEYUXQEya39HU7aUAkNgnacwxXcl04UEnHH2sbRdQDd0BpywhdSHUzBAqIX2OHOAOwptuO0Az5P9EBtB9BF0gBqwCmhvDqvJcYfHznwECcfSnH9GYacm3OfCQ7D4CZwi85D1oFxD0C%2BPOMYUtQEPWftwkICgMX5fZ5qKi0A3ndzj3L2MoG6RQAGygL%2DCgg9yomBM%2DlyBWEYifGHP1OmD0xgKNwGvxwwincKvE2DNGpJGaEmRoT0HAdCRwbg3DAL4hqb44DKTQIvi4SkmRogS1Ysg%2BIlJ6B3XAVA18SC2DegvsQ2BsxsEUN5KAEhWDKQIMyDQrBsx%2DCzFWvgtgcpqFMPAdENwlJeEgN5F8HAzCXwZlmBwykSFIEMM2IImR0RZi%2BUyCo%2D4%2DohFYP8FotwCjoiUlwTo10ajwG%2BVmPFPhvJXQoikfol8jhoiOBMdETIswGH3GOvYdRjhfIYLCvY%2DIfjaguN8l1cICjXxuHwmEvkDp4gyP8G4KBJiAhviSY44YIJ9FZH8JArJ5DclEgZEyfxVisGOC4UAA).*
+
+Here I've colored the branches of the tree where the LLM would output &quot;Heads&quot; in blue, the branches where
+it would output &quot;Tails&quot; in red, and the branches I was too lazy to squeeze into the visualization
+labeled as &quot;&amp;lt;Other&amp;gt;&quot; in gray. Summing up the leaves of the tree we see the LLM
+outputs &quot;Heads&quot; at least 73.6% of the time, and &quot;Tails&quot; at most &quot;26.4%&quot; of the time[^1],
+contradicting its own claim that it picks heads and tails each with 50% probability.
+
+Llama 3.2's bias towards outputting heads is likely an artifact of human bias to
+write &quot;Heads&quot; in coin toss scenarios within the training data. While capturing biases in the training set isn't great
+for trying to simulate a fair coin, it's perfect for our purpose of estimating how likely
+a person is to mix up a Pokémon name with a startup name.
+
+Returning to our example from earlier, we can prompt the LLM directly without asking for it's confidence:
+
+&gt; **Prompt**: Does &quot;Beartic&quot; sound like a Pokémon or a tech startup? Only respond with one of: &quot;Pokémon&quot; or &quot;Tech Startup&quot;.
+&gt;
+&gt; **Llama 3.2**: Pokémon
+--&gt;
+
+&lt;!--
+[^1]:
+    Each of these samples were taken from fresh prompts to the LLM, not as part of a single
+    conversation. When asked repeatedly in a single conversation, some LLMs do something akin to the
+    Gambler's Fallacy and [outputs flips that would even the distribution](https://medium.com/%40gathright/llms-cant-flip-a-fair-coin-but-they-seem-to-know-the-odds-06b5ccf2cc2c).
+--&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+
+      &lt;p&gt;My best guess for why the confidence is in the 70% to 80% range regardless of the choice
+is people are more likely to publicly share opinions or guesses they’re confident
+about, leading to selection bias in the training data. I’m about 70% confident in this
+theory. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+
+      &lt;p&gt;These percentages assume that the LLM’s &lt;a href=&quot;https://medium.com/@kelseyywang/a-comprehensive-guide-to-llm-temperature-%EF%B8%8F-363a40bbc91f&quot;&gt;temperature&lt;/a&gt; parameter is set to 1. If it’s less than
+1, it would favor “Tech Startup” even more. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+
+      &lt;p&gt;I ended up removing Polteageist and adding Grubbin (16th place) in the quiz. I
+suspect it was labeled confidently as a startup not because it sounds like a startup,
+but because “poltergeist possessing a pot of tea” sounds ridiculous even for a Pokémon. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">If you want to take the quiz you can find it here, the rest of this post describes how names were chosen and contains spoilers for the answers.</summary></entry><entry><title type="html">Playing every game of Wordle simultaneously</title><link href="http://localhost:4000/2025/08/24/Hyper-Wordle/" rel="alternate" type="text/html" title="Playing every game of Wordle simultaneously" /><published>2025-08-24T00:00:00-07:00</published><updated>2025-08-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/08/24/Hyper-Wordle</id><content type="html" xml:base="http://localhost:4000/2025/08/24/Hyper-Wordle/">&lt;p&gt;If you’ve fallen far enough down the &lt;a href=&quot;https://www.nytimes.com/games/wordle/index.html&quot;&gt;Wordle&lt;/a&gt; rabbit hole you may have heard of &lt;a href=&quot;https://www.merriam-webster.com/games/quordle/#/&quot;&gt;Quordle&lt;/a&gt;,
 a version of Wordle where you solve four words at once. If you’re looking for more of a challenge,
 Britannica has you covered with &lt;a href=&quot;https://www.britannica.com/games/octordle/&quot;&gt;Octordle&lt;/a&gt;,
 where you solve eight words at once. And of course any Wordler worth their salt should be able
@@ -2411,58 +2999,4 @@ Float indexing
 
 &lt;p&gt;&lt;img src=&quot;/images/rogue/dwinelle.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Depiction of Dwinelle Hall, courtesy of the Daily Kale.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><category term="Java" /><category term="Game" /><category term="Berkeley" /><summary type="html">While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.</summary></entry><entry><title type="html">Hog Contest (Part 2)</title><link href="http://localhost:4000/2018/06/15/Hog-Contest-2/" rel="alternate" type="text/html" title="Hog Contest (Part 2)" /><published>2018-06-15T00:00:00-07:00</published><updated>2018-06-15T00:00:00-07:00</updated><id>http://localhost:4000/2018/06/15/Hog-Contest-2</id><content type="html" xml:base="http://localhost:4000/2018/06/15/Hog-Contest-2/">&lt;p&gt;Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy
-for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly
-wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first.
-Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic
-method by forcing the strategies to work with &lt;em&gt;incomplete information.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;“&lt;strong&gt;Time Trot&lt;/strong&gt;: A turn involves a player rolling dice, and each turn is numbered, starting from 0. If a player
-chooses to roll a number of dice k on turn n, and n % 8 == k, then that player gets an extra turn immediately
-after the current turn. However, a player cannot get an extra turn immediately after an extra turn.”&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;The new rule was fairly simple, and would be easy to implement as a person. A human player could keep track of
-what turn it is, and use their extra rolls as they wished. However, under the contest rules, the strategy
-“must be a deterministic function of the players’ scores and cannot track the turn number or previous actions.”&lt;/p&gt;
-
-&lt;p&gt;Now that the strategies were forced to work with incomplete information, the contest was a lot more interesting.
-My first thought was to adapt the original probabilistic method as follows:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Calculate the best possible move to make against a given strategy given a set of scores &lt;em&gt;and&lt;/em&gt; the current turn number.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Calculate the probability that it is a certain turn number for each possible turn (0 to 7), for each possible pair of scores
-(0 to 99, 0 to 99)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Normalize each turn number and roll by the probability of it leading to a winning game&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Find the best roll by adding up the normalized turn numbers and their rolls&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;TODO: Put in visualization of how data interacts.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;There was of course a major flaw in the second step: to calculate the probability that a given set of scores would be a certain
-turn number, you needed to simulate a game between the base strategy and the strategy you were currently making. But the strategy
-being was made wasn’t finished yet! Uh oh. It looks like we’ll need to use an approximation: the old optimal strategy.&lt;/p&gt;
-
-&lt;p&gt;So, using the optimal strategy as the seed, as well as the approximation strategy, the new strategy reached a win rate of
-0.503, beating the optimal strategy 3 tenths of a percent more often than not. Surely we could do better? The ideal (but unachievable)
-win rate, given complete information, was around 0.58. Was there a way to get closer to that?&lt;/p&gt;
-
-&lt;p&gt;The answer was: sorta. By rerunning the algorithm, this time using the output of the previous run as the approximation strategy, it
-actually ended up doing worse. But by repeatedly feeding the output back in like this gradual progress was made towards the ideal.
-After about 300+ iterations, the best win rate was around 0.537, almost halfway closer to the ideal than in the first iteration.&lt;/p&gt;
-
-&lt;iframe width=&quot;704&quot; height=&quot;438&quot; seamless=&quot;&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSHv20ef9STEktZIhsttsDrPg-5DBtHDcbIfyTbquh56xGqkVaOt5ZdGMhRZ5rx_AA16l3rpf198zzZ/pubchart?oid=1161975059&amp;amp;format=interactive&quot;&gt;
-  &lt;/iframe&gt;
-
-&lt;p&gt;This was about as far as I got before I realized the contest deadline was going to make things tricky. To get that 0.537 win rate took a few
-hours, and a couple of attempt were ruined midway from problems with the memoization system I was using running out of memory. If I had more time,
-and I may look into these approaches now that I do have time, I would have tried out a few different approaches. The main ones that come to mind are
-creating what would be the optimal strategy if we did have complete information then “flattening” down into a 2D strategy, or doing an incremental
-approach where only a few outputs are changed each time. If I ever get around to that, I’ll make a part three to this saga, but for now that’s all for hog!&lt;/p&gt;</content><author><name></name></author><category term="Python" /><category term="Berkeley" /><summary type="html">Picking up where we left off from Part 1, so far we’ve found a way to generate an optimal strategy for the game of Hog by recursively calculating which moves would be the best. While effective, it certainly wouldn’t have made for much of a contest if everyone who came up with this approach were tied for first. Luckily, the professor was likely aware of this possibility, and threw a wrench into the probabilistic method by forcing the strategies to work with incomplete information.</summary></entry></feed>
+&lt;p&gt;&lt;em&gt;Depiction of Dwinelle Hall, courtesy of the Daily Kale.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><category term="Java" /><category term="Game" /><category term="Berkeley" /><summary type="html">While the previous class related post was on the first project of CS61A, this is skipping straight to the second project of CS61B. There were 4 or 5 projects in between the two, but my main problem with them was that for the most part they were nothing more than fancy fill in the blank exercises. This project changed up that format by giving a ton of freedom to the students in terms of implementation.</summary></entry></feed>

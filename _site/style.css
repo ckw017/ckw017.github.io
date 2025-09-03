@@ -335,22 +335,6 @@ nav a:visited {
   }
 }
 
-tr a:not(.footnote) {
-  margin-left: 20px;
-  color: black;
-  text-align: right;
-  font-weight: 300;
-  letter-spacing: 1px;
-}
-tr a:not(.footnote):visited {
-  color: black;
-}
-@media screen and (max-width: 640px) {
-  tr a:not(.footnote) {
-    margin: 0 10px;
-  }
-}
-
 #main {
   background-color: rgba(230, 230, 230, 0.85);
   padding: 0 10px;

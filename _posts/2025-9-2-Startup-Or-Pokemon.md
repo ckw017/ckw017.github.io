@@ -56,7 +56,7 @@ Despite outputting "Pokémon, 80%" earlier, the odds of it responding
 with Tech Startup or Pokémon seem closer to 50/50. Also note that regardless of which option it picks,
 it always claims 70% or 80% confidence in its answer[^1]. If we can't trust the LLM's
 own evaluation of its confidence, how can we measure it? Rather than asking the model
-about it's confidence and relying on its response, we can look directly at the
+about its confidence and relying on its response, we can look directly at the
 underlying probability distribution that the model samples tokens from. Rerunning with
 [logprobs](https://cookbook.openai.com/examples/using_logprobs)
 enabled, the top 5 options for the first token are:
@@ -144,14 +144,14 @@ came out fairly close to Llama 3's knowledge cutoff date. Our top 15 are:
 | [Armaldo](https://bulbapedia.bulbagarden.net/wiki/Armaldo_(Pok%C3%A9mon))     | 30.77%  | 69.23%       |
 | [Klang](https://bulbapedia.bulbagarden.net/wiki/Klang_(Pok%C3%A9mon))       | 31.48%  | 68.52%       |
 
-This list mostly makes sense to me other than Polteageist[^3], Morgrem and Hattrem.
+This list mostly sounds plausible to me other than Polteageist[^3], Morgrem and Hattrem.
 Looking closely, those three and six others (Applin, Dottler, Silicobra, Corvisquire, Arctozolt, and Thievul) all come
 from the most recent games included in the dataset, [Sword and Shield](https://en.wikipedia.org/wiki/Pok%C3%A9mon_Sword_and_Shield).
 I suspect since newer Pokémon appear less frequently
 in Llama 3's training data, they're more likely to be confused for a startup than older, well-known Pokémon like
 Pikachu or Charizard. Some highlights for me are:
 * [Silicobra](https://bulbapedia.bulbagarden.net/wiki/Silicobra_(Pok%C3%A9mon)), which is so straightforward ("silicon" + an animal) it almost sounds like it was made up just for the quiz.
-* [Applin](https://bulbapedia.bulbagarden.net/wiki/Applin_(Pok%C3%A9mon)), which I initially thought was ranked highly because of Apple, only to realize it could also be a play on software "apps".
+* [Applin](https://bulbapedia.bulbagarden.net/wiki/Applin_(Pok%C3%A9mon)), which I initially thought was ranked highly because of Apple before realizing it could also be a play on software "apps".
 * [Klang](https://bulbapedia.bulbagarden.net/wiki/Klang_(Pok%C3%A9mon)), which is robotic sounding but also remniscent of abbreviations for "programming language" like in [Clang](https://en.wikipedia.org/wiki/Clang), [Erlang](https://en.wikipedia.org/wiki/Erlang_(programming_language)) and [Golang](https://en.wikipedia.org/wiki/Go_(programming_language)).
 * Honorable mention to [Grubbin](https://bulbapedia.bulbagarden.net/wiki/Grubbin_(Pok%C3%A9mon)) in 16th place, which sounds like it could be yet another food delivery or meal kit startup.
 

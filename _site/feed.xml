@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-02T23:38:04-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Pokémon or startup?</title><link href="http://localhost:4000/2025/09/02/Startup-Or-Pokemon/" rel="alternate" type="text/html" title="Pokémon or startup?" /><published>2025-09-02T00:00:00-07:00</published><updated>2025-09-02T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/02/Startup-Or-Pokemon</id><content type="html" xml:base="http://localhost:4000/2025/09/02/Startup-Or-Pokemon/">&lt;p&gt;&lt;a href=&quot;https://www.sporcle.com/games/netcat/pokemon-or-startup-quiz&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;img src=&quot;/images/pkmn/sporcle.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-05T08:37:07-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Pokémon or startup?</title><link href="http://localhost:4000/2025/09/02/Startup-Or-Pokemon/" rel="alternate" type="text/html" title="Pokémon or startup?" /><published>2025-09-02T00:00:00-07:00</published><updated>2025-09-02T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/02/Startup-Or-Pokemon</id><content type="html" xml:base="http://localhost:4000/2025/09/02/Startup-Or-Pokemon/">&lt;p&gt;&lt;a href=&quot;https://www.sporcle.com/games/netcat/pokemon-or-startup-quiz&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;img src=&quot;/images/pkmn/sporcle.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;br /&gt;
 &lt;em&gt;If you want to take the quiz you can find it &lt;a href=&quot;https://www.sporcle.com/games/netcat/pokemon-or-startup-quiz&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;here&lt;/a&gt;, the&lt;/em&gt;
 &lt;em&gt;rest of this post describes how names were chosen and contains spoilers for the answers.&lt;/em&gt;
 &lt;!--more--&gt;&lt;/p&gt;
@@ -55,7 +55,7 @@ the context window between attempts:&lt;/p&gt;
 with Tech Startup or Pokémon seem closer to 50/50. Also note that regardless of which option it picks,
 it always claims 70% or 80% confidence in its answer&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. If we can’t trust the LLM’s
 own evaluation of its confidence, how can we measure it? Rather than asking the model
-about it’s confidence and relying on its response, we can look directly at the
+about its confidence and relying on its response, we can look directly at the
 underlying probability distribution that the model samples tokens from. Rerunning with
 &lt;a href=&quot;https://cookbook.openai.com/examples/using_logprobs&quot;&gt;logprobs&lt;/a&gt;
 enabled, the top 5 options for the first token are:&lt;/p&gt;
@@ -239,7 +239,7 @@ came out fairly close to Llama 3’s knowledge cutoff date. Our top 15 are:&lt;/
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;This list mostly makes sense to me other than Polteageist&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, Morgrem and Hattrem.
+&lt;p&gt;This list mostly sounds plausible to me other than Polteageist&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, Morgrem and Hattrem.
 Looking closely, those three and six others (Applin, Dottler, Silicobra, Corvisquire, Arctozolt, and Thievul) all come
 from the most recent games included in the dataset, &lt;a href=&quot;https://en.wikipedia.org/wiki/Pok%C3%A9mon_Sword_and_Shield&quot;&gt;Sword and Shield&lt;/a&gt;.
 I suspect since newer Pokémon appear less frequently
@@ -247,7 +247,7 @@ in Llama 3’s training data, they’re more likely to be confused for a startup
 Pikachu or Charizard. Some highlights for me are:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Silicobra_(Pok%C3%A9mon)&quot;&gt;Silicobra&lt;/a&gt;, which is so straightforward (“silicon” + an animal) it almost sounds like it was made up just for the quiz.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Applin_(Pok%C3%A9mon)&quot;&gt;Applin&lt;/a&gt;, which I initially thought was ranked highly because of Apple, only to realize it could also be a play on software “apps”.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Applin_(Pok%C3%A9mon)&quot;&gt;Applin&lt;/a&gt;, which I initially thought was ranked highly because of Apple before realizing it could also be a play on software “apps”.&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Klang_(Pok%C3%A9mon)&quot;&gt;Klang&lt;/a&gt;, which is robotic sounding but also remniscent of abbreviations for “programming language” like in &lt;a href=&quot;https://en.wikipedia.org/wiki/Clang&quot;&gt;Clang&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Erlang_(programming_language)&quot;&gt;Erlang&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Go_(programming_language)&quot;&gt;Golang&lt;/a&gt;.&lt;/li&gt;
   &lt;li&gt;Honorable mention to &lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Grubbin_(Pok%C3%A9mon)&quot;&gt;Grubbin&lt;/a&gt; in 16th place, which sounds like it could be yet another food delivery or meal kit startup.&lt;/li&gt;
 &lt;/ul&gt;

@@ -299,7 +299,7 @@ the size of the lookup table to:
 `1000 * (750 + 650) * 300 = 420_000_000 entries` (400 MiB)
 
 This reduction comes at a cost: the policy cannot distinguish
-between the individual constraints for `need_b` and `need_t`. Despite this, it gives us a
+between the individual constraints for `need_b` and `need_t`. Despite this, it gives us
 a good enough method to balance the tradeoffs between creative people and people
 who are both Berlin local and techno lovers, which are the main
 two bottlenecking constraints. Note we must be careful not to violate `slack_b` and `slack_t`

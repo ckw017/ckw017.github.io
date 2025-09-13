@@ -86,8 +86,9 @@ def accept(person: Dict[str, bool]) -> bool:
   if person["well_dressed"] and slack_w > 0:
     return True
   if need_w + need_y < space:
-    # We've fulfilled enough of the requirements that we
-    # can afford to let in an arbitrary person here.
+    # We've fulfilled enough of the requirements
+    # that we can afford to let in an arbitrary
+    # person here.
     return True
   return False
 ```

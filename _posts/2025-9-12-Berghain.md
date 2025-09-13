@@ -395,7 +395,7 @@ the IPs of everyone doing submissions. I'm not entirely sure if this is just a m
 * The networking problem is tied to IPs, not accounts. For example, switching to a different WiFi
 on the same account seemed to fix it. I assume if the organizers are actually trying to
 ban me, they would just delete my account or email me about it.
-* There is a page showing active showing submissions where a consistent
+* There is a page that shows active submissions where a consistent
 group of 20 or so people are always resubmitting up to the rate limit. Whenever I
 encounter the network problem, I also see progress on everyone else's submissions grind to halt.
 * [This guy](https://news.ycombinator.com/item?id=45159393) on Hackernews also ran into it.

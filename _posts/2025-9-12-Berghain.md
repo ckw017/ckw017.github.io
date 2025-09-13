@@ -163,8 +163,8 @@ def accept(person: Dict[str, bool]) -> bool:
     return True
 
   need_bt = max(0, need_b + need_t - space)
-  # We include `need_c` in the slack calculations here so we have
-  # space to take every creative person we see.
+  # We include `need_c` in the slack calculations here
+  # so we have space to take every creative person we see.
   slack_b = need_b - need_bt - need_c
   slack_t = need_t - need_bt - need_c
 
@@ -174,9 +174,10 @@ def accept(person: Dict[str, bool]) -> bool:
     return True
   if person["techno_lover"] and slack_t > 0:
     return True
-  if need_b == 0 and need_t == 0 and need_c == 0:
-    # We've already hit all our minimums, so we can accept
-    # anybody into the venue.
+  if need_b + need_t + need_c < space:
+    # We've fulfilled enough of the requirements
+    # that we can afford to let in an arbitrary
+    # person here.
     return True
   return False
 ```

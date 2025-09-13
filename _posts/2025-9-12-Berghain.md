@@ -85,9 +85,9 @@ def accept(person: Dict[str, bool]) -> bool:
     return True
   if person["well_dressed"] and slack_w > 0:
     return True
-  if need_w == 0 and need_y == 0:
-    # We've already hit all our requirements, so we can
-    # accept anybody to fill the venue.
+  if need_w + need_y < space:
+    # We've fulfilled enough of the requirements that we
+    # can afford to let in an arbitrary person here.
     return True
   return False
 ```
@@ -347,7 +347,7 @@ Scenario 3 discards the previous 4 constraints, and introduces 6 new ones:
 * At least 200 vinyl collectors.
 * At least 800 German speakers.
 
-Luckily, just like last time most of these constraints tended to solve itself. In
+Luckily, just like last time most of these constraints tend to solve themselves. In
 particular, only 3 constraints result in bottlenecks in practice: German speakers, international
 people, and queer friendly people. Conveniently, this means we can plug the new
 distribution and constraints into the dynamic programming method from Scenario 2 to

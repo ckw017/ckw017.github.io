@@ -93,19 +93,6 @@ def accept(person: Dict[str, bool]) -> bool:
   return False
 ```
 
-Conveniently, I suspect this function happens to describe the optimal strategy for Scenario 1,
-i.e. for a given sequence of people it will always fill the venue and meet all the requirements
-in the minimum number of rejections. A sketch of a proof here is to consider whether we
-ever "regret" rejecting someone that we end up needing later to get a lower score. There are only
-two cases where we reject someone who might be useful for hitting requirements:
-* They're young but not well-dressed, and `slack_y == 0`. If we end up "regretting" this
-rejection, it means that at some later point `slack_y` went above 0. Note that since
-`slack_y == need_y - need_wy`, this can only happen if `need_wy` decrements without `need_y`
-decrementing. This is impossible, since `need_wy` can only decrement when we accept someone
-who is both young and well-dressed, which would also decrement `need_y`.
-* They're well-dressed but not young. Same argument as above but with `slack_w`.
-* This is not a particularly rigorous proof of optimality, but I have yet to think of any counter examples. $$\text{Q.E.D.}$$
-
 Using this strategy we can fill the venue and meet the requirements with an average of ≈892 rejections.
 
 # Scenario 2

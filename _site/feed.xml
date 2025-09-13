@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-12T21:52:10-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Berghain bouncer challenge</title><link href="http://localhost:4000/2025/09/12/Berghain/" rel="alternate" type="text/html" title="Berghain bouncer challenge" /><published>2025-09-12T00:00:00-07:00</published><updated>2025-09-12T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/12/Berghain</id><content type="html" xml:base="http://localhost:4000/2025/09/12/Berghain/">&lt;p&gt;I fell down a bit of a rabbit hole the other day after seeing &lt;a href=&quot;https://www.reddit.com/r/sanfrancisco/comments/1n6nx67/at_this_point_it_feels_like_these_tech_startups/&quot;&gt;a post on r/sanfrancisco&lt;/a&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-12T22:18:25-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Berghain bouncer challenge</title><link href="http://localhost:4000/2025/09/12/Berghain/" rel="alternate" type="text/html" title="Berghain bouncer challenge" /><published>2025-09-12T00:00:00-07:00</published><updated>2025-09-12T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/12/Berghain</id><content type="html" xml:base="http://localhost:4000/2025/09/12/Berghain/">&lt;p&gt;I fell down a bit of a rabbit hole the other day after seeing &lt;a href=&quot;https://www.reddit.com/r/sanfrancisco/comments/1n6nx67/at_this_point_it_feels_like_these_tech_startups/&quot;&gt;a post on r/sanfrancisco&lt;/a&gt;
 about a cryptic billboard in Nob Hill:&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -100,21 +100,6 @@ young or only well-dressed. For example, consider the state where &lt;code class
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Conveniently, I suspect this function happens to describe the optimal strategy for Scenario 1,
-i.e. for a given sequence of people it will always fill the venue and meet all the requirements
-in the minimum number of rejections. A sketch of a proof here is to consider whether we
-ever “regret” rejecting someone that we end up needing later to get a lower score. There are only
-two cases where we reject someone who might be useful for hitting requirements:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;They’re young but not well-dressed, and &lt;code class=&quot;highlighter-rouge&quot;&gt;slack_y == 0&lt;/code&gt;. If we end up “regretting” this
-rejection, it means that at some later point &lt;code class=&quot;highlighter-rouge&quot;&gt;slack_y&lt;/code&gt; went above 0. Note that since
-&lt;code class=&quot;highlighter-rouge&quot;&gt;slack_y == need_y - need_wy&lt;/code&gt;, this can only happen if &lt;code class=&quot;highlighter-rouge&quot;&gt;need_wy&lt;/code&gt; decrements without &lt;code class=&quot;highlighter-rouge&quot;&gt;need_y&lt;/code&gt;
-decrementing. This is impossible, since &lt;code class=&quot;highlighter-rouge&quot;&gt;need_wy&lt;/code&gt; can only decrement when we accept someone
-who is both young and well-dressed, which would also decrement &lt;code class=&quot;highlighter-rouge&quot;&gt;need_y&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;They’re well-dressed but not young. Same argument as above but with &lt;code class=&quot;highlighter-rouge&quot;&gt;slack_w&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;This is not a particularly rigorous proof of optimality, but I have yet to think of any counter examples. &lt;script type=&quot;math/tex&quot;&gt;\text{Q.E.D.}&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;p&gt;Using this strategy we can fill the venue and meet the requirements with an average of ≈892 rejections.&lt;/p&gt;
 

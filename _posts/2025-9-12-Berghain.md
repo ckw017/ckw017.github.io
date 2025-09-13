@@ -412,7 +412,7 @@ first place. However, I don't expect it to last for very long since it's by a ra
 
 Normally it wouldn't make sense to publish a writeup on my strategy before the event is over,
 but at this point I'm fairly confident that everyone in the running for first has comparable
-strategies and the competition has turned into a lottery to see who can get the luckiest with their submissions
+strategies and the competition has turned into a lottery to see who can get the luckiest with their
 submissions. I'll likely update this post again once the competition is over with some
 additional commentary.
 

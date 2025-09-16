@@ -7,13 +7,50 @@ layout: default
     <h1> Welcome to my website! </h1>
     This is where I write about fun stuff that I've worked on or encountered, usually math
     or programming related stuff. You can find out more about me in the
-    <a href="about">about</a> section.
+    <a href="about">about</a> section!
 
     <!-- If you're looking for a specific topic
     you can click on one of the tags listed below. Otherwise feel free to explore the blog in order of recency. <br><br>
     {% for t in site.tagarchive %}
         <a href="{{t.permalink}}">{{t.value}}</a> &nbsp
     {% endfor %} -->
+  <br>
+  <br>
+  </article>
+  <article class="post">
+  <h2> Highlights </h2>
+  These are some of my personal favorites, usually writeups that I thought were fun and
+  sparked interesting discussions!
+  </article>
+  {% for post in site.posts reversed %}
+    {% if post.highlight %}
+    <article class="post">
+			  <div class="flex-container">
+          {% if post.img %}
+          <a href="{{ site.baseurl }}{{ post.url }}">
+            <img class="post-preview" src="{{ post.img }}">
+          </a>
+          {% endif %}
+          <div class="text-preview">
+            <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+            <i>{{post.date | date: "%B %e, %Y" }}</i><br>
+            {% if post.tags.size > 0 %}
+            <i>Tags:</i> {% for t in post.tags %}
+                        <a href="{{site.baseurl}}/tag/{{t | downcase | replace: " ", "-"}}">{{t}}</a>{% assign c = post.tags | size%}{% if forloop.index != c %}, {% endif %}
+                    {% endfor %}
+            {% endif %}
+            <div class="entry">
+              {{ post.excerpt }}
+            </div>
+            <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+          </div>
+      </div>
+    </article>
+    {% endif %}
+  {% endfor %}
+  <article class="post">
+  <h2> All posts </h2>
+  Everything I've written for this website so far, in order from newest to oldest.
   </article>
   <!-- test! -->
   {% for post in site.posts %}

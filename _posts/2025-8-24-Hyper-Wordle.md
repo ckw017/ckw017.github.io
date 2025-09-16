@@ -3,6 +3,7 @@ layout: post
 img: /images/wordle/wordle.jpg
 title: Playing every game of Wordle simultaneously
 excerpt_separator: <!--more-->
+highlight: true
 ---
 
 If you've fallen far enough down the [Wordle](https://www.nytimes.com/games/wordle/index.html) rabbit hole you may have heard of [Quordle](https://www.merriam-webster.com/games/quordle/#/),

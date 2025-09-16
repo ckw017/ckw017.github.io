@@ -96,7 +96,7 @@ young or only well-dressed. For example, consider the state where `space = 100`,
 * `slack_y = 50 - 50 = 0`: We do not have space to let in any guests that are young but not well-dressed.
 * `slack_w = 100 - 50 = 50`: We can safely let in 50 guests that are well-dressed but not young.
 
-Encoding this into a function:
+Putting this logic into a function:
 
 ```python
 def accept(person: Dict[str, bool]) -> bool:
@@ -119,8 +119,8 @@ def accept(person: Dict[str, bool]) -> bool:
 In practice this strategy fills the venue and meets the requirements in an average of ≈892 rejections.
 Can we do better? For example, is there a way to programmatically generate an optimal set
 of reject/accept "policies" that we can follow at any given point in the game?
-It turns out we can do this using [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming).
-Our goal is to find a function:
+It turns out this problem is a good candidate for [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming)
+where the goal is to optimize a function:
 
 `policy(space, need_w, need_y) -> {accept}`
 
@@ -167,7 +167,7 @@ it take to find a person who qualifies? Each person we encounter has a $$P(W) + 
 chance to qualify. Using the formula for [expected number of trials to first success](https://en.wikipedia.org/wiki/Geometric_distribution)
 we expect to see an acceptable person after:
 
-$$1/p = 1/0.3225 \approx 3.1$$ attempts.
+$$1/p = 1/(0.3225) \approx 3.1$$ attempts.
 
 Since we accept the person on the attempt we find them, on average we will reject 2.1 people.
 Accepting this person immediately fulfills all our requirements, giving us `cost(1, 1, 0) = 2.1`.
@@ -205,17 +205,16 @@ cost(10, 5, 5) = 0.99 + 11.127
 
 This cost assumes we accept anyone in the set $$\{W,Y,WY\}$$ and reject everyone else.
 To find the optimal policy, we can run the calculation on each of the 16 possible policies
-in the power set $$\mathcal{P}(\{N,W,Y,WY\})$$[^1] and choose the
-policy with the lowest cost. Once we find the best cost and the associated
+in the power set $$\mathcal{P}(\{N,W,Y,WY\})$$ and choose the
+policy with the lowest cost.[^1] Once we find the best cost and the associated
 policy, we can use those values for all future calls to `cost(10, 5, 5)` and
 `policy(10, 5, 5)`.
 
 Now that we have a method for finding the optimal accept/reject policy at every possible
 game state, we can recursively run this algorithm and generate a lookup table for each
-of the possible $$1001 \times 601 \times 601 = 361{,}562{,}201$$ states (`space` ranges from 0 to 1000
-inclusively so it has 1001 possible values, and similarly for `need_w` and `need_y`). During
+of the possible $$1001 \times 601 \times 601 = 361{,}562{,}201$$ states.[^2] During
 this process we end up computing `cost(1000, 600, 600) = 892.3665` which tells us that the
-overall strategy fills the venue with 892.3665 rejections on average.[^2]
+overall strategy fills the venue with 892.3665 rejections on average.[^3]
 
 # Scenario 2
 
@@ -259,7 +258,7 @@ And outputting policies that accept/reject 8 possible types of people:
 | `BC`            | 0.85%   | People who are only Berlin local and creative.     |
 | `BT`            | 6.09%   | People who are only Berlin local and techno lovers.      |
 | `TC`            | 1.67%   | People who are only techno lovers and creative. |
-| `BTC`           | 3.33%[^3]  | People who are Berlin local, techno lovers, and creative.       |
+| `BTC`           | 3.33%[^4]  | People who are Berlin local, techno lovers, and creative.       |
 
 While we can reuse all of our formulas from earlier, the extra constraint drastically increases the size of the lookup table
 for the policy function. Assuming we encode each policy as 1 byte, the full table would
@@ -308,7 +307,7 @@ def accept(person: Dict[str, bool]) -> bool:
     if person["berlin_local"] and person["techno_lover"] and need_b and need_t:
         return True
 
-    # Compute slack variables for b and to to avoid
+    # Compute slack variables for b and t to avoid
     # winding up in unwinnable positions.
     need_bt = max(0, need_b + need_t - space)
     slack_b = need_b - need_bt - need_c
@@ -320,7 +319,7 @@ def accept(person: Dict[str, bool]) -> bool:
     return False
 ```
 
-This is the strategy I used for the competition, which averages around 3820 rejections before fulfilling
+This is the strategy I used for the competition, averaging around 3820 rejections before fulfilling
 all of the constraints.
 
 # Scenario 3
@@ -362,7 +361,7 @@ is represented by the portion of the distribution to the right of the red dotted
 which is approximately 0.9%. In other words, you need to submit your
 strategy for Scenario 1 about 100 times before getting a sequence where it's even possible
 to fulfill the young person requirement in 1716 people or less. We also have to take into account the well-dressed
-requirement, which is also only possible 0.9% of the time[^4]. Running simulations to find the
+requirement, which is also only possible 0.9% of the time[^5]. Running simulations to find the
 number of minimum number of people before they're both satisfiable, we get the following distribution:
 
 <img src="/images/berghain/youngandwelldressed.jpg" style="max-height:40vh">
@@ -388,7 +387,7 @@ My workaround for this was to rent the cheapest tier of VM from [DigitalOcean](h
 for a few cents per hour and run my submissions from there. Whenever it looked like the networking
 issue was happening, a script automatically tore down the machine and spun up a new one with a new
 IP. If this really wasn't just a me problem I'd be curious to hear what everyone else near
-the top of the leaderboard was doing to circumvent this.[^5]
+the top of the leaderboard was doing to circumvent this.[^6]
 
 Anyway, once I had the consistent workaround for the networking problem I was able to
 [briefly make it to #1](https://web.archive.org/web/20250913001201/https://berghain.challenges.listenlabs.ai/)
@@ -401,7 +400,7 @@ Not bad for a competition with over 1000 contestants!
 # Closing thoughts
 
 Overall I really enjoyed this puzzle, although due to the non-deterministic nature of the
-scoring process the last few days felt a bit like a lottery.[^6] I'm curious to
+scoring process the last few days felt a bit like a lottery.[^7] I'm curious to
 hear what strategies other contestants came up with, and whether or not I missed anything
 obvious in my own strategy.
 
@@ -416,26 +415,30 @@ similar competition back in 2022:
     to including $$WY$$.
 
 [^2]:
+    `space` ranges from 0 to 1000 inclusively so it has 1001 possible values. Similarly,
+    `need_y` and `need_w` range from 0 to 600, with 601 possible values each.
+
+[^3]:
     I suspect that the hand written strategy and the dynamic programming strategy are
     effectively the same, since they both have roughly same expected number of rejections.
 
-[^3]:
+[^4]:
     This information wasn't provided by the API, and was instead estimated from the samples
     obtained while playing the game.
 
-[^4]:
+[^5]:
     If young and well-dressed were completely independent, we would expect the odds of
     getting ≥600 of both in the first 1716 to be about 1 in 10000. However since they
     have a positive correlation coefficient we end up with the improved odds of 1 in 3531.
 
-[^5]:
+[^6]:
     A funny side effect of this is I assume everyone near the top of the leaderboard had
     both a good strategy and a practical way to automatically cycle their IP
     to circumvent the networking problem. Given the purpose of the puzzle was
     to recruit people, I'm curious if it was there intentionally to filter for people
     with a good mix of algorithms background and practical skills.
 
-[^6]:
+[^7]:
     One of the most surprising scores by the end of the competition was a score of 2842 in Scenario 2.
     Based on my estimates of the distribution, the odds of getting a sequence of people
     where this is possible is about 1 in 150,000!

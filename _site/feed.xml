@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-16T04:17:36-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Berghain bouncer challenge</title><link href="http://localhost:4000/2025/09/12/Berghain/" rel="alternate" type="text/html" title="Berghain bouncer challenge" /><published>2025-09-12T00:00:00-07:00</published><updated>2025-09-12T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/12/Berghain</id><content type="html" xml:base="http://localhost:4000/2025/09/12/Berghain/">&lt;p&gt;I fell down a bit of a rabbit hole the other day after seeing &lt;a href=&quot;https://www.reddit.com/r/sanfrancisco/comments/1n6nx67/at_this_point_it_feels_like_these_tech_startups/&quot;&gt;a post on r/sanfrancisco&lt;/a&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-16T04:29:56-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Berghain bouncer challenge</title><link href="http://localhost:4000/2025/09/16/Berghain/" rel="alternate" type="text/html" title="Berghain bouncer challenge" /><published>2025-09-16T00:00:00-07:00</published><updated>2025-09-16T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/16/Berghain</id><content type="html" xml:base="http://localhost:4000/2025/09/16/Berghain/">&lt;p&gt;I fell down a bit of a rabbit hole the other day after seeing &lt;a href=&quot;https://www.reddit.com/r/sanfrancisco/comments/1n6nx67/at_this_point_it_feels_like_these_tech_startups/&quot;&gt;a post on r/sanfrancisco&lt;/a&gt;
 about a cryptic billboard in Nob Hill:&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -105,7 +105,7 @@ young or only well-dressed. For example, consider the state where &lt;code class
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;slack_w = 100 - 50 = 50&lt;/code&gt;: We can safely let in 50 guests that are well-dressed but not young.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Encoding this into a function:&lt;/p&gt;
+&lt;p&gt;Putting this logic into a function:&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;young&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;well_dressed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
@@ -127,8 +127,8 @@ young or only well-dressed. For example, consider the state where &lt;code class
 &lt;p&gt;In practice this strategy fills the venue and meets the requirements in an average of ≈892 rejections.
 Can we do better? For example, is there a way to programmatically generate an optimal set
 of reject/accept “policies” that we can follow at any given point in the game?
-It turns out we can do this using &lt;a href=&quot;https://en.wikipedia.org/wiki/Dynamic_programming&quot;&gt;dynamic programming&lt;/a&gt;.
-Our goal is to find a function:&lt;/p&gt;
+It turns out this problem is a good candidate for &lt;a href=&quot;https://en.wikipedia.org/wiki/Dynamic_programming&quot;&gt;dynamic programming&lt;/a&gt;
+where the goal is to optimize a function:&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;policy(space, need_w, need_y) -&amp;gt; {accept}&lt;/code&gt;&lt;/p&gt;
 
@@ -199,7 +199,7 @@ it take to find a person who qualifies? Each person we encounter has a &lt;scrip
 chance to qualify. Using the formula for &lt;a href=&quot;https://en.wikipedia.org/wiki/Geometric_distribution&quot;&gt;expected number of trials to first success&lt;/a&gt;
 we expect to see an acceptable person after:&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;1/p = 1/0.3225 \approx 3.1&lt;/script&gt; attempts.&lt;/p&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;1/p = 1/(0.3225) \approx 3.1&lt;/script&gt; attempts.&lt;/p&gt;
 
 &lt;p&gt;Since we accept the person on the attempt we find them, on average we will reject 2.1 people.
 Accepting this person immediately fulfills all our requirements, giving us &lt;code class=&quot;highlighter-rouge&quot;&gt;cost(1, 1, 0) = 2.1&lt;/code&gt;.
@@ -238,17 +238,16 @@ and the expected number of rejections after accepting a person to compute our co
 
 &lt;p&gt;This cost assumes we accept anyone in the set &lt;script type=&quot;math/tex&quot;&gt;\{W,Y,WY\}&lt;/script&gt; and reject everyone else.
 To find the optimal policy, we can run the calculation on each of the 16 possible policies
-in the power set &lt;script type=&quot;math/tex&quot;&gt;\mathcal{P}(\{N,W,Y,WY\})&lt;/script&gt;&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; and choose the
-policy with the lowest cost. Once we find the best cost and the associated
+in the power set &lt;script type=&quot;math/tex&quot;&gt;\mathcal{P}(\{N,W,Y,WY\})&lt;/script&gt; and choose the
+policy with the lowest cost.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; Once we find the best cost and the associated
 policy, we can use those values for all future calls to &lt;code class=&quot;highlighter-rouge&quot;&gt;cost(10, 5, 5)&lt;/code&gt; and
 &lt;code class=&quot;highlighter-rouge&quot;&gt;policy(10, 5, 5)&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Now that we have a method for finding the optimal accept/reject policy at every possible
 game state, we can recursively run this algorithm and generate a lookup table for each
-of the possible &lt;script type=&quot;math/tex&quot;&gt;1001 \times 601 \times 601 = 361{,}562{,}201&lt;/script&gt; states (&lt;code class=&quot;highlighter-rouge&quot;&gt;space&lt;/code&gt; ranges from 0 to 1000
-inclusively so it has 1001 possible values, and similarly for &lt;code class=&quot;highlighter-rouge&quot;&gt;need_w&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;need_y&lt;/code&gt;). During
+of the possible &lt;script type=&quot;math/tex&quot;&gt;1001 \times 601 \times 601 = 361{,}562{,}201&lt;/script&gt; states.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; During
 this process we end up computing &lt;code class=&quot;highlighter-rouge&quot;&gt;cost(1000, 600, 600) = 892.3665&lt;/code&gt; which tells us that the
-overall strategy fills the venue with 892.3665 rejections on average.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+overall strategy fills the venue with 892.3665 rejections on average.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;scenario-2&quot;&gt;Scenario 2&lt;/h1&gt;
 
@@ -332,7 +331,7 @@ cost(space, need_b, need_t, need_c) -&amp;gt; float
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BTC&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;3.33%&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
+      &lt;td&gt;3.33%&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
       &lt;td&gt;People who are Berlin local, techno lovers, and creative.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -383,7 +382,7 @@ on its own. In pseudo-code, the two combined policies look like:&lt;/p&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;berlin_local&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;techno_lover&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;need_b&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;need_t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
 
-    &lt;span class=&quot;c&quot;&gt;# Compute slack variables for b and to to avoid&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Compute slack variables for b and t to avoid&lt;/span&gt;
     &lt;span class=&quot;c&quot;&gt;# winding up in unwinnable positions.&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;need_bt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;need_b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;need_t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;space&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;slack_b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;need_b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;need_bt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;need_c&lt;/span&gt;
@@ -395,7 +394,7 @@ on its own. In pseudo-code, the two combined policies look like:&lt;/p&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This is the strategy I used for the competition, which averages around 3820 rejections before fulfilling
+&lt;p&gt;This is the strategy I used for the competition, averaging around 3820 rejections before fulfilling
 all of the constraints.&lt;/p&gt;
 
 &lt;h1 id=&quot;scenario-3&quot;&gt;Scenario 3&lt;/h1&gt;
@@ -439,7 +438,7 @@ is represented by the portion of the distribution to the right of the red dotted
 which is approximately 0.9%. In other words, you need to submit your
 strategy for Scenario 1 about 100 times before getting a sequence where it’s even possible
 to fulfill the young person requirement in 1716 people or less. We also have to take into account the well-dressed
-requirement, which is also only possible 0.9% of the time&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Running simulations to find the
+requirement, which is also only possible 0.9% of the time&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;. Running simulations to find the
 number of minimum number of people before they’re both satisfiable, we get the following distribution:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/berghain/youngandwelldressed.jpg&quot; style=&quot;max-height:40vh&quot; /&gt;&lt;/p&gt;
@@ -467,7 +466,7 @@ encountered the network problem, I also saw progress on everyone else’s submis
 for a few cents per hour and run my submissions from there. Whenever it looked like the networking
 issue was happening, a script automatically tore down the machine and spun up a new one with a new
 IP. If this really wasn’t just a me problem I’d be curious to hear what everyone else near
-the top of the leaderboard was doing to circumvent this.&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+the top of the leaderboard was doing to circumvent this.&lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;p&gt;Anyway, once I had the consistent workaround for the networking problem I was able to
 &lt;a href=&quot;https://web.archive.org/web/20250913001201/https://berghain.challenges.listenlabs.ai/&quot;&gt;briefly make it to #1&lt;/a&gt;
@@ -480,7 +479,7 @@ before being passed overnight. By the end of the competition I managed to finish
 &lt;h1 id=&quot;closing-thoughts&quot;&gt;Closing thoughts&lt;/h1&gt;
 
 &lt;p&gt;Overall I really enjoyed this puzzle, although due to the non-deterministic nature of the
-scoring process the last few days felt a bit like a lottery.&lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; I’m curious to
+scoring process the last few days felt a bit like a lottery.&lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt; I’m curious to
 hear what strategies other contestants came up with, and whether or not I missed anything
 obvious in my own strategy.&lt;/p&gt;
 
@@ -499,33 +498,38 @@ to including &lt;script type=&quot;math/tex&quot;&gt;WY&lt;/script&gt;. &lt;a h
     &lt;/li&gt;
     &lt;li id=&quot;fn:2&quot;&gt;
 
-      &lt;p&gt;I suspect that the hand written strategy and the dynamic programming strategy are
-effectively the same, since they both have roughly same expected number of rejections. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;space&lt;/code&gt; ranges from 0 to 1000 inclusively so it has 1001 possible values. Similarly,
+&lt;code class=&quot;highlighter-rouge&quot;&gt;need_y&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;need_w&lt;/code&gt; range from 0 to 600, with 601 possible values each. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:3&quot;&gt;
 
-      &lt;p&gt;This information wasn’t provided by the API, and was instead estimated from the samples
-obtained while playing the game. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;I suspect that the hand written strategy and the dynamic programming strategy are
+effectively the same, since they both have roughly same expected number of rejections. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:4&quot;&gt;
 
-      &lt;p&gt;If young and well-dressed were completely independent, we would expect the odds of
-getting ≥600 of both in the first 1716 to be about 1 in 10000. However since they
-have a positive correlation coefficient we end up with the improved odds of 1 in 3531. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;This information wasn’t provided by the API, and was instead estimated from the samples
+obtained while playing the game. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:5&quot;&gt;
+
+      &lt;p&gt;If young and well-dressed were completely independent, we would expect the odds of
+getting ≥600 of both in the first 1716 to be about 1 in 10000. However since they
+have a positive correlation coefficient we end up with the improved odds of 1 in 3531. &lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:6&quot;&gt;
 
       &lt;p&gt;A funny side effect of this is I assume everyone near the top of the leaderboard had
 both a good strategy and a practical way to automatically cycle their IP
 to circumvent the networking problem. Given the purpose of the puzzle was
 to recruit people, I’m curious if it was there intentionally to filter for people
-with a good mix of algorithms background and practical skills. &lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+with a good mix of algorithms background and practical skills. &lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:6&quot;&gt;
+    &lt;li id=&quot;fn:7&quot;&gt;
 
       &lt;p&gt;One of the most surprising scores by the end of the competition was a score of 2842 in Scenario 2.
 Based on my estimates of the distribution, the odds of getting a sequence of people
-where this is possible is about 1 in 150,000! &lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+where this is possible is about 1 in 150,000! &lt;a href=&quot;#fnref:7&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name></name></author><summary type="html">I fell down a bit of a rabbit hole the other day after seeing a post on r/sanfrancisco about a cryptic billboard in Nob Hill:</summary></entry><entry><title type="html">Pokémon or startup?</title><link href="http://localhost:4000/2025/09/02/Startup-Or-Pokemon/" rel="alternate" type="text/html" title="Pokémon or startup?" /><published>2025-09-02T00:00:00-07:00</published><updated>2025-09-02T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/02/Startup-Or-Pokemon</id><content type="html" xml:base="http://localhost:4000/2025/09/02/Startup-Or-Pokemon/">&lt;p&gt;&lt;a href=&quot;https://www.sporcle.com/games/netcat/pokemon-or-startup-quiz&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;img src=&quot;/images/pkmn/sporcle.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;br /&gt;

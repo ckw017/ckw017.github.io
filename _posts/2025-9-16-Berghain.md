@@ -44,12 +44,12 @@ td{
     max-width: 40vw;
 }
 
-code.highlighter-rouge {
+code.nowrap {
   white-space: nowrap;
 }
 </style>
 
-Scenario 1 is the simplest scenario with only two different constraints:
+Scenario 1 is the simplest scenario with only two constraints for the 1000 people in the venue:
 * At least 600 young people.
 * At least 600 well-dressed people.
 
@@ -61,7 +61,7 @@ The following statistics are also provided:
 * You can assume each guest is sampled i.i.d. from this distribution.
 
 You can take a moment to think about how you would solve this problem. If
-you were as generous as possible and allow the first 1000 people you see in, you would
+you were as generous as possible and allowed the first 1000 people you see in, you would
 end up on average with 322 young people and 322 well-dressed people -- well below the
 minimum requirement of 600 in both categories. In other words, you're going to need to
 be selective. However, being too selective will increase the number of people you reject
@@ -91,7 +91,7 @@ We can derive a few more values from these:
 * `slack_w = need_w - need_wy`: The number of guests that are well-dressed but not young that we can safely accept to meet requirements.
 
 Using the slack variables, we can determine if it's safe to allow in guests that are only
-young or only well-dressed. For example, consider the state where `space = 100`, `need_y = 50`, and `need_w = 100`:
+young or only well-dressed. For example, consider the state where <code class="highlighter-rouge nowrap">space = 100</code>, <code class="highlighter-rouge nowrap">need_y = 50</code>, and <code class="highlighter-rouge nowrap">need_w = 100</code>:
 * `need_wy = max(0, 50 + 100 - 100) = 50`: We need at least 50 guests that are both young and well-dressed.
 * `slack_y = 50 - 50 = 0`: We do not have space to let in any guests that are young but not well-dressed.
 * `slack_w = 100 - 50 = 50`: We can safely let in 50 guests that are well-dressed but not young.
@@ -119,8 +119,11 @@ def accept(person: Dict[str, bool]) -> bool:
 In practice this strategy fills the venue and meets the requirements in an average of ≈892 rejections.
 Can we do better? For example, is there a way to programmatically generate an optimal set
 of reject/accept "policies" that we can follow at any given point in the game?
+
+### Dynamic Programming
+
 It turns out this problem is a good candidate for [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming)
-where the goal is to optimize a function:
+with the goal of optimizing a function:
 
 `policy(space, need_w, need_y) -> {accept}`
 
@@ -156,29 +159,16 @@ there isn't enough space to meet all of our requirements by giving them an infin
 `cost(100, 101, 0) = infinity`
 
 The game is unwinnable here since we need 101 well-dressed people but only have 100
-spaces left. Next let's consider the case:
-
-`cost(1, 1, 0)`
-
-Here we want to compute the expected number of rejections needed to fill the venue when
-there's only one space left and we need one well-dressed person. The most obvious policy
-is to accept anyone who is well-dressed, i.e. anyone in $$\{W,WY\}$$. How many rejections will
-it take to find a person who qualifies? Each person we encounter has a $$P(W) + P(WY) = 17.85\% + 14.4\% = 32.25\%$$
-chance to qualify. Using the formula for [expected number of trials to first success](https://en.wikipedia.org/wiki/Geometric_distribution)
-we expect to see an acceptable person after:
-
-$$1/p = 1/(0.3225) \approx 3.1$$ attempts.
-
-Since we accept the person on the attempt we find them, on average we will reject 2.1 people.
-Accepting this person immediately fulfills all our requirements, giving us `cost(1, 1, 0) = 2.1`.
-Finally, let's consider a non-trivial example of the cost function:
+spaces left. Finally, let's consider a non-trivial example of the cost function:
 
 `cost(10, 5, 5)`
 
-It's not clear what the optimal policy is yet, but we can start by assuming we accept anyone in $$\{W,Y,WY\}$$.
-We can compute the number of attempts we'll need to find an acceptable person using the formula
-from before. In this case, the probability of finding an acceptable person is $$17.85\% + 17.85\% + 14.4\% = 50.1\%$$,
-so the expected number of attempts is:
+Here we want to compute the expected number of rejections needed to fill the venue when
+there's ten spaces left and we need five well-dressed people and five young people. It's not
+clear what the optimal policy is yet, but we can start by assuming we accept anyone in $$\{W,Y,WY\}$$. How many rejections will
+it take to find a person who qualifies? Each person we encounter has a $$17.85\% + 17.85\% + 14.4\%$$ $$= 50.1\%$$
+chance to qualify. Using the formula for [expected number of trials to first success](https://en.wikipedia.org/wiki/Geometric_distribution)
+we expect to see an acceptable person after:
 
 $$1/p = 1/(0.501) \approx 1.99$$ attempts.
 
@@ -186,35 +176,32 @@ Since we accept the person on the attempt we find them, on average we will rejec
 people. Once we've found an acceptable person, we need to account for the expected number of rejections
 we'll make after accepting that person by recursively calling into
 the cost function. For simplicity, I'm making up values for the recursive calls:
-* There's a $$17.85/50.1 \approx 35.6\%$$ chance the person will be $$W$$. The expected cost after we accept $$W$$ is `cost(9, 4, 5) = 12`.
-* There's a $$17.85/50.1 \approx 35.6\%$$ chance tregularlyhe person will be $$Y$$. The expected cost after we accept $$Y$$ is `cost(9, 5, 4) = 12`.
-* There's a $$14.4/50.1 \approx 28.7\%$$ chance the person will be $$WY$$. The expected cost after we accept $$WY$$ is `cost(9, 4, 4) = 9`.
+* There's a $$17.85/50.1 \approx 35.6\%$$ chance the person will be $$W$$. The expected cost after we accept $$W$$ is <code class="highlighter-rouge nowrap">cost(9, 4, 5) = 12</code>.
+* There's a $$17.85/50.1 \approx 35.6\%$$ chance tregularlyhe person will be $$Y$$. The expected cost after we accept $$Y$$ is <code class="highlighter-rouge nowrap">cost(9, 5, 4) = 12</code>.
+* There's a $$14.4/50.1 \approx 28.7\%$$ chance the person will be $$WY$$. The expected cost after we accept $$WY$$ is <code class="highlighter-rouge nowrap">cost(9, 4, 4) = 9</code>.
 
 We can weight these cost values by their probabilities and sum them to calculate the expected
 number of people we'll reject after accepting this one:
 
-$$(12 \times 0.356) + (12 \times 0.356) + (9 \times 0.287) = 11.127$$ rejections.
+$$(12 \times 0.356) + (12 \times 0.356)$$ $$+ (9 \times 0.287) = 11.127$$ rejections.
 
 Finally, we can add together the expected number of rejections while looking for a person
 and the expected number of rejections after accepting a person to compute our cost:
 
-```
-cost(10, 5, 5) = 0.99 + 11.127
-               = 12.117
-```
+`cost(10, 5, 5) = 0.99 + 11.127 = 12.117`
 
 This cost assumes we accept anyone in the set $$\{W,Y,WY\}$$ and reject everyone else.
 To find the optimal policy, we can run the calculation on each of the 16 possible policies
 in the power set $$\mathcal{P}(\{N,W,Y,WY\})$$ and choose the
 policy with the lowest cost.[^1] Once we find the best cost and the associated
-policy, we can use those values for all future calls to `cost(10, 5, 5)` and
-`policy(10, 5, 5)`.
+policy, we can use those values for all future calls to <code class="highlighter-rouge nowrap">cost(10, 5, 5)</code> and
+<code class="highlighter-rouge nowrap">policy(10, 5, 5)</code>.
 
 Now that we have a method for finding the optimal accept/reject policy at every possible
 game state, we can recursively run this algorithm and generate a lookup table for each
-of the possible $$1001 \times 601 \times 601 = 361{,}562{,}201$$ states.[^2] During
-this process we end up computing `cost(1000, 600, 600) = 892.3665` which tells us that the
-overall strategy fills the venue with 892.3665 rejections on average.[^3]
+of the possible $$1001 \times 601 \times 601 =$$ $$361{,}562{,}201$$ states of the venue.[^2] During
+this process we end up computing <code class="highlighter-rouge nowrap">cost(1000, 600, 600) = 892.4</code> which tells us that the
+strategy is expected to fill the venue with 892.4 rejections on average.[^3]
 
 # Scenario 2
 
@@ -235,17 +222,17 @@ which I'm omitting for brevity.
 
 At first it appears the number of constraints has doubled, however in practice we don't
 really need to worry about the minimum of 450 well-connected people. Since the correlation
-with Berlin locals is high and the minimum for Berlin locals is 750, we end up satisfying
-the well-connected minimum the vast majority of the time just by trying to meet the Berlin
+with Berlin locals is high and the minimum for Berlin locals is 750, we're almost guaranteed to satisfy
+the well-connected minimum while trying to meet the Berlin
 locals minimum. This narrows down the problem to Berlin locals, techno lovers, and creatives.
 
 Once again we can use dynamic programming, this time computing policy and cost functions
 of 4 variables:
 
-```
-policy(space, need_b, need_t, need_c) -> {accept}
-cost(space, need_b, need_t, need_c) -> float
-```
+
+`policy(space, need_b, need_t, need_c) -> {accept}`
+
+`cost(space, need_b, need_t, need_c) -> float`
 
 And outputting policies that accept/reject 8 possible types of people:
 
@@ -264,13 +251,13 @@ While we can reuse all of our formulas from earlier, the extra constraint drasti
 for the policy function. Assuming we encode each policy as 1 byte, the full table would
 need to have:
 
-$$1001 \times 751 \times 651 \times 301 = 147{,}306{,}360{,}201$$ entries (137.19 GiB)
+$$1001 \times 751 \times 651$$ $$\times 301 = 147{,}306{,}360{,}201$$ entries (137.19 GiB)
 
 For the competition, I ended up compromising and only computing a subset of the full
 lookup table for use in the latter half of the game, i.e. up to:
 
 
-$$500 \times 330 \times 300 \times 150 = 7{,}425{,}000{,}000$$ entries (6.91 GiB)
+$$500 \times 330 \times 300$$ $$\times 150 = 7{,}425{,}000{,}000$$ entries (6.91 GiB)
 
 In other words, we only use the optimal strategy once we're roughly halfway done with
 each of the constraints. How about for the beginning half of the game? I ended up using the
@@ -282,7 +269,7 @@ In this version, we combine the constraints for Berlin locals and techno lovers 
 single parameter in our policy and cost function. This allows us to drastically reduce
 the size of the lookup table to:
 
-$$1001 \times (750 + 650 + 1) \times 301 = 422{,}122{,}701$$ entries (402.6 MiB)
+$$1001 \times (750 + 650 + 1)$$ $$\times 301 = 422{,}122{,}701$$ entries (402.6 MiB)
 
 This size reduction comes at a cost: `policy2` cannot distinguish
 between the individual constraints for `need_b` and `need_t`. Despite this, it gives us
@@ -368,8 +355,8 @@ number of minimum number of people before they're both satisfiable, we get the f
 
 The part of the distribution ≤1716 is almost impossible to see, but is cumulatively about 0.028%.
 This means roughly 1 in 3531 attempts are solvable in 716 rejections or less.
-In other words, having a good strategy wasn't enough to win the contest -- you also needed
-to get lucky or to submit a lot.
+In other words, having a good strategy wasn't enough to win the contest -- you also needed to
+submit a lot and get lucky.
 
 Submitting a lot was a challenge in itself. To start, there was a rate limit of 10 submissions
 every 15 minutes, i.e. 960 submissions per day. This on its own was reasonable, however
@@ -401,8 +388,8 @@ Not bad for a competition with over 1000 contestants!
 
 Overall I really enjoyed this puzzle, although due to the non-deterministic nature of the
 scoring process the last few days felt a bit like a lottery.[^7] I'm curious to
-hear what strategies other contestants came up with, and whether or not I missed anything
-obvious in my own strategy.
+hear what strategies other contestants came up with and whether or not I left any
+obvious optimizations on the table.
 
 Anyway, if you found this interesting you might also like this writeup I did about a
 similar competition back in 2022:
@@ -419,7 +406,7 @@ similar competition back in 2022:
     `need_y` and `need_w` range from 0 to 600, with 601 possible values each.
 
 [^3]:
-    I suspect that the hand written strategy and the dynamic programming strategy are
+    I suspect that the hand written strategy and the one produced by dynamic programming strategy are
     effectively the same, since they both have roughly same expected number of rejections.
 
 [^4]:

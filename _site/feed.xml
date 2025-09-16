@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-16T04:29:56-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Berghain bouncer challenge</title><link href="http://localhost:4000/2025/09/16/Berghain/" rel="alternate" type="text/html" title="Berghain bouncer challenge" /><published>2025-09-16T00:00:00-07:00</published><updated>2025-09-16T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/16/Berghain</id><content type="html" xml:base="http://localhost:4000/2025/09/16/Berghain/">&lt;p&gt;I fell down a bit of a rabbit hole the other day after seeing &lt;a href=&quot;https://www.reddit.com/r/sanfrancisco/comments/1n6nx67/at_this_point_it_feels_like_these_tech_startups/&quot;&gt;a post on r/sanfrancisco&lt;/a&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-16T11:13:16-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Berghain bouncer challenge</title><link href="http://localhost:4000/2025/09/16/Berghain/" rel="alternate" type="text/html" title="Berghain bouncer challenge" /><published>2025-09-16T00:00:00-07:00</published><updated>2025-09-16T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/16/Berghain</id><content type="html" xml:base="http://localhost:4000/2025/09/16/Berghain/">&lt;p&gt;I fell down a bit of a rabbit hole the other day after seeing &lt;a href=&quot;https://www.reddit.com/r/sanfrancisco/comments/1n6nx67/at_this_point_it_feels_like_these_tech_startups/&quot;&gt;a post on r/sanfrancisco&lt;/a&gt;
 about a cryptic billboard in Nob Hill:&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -39,12 +39,12 @@ td{
     max-width: 40vw;
 }
 
-code.highlighter-rouge {
+code.nowrap {
   white-space: nowrap;
 }
 &lt;/style&gt;
 
-&lt;p&gt;Scenario 1 is the simplest scenario with only two different constraints:&lt;/p&gt;
+&lt;p&gt;Scenario 1 is the simplest scenario with only two constraints for the 1000 people in the venue:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;At least 600 young people.&lt;/li&gt;
   &lt;li&gt;At least 600 well-dressed people.&lt;/li&gt;
@@ -60,7 +60,7 @@ words, ≈14.4% of the time guests are both well-dressed and young.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;You can take a moment to think about how you would solve this problem. If
-you were as generous as possible and allow the first 1000 people you see in, you would
+you were as generous as possible and allowed the first 1000 people you see in, you would
 end up on average with 322 young people and 322 well-dressed people – well below the
 minimum requirement of 600 in both categories. In other words, you’re going to need to
 be selective. However, being too selective will increase the number of people you reject
@@ -98,7 +98,7 @@ for 600 well-dressed guests. We can capture these constraints by defining a few 
 &lt;/ul&gt;
 
 &lt;p&gt;Using the slack variables, we can determine if it’s safe to allow in guests that are only
-young or only well-dressed. For example, consider the state where &lt;code class=&quot;highlighter-rouge&quot;&gt;space = 100&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;need_y = 50&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;need_w = 100&lt;/code&gt;:&lt;/p&gt;
+young or only well-dressed. For example, consider the state where &lt;code class=&quot;highlighter-rouge nowrap&quot;&gt;space = 100&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge nowrap&quot;&gt;need_y = 50&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge nowrap&quot;&gt;need_w = 100&lt;/code&gt;:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;need_wy = max(0, 50 + 100 - 100) = 50&lt;/code&gt;: We need at least 50 guests that are both young and well-dressed.&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;slack_y = 50 - 50 = 0&lt;/code&gt;: We do not have space to let in any guests that are young but not well-dressed.&lt;/li&gt;
@@ -126,9 +126,12 @@ young or only well-dressed. For example, consider the state where &lt;code class
 
 &lt;p&gt;In practice this strategy fills the venue and meets the requirements in an average of ≈892 rejections.
 Can we do better? For example, is there a way to programmatically generate an optimal set
-of reject/accept “policies” that we can follow at any given point in the game?
-It turns out this problem is a good candidate for &lt;a href=&quot;https://en.wikipedia.org/wiki/Dynamic_programming&quot;&gt;dynamic programming&lt;/a&gt;
-where the goal is to optimize a function:&lt;/p&gt;
+of reject/accept “policies” that we can follow at any given point in the game?&lt;/p&gt;
+
+&lt;h3 id=&quot;dynamic-programming&quot;&gt;Dynamic Programming&lt;/h3&gt;
+
+&lt;p&gt;It turns out this problem is a good candidate for &lt;a href=&quot;https://en.wikipedia.org/wiki/Dynamic_programming&quot;&gt;dynamic programming&lt;/a&gt;
+with the goal of optimizing a function:&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;policy(space, need_w, need_y) -&amp;gt; {accept}&lt;/code&gt;&lt;/p&gt;
 
@@ -188,29 +191,16 @@ there isn’t enough space to meet all of our requirements by giving them an inf
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cost(100, 101, 0) = infinity&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;The game is unwinnable here since we need 101 well-dressed people but only have 100
-spaces left. Next let’s consider the case:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cost(1, 1, 0)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Here we want to compute the expected number of rejections needed to fill the venue when
-there’s only one space left and we need one well-dressed person. The most obvious policy
-is to accept anyone who is well-dressed, i.e. anyone in &lt;script type=&quot;math/tex&quot;&gt;\{W,WY\}&lt;/script&gt;. How many rejections will
-it take to find a person who qualifies? Each person we encounter has a &lt;script type=&quot;math/tex&quot;&gt;P(W) + P(WY) = 17.85\% + 14.4\% = 32.25\%&lt;/script&gt;
-chance to qualify. Using the formula for &lt;a href=&quot;https://en.wikipedia.org/wiki/Geometric_distribution&quot;&gt;expected number of trials to first success&lt;/a&gt;
-we expect to see an acceptable person after:&lt;/p&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;1/p = 1/(0.3225) \approx 3.1&lt;/script&gt; attempts.&lt;/p&gt;
-
-&lt;p&gt;Since we accept the person on the attempt we find them, on average we will reject 2.1 people.
-Accepting this person immediately fulfills all our requirements, giving us &lt;code class=&quot;highlighter-rouge&quot;&gt;cost(1, 1, 0) = 2.1&lt;/code&gt;.
-Finally, let’s consider a non-trivial example of the cost function:&lt;/p&gt;
+spaces left. Finally, let’s consider a non-trivial example of the cost function:&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cost(10, 5, 5)&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;It’s not clear what the optimal policy is yet, but we can start by assuming we accept anyone in &lt;script type=&quot;math/tex&quot;&gt;\{W,Y,WY\}&lt;/script&gt;.
-We can compute the number of attempts we’ll need to find an acceptable person using the formula
-from before. In this case, the probability of finding an acceptable person is &lt;script type=&quot;math/tex&quot;&gt;17.85\% + 17.85\% + 14.4\% = 50.1\%&lt;/script&gt;,
-so the expected number of attempts is:&lt;/p&gt;
+&lt;p&gt;Here we want to compute the expected number of rejections needed to fill the venue when
+there’s ten spaces left and we need five well-dressed people and five young people. It’s not
+clear what the optimal policy is yet, but we can start by assuming we accept anyone in &lt;script type=&quot;math/tex&quot;&gt;\{W,Y,WY\}&lt;/script&gt;. How many rejections will
+it take to find a person who qualifies? Each person we encounter has a &lt;script type=&quot;math/tex&quot;&gt;17.85\% + 17.85\% + 14.4\%&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;= 50.1\%&lt;/script&gt;
+chance to qualify. Using the formula for &lt;a href=&quot;https://en.wikipedia.org/wiki/Geometric_distribution&quot;&gt;expected number of trials to first success&lt;/a&gt;
+we expect to see an acceptable person after:&lt;/p&gt;
 
 &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;1/p = 1/(0.501) \approx 1.99&lt;/script&gt; attempts.&lt;/p&gt;
 
@@ -219,35 +209,33 @@ people. Once we’ve found an acceptable person, we need to account for the expe
 we’ll make after accepting that person by recursively calling into
 the cost function. For simplicity, I’m making up values for the recursive calls:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;There’s a &lt;script type=&quot;math/tex&quot;&gt;17.85/50.1 \approx 35.6\%&lt;/script&gt; chance the person will be &lt;script type=&quot;math/tex&quot;&gt;W&lt;/script&gt;. The expected cost after we accept &lt;script type=&quot;math/tex&quot;&gt;W&lt;/script&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;cost(9, 4, 5) = 12&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;There’s a &lt;script type=&quot;math/tex&quot;&gt;17.85/50.1 \approx 35.6\%&lt;/script&gt; chance tregularlyhe person will be &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt;. The expected cost after we accept &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;cost(9, 5, 4) = 12&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;There’s a &lt;script type=&quot;math/tex&quot;&gt;14.4/50.1 \approx 28.7\%&lt;/script&gt; chance the person will be &lt;script type=&quot;math/tex&quot;&gt;WY&lt;/script&gt;. The expected cost after we accept &lt;script type=&quot;math/tex&quot;&gt;WY&lt;/script&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;cost(9, 4, 4) = 9&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;There’s a &lt;script type=&quot;math/tex&quot;&gt;17.85/50.1 \approx 35.6\%&lt;/script&gt; chance the person will be &lt;script type=&quot;math/tex&quot;&gt;W&lt;/script&gt;. The expected cost after we accept &lt;script type=&quot;math/tex&quot;&gt;W&lt;/script&gt; is &lt;code class=&quot;highlighter-rouge nowrap&quot;&gt;cost(9, 4, 5) = 12&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;There’s a &lt;script type=&quot;math/tex&quot;&gt;17.85/50.1 \approx 35.6\%&lt;/script&gt; chance tregularlyhe person will be &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt;. The expected cost after we accept &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt; is &lt;code class=&quot;highlighter-rouge nowrap&quot;&gt;cost(9, 5, 4) = 12&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;There’s a &lt;script type=&quot;math/tex&quot;&gt;14.4/50.1 \approx 28.7\%&lt;/script&gt; chance the person will be &lt;script type=&quot;math/tex&quot;&gt;WY&lt;/script&gt;. The expected cost after we accept &lt;script type=&quot;math/tex&quot;&gt;WY&lt;/script&gt; is &lt;code class=&quot;highlighter-rouge nowrap&quot;&gt;cost(9, 4, 4) = 9&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;We can weight these cost values by their probabilities and sum them to calculate the expected
 number of people we’ll reject after accepting this one:&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;(12 \times 0.356) + (12 \times 0.356) + (9 \times 0.287) = 11.127&lt;/script&gt; rejections.&lt;/p&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;(12 \times 0.356) + (12 \times 0.356)&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;+ (9 \times 0.287) = 11.127&lt;/script&gt; rejections.&lt;/p&gt;
 
 &lt;p&gt;Finally, we can add together the expected number of rejections while looking for a person
 and the expected number of rejections after accepting a person to compute our cost:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cost(10, 5, 5) = 0.99 + 11.127
-               = 12.117
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cost(10, 5, 5) = 0.99 + 11.127 = 12.117&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;This cost assumes we accept anyone in the set &lt;script type=&quot;math/tex&quot;&gt;\{W,Y,WY\}&lt;/script&gt; and reject everyone else.
 To find the optimal policy, we can run the calculation on each of the 16 possible policies
 in the power set &lt;script type=&quot;math/tex&quot;&gt;\mathcal{P}(\{N,W,Y,WY\})&lt;/script&gt; and choose the
 policy with the lowest cost.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; Once we find the best cost and the associated
-policy, we can use those values for all future calls to &lt;code class=&quot;highlighter-rouge&quot;&gt;cost(10, 5, 5)&lt;/code&gt; and
-&lt;code class=&quot;highlighter-rouge&quot;&gt;policy(10, 5, 5)&lt;/code&gt;.&lt;/p&gt;
+policy, we can use those values for all future calls to &lt;code class=&quot;highlighter-rouge nowrap&quot;&gt;cost(10, 5, 5)&lt;/code&gt; and
+&lt;code class=&quot;highlighter-rouge nowrap&quot;&gt;policy(10, 5, 5)&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Now that we have a method for finding the optimal accept/reject policy at every possible
 game state, we can recursively run this algorithm and generate a lookup table for each
-of the possible &lt;script type=&quot;math/tex&quot;&gt;1001 \times 601 \times 601 = 361{,}562{,}201&lt;/script&gt; states.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; During
-this process we end up computing &lt;code class=&quot;highlighter-rouge&quot;&gt;cost(1000, 600, 600) = 892.3665&lt;/code&gt; which tells us that the
-overall strategy fills the venue with 892.3665 rejections on average.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+of the possible &lt;script type=&quot;math/tex&quot;&gt;1001 \times 601 \times 601 =&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;361{,}562{,}201&lt;/script&gt; states of the venue.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; During
+this process we end up computing &lt;code class=&quot;highlighter-rouge nowrap&quot;&gt;cost(1000, 600, 600) = 892.4&lt;/code&gt; which tells us that the
+strategy is expected to fill the venue with 892.4 rejections on average.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;scenario-2&quot;&gt;Scenario 2&lt;/h1&gt;
 
@@ -272,16 +260,16 @@ which I’m omitting for brevity.&lt;/li&gt;
 
 &lt;p&gt;At first it appears the number of constraints has doubled, however in practice we don’t
 really need to worry about the minimum of 450 well-connected people. Since the correlation
-with Berlin locals is high and the minimum for Berlin locals is 750, we end up satisfying
-the well-connected minimum the vast majority of the time just by trying to meet the Berlin
+with Berlin locals is high and the minimum for Berlin locals is 750, we’re almost guaranteed to satisfy
+the well-connected minimum while trying to meet the Berlin
 locals minimum. This narrows down the problem to Berlin locals, techno lovers, and creatives.&lt;/p&gt;
 
 &lt;p&gt;Once again we can use dynamic programming, this time computing policy and cost functions
 of 4 variables:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;policy(space, need_b, need_t, need_c) -&amp;gt; {accept}
-cost(space, need_b, need_t, need_c) -&amp;gt; float
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;policy(space, need_b, need_t, need_c) -&amp;gt; {accept}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cost(space, need_b, need_t, need_c) -&amp;gt; float&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;And outputting policies that accept/reject 8 possible types of people:&lt;/p&gt;
 
@@ -341,12 +329,12 @@ cost(space, need_b, need_t, need_c) -&amp;gt; float
 for the policy function. Assuming we encode each policy as 1 byte, the full table would
 need to have:&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;1001 \times 751 \times 651 \times 301 = 147{,}306{,}360{,}201&lt;/script&gt; entries (137.19 GiB)&lt;/p&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;1001 \times 751 \times 651&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;\times 301 = 147{,}306{,}360{,}201&lt;/script&gt; entries (137.19 GiB)&lt;/p&gt;
 
 &lt;p&gt;For the competition, I ended up compromising and only computing a subset of the full
 lookup table for use in the latter half of the game, i.e. up to:&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;500 \times 330 \times 300 \times 150 = 7{,}425{,}000{,}000&lt;/script&gt; entries (6.91 GiB)&lt;/p&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;500 \times 330 \times 300&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;\times 150 = 7{,}425{,}000{,}000&lt;/script&gt; entries (6.91 GiB)&lt;/p&gt;
 
 &lt;p&gt;In other words, we only use the optimal strategy once we’re roughly halfway done with
 each of the constraints. How about for the beginning half of the game? I ended up using the
@@ -358,7 +346,7 @@ same dynamic programming approach, however slightly augmenting the policy functi
 single parameter in our policy and cost function. This allows us to drastically reduce
 the size of the lookup table to:&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;1001 \times (750 + 650 + 1) \times 301 = 422{,}122{,}701&lt;/script&gt; entries (402.6 MiB)&lt;/p&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;1001 \times (750 + 650 + 1)&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;\times 301 = 422{,}122{,}701&lt;/script&gt; entries (402.6 MiB)&lt;/p&gt;
 
 &lt;p&gt;This size reduction comes at a cost: &lt;code class=&quot;highlighter-rouge&quot;&gt;policy2&lt;/code&gt; cannot distinguish
 between the individual constraints for &lt;code class=&quot;highlighter-rouge&quot;&gt;need_b&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;need_t&lt;/code&gt;. Despite this, it gives us
@@ -445,8 +433,8 @@ number of minimum number of people before they’re both satisfiable, we get the
 
 &lt;p&gt;The part of the distribution ≤1716 is almost impossible to see, but is cumulatively about 0.028%.
 This means roughly 1 in 3531 attempts are solvable in 716 rejections or less.
-In other words, having a good strategy wasn’t enough to win the contest – you also needed
-to get lucky or to submit a lot.&lt;/p&gt;
+In other words, having a good strategy wasn’t enough to win the contest – you also needed to
+submit a lot and get lucky.&lt;/p&gt;
 
 &lt;p&gt;Submitting a lot was a challenge in itself. To start, there was a rate limit of 10 submissions
 every 15 minutes, i.e. 960 submissions per day. This on its own was reasonable, however
@@ -480,8 +468,8 @@ before being passed overnight. By the end of the competition I managed to finish
 
 &lt;p&gt;Overall I really enjoyed this puzzle, although due to the non-deterministic nature of the
 scoring process the last few days felt a bit like a lottery.&lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt; I’m curious to
-hear what strategies other contestants came up with, and whether or not I missed anything
-obvious in my own strategy.&lt;/p&gt;
+hear what strategies other contestants came up with and whether or not I left any
+obvious optimizations on the table.&lt;/p&gt;
 
 &lt;p&gt;Anyway, if you found this interesting you might also like this writeup I did about a
 similar competition back in 2022:
@@ -503,7 +491,7 @@ to including &lt;script type=&quot;math/tex&quot;&gt;WY&lt;/script&gt;. &lt;a h
     &lt;/li&gt;
     &lt;li id=&quot;fn:3&quot;&gt;
 
-      &lt;p&gt;I suspect that the hand written strategy and the dynamic programming strategy are
+      &lt;p&gt;I suspect that the hand written strategy and the one produced by dynamic programming strategy are
 effectively the same, since they both have roughly same expected number of rejections. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:4&quot;&gt;

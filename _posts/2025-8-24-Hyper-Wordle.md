@@ -112,7 +112,7 @@ gain extra information?
 Before we try to solve a permutation of 2315 words, let's consider a simpler scenario
 where we're solving a permutation of six secret words in parallel:
 `FIRST`, `DEUCE`, `THIRD`, `FORTH`, `FIFTH`, `SIXTH`. Let's take a look at a strategy
-where `LEAKS` is our starting word:
+where we use `LEAKS` as the starting word in all six positions:
 
 <img src="/images/wordle/leaks-tree.jpg" style="max-height:30vh; width:auto;"/>
 
@@ -121,7 +121,7 @@ based solely on feedback we've received for the word so far.<!-- For example, we
 <!--guess `THIRD` in all three positions where the feedback from the first guess was five gray squares.-->
 While we show the secret words in order here, since the strategy treats each secret independently it always
 requires a total of 15 guesses to solve all the words regardless of how they're permuted. Next,
-consider a strategy with `MAJOR` as our starting word:
+consider a strategy starting with `MAJOR` in all six positions:
 
 <img src="/images/wordle/major-tree.jpg" style="max-height:30vh; width:auto;"/>
 

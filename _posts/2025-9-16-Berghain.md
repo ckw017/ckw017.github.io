@@ -22,7 +22,7 @@ The gist of the challenge is to develop strategies for a souped up version of
 > to let them in or turn them away. Your challenge is to fill the venue with as few
 > rejections as possible while meeting all minimum requirements.
 
-The challenge involves three different scenarios, each with different attributes and requirements.
+The challenge involves three different scenarios, each with constraints:
 
 ## Scenario 1
 

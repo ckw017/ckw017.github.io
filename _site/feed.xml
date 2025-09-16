@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-16T12:38:37-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Berghain bouncer challenge</title><link href="http://localhost:4000/2025/09/16/Berghain/" rel="alternate" type="text/html" title="Berghain bouncer challenge" /><published>2025-09-16T00:00:00-07:00</published><updated>2025-09-16T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/16/Berghain</id><content type="html" xml:base="http://localhost:4000/2025/09/16/Berghain/">&lt;p&gt;I fell down a bit of a rabbit hole the other day after seeing &lt;a href=&quot;https://www.reddit.com/r/sanfrancisco/comments/1n6nx67/at_this_point_it_feels_like_these_tech_startups/&quot;&gt;a post on r/sanfrancisco&lt;/a&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-16T13:23:07-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris K. W.</title><subtitle>Computer stuff and things tangentially related to computer stuff</subtitle><entry><title type="html">Berghain bouncer challenge</title><link href="http://localhost:4000/2025/09/16/Berghain/" rel="alternate" type="text/html" title="Berghain bouncer challenge" /><published>2025-09-16T00:00:00-07:00</published><updated>2025-09-16T00:00:00-07:00</updated><id>http://localhost:4000/2025/09/16/Berghain</id><content type="html" xml:base="http://localhost:4000/2025/09/16/Berghain/">&lt;p&gt;I fell down a bit of a rabbit hole the other day after seeing &lt;a href=&quot;https://www.reddit.com/r/sanfrancisco/comments/1n6nx67/at_this_point_it_feels_like_these_tech_startups/&quot;&gt;a post on r/sanfrancisco&lt;/a&gt;
 about a cryptic billboard in Nob Hill:&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -427,7 +427,7 @@ which is approximately 0.9%. In other words, you need to submit your
 strategy for Scenario 1 about 100 times before getting a sequence where it’s even possible
 to fulfill the young person requirement in 1716 people or less. We also have to take into account the well-dressed
 requirement, which is also only possible 0.9% of the time&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;. Running simulations to find the
-number of minimum number of people before they’re both satisfiable, we get the following distribution:&lt;/p&gt;
+minimum number of people before they’re both satisfiable, we get the following distribution:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/berghain/youngandwelldressed.jpg&quot; style=&quot;max-height:40vh&quot; /&gt;&lt;/p&gt;
 
@@ -2191,12 +2191,10 @@ contrived problem. (Hint: what if the 16 wine bottles were, say, ~2300 5-letter 
 &lt;p&gt;I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are
 supposed to be doing. Somewhere between the &lt;a href=&quot;https://en.wikipedia.org/wiki/Cool_S&quot;&gt;Cool S&lt;/a&gt;’s
 and &lt;a href=&quot;https://en.wikipedia.org/wiki/Penrose_triangle&quot;&gt;Penrose triangles&lt;/a&gt; I stumbled upon a neat
-way to fill up graph paper by repeatedly combining and copying squares. I suspected there was
+way to fill up graph paper by repeatedly combining and copying squares. &lt;!--more--&gt;I suspected there was
 more to the doodle but wasn’t quite sure how to analyze it. Deciding to delegate to a future version of me that
 knows more math, I put it up on the wall behind my desk where it has followed me from high
 school to college to the present day.&lt;/p&gt;
-
-&lt;!--more--&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/fractal/iter0to4.jpg&quot; alt=&quot;Static image of iterations 0 to 4&quot; /&gt;&lt;/p&gt;
 
@@ -3003,7 +3001,7 @@ same direction. As we saw earlier with &lt;script type=&quot;math/tex&quot;&gt;M
 than the fact it already corrects itself in alternating steps. I was a bit
 embarassed about this until I remembered even Donald Knuth
 &lt;a href=&quot;https://www.youtube.com/watch?v=v678Em6qyzk&quot;&gt;made a wrong turn&lt;/a&gt; when putting up a fractal on his wall.
-Err and err and err again, but less and less and less!&lt;/p&gt;</content><author><name></name></author><summary type="html">Warning: Math, Handwaving I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are supposed to be doing. Somewhere between the Cool S’s and Penrose triangles I stumbled upon a neat way to fill up graph paper by repeatedly combining and copying squares. I suspected there was more to the doodle but wasn’t quite sure how to analyze it. Deciding to delegate to a future version of me that knows more math, I put it up on the wall behind my desk where it has followed me from high school to college to the present day.</summary></entry><entry><title type="html">Unintuitive observations from teaching</title><link href="http://localhost:4000/2021/07/02/Teaching/" rel="alternate" type="text/html" title="Unintuitive observations from teaching" /><published>2021-07-02T00:00:00-07:00</published><updated>2021-07-02T00:00:00-07:00</updated><id>http://localhost:4000/2021/07/02/Teaching</id><content type="html" xml:base="http://localhost:4000/2021/07/02/Teaching/">&lt;p&gt;Welp, I zoned out for another year. Luckily I’m pretty sure no one reads this stuff, except maybe CS 186 students who want to investigate the TA who answers debugging questions at 4 AM instead of teaching a discussion section. Which brings us to today’s topic!&lt;!--more--&gt;&lt;/p&gt;
+Err and err and err again, but less and less and less!&lt;/p&gt;</content><author><name></name></author><summary type="html">Warning: Math, Handwaving I spent a lot of time doodling in middle school in lieu of whatever it is middle schoolers are supposed to be doing. Somewhere between the Cool S’s and Penrose triangles I stumbled upon a neat way to fill up graph paper by repeatedly combining and copying squares.</summary></entry><entry><title type="html">Unintuitive observations from teaching</title><link href="http://localhost:4000/2021/07/02/Teaching/" rel="alternate" type="text/html" title="Unintuitive observations from teaching" /><published>2021-07-02T00:00:00-07:00</published><updated>2021-07-02T00:00:00-07:00</updated><id>http://localhost:4000/2021/07/02/Teaching</id><content type="html" xml:base="http://localhost:4000/2021/07/02/Teaching/">&lt;p&gt;Welp, I zoned out for another year. Luckily I’m pretty sure no one reads this stuff, except maybe CS 186 students who want to investigate the TA who answers debugging questions at 4 AM instead of teaching a discussion section. Which brings us to today’s topic!&lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;teaching-and-other-paradoxes&quot;&gt;Teaching, and other paradoxes&lt;/h2&gt;
 

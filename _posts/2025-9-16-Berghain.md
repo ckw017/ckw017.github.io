@@ -349,7 +349,7 @@ which is approximately 0.9%. In other words, you need to submit your
 strategy for Scenario 1 about 100 times before getting a sequence where it's even possible
 to fulfill the young person requirement in 1716 people or less. We also have to take into account the well-dressed
 requirement, which is also only possible 0.9% of the time[^5]. Running simulations to find the
-number of minimum number of people before they're both satisfiable, we get the following distribution:
+minimum number of people before they're both satisfiable, we get the following distribution:
 
 <img src="/images/berghain/youngandwelldressed.jpg" style="max-height:40vh">
 

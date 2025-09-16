@@ -365,8 +365,8 @@ that had active connections. I'm not entirely sure if this was just a me problem
 * The networking problem was tied to IPs, not accounts. For example, switching to a different WiFi network
 on the same account seemed to fix it. I assume if the organizers were actually trying to
 ban me, they would have disabled my account or emailed me about it.
-* There was a page that showed active submissions where a consistent
-group of 20 or so people at the top of the leaderboard who were always resubmitting up to the rate limit. Whenever I
+* There was a page that showed recent submissions where you could find a
+20 or so people at the top of the leaderboard constantly resubmitting up to the rate limit. Whenever I
 encountered the network problem, I also saw progress on everyone else's submissions grind to halt.
 * [This comment](https://news.ycombinator.com/item?id=45159393) on Hackernews mentions it.
 

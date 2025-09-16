@@ -360,8 +360,8 @@ submit a lot and get lucky.
 
 Submitting a lot was a challenge in itself. To start, there was a rate limit of 10 submissions
 every 15 minutes, i.e. 960 submissions per day. This on its own was reasonable, however
-every 6 hours or so something in the networking stack seemingly blacklisted traffic from IPs
-that were currently connected. I'm not entirely sure if this was just a me problem, however from what I observed:
+every 6 hours or so something in the networking stack would seemingly ban all traffic from IPs
+that had active connections. I'm not entirely sure if this was just a me problem, however from what I observed:
 * The networking problem was tied to IPs, not accounts. For example, switching to a different WiFi network
 on the same account seemed to fix it. I assume if the organizers were actually trying to
 ban me, they would have disabled my account or emailed me about it.

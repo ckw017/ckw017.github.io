@@ -12,7 +12,7 @@ about a cryptic billboard in Nob Hill:
 <img src="/images/berghain/billboard.jpg" style="max-height: 40vh"><br>
 
 You can check the thread for the decoding method, but once solved it reveals a link to
-[a challenge](https://listenlabs.ai/puzzle) which I'll be discussing my solution for.
+[a challenge](https://listenlabs.ai/puzzle) hosted by [Listen Labs](https://listenlabs.ai/) which I'll be discussing my solution for.
 The gist of the challenge is to develop strategies for a souped up version of
 [the secretary problem](https://en.wikipedia.org/wiki/Secretary_problem):
 

@@ -177,7 +177,7 @@ people. Once we've found an acceptable person, we need to account for the expect
 we'll make after accepting that person by recursively calling into
 the cost function. For simplicity, I'm making up values for the recursive calls:
 * There's a $$17.85/50.1 \approx 35.6\%$$ chance the person will be $$W$$. The expected cost after we accept $$W$$ is <code class="highlighter-rouge nowrap">cost(9, 4, 5) = 12</code>.
-* There's a $$17.85/50.1 \approx 35.6\%$$ chance tregularlyhe person will be $$Y$$. The expected cost after we accept $$Y$$ is <code class="highlighter-rouge nowrap">cost(9, 5, 4) = 12</code>.
+* There's a $$17.85/50.1 \approx 35.6\%$$ chance the person will be $$Y$$. The expected cost after we accept $$Y$$ is <code class="highlighter-rouge nowrap">cost(9, 5, 4) = 12</code>.
 * There's a $$14.4/50.1 \approx 28.7\%$$ chance the person will be $$WY$$. The expected cost after we accept $$WY$$ is <code class="highlighter-rouge nowrap">cost(9, 4, 4) = 9</code>.
 
 We can weight these cost values by their probabilities and sum them to calculate the expected

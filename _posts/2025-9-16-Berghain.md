@@ -9,7 +9,7 @@ I fell down a bit of a rabbit hole the other day after seeing [a post on r/sanfr
 about a cryptic billboard in Nob Hill:
 
 <!--more-->
-<img src="/images/berghain/billboard.jpg" style="max-height: 40vh"><br>
+<a href="https://www.reddit.com/r/sanfrancisco/comments/1n6nx67/at_this_point_it_feels_like_these_tech_startups/"><img src="/images/berghain/billboard.jpg" style="max-height: 40vh"></a><br>
 
 You can check the thread for the decoding method, but once solved it reveals a link to
 [a challenge](https://listenlabs.ai/puzzle) hosted by [Listen Labs](https://listenlabs.ai/) which I'll be discussing my solution for.

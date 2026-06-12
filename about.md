@@ -106,15 +106,6 @@ This in particular really hits home for me:
 
 See the third quote in the "What is our purpose?" section for more on this.
 
-<a name='I-got-a-404-error.-Who-is-this-"Debug-Dog"?'></a>
-
----
-## I got a 404 error. Who is this "Debug Dog"?
-
-Debug Dog is my dog-in-law who came with me to Berkeley to study CS. In general I do my best to [explain code to line-to-line to him](https://en.wikipedia.org/wiki/Rubber_duck_debugging) during debugging sessions while he stares back at me in judgemental silence. Thanks to the power of Berkeley's recorded lectures he has approximately the same level of CS knowledge and programming maturity as me, but severely lacks in communication skills (presumably because he doesn't have a mouth).
-
-<a name="What's-Berkeley-CS-like/should-I-apply?"></a>
-
 ---
 ## What does your middle initial stand for?
 

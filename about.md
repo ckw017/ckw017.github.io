@@ -38,8 +38,6 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 <br>
 [How did you get into programming?](#How-did-you-get-into-programming?)
 <br>
-[I got a 404 error. Who is this "Debug Dog"?](#I-got-a-404-error.-Who-is-this-"Debug-Dog"?)
-<br>
 [What does your middle initial stand for?](#What-does-your-middle-initial-stand-for?)
 
 

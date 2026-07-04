@@ -250,6 +250,11 @@ scene.add(ambientLightStructs);
 const hallLen  = GRID_L * GRID;
 const totalLen = hallLen + 2 * FOYER;
 
+// All static geometry (floor, ceiling, walls, door tape) goes in this group so
+// its position.z can be updated together with the floating-origin rebase.
+const staticGroup = new THREE.Group();
+scene.add(staticGroup);
+
 // ── textures ──────────────────────────────────────────────────────────────────
 const texLoader = new THREE.TextureLoader();
 const MAX_ANISO = renderer.capabilities.getMaxAnisotropy();
@@ -323,7 +328,7 @@ const ceilLightMat = new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.
   fGeo.setAttribute('normal',   new THREE.BufferAttribute(new Float32Array(nrmA), 3));
   fGeo.setAttribute('uv',       new THREE.BufferAttribute(new Float32Array(uvsA), 2));
   fGeo.setIndex(new THREE.BufferAttribute(new Uint16Array(idxA), 1));
-  scene.add(new THREE.Mesh(fGeo, floorMat));
+  staticGroup.add(new THREE.Mesh(fGeo, floorMat));
 }
 
 // Ceiling — segmented like the floor to avoid float32 UV precision issues.
@@ -348,7 +353,7 @@ const ceilLightMat = new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.
   cGeo.setAttribute('normal',   new THREE.BufferAttribute(new Float32Array(nrmA), 3));
   cGeo.setAttribute('uv',       new THREE.BufferAttribute(new Float32Array(uvsA), 2));
   cGeo.setIndex(new THREE.BufferAttribute(new Uint16Array(idxA), 1));
-  scene.add(new THREE.Mesh(cGeo, ceilMat));
+  staticGroup.add(new THREE.Mesh(cGeo, ceilMat));
 }
 
 // Side walls — custom world-space geometry with explicit tangents.
@@ -384,14 +389,14 @@ const ceilLightMat = new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.
     geo.setIndex(new THREE.BufferAttribute(new Uint16Array(idxA), 1));
     return new THREE.Mesh(geo, wallMat);
   }
-  scene.add(makeSideWall(-WALL_X, +1));
-  scene.add(makeSideWall(+WALL_X, -1));
+  staticGroup.add(makeSideWall(-WALL_X, +1));
+  staticGroup.add(makeSideWall(+WALL_X, -1));
 }
 
 // Back wall — FOYER behind first row
 const bwMesh = new THREE.Mesh(new THREE.PlaneGeometry(WALL_X*2, CEIL_Y), backWallMat);
 bwMesh.position.set(0, CEIL_Y/2, -FOYER);
-scene.add(bwMesh);
+staticGroup.add(bwMesh);
 
 // Front wall — same PlaneGeometry as back wall, BackSide so it faces the player
 // without any rotation transform. BackSide flips the fragment normal and the
@@ -401,7 +406,7 @@ scene.add(bwMesh);
   fwMat.side = THREE.BackSide;
   const fwMesh = new THREE.Mesh(new THREE.PlaneGeometry(WALL_X * 2, CEIL_Y), fwMat);
   fwMesh.position.set(0, CEIL_Y / 2, hallLen + FOYER);
-  scene.add(fwMesh);
+  staticGroup.add(fwMesh);
 }
 
 // Blue masking tape door outlines — shared constants
@@ -425,14 +430,14 @@ function addDoorTape(wallZ, facingPos) {
   function vBox(cx, cy, h) {
     const m = new THREE.Mesh(new THREE.BoxGeometry(TAPE_W, h, TAPE_T), tapeMat);
     m.position.set(cx, cy, vZ);
-    scene.add(m);
+    staticGroup.add(m);
   }
   vBox(-DOOR_HALF, midY + (lT - lB) / 2, doorH + lB + lT);
   vBox( DOOR_HALF, midY + (rT - rB) / 2, doorH + rB + rT);
 
   const hm = new THREE.Mesh(new THREE.BoxGeometry(DOOR_W + TAPE_W + hL + hR, TAPE_W, TAPE_T), tapeMat);
   hm.position.set((hR - hL) / 2, DOOR_Y1, tapeZ);
-  scene.add(hm);
+  staticGroup.add(hm);
 }
 
 addDoorTape(-FOYER,           +1);   // back wall  — tape faces into hallway
@@ -482,7 +487,7 @@ function getCachedGeo(rv) {
 }
 
 // Merge per-structure geometries (with transforms baked in) into one draw call per chunk
-function buildMergedGeo(rvArr, xArr, zArr, syArr) {
+function buildMergedGeo(rvArr, xArr, zArr, syArr, chunkOriginZ) {
   // Pre-compute total size to avoid intermediate per-structure arrays
   let total = 0;
   for (const rv of rvArr) total += getCachedGeo(rv).pos.length;
@@ -491,7 +496,7 @@ function buildMergedGeo(rvArr, xArr, zArr, syArr) {
   let off = 0;
   for (let i = 0; i < rvArr.length; i++) {
     const { pos, nrm } = getCachedGeo(rvArr[i]);
-    const wx = xArr[i], wy = syArr[i], wz = zArr[i];
+    const wx = xArr[i], wy = syArr[i], wz = zArr[i] - chunkOriginZ; // chunk-local Z
     const nc = pos.length;
     for (let j = 0; j < nc; j += 3) {
       tv.set(pos[j], pos[j+1], pos[j+2]).applyQuaternion(INST_QUAT).multiplyScalar(STRUCT_SCALE);
@@ -538,13 +543,15 @@ const _pedBase = {
   roughness: 1, metalness: 0,
 };
 const pedMat = new THREE.MeshStandardMaterial({ ..._pedBase, color: 0x777777 });
+pedMat.emissive.set(0xffffff);
+pedMat.emissiveIntensity = 0.05;
 
 const stripMat = new THREE.MeshBasicMaterial({ color: 0xDDDDDD, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 });
 const STRIP_W  = 0.04;
 const STRIP_Y  = RAISE + 0.01;  // just above pedestal top
 const HW       = SLAB_W / 2;     // half-width of slab
 
-function makeStrips(rowStart, rowEnd) {
+function makeStrips(rowStart, rowEnd, chunkOriginZ) {
   const verts = [];
   // helper: push a flat quad (2 triangles, normal up) at y=STRIP_Y
   function quad(x0, z0, x1, z1) {
@@ -552,15 +559,12 @@ function makeStrips(rowStart, rowEnd) {
     verts.push(x0,STRIP_Y,z0, x1,STRIP_Y,z1, x0,STRIP_Y,z1);
   }
 
-  const zChunkStart = rowStart * GRID - GRID / 2;
-  const zChunkEnd   = (rowEnd - 1) * GRID + GRID / 2;
-
   // Column dividers: 9 strips between the 10 columns, segmented per row to avoid depth precision issues
   for (let i = 1; i < GRID_W; i++) {
     const x = (i - GRID_W / 2) * GRID;
     for (let r = rowStart; r < rowEnd; r++) {
-      const z0 = r * GRID - GRID / 2;
-      const z1 = r * GRID + GRID / 2;
+      const z0 = r * GRID - GRID / 2 - chunkOriginZ; // chunk-local Z
+      const z1 = r * GRID + GRID / 2 - chunkOriginZ;
       quad(x - STRIP_W/2, z0, x + STRIP_W/2, z1);
     }
   }
@@ -568,7 +572,7 @@ function makeStrips(rowStart, rowEnd) {
   // Row dividers: strip between each adjacent pair of rows (skip outer edges of whole grid)
   for (let r = rowStart; r < rowEnd; r++) {
     if (r === GRID_L - 1) continue;           // skip after last row
-    const z = r * GRID + GRID / 2;
+    const z = r * GRID + GRID / 2 - chunkOriginZ; // chunk-local Z
     quad(-HW, z - STRIP_W/2, HW, z + STRIP_W/2);
   }
 
@@ -577,7 +581,7 @@ function makeStrips(rowStart, rowEnd) {
   return geo;
 }
 
-function makeLightPanels(ci) {
+function makeLightPanels(ci, chunkOriginZ) {
   const zStart = ci * CHUNK_ROWS * GRID;
   const zEnd   = Math.min((ci + 1) * CHUNK_ROWS * GRID, hallLen);
   const kMin = Math.ceil((zStart + FOYER) / CEIL_TILE);
@@ -585,7 +589,7 @@ function makeLightPanels(ci) {
   const verts = [];
   for (let k = kMin; k <= kMax; k++) {
     if (k % LIGHT_PERIOD !== (LIGHT_PERIOD - 3) % LIGHT_PERIOD) continue;
-    const z0 = -FOYER + k * CEIL_TILE + LIGHT_INSET;
+    const z0 = -FOYER + k * CEIL_TILE + LIGHT_INSET - chunkOriginZ; // chunk-local Z
     const z1 = z0 + LIGHT_LEN - LIGHT_INSET * 2;
     verts.push(LIGHT_X0, LIGHT_Y, z0,  LIGHT_X1, LIGHT_Y, z0,  LIGHT_X1, LIGHT_Y, z1);
     verts.push(LIGHT_X0, LIGHT_Y, z0,  LIGHT_X1, LIGHT_Y, z1,  LIGHT_X0, LIGHT_Y, z1);
@@ -632,8 +636,11 @@ function spawnChunk(ci) {
     }
   }
 
-  const structs = new THREE.Mesh(buildMergedGeo(rvArr, xArr, zArr, syArr), structMat);
+  const chunkOriginZ = ci * CHUNK_ROWS * GRID; // chunk base Z; vertices are stored relative to this
+
+  const structs = new THREE.Mesh(buildMergedGeo(rvArr, xArr, zArr, syArr, chunkOriginZ), structMat);
   structs.frustumCulled = false; // merged geo has no bounding box; camera is always inside the chunk anyway
+  structs.position.z = chunkOriginZ - worldOriginZ;
 
   const zStart  = rowStart * GRID - GRID / 2;
   const zEnd    = (rowEnd - 1) * GRID + GRID / 2;
@@ -641,14 +648,15 @@ function spawnChunk(ci) {
   const zMid = zStart + slabLen / 2;
 
   const slab = new THREE.Mesh(new THREE.BoxGeometry(SLAB_W, RAISE, slabLen), pedMat);
-  slab.position.set(0, RAISE / 2, zMid);
+  slab.position.set(0, RAISE / 2, zMid - worldOriginZ);
 
-  const strips = new THREE.Mesh(makeStrips(rowStart, rowEnd), stripMat);
-  const lights = makeLightPanels(ci);
+  const strips = new THREE.Mesh(makeStrips(rowStart, rowEnd, chunkOriginZ), stripMat);
+  strips.position.z = chunkOriginZ - worldOriginZ;
+  const lights = makeLightPanels(ci, chunkOriginZ);
   scene.add(structs);
   scene.add(slab);
   scene.add(strips);
-  if (lights) { scene.add(lights); }
+  if (lights) { lights.position.z = chunkOriginZ - worldOriginZ; scene.add(lights); }
 
   // Track which unique rv values this chunk uses so we can evict them when killed
   const rvSet = new Set(rvArr);
@@ -685,7 +693,7 @@ function chunkDist(a, b) {
 }
 
 function syncChunks(camZ) {
-  const cc = Math.floor(camZ / (CHUNK_ROWS * GRID));
+  const cc = Math.max(0, Math.floor(camZ / (CHUNK_ROWS * GRID)));
   for (let i = cc - STRUCT_RADIUS; i <= cc + STRUCT_RADIUS; i++) {
     const ci = ((i % TOTAL_CHUNKS) + TOTAL_CHUNKS) % TOTAL_CHUNKS;
     if (!liveChunks.has(ci)) spawnQueue.add(ci);
@@ -700,7 +708,7 @@ function syncChunks(camZ) {
 
 function flushSpawnQueue(camZ) {
   if (!spawnQueue.size) return;
-  const cc = Math.floor(camZ / (CHUNK_ROWS * GRID));
+  const cc = Math.max(0, Math.floor(camZ / (CHUNK_ROWS * GRID)));
   let bestCi = null, bestDist = Infinity;
   for (const ci of spawnQueue) {
     const d = chunkDist(ci, cc);
@@ -842,7 +850,7 @@ document.addEventListener('keydown', e => {
     camera.far = (STRUCT_RADIUS + 2) * CHUNK_ROWS * GRID + 500;
     camera.updateProjectionMatrix();
     resizeCeilLights(Math.ceil((STRUCT_RADIUS + 2) * CHUNK_ROWS * GRID / PANEL_PERIOD) + 2);
-    syncChunks(camera.position.z);
+    syncChunks(worldZ());
     return;
   }
   if (e.code === 'KeyL') {
@@ -851,7 +859,7 @@ document.addEventListener('keydown', e => {
     camera.far = (STRUCT_RADIUS + 2) * CHUNK_ROWS * GRID + 500;
     camera.updateProjectionMatrix();
     resizeCeilLights(Math.ceil((STRUCT_RADIUS + 2) * CHUNK_ROWS * GRID / PANEL_PERIOD) + 2);
-    syncChunks(camera.position.z);
+    syncChunks(worldZ());
     return;
   }
   if (e.code === 'KeyO') { EYE_H = Math.max(1, EYE_H - 0.1); return; }
@@ -885,6 +893,10 @@ function groundAt(x, z) {
   return 0;
 }
 
+// ── floating origin ───────────────────────────────────────────────────────────
+let worldOriginZ = 0;
+const worldZ = () => camera.position.z + worldOriginZ;
+
 // ── render loop ───────────────────────────────────────────────────────────────
 const clock = new THREE.Clock();
 const info  = document.getElementById('info');
@@ -910,14 +922,13 @@ info.style.display = 'none';
     const feet = camera.position.y - EYE_H;
     if (feet < RAISE) {
       const overPed = Math.abs(camera.position.x) <= SLAB_W / 2 &&
-                      camera.position.z >= -GRID / 2 &&
-                      camera.position.z < hallLen;
+                      worldZ() >= -GRID / 2 &&
+                      worldZ() < hallLen;
       if (overPed) {
         camera.position.x = prevX;
-        // If still inside after restoring X (approaching from Z end), restore Z too
         if (Math.abs(camera.position.x) <= SLAB_W / 2 &&
-            camera.position.z >= -GRID / 2 &&
-            camera.position.z < hallLen) {
+            worldZ() >= -GRID / 2 &&
+            worldZ() < hallLen) {
           camera.position.z = prevZ;
         }
       }
@@ -928,7 +939,7 @@ info.style.display = 'none';
     velY -= GRAVITY * dt;
     camera.position.y += velY * dt;
 
-    const ground = groundAt(camera.position.x, camera.position.z);
+    const ground = groundAt(camera.position.x, worldZ());
     if (camera.position.y <= ground + EYE_H) {
       camera.position.y = ground + EYE_H;
       velY = 0;
@@ -939,43 +950,63 @@ info.style.display = 'none';
 
     camera.position.x = Math.max(-WALL_X + 0.3, Math.min(WALL_X - 0.3, camera.position.x));
 
-    // Wall collision — keep player 2 units from end walls outside the door opening
+    // Wall collision — keep player 0.2 units from end walls outside the door opening
     if (Math.abs(camera.position.x) > DOOR_HALF) {
-      camera.position.z = Math.max(-FOYER + 0.2, Math.min(hallLen + FOYER - 0.2, camera.position.z));
+      const wz = worldZ();
+      const clamped = Math.max(-FOYER + 0.2, Math.min(hallLen + FOYER - 0.2, wz));
+      camera.position.z += clamped - wz;
     }
 
     // Door teleports — both ends loop through the hallway
-    if (camera.position.z < -FOYER) {
+    const wz = worldZ();
+    if (wz < -FOYER) {
       if (Math.abs(camera.position.x) <= DOOR_HALF) {
         camera.position.z += totalLen;
       } else {
-        camera.position.z = -FOYER + 0.3;
+        camera.position.z = -FOYER + 0.3 - worldOriginZ;
       }
-    } else if (camera.position.z > hallLen + FOYER) {
+    } else if (wz > hallLen + FOYER) {
       if (Math.abs(camera.position.x) <= DOOR_HALF) {
         camera.position.z -= totalLen;
       } else {
-        camera.position.z = hallLen + FOYER - 0.3;
+        camera.position.z = hallLen + FOYER - 0.3 - worldOriginZ;
+      }
+    }
+  }
+
+  // Rebase world origin to camera's current chunk boundary
+  {
+    const targetOrigin = Math.max(0, Math.floor(worldZ() / (CHUNK_ROWS * GRID)) * CHUNK_ROWS * GRID);
+    if (targetOrigin !== worldOriginZ) {
+      const delta = targetOrigin - worldOriginZ;
+      worldOriginZ = targetOrigin;
+      camera.position.z -= delta;
+      staticGroup.position.z = -worldOriginZ;
+      for (const chunk of liveChunks.values()) {
+        chunk.structs.position.z -= delta;
+        chunk.slab.position.z    -= delta;
+        chunk.strips.position.z  -= delta;
+        if (chunk.lights) chunk.lights.position.z -= delta;
       }
     }
   }
 
   {
-    const n0 = Math.round((camera.position.z - PANEL_Z0) / PANEL_PERIOD);
+    const n0 = Math.round((worldZ() - PANEL_Z0) / PANEL_PERIOD);
     const half = (ceilPLights.length - 1) / 2;
     for (let i = 0; i < ceilPLights.length; i++) {
       const panelZ = PANEL_Z0 + (n0 - half + i) * PANEL_PERIOD;
       if (panelZ < PANEL_Z0) { ceilPLights[i].intensity = 0; continue; }
       ceilPLights[i].intensity = ceilLightIntensity;
-      ceilPLights[i].position.set(0, CEIL_Y - 0.5, panelZ);
+      ceilPLights[i].position.set(0, CEIL_Y - 0.5, panelZ - worldOriginZ);
     }
   }
 
-  syncChunks(camera.position.z);
-  flushSpawnQueue(camera.position.z);
+  syncChunks(worldZ());
+  flushSpawnQueue(worldZ());
 
   if (showInfo) {
-    const row = Math.min(GRID_L, Math.max(0, Math.floor(camera.position.z / GRID)));
+    const row = Math.min(GRID_L, Math.max(0, Math.floor(worldZ() / GRID)));
     info.textContent = `row ${row.toLocaleString()} / ${GRID_L.toLocaleString()}  ·  chunks loaded: ${liveChunks.size}  ·  radius: ${STRUCT_RADIUS}`;
   }
 
@@ -990,11 +1021,11 @@ info.style.display = 'none';
     ctx2d.textAlign = 'center';
     ctx2d.textBaseline = 'bottom';
     const v = new THREE.Vector3();
-    const camZ = camera.position.z;
+    const camWorldZ = worldZ();
     for (const chunk of liveChunks.values()) {
       for (const item of chunk.items) {
-        if (Math.abs(item.z - camZ) > 10) continue;
-        v.set(item.x, item.sy + STRUCT_SCALE * 1.2, item.z).project(camera);
+        if (Math.abs(item.z - camWorldZ) > 10) continue;
+        v.set(item.x, item.sy + STRUCT_SCALE * 1.2, item.z - worldOriginZ).project(camera);
         if (v.z >= 1) continue; // behind camera
         const sx = (v.x * 0.5 + 0.5) * W;
         const sy = (-v.y * 0.5 + 0.5) * H;

@@ -48,7 +48,7 @@ The cube is a member of a group of shapes known as the [Platonic Solids](https:/
 a group of "regular" polyhedra where every edge is the same length, every face is the same
 regular polygon, and every vertex has the same number of faces meeting.
 Logically, in order to flex on Sol LeWitt's *Incomplete Open Cubes* we'd want to replace the cubes with a more
-complicated Platonic Solid, eitf after wher a dodecahedron, icosahedron, or teapotahedron. I went
+complicated Platonic Solid, either a dodecahedron, icosahedron, or teapotahedron. I went
 with the dodecahedron since it seemed natural to progress
 from 4-sided faces to 5-sided faces.
 
@@ -57,15 +57,15 @@ from 4-sided faces to 5-sided faces.
 </center>
 
 Sol LeWitt originally planned his installation by hand in a notebook, manually drawing out different combinations
-of edges and verifying that they meet all the conditions. Since cubes have 12 edges and each edge is either
-present or not, there are a total of 2^12 = 4096 possible combinations of cube edges that
+of edges and verifying they meet all the conditions. Since cubes have 12 edges and each edge is either
+present or not, there are a total of 2^12 = 4096 possible combinations of cube edges which
 potentially needed to be checked for *Incomplete Open Cubes*. If we swap cubes for dodecahedra,
-we'll need account for 30 edges, i.e. 2^30 ≈ 1 billion total combinations.
+we'll need to account for 30 edges, i.e. 2^30 ≈ 1 billion total combinations.
 Exploring these by hand would be orders of magnitude more tedious, so we'll need to find a way to automate the process somehow.
 
 # 30 bits ought to be enough for anybody
 
-If we want to write a program to search for valid structures a natural way to represent
+If we want to write a program to search for valid structures, a natural way to represent
 each set of edges is as a 30-bit integer. By numbering each of the edges in a dodecahedron,
 we can set the corresponding bit to 1 if the edge is present in the structure or 0 otherwise. The following
 animation shows us starting from an empty structure and adding each edge one by one in order, with a
@@ -78,7 +78,7 @@ are numbered from 0 (least significant) to 29 (most significant):
 </video>
 </center>
 
-You might notice that this particular choice of numbering seems to spiral around
+You might notice this particular choice of numbering seems to spiral around
 the dodecahedron in groups of 5, e.g. the first five edges go in counterclockwise order around
 the bottom-most face. This grouping turns out to be useful for computing rotations.
 Consider the following bit manipulation operations:
@@ -95,7 +95,7 @@ fn rot1(structure: u32) -> u32 {
 
 The first bit mask selects 4 bits from each group of 5 which we shift 1 bit to the right.
 The second bit mask selects the remaining bit from each group and shifts them 4 bits to the left.
-This effectively cycles each group of 5 bits in a way that resembles rotation. The following
+This effectively cycles each group of 5 bits in a way which resembles rotation. The following
 animation visualizes the bit shifts on an arbitrary structure:
 
 <center>
@@ -161,7 +161,7 @@ all 60 structures with the canonical representation of 63:
 
 Now that we have a method to deduplicate structures we can start looking at other conditions.
 The next major condition states every edge needs to be connected,
-i.e. there shouldn't be any groups of edges that "float" disconnected from the
+i.e. there shouldn't be any groups of edges which "float" disconnected from the
 rest of each structure. One way to check this would be to use a data structure
 like a [merge-find set](https://en.wikipedia.org/wiki/Disjoint-set_data_structure). In
 practice this can be a bit slow, and would require us to check hundreds of millions of invalid structures.
@@ -188,7 +188,7 @@ their binary representations:
 
 
 We can use these pairs to identify new edges to append to existing structures.
-Bitwise `&` gives us the "intersection" of two structures, i.e. any edges that are
+Bitwise `&` gives us the "intersection" of two structures, i.e. any edges which are
 in both structures. When `&`'ing an arbitrary structure against our "pair" structures, there
 are three possible outcomes:
 * Neither of the edges of the pair are in the arbitrary structure. This results in the empty structure represented by 0.
@@ -218,7 +218,7 @@ the set of canonical forms of all connected structures with N+1 edges by doing t
     * Add the canonical form of the `|` structure to the set of N+1 edge structures.
 * Continue until you construct the "complete" dodecahedron where all 30 edges are present.
 
-The following diagram shows steps used to obtain build canonical forms of all connected
+The following diagram shows the steps used to build the canonical forms of all connected
 structures up to 5 edges via this approach:
 
 <center><img src="/images/dodecahedra/layers.jpg" style="max-height:75vh">
@@ -251,13 +251,13 @@ need 2.4 million square feet, or about 42 football fields of space. This is slig
 to fit in my studio apartment, so we'll need to resort to a digital version instead. The following
 came to me in a fever dream after watching a certain movie:
 
-<center><img src="/images/dodecahedra/backrooms.jpg" style="max-height:60vh"><br>
-<i>Click <a href="/dodecahedra/hallway.html" target="_blank">here</a> for an interactive explorer.</i>
+<center><a href="/dodecahedra/hallway.html" target="_blank"><img src="/images/dodecahedra/backrooms.jpg" style="max-height:60vh"></a><br>
+<i>Click <a href="/dodecahedra/hallway.html" target="_blank">here</a> to explore for yourself!</i>
 </center>
 
 Coming back around to the original motivation for this project, the question arises of whether
 or not ripping off Sol LeWitt and the backrooms simultaneously should count as art. At the end of the day,
-whether or not something is art is not is a purely subjective matter, and personally I think there's
+whether or not something qualifies as art is a purely subjective matter, and personally I think there's
 something beautiful and thought-provoking about the emergent structure of the incomplete
 open dodecahedra which gives it artistic merit. And, as a reminder, I have a Bachelor of
 $${\color{#dd2222}\mathcal{A}}{\color{#dd8800}\mathfrak{r}}{\color{#00aa00}\mathfrak{t}}{\color{#0000ff}\mathfrak{s}}$$
@@ -266,7 +266,7 @@ so my subjective opinion on this matter should be taken as an objective fact. Th
 
 <center>
 <img src="">
-<i>3D print of one of my favorite structures, you can interact it
+<i>3D print of one of my favorite structures, you can interact with it or modify it
 <a href="/dodecahedra/viewer.html?value=532411899&outline=0" target="_blank">here</a>.<br> For fun,
 try to figuring what kind of symmetry it has!
 </i>

@@ -266,7 +266,7 @@ my subjective opinion on this matter is basically an objective fact. Thanks for 
 
 <center>
 <img src="">
-<i>3D print of one of my favorite structures, you can interact with it or modify it
+<i>3D print of one of my favorite structures, you can interact with it and other structures
 <a href="/dodecahedra/viewer.html?value=989814703&outline=0" target="_blank">here</a>.<br> For fun,
 try to figuring what kind of symmetry it has!
 </i>

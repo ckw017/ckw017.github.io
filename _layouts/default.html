@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({ TeX: { extensions: ["color.js"] } });
+    </script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <meta name="google-site-verification" content="vPLfvmVSeTNblZy_aIhUxvvqd1CAI52lBSX2BhHMCww" />
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
@@ -11,7 +14,7 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
@@ -32,9 +35,9 @@
 
           <nav>
             <a href="{{ site.baseurl }}/">Home</a>
-            <a href="{{ site.baseurl }}/art">Doodles</a>
+            <a href="{{ site.baseurl }}/art">Art</a>
             <!-- <a href="{{ site.resumeurl }}" target="_blank" rel="noopener noreferrer"> Résumé</a> -->
-            <a href="{{ site.baseurl }}/portfolio">Stuff</a>
+            <!-- <a href="{{ site.baseurl }}/portfolio">Stuff</a> -->
             <a href="{{ site.baseurl }}/about">About</a>
           </nav>
         </header>

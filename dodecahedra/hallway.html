@@ -6,7 +6,7 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #000; overflow: hidden; }
-#c { display: block; width: 100vw; height: 100vh; }
+#c { display: block; width: 100vw; height: 100vh; touch-action: none; }
 #overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,.8);
   display: flex; align-items: center; justify-content: center;
@@ -89,7 +89,7 @@ const FOG_COLOR   = 0xA39D7B;
 const CHUNK_ROWS   = 50;
 const TOTAL_CHUNKS = Math.ceil(GRID_L / CHUNK_ROWS);
 const BASE_STRUCT_RADIUS = Math.ceil(150 / (CHUNK_ROWS * GRID)) + 3;
-let STRUCT_RADIUS = BASE_STRUCT_RADIUS;
+let STRUCT_RADIUS = IS_MOBILE ? 1 : BASE_STRUCT_RADIUS;
 
 const FOG_DENSITY = 0.004;
 
@@ -230,7 +230,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(FOG_COLOR);
-scene.fog = new THREE.FogExp2(FOG_COLOR, FOG_DENSITY);
+scene.fog = new THREE.FogExp2(FOG_COLOR, FOG_DENSITY * BASE_STRUCT_RADIUS / STRUCT_RADIUS);
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, (STRUCT_RADIUS + 2) * CHUNK_ROWS * GRID + 500);
 camera.position.set(0, 5.417, -1);  // foot of pedestal, facing hallway
@@ -776,7 +776,7 @@ if (IS_MOBILE) {
     }
   }, { passive: false });
 
-  canvas.addEventListener('touchend', e => {
+  const releaseTouch = e => {
     for (const t of e.changedTouches) {
       if (t.identifier === joy.id) {
         joy.active = false; joy.dx = 0; joy.dy = 0;
@@ -785,7 +785,9 @@ if (IS_MOBILE) {
         look.active = false;
       }
     }
-  });
+  };
+  canvas.addEventListener('touchend', releaseTouch);
+  canvas.addEventListener('touchcancel', releaseTouch);
 } else {
   overlay.addEventListener('click', () => canvas.requestPointerLock());
   document.addEventListener('pointerlockchange', () => {

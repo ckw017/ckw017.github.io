@@ -259,9 +259,9 @@ Coming back around to the original motivation for this project, the question ari
 or not ripping off Sol LeWitt and the backrooms simultaneously should count as art. At the end of the day,
 whether or not something qualifies as art is a purely subjective matter, and personally I think there's
 something beautiful and thought-provoking about the emergent structure of the incomplete
-open dodecahedra which gives it artistic merit. And, as a reminder, I have a Bachelor of
-$${\color{#dd2222}\mathcal{A}}{\color{#dd8800}\mathfrak{r}}{\color{#00aa00}\mathfrak{t}}{\color{#0000ff}\mathfrak{s}}$$
-so my subjective opinion on this matter should be taken as an objective fact. Thanks for reading!
+open dodecahedra which gives it artistic merit. And, as the recipient of a Bachelor of
+$${\color{#dd2222}\mathcal{A}}{\color{#dd8800}\mathfrak{r}}{\color{#00aa00}\mathfrak{t}}{\color{#0000ff}\mathfrak{s}}$$,
+my subjective opinion on this matter is basically an objective fact. Thanks for reading!
 
 
 <center>

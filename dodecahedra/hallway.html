@@ -779,10 +779,10 @@ if (IS_MOBILE) {
   const releaseTouch = e => {
     for (const t of e.changedTouches) {
       if (t.identifier === joy.id) {
-        joy.active = false; joy.dx = 0; joy.dy = 0;
+        joy.active = false; joy.id = -1; joy.dx = 0; joy.dy = 0;
         joyBase.style.display = 'none';
       } else if (t.identifier === look.id) {
-        look.active = false;
+        look.active = false; look.id = -1;
       }
     }
   };

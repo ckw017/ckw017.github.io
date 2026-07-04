@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Incomplete Open Dodecahedra</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; overflow: hidden; }
+#c { display: block; width: 100vw; height: 100vh; }
+#overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.8);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 14px;
+  color: #bbb; font-family: monospace; font-size: 18px; cursor: pointer;
+}
+#overlay small { font-size: 12px; color: #555; }
+#info {
+  position: fixed; bottom: 8px; left: 8px;
+  color: #333; font-family: monospace; font-size: 11px; pointer-events: none;
+}
+#credits {
+  margin-top: 24px; border-top: 1px solid #333; padding-top: 16px;
+  text-align: center; line-height: 1.8;
+}
+#credits p { margin: 0; color: #666; font-size: 12px; }
+#credits a { color: #888; }
+#credits em { font-style: italic; }
+#joy-base {
+  display: none; position: fixed; z-index: 10; pointer-events: none;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.22);
+  transform: translate(-50%, -50%);
+}
+#joy-knob {
+  position: absolute; top: 50%; left: 50%;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(255,255,255,0.28);
+  transform: translate(-50%, -50%);
+}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="overlay">
+  <div>Click to enter</div>
+  <small>WASD · mouse look · Shift = jog · Space = jump · N = show numbers · K = decrease render distance · L = increase render distance</small>
+  <div id="credits">
+    <p>Inspired by Sol LeWitt's <em>Incomplete Open Cubes</em></p>
+    <p>Textures by methodical pixel · <a href="https://opengameart.org/content/backrooms-pbr-texture-pack" target="_blank">opengameart.org</a></p>
+    <p>Kane Parsons is 20 years old</p>
+  </div>
+</div>
+<div id="joy-base"><div id="joy-knob"></div></div>
+<div id="info"></div>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
+
+// ── grid / hallway constants ───────────────────────────────────────────────────
+const GRID     = 1;         // scene units per grid unit (1 ft center-to-center)
+const GRID_W   = 10;        // columns of structures
+
+// Number of 32-bit integers per file: structures/3.bin … structures/30.bin
+const BIN_COUNTS = [
+     3,    5,   18,   43,   119,   300,    818,   2083,   5357,  13078,
+ 30674, 66723, 133347, 236182, 360834, 455307, 452799, 338011, 193929,
+ 88217, 32545,  9834,  2408,   482,    78,     11,      1,
+]; // 3.bin … 29.bin
+let _totalRows = 0;
+for (const n of BIN_COUNTS) _totalRows += Math.ceil(n / GRID_W);
+const GRID_L = _totalRows; // ≈ 242 333
+const RAISE    = 1;          // pedestal height in ft
+const WALL_GAP = 8 * GRID;  // gap from grid edge to wall
+const HALF_W   = (GRID_W - 1) / 2 * GRID;   // 18  — centre of grid = x=0
+const WALL_X   = HALF_W + WALL_GAP;          // 34
+const CEIL_Y   = 12;
+const FOYER    = 8 * GRID;      // gap between back wall and first row
+
+// fog / culling
+const IS_MOBILE = navigator.userAgentData?.mobile ??
+                  window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+const FOG_COLOR   = 0xA39D7B;
+
+// chunking
+const CHUNK_ROWS   = 50;
+const TOTAL_CHUNKS = Math.ceil(GRID_L / CHUNK_ROWS);
+const BASE_STRUCT_RADIUS = Math.ceil(150 / (CHUNK_ROWS * GRID)) + 3;
+let STRUCT_RADIUS = BASE_STRUCT_RADIUS;
+
+const FOG_DENSITY = 0.004;
+
+// For each absolute row, which BIN_COUNTS index (fi) and which row within that file
+const rowFileIdx   = new Uint8Array(GRID_L);
+const rowInFileArr = new Uint32Array(GRID_L);
+{
+  let r = 0;
+  for (let fi = 0; fi < BIN_COUNTS.length; fi++) {
+    const numRows = Math.ceil(BIN_COUNTS[fi] / GRID_W);
+    for (let j = 0; j < numRows; j++, r++) {
+      rowFileIdx[r]   = fi;
+      rowInFileArr[r] = j;
+    }
+  }
+}
+
+// ── dodecahedron mesh (ported from viewer.html) ───────────────────────────────
+const PHI = (1 + Math.sqrt(5)) / 2;
+const DODECA_TO_ICOSA = [12,3,17,7,18,13,11,19,6,2,10,1,5,16,14,0,9,15,4,8];
+const DODECA_EDGES = [
+  [0,1],[1,2],[2,3],[3,4],[4,0],[1,5],[2,6],[3,7],[4,8],[0,9],
+  [9,10],[5,11],[6,12],[7,13],[8,14],[5,10],[6,11],[7,12],[8,13],[9,14],
+  [10,15],[11,16],[12,17],[13,18],[14,19],[15,16],[16,17],[17,18],[18,19],[19,15],
+];
+const add3  = (a,b) => [a[0]+b[0], a[1]+b[1], a[2]+b[2]];
+const sc3   = (s,a) => [s*a[0], s*a[1], s*a[2]];
+const sub3  = (a,b) => [a[0]-b[0], a[1]-b[1], a[2]-b[2]];
+const zu2yu = ([x,y,z]) => [x, z, -y];
+
+function dodecaVerts() {
+  const a = 1/PHI, raw = [];
+  for (const sx of [1,-1]) for (const sy of [1,-1]) for (const sz of [1,-1]) raw.push([sx,sy,sz]);
+  for (const s1 of [1,-1]) for (const s2 of [1,-1]) {
+    raw.push([0,s1*a,s2*PHI]); raw.push([s1*a,s2*PHI,0]); raw.push([s1*PHI,0,s2*a]);
+  }
+  const seen = new Set(), u = [];
+  for (const v of raw) { const k = v.map(x => Math.round(x*1e6)).join(','); if (!seen.has(k)) { seen.add(k); u.push(v); } }
+  const adj = Math.PI/2 - 0.5535743577093402;
+  return u.map(([x,y,z]) => { const m = Math.sqrt(y*y+z*z), t = adj+Math.atan2(z,y); return [x, m*Math.cos(t), m*Math.sin(t)]; });
+}
+const dodecaFaces = () => [[0,8,4,15,9],[8,0,10,2,14],[4,8,14,6,16],[15,4,16,19,5],[9,15,5,11,1],[0,9,1,13,10],[14,2,12,18,6],[16,6,18,7,19],[5,19,7,17,11],[1,11,17,3,13],[10,13,3,12,2],[7,18,12,3,17]];
+function dodecaEdges() {
+  const s = new Set();
+  for (const f of dodecaFaces()) for (let i = 0; i < 5; i++) { const a=f[i], b=f[(i+1)%5]; s.add(`${Math.min(a,b)}_${Math.max(a,b)}`); }
+  return [...s].map(k => k.split('_').map(Number));
+}
+
+function buildMesh(rv) {
+  const verts = dodecaVerts(), faces = dodecaFaces(), edges = dodecaEdges();
+  const offsets = Array.from({length:20}, () => []);
+  const inners = {}, doubles = Array.from({length:20}, ()=>({})), triples = Array.from({length:20}, ()=>({}));
+  for (const [a,b] of edges) {
+    const i1=add3(sc3(0.8,verts[a]),sc3(0.2,verts[b])), i2=add3(sc3(0.2,verts[a]),sc3(0.8,verts[b]));
+    offsets[a].push([b,sub3(i1,verts[a])]); offsets[b].push([a,sub3(i2,verts[b])]);
+    doubles[a][b]=verts.length; verts.push(i1); doubles[b][a]=verts.length; verts.push(i2);
+  }
+  for (let v = 0; v < 20; v++) {
+    const offs=offsets[v], vert=verts[v], [n0,off0]=offs[0], [n1,off1]=offs[1], [n2,off2]=offs[2];
+    inners[v]=verts.length;
+    const t01=verts.length+1, t12=verts.length+2, t02=verts.length+3;
+    triples[v][`${n0}_${n1}`]=t01; triples[v][`${n1}_${n0}`]=t01;
+    triples[v][`${n1}_${n2}`]=t12; triples[v][`${n2}_${n1}`]=t12;
+    triples[v][`${n0}_${n2}`]=t02; triples[v][`${n2}_${n0}`]=t02;
+    verts.push(add3(vert,add3(off0,add3(off1,off2))));
+    verts.push(add3(vert,add3(off0,off1)));
+    verts.push(add3(vert,add3(off1,off2)));
+    verts.push(add3(vert,add3(off0,off2)));
+  }
+  const disabled = [];
+  for (let bit = 0; bit < 30; bit++) if (!(rv & (1<<bit))) {
+    const [du,dv]=DODECA_EDGES[bit], iu=DODECA_TO_ICOSA[du], iv=DODECA_TO_ICOSA[dv];
+    disabled.push([Math.min(iu,iv),Math.max(iu,iv)]);
+  }
+  const disSet = new Set(disabled.map(([a,b])=>`${a}_${b}`));
+  const touched = new Set();
+  for (const [a,b] of edges) if (!disSet.has(`${a}_${b}`)) { touched.add(a); touched.add(b); }
+  const fList = [];
+  for (const [oa,ob] of edges) {
+    if (disSet.has(`${oa}_${ob}`)) continue;
+    let a=oa, b=ob;
+    for (const face of faces) {
+      if (!face.includes(a)||!face.includes(b)) continue;
+      let ia=face.indexOf(a), ib=face.indexOf(b);
+      if (ib!==(ia+1)%5) { [ia,ib]=[ib,ia]; [a,b]=[b,a]; }
+      const c=face[(ia-1+5)%5], d=face[(ib+1)%5];
+      fList.push([doubles[a][b], triples[a][`${b}_${c}`], triples[b][`${a}_${d}`], doubles[b][a]]);
+      fList.push([triples[a][`${b}_${c}`], inners[a], inners[b], triples[b][`${a}_${d}`]]);
+    }
+  }
+  for (let v = 0; v < 20; v++) {
+    if (!touched.has(v)) continue;
+    for (const face of faces) {
+      if (!face.includes(v)) continue;
+      const vi=face.indexOf(v), prev=face[(vi-1+5)%5], next=face[(vi+1)%5];
+      fList.push([v, doubles[v][prev], triples[v][`${next}_${prev}`], doubles[v][next]]);
+    }
+  }
+  for (const [a,b] of disabled) {
+    let f1=null, f2=null;
+    for (const face of faces) {
+      if (!face.includes(a)||!face.includes(b)) continue;
+      if (face.indexOf(b)===(face.indexOf(a)+1)%5) f1=face; else f2=face;
+    }
+    if (!f1||!f2) continue;
+    const c=f1[(f1.indexOf(a)-1+5)%5], d=f1[(f1.indexOf(b)+1)%5];
+    const e=f2[(f2.indexOf(a)+1)%5], ff=f2[(f2.indexOf(b)-1+5)%5];
+    if (touched.has(a)) fList.push([doubles[a][b], triples[a][`${b}_${c}`], inners[a], triples[a][`${b}_${e}`]]);
+    if (touched.has(b)) fList.push([doubles[b][a], triples[b][`${a}_${ff}`], inners[b], triples[b][`${a}_${d}`]]);
+  }
+  return { verts, quads: fList };
+}
+
+function buildGeo(rv) {
+  const { verts, quads } = buildMesh(rv);
+  const pos = [], nrm = [];
+  for (const quad of quads) {
+    for (let i = 1; i < quad.length-1; i++) {
+      const v0=verts[quad[0]], v1=verts[quad[i]], v2=verts[quad[i+1]];
+      const e1=sub3(v1,v0), e2=sub3(v2,v0);
+      let n = [e1[1]*e2[2]-e1[2]*e2[1], e1[2]*e2[0]-e1[0]*e2[2], e1[0]*e2[1]-e1[1]*e2[0]];
+      const nl = Math.sqrt(n[0]*n[0]+n[1]*n[1]+n[2]*n[2]);
+      if (nl>0) n=n.map(x=>x/nl); else n=[0,0,1];
+      for (const v of [v0,v1,v2]) { pos.push(...zu2yu(v)); nrm.push(...zu2yu(n)); }
+    }
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(pos), 3));
+  geo.setAttribute('normal',   new THREE.BufferAttribute(new Float32Array(nrm), 3));
+  return geo;
+}
+
+// ── renderer / scene ──────────────────────────────────────────────────────────
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(FOG_COLOR);
+scene.fog = new THREE.FogExp2(FOG_COLOR, FOG_DENSITY);
+
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, (STRUCT_RADIUS + 2) * CHUNK_ROWS * GRID + 500);
+camera.position.set(0, 5.417, -1);  // foot of pedestal, facing hallway
+camera.lookAt(0, 5.417, 100);
+
+const fill = new THREE.DirectionalLight(0xaabbdd, 0.3);
+fill.position.set(-0.5, -0.3, -1);
+scene.add(fill);
+const fillR = new THREE.DirectionalLight(0xaabbdd, 0.3);
+fillR.position.set(0.5, -0.3, -1);
+scene.add(fillR);
+
+const ambientLightStructs = new THREE.HemisphereLight(0xfff8f0, 0x000000, 0.3);
+scene.add(ambientLightStructs);
+
+// ── hallway shell ─────────────────────────────────────────────────────────────
+const hallLen  = GRID_L * GRID;
+const totalLen = hallLen + 2 * FOYER;
+
+// ── textures ──────────────────────────────────────────────────────────────────
+const texLoader = new THREE.TextureLoader();
+const MAX_ANISO = renderer.capabilities.getMaxAnisotropy();
+
+function makeTex(path, rx, ry) {
+  const t = texLoader.load(path);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.repeat.set(rx, ry);
+  t.anisotropy = MAX_ANISO;
+  return t;
+}
+
+function makeTexSet(dir, name, rx, ry) {
+  return {
+    map:         makeTex(`textures/${dir}/${name}_color.webp`,  rx, ry),
+    normalMap:   makeTex(`textures/${dir}/${name}_normal.webp`, rx, ry),
+    roughnessMap:makeTex(`textures/${dir}/${name}_rough.webp`,  rx, ry),
+  };
+}
+
+function pbr(texSet, rotation = 0) {
+  if (rotation) for (const t of Object.values(texSet)) { t.rotation = rotation; t.center.set(0.5, 0.5); }
+  return new THREE.MeshStandardMaterial({ ...texSet, roughness: 1, metalness: 0 });
+}
+
+// Tile sizes in ft: carpet 2×2, wallpaper 2w×4h, ceiling tiles 2×2
+const WALL_W  = WALL_X * 2;   // total hall width
+const floorMat = new THREE.MeshStandardMaterial({
+  map:          makeTex('textures/carpet/carpet_color2.webp',  1, 1),
+  normalMap:    makeTex('textures/carpet/carpet_normal.webp',  1, 1),
+  roughnessMap: makeTex('textures/carpet/carpet_rough.webp',   1, 1),
+  roughness: 1, metalness: 0,
+});
+floorMat.normalScale.set(8, 8);
+const ceilMat     = pbr(makeTexSet('ceiling_tiles_2', 'ceiling_tiles_2', 1,          1));
+ceilMat.color.set(0xC4BD90);
+ceilMat.emissive.set(0xfff5d0);
+ceilMat.emissiveIntensity = 0.12;
+const wallMat     = pbr(makeTexSet('wallpaper',     'wallpaper',     1,             CEIL_Y / 4));
+const backWallMat = pbr(makeTexSet('wallpaper',     'wallpaper',     WALL_W / 2,    CEIL_Y / 4));
+
+// Ceiling lights — centre column, half of every 4th tile lengthwise
+const CEIL_TILE    = WALL_W / 5;        // 5 ft — matches one texture tile
+const LIGHT_INSET  = 0.045;
+const LIGHT_X0     = -CEIL_TILE / 2 + LIGHT_INSET;
+const LIGHT_X1     =  CEIL_TILE / 2 - LIGHT_INSET;
+const LIGHT_LEN    = CEIL_TILE / 2;    // half-tile length  (2.5 ft)
+const LIGHT_PERIOD = 5;                // every 5th tile
+const LIGHT_Y      = CEIL_Y - 0.005;
+const ceilLightMat = new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide });
+
+// Floor — segmented to avoid float32 UV precision loss over the full hall length.
+// Carpet tile 2×2 ft: U=WALL_W/2=34 tiles across, V=seg/2 tiles along (≤250 per segment).
+{
+  const SEG = 500;
+  const FW  = WALL_X * 2 + 2;   // floor width (2 ft wider than walls to cover skirting)
+  const FU  = WALL_W / 2;        // 34 — tile count across (matches old single-quad repeat)
+  const posA = [], nrmA = [], uvsA = [], idxA = [];
+  let vi = 0;
+  for (let zs = -FOYER; zs < hallLen + FOYER; zs += SEG) {
+    const z0 = zs, z1 = Math.min(zs + SEG, hallLen + FOYER);
+    const fv = (z1 - z0) / 2;
+    posA.push(-FW/2,0,z0, FW/2,0,z0, -FW/2,0,z1, FW/2,0,z1);
+    for (let i = 0; i < 4; i++) nrmA.push(0, 1, 0);
+    uvsA.push(0,0, FU,0, 0,fv, FU,fv);
+    idxA.push(vi,vi+2,vi+1, vi+2,vi+3,vi+1);
+    vi += 4;
+  }
+  const fGeo = new THREE.BufferGeometry();
+  fGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(posA), 3));
+  fGeo.setAttribute('normal',   new THREE.BufferAttribute(new Float32Array(nrmA), 3));
+  fGeo.setAttribute('uv',       new THREE.BufferAttribute(new Float32Array(uvsA), 2));
+  fGeo.setIndex(new THREE.BufferAttribute(new Uint16Array(idxA), 1));
+  scene.add(new THREE.Mesh(fGeo, floorMat));
+}
+
+// Ceiling — segmented like the floor to avoid float32 UV precision issues.
+// Normal (0,-1,0) faces down toward the player; winding [0,1,2, 1,3,2] is CCW from below.
+// Tile count: CU = WALL_W/5 across, CV = seg*5/WALL_W along (matches old single-quad repeat).
+{
+  const SEG = 500;
+  const CU  = WALL_W / 5;
+  const posA = [], nrmA = [], uvsA = [], idxA = [];
+  let vi = 0;
+  for (let zs = -FOYER; zs < hallLen + FOYER; zs += SEG) {
+    const z0 = zs, z1 = Math.min(zs + SEG, hallLen + FOYER);
+    const cv = (z1 - z0) * 5 / WALL_W;
+    posA.push(-WALL_X,CEIL_Y,z0, WALL_X,CEIL_Y,z0, -WALL_X,CEIL_Y,z1, WALL_X,CEIL_Y,z1);
+    for (let i = 0; i < 4; i++) nrmA.push(0, -1, 0);
+    uvsA.push(0,0, CU,0, 0,cv, CU,cv);
+    idxA.push(vi,vi+1,vi+2, vi+1,vi+3,vi+2);
+    vi += 4;
+  }
+  const cGeo = new THREE.BufferGeometry();
+  cGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(posA), 3));
+  cGeo.setAttribute('normal',   new THREE.BufferAttribute(new Float32Array(nrmA), 3));
+  cGeo.setAttribute('uv',       new THREE.BufferAttribute(new Float32Array(uvsA), 2));
+  cGeo.setIndex(new THREE.BufferAttribute(new Uint16Array(idxA), 1));
+  scene.add(new THREE.Mesh(cGeo, ceilMat));
+}
+
+// Side walls — custom world-space geometry with explicit tangents.
+// Both walls have U increasing in world +Z (back→front), giving tangent T=(0,0,1).
+// Bitangent B = cross(N,T)*W must equal world +Y (up) for correct normal-map V direction.
+//   Left  (N=+X): cross(+X,+Z)=-Y  → W=-1 so B=(-Y)*(-1)=+Y ✓
+//   Right (N=-X): cross(-X,+Z)=+Y  → W=+1 so B=(+Y)*(+1)=+Y ✓
+{
+  // Segment length must be a multiple of the tile width (2ft) so UV resets cleanly at
+  // each boundary without any visible seam. Keeping segments ≤ 50 tiles (100ft) each
+  // bounds float32 UV precision to < 1e-5 per unit, eliminating perspective-interpolation
+  // wobble that plagues a single quad spanning the full hallway length.
+  const WALL_SEG = 500;  // ft per wall segment (250 tiles × 2ft)
+  function makeSideWall(wallX, normalX) {
+    const tw = normalX > 0 ? -1 : 1;
+    const posA = [], nrmA = [], uvsA = [], tanA = [], idxA = [];
+    let v = 0;
+    for (let zs = -FOYER; zs < hallLen + FOYER; zs += WALL_SEG) {
+      const z0s = zs, z1s = Math.min(zs + WALL_SEG, hallLen + FOYER);
+      const u1  = (z1s - z0s) / 2;  // tile count in this segment; always ≤ 50
+      posA.push(wallX,0,z0s, wallX,CEIL_Y,z0s, wallX,0,z1s, wallX,CEIL_Y,z1s);
+      for (let i = 0; i < 4; i++) { nrmA.push(normalX,0,0); tanA.push(0,0,1,tw); }
+      uvsA.push(0,0, 0,1, u1,0, u1,1);
+      if (normalX > 0) idxA.push(v,v+1,v+2, v+1,v+3,v+2);
+      else             idxA.push(v,v+2,v+1, v+2,v+3,v+1);
+      v += 4;
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(posA), 3));
+    geo.setAttribute('normal',   new THREE.BufferAttribute(new Float32Array(nrmA), 3));
+    geo.setAttribute('uv',       new THREE.BufferAttribute(new Float32Array(uvsA), 2));
+    geo.setAttribute('tangent',  new THREE.BufferAttribute(new Float32Array(tanA), 4));
+    geo.setIndex(new THREE.BufferAttribute(new Uint16Array(idxA), 1));
+    return new THREE.Mesh(geo, wallMat);
+  }
+  scene.add(makeSideWall(-WALL_X, +1));
+  scene.add(makeSideWall(+WALL_X, -1));
+}
+
+// Back wall — FOYER behind first row
+const bwMesh = new THREE.Mesh(new THREE.PlaneGeometry(WALL_X*2, CEIL_Y), backWallMat);
+bwMesh.position.set(0, CEIL_Y/2, -FOYER);
+scene.add(bwMesh);
+
+// Front wall — same PlaneGeometry as back wall, BackSide so it faces the player
+// without any rotation transform. BackSide flips the fragment normal and the
+// perturbNormal2Arb faceDirection, so the normal map works identically to the back wall.
+{
+  const fwMat = backWallMat.clone();
+  fwMat.side = THREE.BackSide;
+  const fwMesh = new THREE.Mesh(new THREE.PlaneGeometry(WALL_X * 2, CEIL_Y), fwMat);
+  fwMesh.position.set(0, CEIL_Y / 2, hallLen + FOYER);
+  scene.add(fwMesh);
+}
+
+// Blue masking tape door outlines — shared constants
+const DOOR_W  = 44 / 12;
+const DOOR_Y0 = -4  / 12;
+const DOOR_Y1 = 88  / 12;
+const DOOR_HALF = DOOR_W / 2;
+const TAPE_W  = 0.125;
+const TAPE_T  = 0.01;
+const tapeMat = new THREE.MeshBasicMaterial({ color: 0x1a5fa0 });
+
+function addDoorTape(wallZ, facingPos) {
+  // facingPos: +1 = tape proud toward +z, -1 = toward -z
+  const tapeZ = wallZ + facingPos * TAPE_T / 2;
+  const vZ    = wallZ + facingPos * TAPE_T * 1.5;
+  const lB = 0.11, lT = 0.17, rB = 0.13, rT = 0.30;
+  const hL = 0.207, hR = 0.216;
+  const doorH = DOOR_Y1 - DOOR_Y0;
+  const midY  = (DOOR_Y0 + DOOR_Y1) / 2;
+
+  function vBox(cx, cy, h) {
+    const m = new THREE.Mesh(new THREE.BoxGeometry(TAPE_W, h, TAPE_T), tapeMat);
+    m.position.set(cx, cy, vZ);
+    scene.add(m);
+  }
+  vBox(-DOOR_HALF, midY + (lT - lB) / 2, doorH + lB + lT);
+  vBox( DOOR_HALF, midY + (rT - rB) / 2, doorH + rB + rT);
+
+  const hm = new THREE.Mesh(new THREE.BoxGeometry(DOOR_W + TAPE_W + hL + hR, TAPE_W, TAPE_T), tapeMat);
+  hm.position.set((hR - hL) / 2, DOOR_Y1, tapeZ);
+  scene.add(hm);
+}
+
+addDoorTape(-FOYER,           +1);   // back wall  — tape faces into hallway
+addDoorTape(hallLen + FOYER,  -1);   // front wall — tape faces into hallway
+
+
+// ── structure rendering ───────────────────────────────────────────────────────
+const floorBounceUniform = { value: 1.0 };
+const structMat = new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 80, specular: 0x888888 });
+structMat.onBeforeCompile = shader => {
+  shader.uniforms.uFloorBounceIntensity = floorBounceUniform;
+  shader.uniforms.uFloorBounceColor = { value: new THREE.Color(0x888888) };
+  shader.fragmentShader = 'uniform float uFloorBounceIntensity;\nuniform vec3 uFloorBounceColor;\n'
+    + shader.fragmentShader.replace('vec3 outgoingLight = ',
+      `{ vec3 wn = normalize(inverseTransformDirection(normal, viewMatrix));
+         reflectedLight.indirectDiffuse += uFloorBounceColor * (uFloorBounceIntensity * max(0.0, -wn.y)); }
+       vec3 outgoingLight = `);
+};
+const INST_QUAT    = new THREE.Quaternion().setFromEuler(
+  new THREE.Euler(0, 108.9*Math.PI/180, 0, 'XYZ')
+);
+const STRUCT_SCALE = 0.45 / 1.75;
+
+// Canonical floor Y: use the complete dodecahedron (all faces) to find the true
+// lowest vertex, then seat every structure at that same height above the pedestal.
+const STRUCT_Y = (() => {
+  const arr = buildGeo((1 << 30) - 1).getAttribute('position').array;
+  const tv = new THREE.Vector3();
+  let minY = Infinity;
+  for (let j = 0; j < arr.length; j += 3) {
+    tv.set(arr[j], arr[j+1], arr[j+2]).applyQuaternion(INST_QUAT);
+    if (tv.y < minY) minY = tv.y;
+  }
+  return RAISE - minY * STRUCT_SCALE;
+})();
+
+// Cache: rv → { pos: Float32Array, nrm: Float32Array }
+const geoCache = new Map();
+function getCachedGeo(rv) {
+  if (geoCache.has(rv)) return geoCache.get(rv);
+  const g   = buildGeo(rv);
+  const pos = g.getAttribute('position').array;
+  const nrm = g.getAttribute('normal').array;
+  const entry = { pos, nrm };
+  geoCache.set(rv, entry);
+  return entry;
+}
+
+// Merge per-structure geometries (with transforms baked in) into one draw call per chunk
+function buildMergedGeo(rvArr, xArr, zArr, syArr) {
+  // Pre-compute total size to avoid intermediate per-structure arrays
+  let total = 0;
+  for (const rv of rvArr) total += getCachedGeo(rv).pos.length;
+  const mPos = new Float32Array(total), mNrm = new Float32Array(total);
+  const tv = new THREE.Vector3();
+  let off = 0;
+  for (let i = 0; i < rvArr.length; i++) {
+    const { pos, nrm } = getCachedGeo(rvArr[i]);
+    const wx = xArr[i], wy = syArr[i], wz = zArr[i];
+    const nc = pos.length;
+    for (let j = 0; j < nc; j += 3) {
+      tv.set(pos[j], pos[j+1], pos[j+2]).applyQuaternion(INST_QUAT).multiplyScalar(STRUCT_SCALE);
+      mPos[off+j] = tv.x + wx; mPos[off+j+1] = tv.y + wy; mPos[off+j+2] = tv.z + wz;
+      tv.set(nrm[j], nrm[j+1], nrm[j+2]).applyQuaternion(INST_QUAT);
+      mNrm[off+j] = tv.x; mNrm[off+j+1] = tv.y; mNrm[off+j+2] = tv.z;
+    }
+    off += nc;
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(mPos, 3));
+  geo.setAttribute('normal',   new THREE.BufferAttribute(mNrm, 3));
+  return geo;
+}
+
+// Lazy binary file loader
+const binData    = new Map(); // fileNum → Uint32Array
+const binLoading = new Set();
+async function loadBin(fn) {
+  if (binData.has(fn) || binLoading.has(fn)) return;
+  binLoading.add(fn);
+  try {
+    const resp = await fetch(`structures/${fn}.bin.gz`);
+    const ds   = new DecompressionStream('gzip');
+    resp.body.pipeTo(ds.writable);
+    const chunks = [], reader = ds.readable.getReader();
+    for (;;) { const { done, value } = await reader.read(); if (done) break; chunks.push(value); }
+    const total = chunks.reduce((s, c) => s + c.byteLength, 0);
+    const out   = new Uint8Array(total);
+    let off = 0;
+    for (const c of chunks) { out.set(c, off); off += c.byteLength; }
+    binData.set(fn, new Uint32Array(out.buffer));
+  } finally {
+    binLoading.delete(fn);
+  }
+}
+
+// Slab: one continuous platform per chunk, full grid width, 1 ft tall
+const SLAB_W  = GRID_W * GRID;
+const _pedBase = {
+  map: null,
+  normalMap:    makeTex('textures/wallpaper/wallpaper_normal.webp', 1, 1),
+  roughnessMap: makeTex('textures/wallpaper/wallpaper_rough.webp',  1, 1),
+  roughness: 1, metalness: 0,
+};
+const pedMat = new THREE.MeshStandardMaterial({ ..._pedBase, color: 0x777777 });
+
+const stripMat = new THREE.MeshBasicMaterial({ color: 0xDDDDDD, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 });
+const STRIP_W  = 0.04;
+const STRIP_Y  = RAISE + 0.01;  // just above pedestal top
+const HW       = SLAB_W / 2;     // half-width of slab
+
+function makeStrips(rowStart, rowEnd) {
+  const verts = [];
+  // helper: push a flat quad (2 triangles, normal up) at y=STRIP_Y
+  function quad(x0, z0, x1, z1) {
+    verts.push(x0,STRIP_Y,z0, x1,STRIP_Y,z0, x1,STRIP_Y,z1);
+    verts.push(x0,STRIP_Y,z0, x1,STRIP_Y,z1, x0,STRIP_Y,z1);
+  }
+
+  const zChunkStart = rowStart * GRID - GRID / 2;
+  const zChunkEnd   = (rowEnd - 1) * GRID + GRID / 2;
+
+  // Column dividers: 9 strips between the 10 columns, segmented per row to avoid depth precision issues
+  for (let i = 1; i < GRID_W; i++) {
+    const x = (i - GRID_W / 2) * GRID;
+    for (let r = rowStart; r < rowEnd; r++) {
+      const z0 = r * GRID - GRID / 2;
+      const z1 = r * GRID + GRID / 2;
+      quad(x - STRIP_W/2, z0, x + STRIP_W/2, z1);
+    }
+  }
+
+  // Row dividers: strip between each adjacent pair of rows (skip outer edges of whole grid)
+  for (let r = rowStart; r < rowEnd; r++) {
+    if (r === GRID_L - 1) continue;           // skip after last row
+    const z = r * GRID + GRID / 2;
+    quad(-HW, z - STRIP_W/2, HW, z + STRIP_W/2);
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(verts), 3));
+  return geo;
+}
+
+function makeLightPanels(ci) {
+  const zStart = ci * CHUNK_ROWS * GRID;
+  const zEnd   = Math.min((ci + 1) * CHUNK_ROWS * GRID, hallLen);
+  const kMin = Math.ceil((zStart + FOYER) / CEIL_TILE);
+  const kMax = Math.ceil((zEnd   + FOYER) / CEIL_TILE) - 1;
+  const verts = [];
+  for (let k = kMin; k <= kMax; k++) {
+    if (k % LIGHT_PERIOD !== (LIGHT_PERIOD - 3) % LIGHT_PERIOD) continue;
+    const z0 = -FOYER + k * CEIL_TILE + LIGHT_INSET;
+    const z1 = z0 + LIGHT_LEN - LIGHT_INSET * 2;
+    verts.push(LIGHT_X0, LIGHT_Y, z0,  LIGHT_X1, LIGHT_Y, z0,  LIGHT_X1, LIGHT_Y, z1);
+    verts.push(LIGHT_X0, LIGHT_Y, z0,  LIGHT_X1, LIGHT_Y, z1,  LIGHT_X0, LIGHT_Y, z1);
+  }
+  if (!verts.length) return null;
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(verts), 3));
+  return new THREE.Mesh(geo, ceilLightMat);
+}
+
+// ── chunk management ──────────────────────────────────────────────────────────
+const liveChunks   = new Map();
+const geoCacheRefs = new Map(); // rv → number of live chunks that reference it
+
+function spawnChunk(ci) {
+  if (ci < 0 || ci >= TOTAL_CHUNKS || liveChunks.has(ci)) return;
+  const rowStart = ci * CHUNK_ROWS;
+  const rowEnd   = Math.min(rowStart + CHUNK_ROWS, GRID_L);
+
+  // Start loading any needed files; bail if any are still pending
+  let needsWait = false;
+  for (let r = rowStart; r < rowEnd; r++) {
+    const fn = rowFileIdx[r] + 3;
+    if (!binData.has(fn)) { loadBin(fn); needsWait = true; }
+  }
+  if (needsWait) return;
+
+  // Collect rv values, positions, and labels for every structure in the chunk
+  const rvArr = [], xArr = [], zArr = [], syArr = [];
+  const items = []; // { x, z, sy, label } for number overlay
+  for (let r = rowStart; r < rowEnd; r++) {
+    const fi    = rowFileIdx[r];
+    const data  = binData.get(fi + 3);
+    const rif   = rowInFileArr[r];
+    const sStart = rif * GRID_W;
+    const count  = Math.min(GRID_W, data.length - sStart);
+    const padL   = Math.floor((GRID_W - count) / 2);
+    const z = r * GRID;
+    for (let i = 0; i < count; i++) {
+      const rv = data[sStart + i];
+      const x  = (padL + (count - 1 - i) - (GRID_W - 1) / 2) * GRID;
+      rvArr.push(rv); xArr.push(x); zArr.push(z); syArr.push(STRUCT_Y);
+      items.push({ x, z, sy: STRUCT_Y, label: String(rv) });
+    }
+  }
+
+  const structs = new THREE.Mesh(buildMergedGeo(rvArr, xArr, zArr, syArr), structMat);
+  structs.frustumCulled = false; // merged geo has no bounding box; camera is always inside the chunk anyway
+
+  const zStart  = rowStart * GRID - GRID / 2;
+  const zEnd    = (rowEnd - 1) * GRID + GRID / 2;
+  const slabLen = zEnd - zStart;
+  const zMid = zStart + slabLen / 2;
+
+  const slab = new THREE.Mesh(new THREE.BoxGeometry(SLAB_W, RAISE, slabLen), pedMat);
+  slab.position.set(0, RAISE / 2, zMid);
+
+  const strips = new THREE.Mesh(makeStrips(rowStart, rowEnd), stripMat);
+  const lights = makeLightPanels(ci);
+  scene.add(structs);
+  scene.add(slab);
+  scene.add(strips);
+  if (lights) { scene.add(lights); }
+
+  // Track which unique rv values this chunk uses so we can evict them when killed
+  const rvSet = new Set(rvArr);
+  for (const rv of rvSet) geoCacheRefs.set(rv, (geoCacheRefs.get(rv) ?? 0) + 1);
+  liveChunks.set(ci, { structs, slab, strips, lights, items, rvSet });
+}
+
+function killChunk(ci) {
+  const chunk = liveChunks.get(ci);
+  if (!chunk) return;
+  scene.remove(chunk.structs);
+  chunk.structs.geometry.dispose();
+  scene.remove(chunk.slab);
+  chunk.slab.geometry.dispose();
+  scene.remove(chunk.strips);
+  if (chunk.lights) { scene.remove(chunk.lights); chunk.lights.geometry.dispose(); }
+  chunk.strips.geometry.dispose();
+
+  // Evict geoCache entries no longer referenced by any live chunk
+  for (const rv of chunk.rvSet) {
+    const n = geoCacheRefs.get(rv) - 1;
+    if (n <= 0) { geoCacheRefs.delete(rv); geoCache.delete(rv); }
+    else geoCacheRefs.set(rv, n);
+  }
+  liveChunks.delete(ci);
+}
+
+const spawnQueue = new Set();
+
+// Chunk distance accounting for wrap-around at the hallway loop point
+function chunkDist(a, b) {
+  const d = Math.abs(a - b);
+  return Math.min(d, TOTAL_CHUNKS - d);
+}
+
+function syncChunks(camZ) {
+  const cc = Math.floor(camZ / (CHUNK_ROWS * GRID));
+  for (let i = cc - STRUCT_RADIUS; i <= cc + STRUCT_RADIUS; i++) {
+    const ci = ((i % TOTAL_CHUNKS) + TOTAL_CHUNKS) % TOTAL_CHUNKS;
+    if (!liveChunks.has(ci)) spawnQueue.add(ci);
+  }
+  for (const ci of liveChunks.keys()) {
+    if (chunkDist(ci, cc) > STRUCT_RADIUS + 2) killChunk(ci);
+  }
+  for (const ci of spawnQueue) {
+    if (chunkDist(ci, cc) > STRUCT_RADIUS + 2) spawnQueue.delete(ci);
+  }
+}
+
+function flushSpawnQueue(camZ) {
+  if (!spawnQueue.size) return;
+  const cc = Math.floor(camZ / (CHUNK_ROWS * GRID));
+  let bestCi = null, bestDist = Infinity;
+  for (const ci of spawnQueue) {
+    const d = chunkDist(ci, cc);
+    if (d < bestDist) { bestDist = d; bestCi = ci; }
+  }
+  spawnQueue.delete(bestCi);
+  spawnChunk(bestCi);
+}
+
+// ── pointer-lock controls ─────────────────────────────────────────────────────
+const controls = new PointerLockControls(camera, canvas);
+const overlay  = document.getElementById('overlay');
+
+// ── mobile touch controls ─────────────────────────────────────────────────────
+let mobileActive = false;
+const mobileEuler = new THREE.Euler(0, 0, 0, 'YXZ');
+mobileEuler.setFromQuaternion(camera.quaternion);
+const joy  = { active: false, id: -1, baseX: 0, baseY: 0, dx: 0, dy: 0 };
+const look = { active: false, id: -1, lastX: 0, lastY: 0 };
+const joyBase = document.getElementById('joy-base');
+const joyKnob = document.getElementById('joy-knob');
+
+if (IS_MOBILE) {
+  overlay.children[0].textContent = 'Tap to start';
+  overlay.children[1].textContent = 'left thumb · move   right thumb · look';
+
+  overlay.addEventListener('click', () => {
+    overlay.style.display = 'none';
+    mobileActive = true;
+  });
+
+  const JOY_MAX  = 50;
+  const LOOK_SPD = 0.003;
+
+  canvas.addEventListener('touchstart', e => {
+    e.preventDefault();
+    for (const t of e.changedTouches) {
+      if (!joy.active && t.clientX < window.innerWidth / 2) {
+        joy.active = true; joy.id = t.identifier;
+        joy.baseX = t.clientX; joy.baseY = t.clientY;
+        joy.dx = 0; joy.dy = 0;
+        joyBase.style.left = t.clientX + 'px';
+        joyBase.style.top  = t.clientY + 'px';
+        joyBase.style.display = 'block';
+        joyKnob.style.transform = 'translate(-50%,-50%)';
+      } else if (!look.active && t.clientX >= window.innerWidth / 2) {
+        look.active = true; look.id = t.identifier;
+        look.lastX = t.clientX; look.lastY = t.clientY;
+      }
+    }
+  }, { passive: false });
+
+  canvas.addEventListener('touchmove', e => {
+    e.preventDefault();
+    for (const t of e.changedTouches) {
+      if (t.identifier === joy.id) {
+        let dx = t.clientX - joy.baseX;
+        let dy = t.clientY - joy.baseY;
+        const len = Math.sqrt(dx * dx + dy * dy);
+        if (len > JOY_MAX) { dx = dx / len * JOY_MAX; dy = dy / len * JOY_MAX; }
+        joy.dx = dx / JOY_MAX;
+        joy.dy = dy / JOY_MAX;
+        joyKnob.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
+      } else if (t.identifier === look.id) {
+        const ddx = t.clientX - look.lastX;
+        const ddy = t.clientY - look.lastY;
+        mobileEuler.y -= ddx * LOOK_SPD;
+        mobileEuler.x -= ddy * LOOK_SPD;
+        mobileEuler.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, mobileEuler.x));
+        camera.quaternion.setFromEuler(mobileEuler);
+        look.lastX = t.clientX; look.lastY = t.clientY;
+      }
+    }
+  }, { passive: false });
+
+  canvas.addEventListener('touchend', e => {
+    for (const t of e.changedTouches) {
+      if (t.identifier === joy.id) {
+        joy.active = false; joy.dx = 0; joy.dy = 0;
+        joyBase.style.display = 'none';
+      } else if (t.identifier === look.id) {
+        look.active = false;
+      }
+    }
+  });
+} else {
+  overlay.addEventListener('click', () => canvas.requestPointerLock());
+  document.addEventListener('pointerlockchange', () => {
+    overlay.style.display = document.pointerLockElement === canvas ? 'none' : 'flex';
+  });
+}
+
+const K = {};
+let jogging = false;
+// Pre-allocated point lights that slide to the nearest ceiling panels each frame.
+const PANEL_PERIOD = CEIL_TILE * LIGHT_PERIOD;
+const PANEL_Z0     = -FOYER + (LIGHT_PERIOD - 3) * CEIL_TILE + LIGHT_LEN / 2;
+let ceilLightIntensity = 400;
+const ceilPLights = [];
+function resizeCeilLights(half) {
+  const target = half * 2 + 1;
+  while (ceilPLights.length < target) {
+    const pl = new THREE.PointLight(0xfff8f0, 0, 35, 2);
+    scene.add(pl);
+    ceilPLights.push(pl);
+  }
+  while (ceilPLights.length > target) {
+    const pl = ceilPLights.pop();
+    scene.remove(pl);
+  }
+}
+resizeCeilLights(Math.ceil((STRUCT_RADIUS + 2) * CHUNK_ROWS * GRID / PANEL_PERIOD) + 2);
+const ceilHemi = new THREE.HemisphereLight(0x000000, 0xfff8f0, 0.4);
+scene.add(ceilHemi);
+
+let showNumbers = false;
+let showInfo = false;
+const labelCanvas = document.createElement('canvas');
+labelCanvas.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:5';
+document.body.appendChild(labelCanvas);
+const ctx2d = labelCanvas.getContext('2d');
+function resizeLabelCanvas() {
+  labelCanvas.width  = window.innerWidth;
+  labelCanvas.height = window.innerHeight;
+}
+resizeLabelCanvas();
+
+document.addEventListener('keydown', e => {
+  if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') { if (!e.repeat) jogging = !jogging; return; }
+  if (e.code === 'KeyN') { if (!e.repeat) showNumbers = !showNumbers; return; }
+  if (e.code === 'KeyM') { if (!e.repeat) { showInfo = !showInfo; info.style.display = showInfo ? '' : 'none'; } return; }
+  if (e.code === 'KeyH') { ceilLightIntensity = Math.max(0, ceilLightIntensity - 10); return; }
+  if (e.code === 'KeyJ') { ceilLightIntensity = Math.min(2000, ceilLightIntensity + 10); return; }
+  if (e.code === 'KeyK') {
+    STRUCT_RADIUS = Math.max(2, STRUCT_RADIUS - 1);
+    scene.fog.density = FOG_DENSITY * BASE_STRUCT_RADIUS / STRUCT_RADIUS;
+    camera.far = (STRUCT_RADIUS + 2) * CHUNK_ROWS * GRID + 500;
+    camera.updateProjectionMatrix();
+    resizeCeilLights(Math.ceil((STRUCT_RADIUS + 2) * CHUNK_ROWS * GRID / PANEL_PERIOD) + 2);
+    syncChunks(camera.position.z);
+    return;
+  }
+  if (e.code === 'KeyL') {
+    STRUCT_RADIUS = Math.min(15, STRUCT_RADIUS + 1);
+    scene.fog.density = FOG_DENSITY * BASE_STRUCT_RADIUS / STRUCT_RADIUS;
+    camera.far = (STRUCT_RADIUS + 2) * CHUNK_ROWS * GRID + 500;
+    camera.updateProjectionMatrix();
+    resizeCeilLights(Math.ceil((STRUCT_RADIUS + 2) * CHUNK_ROWS * GRID / PANEL_PERIOD) + 2);
+    syncChunks(camera.position.z);
+    return;
+  }
+  if (e.code === 'KeyO') { EYE_H = Math.max(1, EYE_H - 0.1); return; }
+  if (e.code === 'KeyP') { EYE_H += 0.1; return; }
+  K[e.code] = true;
+  if (e.code === 'Space' || e.code.startsWith('Arrow')) e.preventDefault();
+});
+document.addEventListener('keyup', e => { K[e.code] = false; });
+
+document.addEventListener('wheel', e => {
+  EYE_H = Math.max(1, Math.min(CEIL_Y - 2.5, EYE_H - e.deltaY * 0.001));
+}, { passive: true });
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  resizeLabelCanvas();
+});
+
+// ── physics ───────────────────────────────────────────────────────────────────
+let EYE_H    = 5.417;
+const GRAVITY  = 32;   // ft/s²
+const JUMP_VEL = 10;   // ft/s — reaches ~1.6 ft peak, clears the 1 ft pedestal
+let velY     = 0;
+let onGround = true;
+
+function groundAt(x, z) {
+  // on the continuous slab?
+  if (Math.abs(x) <= SLAB_W / 2 && z >= -GRID / 2 && z < hallLen) return RAISE;
+  return 0;
+}
+
+// ── render loop ───────────────────────────────────────────────────────────────
+const clock = new THREE.Clock();
+const info  = document.getElementById('info');
+info.style.display = 'none';
+
+(function loop() {
+  requestAnimationFrame(loop);
+
+  const dt  = Math.min(clock.getDelta(), 0.05);
+  const spd = jogging ? 15.3 : 7.5;
+
+  if (controls.isLocked || mobileActive) {
+    const fwd   = IS_MOBILE ? -joy.dy
+                             : ((K.KeyW || K.ArrowUp)    ? 1 : 0) - ((K.KeyS || K.ArrowDown)  ? 1 : 0);
+    const right = IS_MOBILE ? joy.dx
+                            : ((K.KeyD || K.ArrowRight) ? 1 : 0) - ((K.KeyA || K.ArrowLeft) ? 1 : 0);
+    const prevX = camera.position.x;
+    const prevZ = camera.position.z;
+    controls.moveForward(fwd   * spd * dt);
+    controls.moveRight  (right * spd * dt);
+
+    // Block horizontal entry into pedestal sides when feet are below pedestal top
+    const feet = camera.position.y - EYE_H;
+    if (feet < RAISE) {
+      const overPed = Math.abs(camera.position.x) <= SLAB_W / 2 &&
+                      camera.position.z >= -GRID / 2 &&
+                      camera.position.z < hallLen;
+      if (overPed) {
+        camera.position.x = prevX;
+        // If still inside after restoring X (approaching from Z end), restore Z too
+        if (Math.abs(camera.position.x) <= SLAB_W / 2 &&
+            camera.position.z >= -GRID / 2 &&
+            camera.position.z < hallLen) {
+          camera.position.z = prevZ;
+        }
+      }
+    }
+
+    if (K.Space && onGround) { velY = JUMP_VEL; onGround = false; }
+
+    velY -= GRAVITY * dt;
+    camera.position.y += velY * dt;
+
+    const ground = groundAt(camera.position.x, camera.position.z);
+    if (camera.position.y <= ground + EYE_H) {
+      camera.position.y = ground + EYE_H;
+      velY = 0;
+      onGround = true;
+    } else {
+      onGround = false;
+    }
+
+    camera.position.x = Math.max(-WALL_X + 0.3, Math.min(WALL_X - 0.3, camera.position.x));
+
+    // Wall collision — keep player 2 units from end walls outside the door opening
+    if (Math.abs(camera.position.x) > DOOR_HALF) {
+      camera.position.z = Math.max(-FOYER + 0.2, Math.min(hallLen + FOYER - 0.2, camera.position.z));
+    }
+
+    // Door teleports — both ends loop through the hallway
+    if (camera.position.z < -FOYER) {
+      if (Math.abs(camera.position.x) <= DOOR_HALF) {
+        camera.position.z += totalLen;
+      } else {
+        camera.position.z = -FOYER + 0.3;
+      }
+    } else if (camera.position.z > hallLen + FOYER) {
+      if (Math.abs(camera.position.x) <= DOOR_HALF) {
+        camera.position.z -= totalLen;
+      } else {
+        camera.position.z = hallLen + FOYER - 0.3;
+      }
+    }
+  }
+
+  {
+    const n0 = Math.round((camera.position.z - PANEL_Z0) / PANEL_PERIOD);
+    const half = (ceilPLights.length - 1) / 2;
+    for (let i = 0; i < ceilPLights.length; i++) {
+      const panelZ = PANEL_Z0 + (n0 - half + i) * PANEL_PERIOD;
+      if (panelZ < PANEL_Z0) { ceilPLights[i].intensity = 0; continue; }
+      ceilPLights[i].intensity = ceilLightIntensity;
+      ceilPLights[i].position.set(0, CEIL_Y - 0.5, panelZ);
+    }
+  }
+
+  syncChunks(camera.position.z);
+  flushSpawnQueue(camera.position.z);
+
+  if (showInfo) {
+    const row = Math.min(GRID_L, Math.max(0, Math.floor(camera.position.z / GRID)));
+    info.textContent = `row ${row.toLocaleString()} / ${GRID_L.toLocaleString()}  ·  chunks loaded: ${liveChunks.size}  ·  radius: ${STRUCT_RADIUS}`;
+  }
+
+  renderer.clear();
+  renderer.render(scene, camera);
+
+  // Structure number overlay
+  ctx2d.clearRect(0, 0, labelCanvas.width, labelCanvas.height);
+  if (showNumbers) {
+    const W = labelCanvas.width, H = labelCanvas.height;
+    ctx2d.font = 'bold 11px monospace';
+    ctx2d.textAlign = 'center';
+    ctx2d.textBaseline = 'bottom';
+    const v = new THREE.Vector3();
+    const camZ = camera.position.z;
+    for (const chunk of liveChunks.values()) {
+      for (const item of chunk.items) {
+        if (Math.abs(item.z - camZ) > 10) continue;
+        v.set(item.x, item.sy + STRUCT_SCALE * 1.2, item.z).project(camera);
+        if (v.z >= 1) continue; // behind camera
+        const sx = (v.x * 0.5 + 0.5) * W;
+        const sy = (-v.y * 0.5 + 0.5) * H;
+        if (sx < 0 || sx > W || sy < 0 || sy > H) continue;
+        ctx2d.fillStyle = '#000';
+        ctx2d.fillText(item.label, sx + 1, sy + 1);
+        ctx2d.fillStyle = '#fff';
+        ctx2d.fillText(item.label, sx, sy);
+      }
+    }
+  }
+})();
+</script>
+</body>
+</html>

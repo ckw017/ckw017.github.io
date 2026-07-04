@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dodecahedron Viewer</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111; color: #eee; font-family: monospace; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
+#topbar { padding: 8px 14px; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; background: #1a1a1a; border-bottom: 1px solid #333; flex-shrink: 0; }
+#topbar label { color: #888; font-size: 12px; }
+#topbar input { background: #222; border: 1px solid #555; color: #eee; padding: 4px 8px; font-family: monospace; font-size: 14px; width: 200px; border-radius: 3px; }
+#topbar button { background: #2a2a2a; border: 1px solid #555; color: #ccc; padding: 5px 12px; cursor: pointer; font-family: monospace; font-size: 13px; border-radius: 3px; }
+#topbar button:hover { background: #3a3a3a; color: #fff; }
+#binDisplay { font-size: 11px; color: #666; letter-spacing: 1.5px; margin-left: 6px; }
+#main { display: flex; flex: 1; overflow: hidden; min-height: 0; }
+#schlegel-panel { width: clamp(280px, 35vw, 520px); border-right: 1px solid #2a2a2a; display: flex; flex-direction: column; background: #0e0e0e; position: relative; }
+#binDisplay { font-size: 11px; color: #666; letter-spacing: 1.5px; padding: 6px 10px; border-bottom: 1px solid #1e1e1e; flex-shrink: 0; text-align: center; }
+#schlegel-panel svg { flex: 1; display: block; width: 100%; }
+#three-panel { flex: 1; position: relative; overflow: hidden; }
+#threeCanvas { display: block; width: 100%; height: 100%; }
+#hint { position: absolute; bottom: 8px; left: 8px; font-size: 10px; color: #444; pointer-events: none; }
+
+@media (max-width: 700px) {
+  #main { flex-direction: column; }
+  #schlegel-panel { width: 100%; height: 45vh; border-right: none; border-bottom: 1px solid #2a2a2a; }
+  #topbar input { width: 120px; }
+}
+</style>
+</head>
+<body>
+<div id="topbar">
+  <label>Value</label>
+  <input id="numInput" type="number" min="0" max="1073741823" value="1073741823">
+  <button onclick="applyValue()">Apply</button>
+  <button onclick="downloadSTL()">Download STL</button>
+  <button id="ghostBtn" onclick="toggleGhost()">Outline: ON</button>
+  <button onclick="resetCamera()">Reset Camera</button>
+</div>
+<div id="main">
+  <div id="schlegel-panel">
+    <div id="binDisplay"></div>
+    <svg id="schlegel" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div id="hint">click edges to toggle</div>
+    <div style="position:absolute;bottom:8px;right:8px;display:flex;gap:6px;">
+      <button onclick="resetEdges()" style="background:#2a2a2a;border:1px solid #555;color:#ccc;padding:4px 10px;cursor:pointer;font-family:monospace;font-size:12px;border-radius:3px;">Set all edges</button>
+      <button onclick="clearEdges()" style="background:#2a2a2a;border:1px solid #555;color:#ccc;padding:4px 10px;cursor:pointer;font-family:monospace;font-size:12px;border-radius:3px;">Clear all edges</button>
+    </div>
+  </div>
+  <div id="three-panel">
+    <canvas id="threeCanvas"></canvas>
+  </div>
+</div>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ── constants ────────────────────────────────────────────────────────────────
+
+const DODECA_TO_ICOSA = [12,3,17,7,18,13,11,19,6,2,10,1,5,16,14,0,9,15,4,8];
+const DODECA_EDGES = [
+  [0,1],[1,2],[2,3],[3,4],[4,0],
+  [1,5],[2,6],[3,7],[4,8],[0,9],
+  [9,10],[5,11],[6,12],[7,13],[8,14],
+  [5,10],[6,11],[7,12],[8,13],[9,14],
+  [10,15],[11,16],[12,17],[13,18],[14,19],
+  [15,16],[16,17],[17,18],[18,19],[19,15],
+];
+const PHI = (1 + Math.sqrt(5)) / 2;
+
+// ── dodecahedron geometry ─────────────────────────────────────────────────────
+
+function dodecahedronVertices() {
+  const a = 1 / PHI;
+  const raw = [];
+  // Must match Python itertools.product([1,-1], repeat=N) order exactly
+  for (const sx of [1,-1]) for (const sy of [1,-1]) for (const sz of [1,-1]) raw.push([sx,sy,sz]);
+  for (const s1 of [1,-1]) for (const s2 of [1,-1]) {
+    raw.push([0, s1*a, s2*PHI]);
+    raw.push([s1*a, s2*PHI, 0]);
+    raw.push([s1*PHI, 0, s2*a]);
+  }
+  const seen = new Set(), unique = [];
+  for (const v of raw) {
+    const key = v.map(x => Math.round(x*1e6)).join(',');
+    if (!seen.has(key)) { seen.add(key); unique.push(v); }
+  }
+  const adj = Math.PI/2 - 0.5535743577093402;
+  return unique.map(([x,y,z]) => {
+    const mag = Math.sqrt(y*y + z*z);
+    const theta = adj + Math.atan2(z, y);
+    return [x, mag*Math.cos(theta), mag*Math.sin(theta)];
+  });
+}
+
+function dodecahedronFaces() {
+  return [
+    [0,8,4,15,9],[8,0,10,2,14],[4,8,14,6,16],[15,4,16,19,5],
+    [9,15,5,11,1],[0,9,1,13,10],[14,2,12,18,6],[16,6,18,7,19],
+    [5,19,7,17,11],[1,11,17,3,13],[10,13,3,12,2],[7,18,12,3,17],
+  ];
+}
+
+function dodecahedronIcosaEdges() {
+  const s = new Set();
+  for (const face of dodecahedronFaces())
+    for (let i = 0; i < 5; i++) {
+      const a = face[i], b = face[(i+1)%5];
+      s.add(`${Math.min(a,b)}_${Math.max(a,b)}`);
+    }
+  return [...s].map(k => k.split('_').map(Number));
+}
+
+// ── mesh construction (faithful port of build_mesh from test4.py) ─────────────
+
+const add3 = (a,b) => [a[0]+b[0], a[1]+b[1], a[2]+b[2]];
+const sc3  = (s,a)  => [s*a[0], s*a[1], s*a[2]];
+const sub3 = (a,b)  => [a[0]-b[0], a[1]-b[1], a[2]-b[2]];
+
+function buildMesh(reprVal) {
+  const verts = dodecahedronVertices();
+  const faces = dodecahedronFaces();
+  const edges = dodecahedronIcosaEdges();
+
+  const offsets = Array.from({length:20}, () => []);
+  const inners  = {};
+  const doubles = Array.from({length:20}, () => ({}));
+  const triples = Array.from({length:20}, () => ({}));
+
+  for (const [a,b] of edges) {
+    const i1 = add3(sc3(0.8, verts[a]), sc3(0.2, verts[b]));
+    const i2 = add3(sc3(0.2, verts[a]), sc3(0.8, verts[b]));
+    offsets[a].push([b, sub3(i1, verts[a])]);
+    offsets[b].push([a, sub3(i2, verts[b])]);
+    doubles[a][b] = verts.length; verts.push(i1);
+    doubles[b][a] = verts.length; verts.push(i2);
+  }
+
+  for (let v = 0; v < 20; v++) {
+    const offs = offsets[v], vert = verts[v];
+    const [n0,off0] = offs[0], [n1,off1] = offs[1], [n2,off2] = offs[2];
+    inners[v] = verts.length;
+    const t01=verts.length+1, t12=verts.length+2, t02=verts.length+3;
+    triples[v][`${n0}_${n1}`]=t01; triples[v][`${n1}_${n0}`]=t01;
+    triples[v][`${n1}_${n2}`]=t12; triples[v][`${n2}_${n1}`]=t12;
+    triples[v][`${n0}_${n2}`]=t02; triples[v][`${n2}_${n0}`]=t02;
+    verts.push(add3(vert, add3(off0, add3(off1, off2))));
+    verts.push(add3(vert, add3(off0, off1)));
+    verts.push(add3(vert, add3(off1, off2)));
+    verts.push(add3(vert, add3(off0, off2)));
+  }
+
+  // disabled edges from bit representation
+  const disabled = [];
+  for (let bit = 0; bit < 30; bit++) {
+    if (!(reprVal & (1 << bit))) {
+      const [du,dv] = DODECA_EDGES[bit];
+      const iu=DODECA_TO_ICOSA[du], iv=DODECA_TO_ICOSA[dv];
+      disabled.push([Math.min(iu,iv), Math.max(iu,iv)]);
+    }
+  }
+  const disSet = new Set(disabled.map(([a,b]) => `${a}_${b}`));
+
+  const touched = new Set();
+  for (const [a,b] of edges)
+    if (!disSet.has(`${a}_${b}`)) { touched.add(a); touched.add(b); }
+
+  const fList = [];
+
+  // panel faces for each active edge
+  for (const [oa,ob] of edges) {
+    if (disSet.has(`${oa}_${ob}`)) continue;
+    let a=oa, b=ob;
+    for (const face of faces) {
+      if (!face.includes(a) || !face.includes(b)) continue;
+      let ia=face.indexOf(a), ib=face.indexOf(b);
+      if (ib !== (ia+1)%5) { [ia,ib]=[ib,ia]; [a,b]=[b,a]; }
+      const c=face[(ia-1+5)%5], d=face[(ib+1)%5];
+      fList.push([doubles[a][b], triples[a][`${b}_${c}`], triples[b][`${a}_${d}`], doubles[b][a]]);
+      fList.push([triples[a][`${b}_${c}`], inners[a], inners[b], triples[b][`${a}_${d}`]]);
+    }
+  }
+
+  // corner caps
+  for (let v = 0; v < 20; v++) {
+    if (!touched.has(v)) continue;
+    for (const face of faces) {
+      if (!face.includes(v)) continue;
+      const vi=face.indexOf(v);
+      const prev=face[(vi-1+5)%5], next=face[(vi+1)%5];
+      fList.push([v, doubles[v][prev], triples[v][`${next}_${prev}`], doubles[v][next]]);
+    }
+  }
+
+  // cauterize caps for disabled edges
+  for (const [a,b] of disabled) {
+    let f1=null, f2=null;
+    for (const face of faces) {
+      if (!face.includes(a) || !face.includes(b)) continue;
+      if (face.indexOf(b) === (face.indexOf(a)+1)%5) f1=face; else f2=face;
+    }
+    if (!f1 || !f2) continue;
+    const c=f1[(f1.indexOf(a)-1+5)%5], d=f1[(f1.indexOf(b)+1)%5];
+    const e=f2[(f2.indexOf(a)+1)%5],  ff=f2[(f2.indexOf(b)-1+5)%5];
+    if (touched.has(a)) fList.push([doubles[a][b], triples[a][`${b}_${c}`], inners[a], triples[a][`${b}_${e}`]]);
+    if (touched.has(b)) fList.push([doubles[b][a], triples[b][`${a}_${ff}`], inners[b], triples[b][`${a}_${d}`]]);
+  }
+
+  return { verts, quads: fList };
+}
+
+// Proper right-hand Z-up → Y-up: [x,y,z] → [x, z, -y]
+const zu2yu = ([x,y,z]) => [x, z, -y];
+
+// fan-triangulate quads → flat Float32Arrays for Three.js
+function toTriangles(verts, quads) {
+  const pos = [], nrm = [];
+  for (const quad of quads) {
+    for (let i = 1; i < quad.length - 1; i++) {
+      const v0=verts[quad[0]], v1=verts[quad[i]], v2=verts[quad[i+1]];
+      const e1=sub3(v1,v0), e2=sub3(v2,v0);
+      let n=[e1[1]*e2[2]-e1[2]*e2[1], e1[2]*e2[0]-e1[0]*e2[2], e1[0]*e2[1]-e1[1]*e2[0]];
+      const nl=Math.sqrt(n[0]*n[0]+n[1]*n[1]+n[2]*n[2]);
+      if (nl>0) n=n.map(x=>x/nl); else n=[0,0,1];
+      for (const v of [v0,v1,v2]) { pos.push(...zu2yu(v)); nrm.push(...zu2yu(n)); }
+    }
+  }
+  return { pos: new Float32Array(pos), nrm: new Float32Array(nrm) };
+}
+
+// ── Three.js setup ────────────────────────────────────────────────────────────
+
+const threePanel = document.getElementById('three-panel');
+const canvas = document.getElementById('threeCanvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x111111);
+
+// Manim phi=70°, theta=210° (Z-up spherical) → Y-up via zu2yu
+const _r = 9;
+const _mc = [
+  _r * Math.sin(70*Math.PI/180) * Math.cos(210*Math.PI/180),
+  _r * Math.sin(70*Math.PI/180) * Math.sin(210*Math.PI/180),
+  _r * Math.cos(70*Math.PI/180),
+];
+const INIT_CAM = new THREE.Vector3(...zu2yu(_mc));
+
+const camera = new THREE.PerspectiveCamera(40, 1, 0.01, 100);
+camera.position.copy(INIT_CAM);
+camera.lookAt(0, 0, 0);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+
+scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+// Lights parented to camera so they stay fixed relative to the viewer
+const dirLight = new THREE.DirectionalLight(0xffffff, 1.8);
+dirLight.position.set(2, 3, 4);   // relative to camera space
+camera.add(dirLight);
+const dirLight2 = new THREE.DirectionalLight(0xaabbff, 0.5);
+dirLight2.position.set(-3, -1, -2);
+camera.add(dirLight2);
+scene.add(camera); // camera must be in scene for its children to render
+
+// ghost wireframe (all 30 edges, always visible)
+function makeGhost() {
+  const dverts = dodecahedronVertices();
+  const pts = [];
+  for (const [du,dv] of DODECA_EDGES) {
+    const s=dverts[DODECA_TO_ICOSA[du]], e=dverts[DODECA_TO_ICOSA[dv]];
+    pts.push(...zu2yu(s), ...zu2yu(e));
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(pts), 3));
+  return new THREE.LineSegments(geo, new THREE.LineBasicMaterial({ color: 0x444444 }));
+}
+// Manim's -224.5° rotation about Z (OUT) → Y axis after zu2yu
+const meshGroup = new THREE.Group();
+meshGroup.rotation.y = 234.9 * Math.PI / 180;
+meshGroup.rotation.x = 3.4  * Math.PI / 180;
+meshGroup.rotation.z = 6.0  * Math.PI / 180;
+scene.add(meshGroup);
+
+const ghostObj = makeGhost();
+meshGroup.add(ghostObj);
+
+let meshObj = null;
+const meshMat = new THREE.MeshPhongMaterial({ color: 0xdddddd, side: THREE.DoubleSide, shininess: 40 });
+
+function updateMesh(reprVal) {
+  if (meshObj) { meshGroup.remove(meshObj); meshObj.geometry.dispose(); meshObj = null; }
+  const { verts, quads } = buildMesh(reprVal);
+  if (!quads.length) return;
+  const { pos, nrm } = toTriangles(verts, quads);
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('normal',   new THREE.BufferAttribute(nrm, 3));
+  meshObj = new THREE.Mesh(geo, meshMat);
+  meshGroup.add(meshObj);
+}
+
+function resizeThree() {
+  const w = threePanel.clientWidth, h = threePanel.clientHeight;
+  renderer.setSize(w, h);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+new ResizeObserver(resizeThree).observe(threePanel);
+
+(function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+})();
+
+// ── Schlegel diagram ──────────────────────────────────────────────────────────
+
+const svgEl = document.getElementById('schlegel');
+
+function schlegelPositions(cx, cy, maxR) {
+  const ang = [0,1,2,3,4].map(k => -54 - k*72);
+  const ring3Ang = [0,1,2,3,4].map(k => {
+    const a1=ang[k], a2=ang[(k+1)%5];
+    return a2 < a1 ? (a1+a2)/2 : (a1+a2-360)/2;
+  });
+  function pt(r, deg) {
+    const rad = deg * Math.PI / 180;
+    return [cx + r/1.76*maxR*Math.cos(rad), cy - r/1.76*maxR*Math.sin(rad)];
+  }
+  const pos = {};
+  [0,1,2,3,4].forEach((v,k)  => pos[v] = pt(0.32, ang[k]));
+  [9,5,6,7,8].forEach((v,k)  => pos[v] = pt(0.80, ang[k]));
+  [10,11,12,13,14].forEach((v,k) => pos[v] = pt(1.28, ring3Ang[k]));
+  [15,16,17,18,19].forEach((v,k) => pos[v] = pt(1.76, ring3Ang[k]));
+  for (let v = 0; v < 20; v++) pos[v] = [2*cx - pos[v][0], pos[v][1]];
+  return pos;
+}
+
+function mkSVG(tag, attrs) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k,v] of Object.entries(attrs)) el.setAttribute(k, v);
+  return el;
+}
+
+function drawSchlegel() {
+  const W = svgEl.clientWidth || 400, H = svgEl.clientHeight || 500;
+  svgEl.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svgEl.innerHTML = '';
+
+  const margin = 36;
+  const maxR   = Math.min(W, H) / 2 - margin;
+  const cx = W/2, cy = H/2;
+  const pos = schlegelPositions(cx, cy, maxR);
+
+  // edges
+  DODECA_EDGES.forEach(([u,v], i) => {
+    const [x1,y1]=pos[u], [x2,y2]=pos[v];
+    const active = !!(reprVal & (1 << i));
+
+    // visible line
+    svgEl.appendChild(mkSVG('line', {
+      x1, y1, x2, y2,
+      stroke: active ? '#ffffff' : '#444444',
+      'stroke-width': active ? 3 : 1.5,
+      'pointer-events': 'none',
+    }));
+
+    // transparent hit area
+    const hit = mkSVG('line', { x1, y1, x2, y2, stroke: 'transparent', 'stroke-width': 14 });
+    hit.style.cursor = 'pointer';
+    hit.addEventListener('click', () => {
+      reprVal ^= (1 << i);
+      document.getElementById('numInput').value = reprVal;
+      syncDisplay();
+    });
+    svgEl.appendChild(hit);
+
+    // bit-index label, offset perpendicular away from center
+    const mx=(x1+x2)/2, my=(y1+y2)/2;
+    const dx=x2-x1, dy=y2-y1, len=Math.max(Math.sqrt(dx*dx+dy*dy), 1);
+    let px=-dy/len, py=dx/len;
+    if (px*(mx-cx)+py*(my-cy) < 0) { px=-px; py=-py; }
+    const lbl = mkSVG('text', {
+      x: mx+px*13, y: my+py*13,
+      'font-size': 9, fill: '#cccc44',
+      'text-anchor': 'middle', 'dominant-baseline': 'middle',
+      'pointer-events': 'none',
+    });
+    lbl.textContent = i;
+    svgEl.appendChild(lbl);
+  });
+
+  // vertices
+  for (let v = 0; v < 20; v++) {
+    const [x,y] = pos[v];
+    svgEl.appendChild(mkSVG('circle', { cx: x, cy: y, r: 5, fill: '#ffffff' }));
+  }
+}
+
+new ResizeObserver(drawSchlegel).observe(document.getElementById('schlegel-panel'));
+
+// ── state & controls ──────────────────────────────────────────────────────────
+
+const MAX_VAL = (1 << 30) - 1;
+function clampVal(v) { return Math.max(0, Math.min(MAX_VAL, v | 0)); }
+
+function readParams() {
+  const p = new URLSearchParams(location.search);
+  const v = parseInt(p.get('value'), 10);
+  return {
+    value:   isNaN(v) ? MAX_VAL : clampVal(v),
+    outline: p.get('outline') !== '0',
+  };
+}
+
+function pushParams() {
+  const p = new URLSearchParams();
+  p.set('value', reprVal);
+  p.set('outline', ghostObj.visible ? '1' : '0');
+  history.replaceState(null, '', '?' + p.toString());
+}
+
+const _init = readParams();
+let reprVal = _init.value;
+
+function syncDisplay() {
+  reprVal = clampVal(reprVal);
+  updateMesh(reprVal);
+  drawSchlegel();
+  document.getElementById('numInput').value = reprVal;
+  document.getElementById('binDisplay').textContent = reprVal.toString(2).padStart(30, '0');
+  pushParams();
+}
+
+window.applyValue = function() {
+  reprVal = clampVal(parseInt(document.getElementById('numInput').value, 10) || 0);
+  syncDisplay();
+};
+
+document.getElementById('numInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') window.applyValue();
+});
+
+
+window.resetEdges = function() {
+  reprVal = (1 << 30) - 1;
+  syncDisplay();
+};
+
+window.clearEdges = function() {
+  reprVal = 0;
+  syncDisplay();
+};
+
+window.resetCamera = function() {
+  camera.position.copy(INIT_CAM);
+  controls.target.set(0, 0, 0);
+  controls.update();
+};
+
+window.toggleGhost = function() {
+  ghostObj.visible = !ghostObj.visible;
+  document.getElementById('ghostBtn').textContent = `Outline: ${ghostObj.visible ? 'ON' : 'OFF'}`;
+  pushParams();
+};
+
+window.downloadSTL = function() {
+  const { verts, quads } = buildMesh(reprVal);
+  const lines = ['solid dodeca'];
+  for (const quad of quads) {
+    for (let i = 1; i < quad.length - 1; i++) {
+      const v0=verts[quad[0]], v1=verts[quad[i]], v2=verts[quad[i+1]];
+      const e1=sub3(v1,v0), e2=sub3(v2,v0);
+      let n=[e1[1]*e2[2]-e1[2]*e2[1], e1[2]*e2[0]-e1[0]*e2[2], e1[0]*e2[1]-e1[1]*e2[0]];
+      const nl=Math.sqrt(n[0]*n[0]+n[1]*n[1]+n[2]*n[2]);
+      if (nl>0) n=n.map(x=>x/nl); else n=[0,0,1];
+      lines.push(`facet normal ${n.map(x=>x.toFixed(6)).join(' ')}`);
+      lines.push('  outer loop');
+      for (const v of [v0,v1,v2]) lines.push(`    vertex ${v.map(x=>x.toFixed(6)).join(' ')}`);
+      lines.push('  endloop\nendfacet');
+    }
+  }
+  lines.push('endsolid dodeca');
+  const blob = new Blob([lines.join('\n')], { type: 'model/stl' });
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), { href: url, download: `dodeca_${reprVal}.stl` });
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+// Apply URL params and render
+if (!_init.outline) {
+  ghostObj.visible = false;
+  document.getElementById('ghostBtn').textContent = 'Outline: OFF';
+}
+document.getElementById('numInput').value = reprVal;
+requestAnimationFrame(() => { resizeThree(); syncDisplay(); });
+
+</script>
+</body>
+</html>

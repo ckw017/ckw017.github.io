@@ -265,7 +265,7 @@ my subjective opinion on this matter is basically an objective fact. Thanks for 
 
 
 <center>
-<img src="">
+<img src="/images/dodecahedra/print.jpg" style="max-height:60vh"><br>
 <i>3D print of one of my favorite structures, you can interact with it and other structures
 <a href="/dodecahedra/viewer.html?value=989814703&outline=0" target="_blank">here</a>.<br> For fun,
 try figuring out what kind of symmetry it has!
@@ -282,5 +282,9 @@ further detail exploring the symmetries of *Incomplete Open Cubes* and group the
 * <a href="https://www.math.ksu.edu/~rozhkovs/LeWitt_cubes.pdf" target="_blank">"Is&nbsp;the&nbsp;List&nbsp;of&nbsp;Incomplete&nbsp;Open&nbsp;Cubes&nbsp;Complete?"</a>
 (presumably by [Natasha Rozhkovskaya](https://www.math.ksu.edu/~rozhkovs/)). Enumeration of
 the original incomplete open cubes problem.
+* <a href="https://oeis.org/A222186" target="_blank">OEIS A222186</a> - Online Encyclopedia
+of Integer Sequences for this problem in 1 to 4 dimensions. It looks like the number of
+incomplete open hypercubes comes out to 14632580 (note that this sequence includes the
+"complete" structure, so we must subtract 1).
 * ["Incomplete Open Cubes Revisited"](https://cubes-revisited.art/) by Rob Weychert. Explores
 the possible structures if you remove the connectedness requirement.

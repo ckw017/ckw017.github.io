@@ -30,8 +30,8 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 
 ---
 # FAQs
-[What is our purpose?](#What-is-our-purpose?)
-<br>
+<!-- [What is our purpose?](#What-is-our-purpose?)
+<br> -->
 [What's with the background image for this site?](#What's-with-the-background-image-for-this-site?)
 <br>
 [Can machines think?](#Can-machines-think?)
@@ -41,7 +41,7 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 [What does your middle initial stand for?](#What-does-your-middle-initial-stand-for?)
 
 
-<a name="What-is-our-purpose?"></a>
+<!-- <a name="What-is-our-purpose?"></a>
 
 ---
 ## What is our purpose?
@@ -68,7 +68,7 @@ And occasionally:
 <br>
 ― Kurt Vonnegut again, *A Man Without a Country*
 
-<a name="What's-with-the-background-image-for-this-site?"></a>
+<a name="What's-with-the-background-image-for-this-site?"></a> -->
 
 ---
 ## What's with the background image for this site?

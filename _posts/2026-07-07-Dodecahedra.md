@@ -28,11 +28,11 @@ following syllogism I'm sure many other modern art museum visitors have experien
 
 * Art is created by artists.
 * I am not an artist.
-* Wait a sec, I could've done that!
+* Hey wait, I could've done that!
 * Therefore, it is not art.
 
 The caveat here is even if I could've done it, I sure didn't, and even if I did,
-I sure wouldn't be the first. Of course there's nothing to stop us from trying to one up the original!
+I sure wouldn't be the first. Of course nothing's stopping us from upping the original!
 
 # Keeping things Platonic
 
@@ -48,7 +48,7 @@ The cube is a member of a group of shapes known as the [Platonic Solids](https:/
 a group of "regular" polyhedra where every edge is the same length, every face is the same
 regular polygon, and every vertex has the same number of faces meeting.
 Logically, in order to flex on Sol LeWitt's *Incomplete Open Cubes* we'd want to replace the cubes with a more
-complicated Platonic Solid, either a dodecahedron, icosahedron, or teapotahedron. I went
+complicated platonic solid, either a dodecahedron, icosahedron, or teapotahedron. I went
 with the dodecahedron since it seemed natural to progress
 from 4-sided faces to 5-sided faces.
 
@@ -135,7 +135,7 @@ fn rot2(mut repr: u32) -> u32 {
 ```
 
 *(Technically you can
-squeeze all of this into handful of CPU cyles with [x86 intrinsics](https://stackoverflow.com/questions/54408726/whats-the-fastest-way-to-perform-an-arbitrary-128-256-512-bit-permutation-using))*
+squeeze all of this into a handful of CPU cyles with [x86 intrinsics](https://stackoverflow.com/questions/54408726/whats-the-fastest-way-to-perform-an-arbitrary-128-256-512-bit-permutation-using))*
 
 This gives us a second rotation around a new axis:
 
@@ -283,8 +283,8 @@ further detail exploring the symmetries of *Incomplete Open Cubes* and group the
 (presumably by [Natasha Rozhkovskaya](https://www.math.ksu.edu/~rozhkovs/)). Enumeration of
 the original incomplete open cubes problem.
 * <a href="https://oeis.org/A222186" target="_blank">OEIS A222186</a> - Online Encyclopedia
-of Integer Sequences for this problem in 1 to 4 dimensions. It looks like the number of
+of Integer Sequences for this problem in 1 to 4 dimensions. According to this the number of
 incomplete open hypercubes comes out to 14632580 (note that this sequence includes the
-"complete" structure, so we must subtract 1).
+"complete" structure, so we subtract 1).
 * ["Incomplete Open Cubes Revisited"](https://cubes-revisited.art/) by Rob Weychert. Explores
 the possible structures if you remove the connectedness requirement.

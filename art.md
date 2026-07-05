@@ -22,10 +22,10 @@ As of 2026, I've also animated some plotter pieces on an
 <article class="post">
     <div class="flex-container" style="flex-wrap: wrap">
         {% if plot.video %}
-        <video src="{{ site.baseurl }}{{ plot.img }}" style="outline:none;max-width:300px;" autoplay loop muted playsinline controls="controls"></video>
+        <video src="{{ site.baseurl }}{{ plot.img }}" style="outline:none;max-width:min(300px, 100%);" autoplay loop muted playsinline controls="controls"></video>
         {% else %}
         <a href="{{ site.baseurl }}{{ plot.img }}">
-        <img src="{{ site.baseurl }}{{ plot.img }}" style="max-width:300px;">
+        <img src="{{ site.baseurl }}{{ plot.img }}" style="max-width:min(300px, 100%);">
         </a>
         {% endif %}
         <div class="text-preview" style="width: 60%">

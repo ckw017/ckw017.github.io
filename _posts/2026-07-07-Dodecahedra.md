@@ -73,7 +73,7 @@ animation shows us starting from an empty structure and adding each edge one by 
 are numbered from 0 (least significant) to 29 (most significant):
 
 <center>
-<video controls="controls" style="outline:none; max-height:40vh;" autoplay loop muted playsinline>
+<video controls="controls" style="outline:none; max-height:40vh; max-width:100%;" autoplay loop muted playsinline>
   <source src="/images/dodecahedra/Stationary_final.mp4">
 </video>
 </center>
@@ -99,7 +99,7 @@ This effectively cycles each group of 5 bits in a way which resembles rotation. 
 animation visualizes the bit shifts on an arbitrary structure:
 
 <center>
-<video controls="controls" style="outline:none; max-height:40vh;" autoplay loop muted playsinline>
+<video controls="controls" style="outline:none; max-height:40vh; max-width:100%;" autoplay loop muted playsinline>
   <source src="/images/dodecahedra/rot1.mp4">
 </video>
 </center>
@@ -140,7 +140,7 @@ squeeze all of this into handful of CPU cyles with [x86 intrinsics](https://stac
 This gives us a second rotation around a new axis:
 
 <center>
-<video controls="controls" style="outline:none; max-height:40vh;" autoplay loop muted playsinline>
+<video controls="controls" style="outline:none; max-height:40vh; max-width:100%;" autoplay loop muted playsinline>
   <source src="/images/dodecahedra/rot2.mp4">
 </video>
 </center>
@@ -181,7 +181,7 @@ of our structures. We start by finding all pairs of edges connected by a shared 
 their binary representations:
 
 <center>
-<video controls="controls" style="outline:none; max-height:40vh;" autoplay loop muted playsinline>
+<video controls="controls" style="outline:none; max-height:40vh; max-width:100%;" autoplay loop muted playsinline>
   <source src="/images/dodecahedra/3.mp4">
 </video>
 </center>

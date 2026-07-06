@@ -9,7 +9,7 @@ excerpt_separator: <!--more-->
 
 I have a secret. Don't tell anyone, but after majoring in Computer <i><u>Science</u></i> and Data <i><u>Science</u></i> at Berkeley's College of
 Letters and <du><i>Sciences</i></du> I somehow ended up with a Bachelor of
-$${\color{#dd2222}A}{\color{#dd8800}\mathfrak{r}}{\color{#00aa00}\mathfrak{t}}{\color{#0000ff}\mathfrak{s}}$$. Anyway, it was thanks to
+$${\color{#dd2222}\mathcal{A}}{\color{#dd8800}\mathfrak{r}}{\color{#00aa00}\mathfrak{t}}{\color{#0000ff}\mathfrak{s}}$$. Anyway, it was thanks to
 a required art class that I first encountered [*Incomplete Open Cubes*](https://www.sfmoma.org/artwork/97.516.A-KKKKKKKKKK/) by Sol LeWitt at
 San Francisco's Museum of Modern Art:
 

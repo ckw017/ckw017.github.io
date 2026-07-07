@@ -89,24 +89,24 @@ const ROT1_MASK_A: u32 = 0b11110_11110_11110_11110_11110_11110;
 const ROT1_MASK_B: u32 = 0b00001_00001_00001_00001_00001_00001;
 
 fn rot1(structure: u32) -> u32 {
-    return (structure & ROT1_MASK_A) >> 1
-         + (structure & ROT1_MASK_B) << 4;
+    return (structure & ROT1_MASK_A) << 1
+         + (structure & ROT1_MASK_B) >> 4;
 }
 ```
 
-The first bit mask selects 4 bits from each group of 5 which we shift 1 bit to the right.
-The second bit mask selects the remaining bit from each group and shifts them 4 bits to the left.
+The first bit mask selects 4 bits from each group of 5 and shifts them 1 bit to the left
+The second bit mask selects the remaining bit from each group and shifts it 4 bits to the right.
 This effectively cycles each group of 5 bits in a way which resembles rotation. The following
 animation visualizes the bit shifts on an arbitrary structure:
 
 <center>
 <video controls="controls" style="outline:none; max-height:40vh; max-width:100%;" autoplay loop muted playsinline>
-  <source src="/images/dodecahedra/rot1.mp4">
+  <source src="/images/dodecahedra/rot1_reversed.mp4">
 </video>
 <br>
 <i>To get a feel for how cycling works, try focusing on the innermost pentagon
-of the diagram on the left (edges 0, 1, 2, 3 and 4) and comparing their movement to the binary
-representation at the top right.</i>
+of the diagram on the left (edges 0, 1, 2, 3 and 4) and comparing their movement to
+bits 0 through 4 at the top right.</i>
 </center>
 
 As is, this operation is only enough to allow us to cycle through five possible rotations of a

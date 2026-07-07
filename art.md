@@ -24,7 +24,7 @@ As of 2026, I've also animated some plotter pieces on an
         {% if plot.video %}
         <video src="{{ site.baseurl }}{{ plot.img }}" style="outline:none;max-width:min(300px, 100%);" autoplay loop muted playsinline controls="controls"></video>
         {% else %}
-        <a href="{{ site.baseurl }}{{ plot.img }}">
+        <a href="{{ site.baseurl }}{{ plot.img }}" style="display:contents">
         <img src="{{ site.baseurl }}{{ plot.img }}" style="max-width:min(300px, 100%);">
         </a>
         {% endif %}

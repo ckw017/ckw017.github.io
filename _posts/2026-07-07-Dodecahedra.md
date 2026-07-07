@@ -103,6 +103,10 @@ animation visualizes the bit shifts on an arbitrary structure:
 <video controls="controls" style="outline:none; max-height:40vh; max-width:100%;" autoplay loop muted playsinline>
   <source src="/images/dodecahedra/rot1.mp4">
 </video>
+<br>
+<i>To get a feel for how cycling works, try focusing on the innermost pentagon
+of the diagram on the left (edges 0, 1, 2, 3 and 4) and comparing their movement to the binary
+representation at the top right.</i>
 </center>
 
 As is, this operation is only enough to allow us to cycle through five possible rotations of a

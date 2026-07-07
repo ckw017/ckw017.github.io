@@ -85,8 +85,8 @@ the bottom-most face. This grouping turns out to be useful for computing rotatio
 Consider the following bit manipulation operations:
 
 ```rust
-const ROT1_MASK_A: u32 = 0b11110_11110_11110_11110_11110_11110;
-const ROT1_MASK_B: u32 = 0b00001_00001_00001_00001_00001_00001;
+const ROT1_MASK_A: u32 = 0b01111_01111_01111_01111_01111_01111;
+const ROT1_MASK_B: u32 = 0b10000_10000_10000_10000_10000_10000;
 
 fn rot1(structure: u32) -> u32 {
     return (structure & ROT1_MASK_A) << 1

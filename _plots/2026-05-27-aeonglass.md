@@ -1,5 +1,5 @@
 ---
-title: spin
+title: aeonglass
 img: /images/plots/spin.mp4
 video: true
 ---

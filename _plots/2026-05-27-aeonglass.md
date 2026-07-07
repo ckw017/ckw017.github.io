@@ -1,6 +1,6 @@
 ---
 title: aeonglass
-img: /images/plots/spin.mp4
+img: /images/plots/aeonglass.mp4
 video: true
 ---
 

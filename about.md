@@ -88,7 +88,7 @@ That's a picture of Berkeley's Campanile, with a few rounds of [primitive](https
 <a name='How-did-you-get-into-programming?'></a>
 
 ---
-## How did you into programming?
+## How did you get into programming?
 
 In high school I was relatively clueless about what I wanted to do in terms of career. I knew I wanted to some sort of STEM-related field, but I wasn't sure which one. My junior year I took the AP courses for CS and Chemistry, and really loved both of them! Unfortunately for chem, it was a lot easier to tinker with programming than it was with mass spectometry on my own time, and so I ended up leaning towards computer science.
 

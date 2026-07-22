@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Plotter Art
+title: Art
 permalink: /art/
 ---
 

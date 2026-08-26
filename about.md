@@ -38,6 +38,8 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 <br>
 [How did you get into programming?](#How-did-you-get-into-programming?)
 <br>
+[What is our purpose?](#What-is-our-purpose?)
+<br>
 [What does your middle initial stand for?](#What-does-your-middle-initial-stand-for?)
 
 
@@ -103,6 +105,34 @@ This in particular really hits home for me:
 [https://www.xkcd.com/519/](https://www.xkcd.com/519/)
 
 See the third quote in the "What is our purpose?" section for more on this.
+
+<a name="What-is-our-purpose?"></a>
+
+---
+
+## What is our purpose?
+
+During my stint at Berkeley's [Neuroecon lab](https://neuroecon.berkeley.edu/), one of the other undergrads asked me "what is our purpose?" in the sense of "wait what are we supposed to be doing this week?" I too had no idea what we were supposed to be doing at the time.
+
+In the broader sense though, I this philosophy:
+
+"*A purpose of human life, no matter who is controlling it, is to love whoever is around to be loved.*"
+<br>
+― Kurt Vonnegut, *The Sirens of Titan*
+
+Or alternatively:
+
+"*Love while you've got love to give.*
+<br>
+*Live while you've got life to live.*"
+<br>
+― Piet Hein, *Grooks*
+
+And occasionally:
+
+"*I tell you, we are here on Earth to fart around, and don't let anybody tell you different.*"
+<br>
+― Kurt Vonnegut again, *A Man Without a Country*
 
 ---
 ## What does your middle initial stand for?

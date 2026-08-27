@@ -34,7 +34,7 @@ So, how can a solution be found then? The answer lies in iteration. Let's start 
 
 This has an interesting implication: any "starter" input will eventually collapse into a loop given enough applications of our successor function. Our goal to find a self-describing sentence is instead to find a cycle of length one given a specific prefix. So, if we just generate random starting points and continue applying the successor function until we get "sucked into" a loop of length one. One way to visualize this is to imagine a sea full of whirlpools. If we wanted to find eye of an "ideal" whirlpool, which in our analogy will be one with an eye with diameter of say, 2 inches, we could check every 2x2 inch square of surface on the sea and hope to run into it. Alternatively, we could airdrop thousands of 2 inch buoys into the water. The buoy's will naturally find their ways to the eye of every whirlpool, and if we're lucky, one of them will find its way to the center of our ideal one.
 
-![Whirl Islands](https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.bulbagarden.net%2Fupload%2F1%2F19%2FHGSS_Whirl_Islands-Day.png&f=1)
+![Whirl Islands](/images/whirl.jpg)
 
 A sea of whirlpools. Image source: "Whirl Islands" from Pokemon HeartGold & SoulSilver
 

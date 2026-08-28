@@ -104,7 +104,7 @@ This in particular really hits home for me:
 
 [https://www.xkcd.com/519/](https://www.xkcd.com/519/)
 
-See the third quote in the "What is our purpose?" section for more on this.
+See the third quote in the next section for more on this.
 
 <a name="What-is-our-purpose?"></a>
 

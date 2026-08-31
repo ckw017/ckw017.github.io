@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-*Last updated: July 4th, 2026*
+*Last updated: August 31st, 2026*
 
 ---
 
@@ -20,7 +20,7 @@ Hi, I'm some guy! I graduated from UC Berkeley where I double majored in Compute
 in the College of Letters & *Science*, and received a Bachelor of *Arts*.
 I previously worked on platform engineering, distributed computing, observability, and container orchestration at [Anyscale](https://www.anyscale.com/).
 I am currently working on infra at Surge AI.
-In my freetime I enjoy [doodling with my fancy printer](/art), reading (I recommend Vonnegut, Ted Chiang, and Terry Pratchett), and playing competitive Pokemon.
+In my freetime I enjoy [doodling with my fancy printer](/art), reading (I recommend Vonnegut, Ted Chiang, and Terry Pratchett), and playing roguelike games.
 
 If you have any questions/critiques/feedback for me, feel free to contact me!
 

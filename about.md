@@ -19,7 +19,7 @@ permalink: /about/
 Hi, I'm some guy! I graduated from UC Berkeley where I double majored in Computer *Science* and Data *Science*,
 in the College of Letters & *Science*, and received a Bachelor of *Arts*.
 I previously worked on platform engineering, distributed computing, observability, and container orchestration at [Anyscale](https://www.anyscale.com/).
-I am a currently do computer stuff at a public benefit corporation.
+I currently do computer stuff at a public benefit corporation.
 In my freetime I enjoy [doodling with my fancy printer](/art), reading (I recommend Vonnegut, Ted Chiang, and Terry Pratchett), and playing roguelike games.
 
 If you have any questions/critiques/feedback for me, feel free to contact me!

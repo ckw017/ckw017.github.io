@@ -22,7 +22,7 @@ I previously worked on platform engineering, distributed computing, observabilit
 I currently do computer stuff at a public benefit corporation.
 In my freetime I enjoy [doodling with my fancy printer](/art), reading (I recommend Vonnegut, Ted Chiang, and Terry Pratchett), and playing roguelike games.
 
-If you have any questions/critiques/feedback for me, feel free to contact me!
+<!-- If you have any questions/critiques/feedback for me, feel free to contact me! -->
 
 ### 100% Bot Proof Contact Info
 
@@ -30,20 +30,20 @@ If you have any questions/critiques/feedback for me, feel free to contact me!
 
 ---
 # FAQs
-<!-- [What is our purpose?](#What-is-our-purpose?)
-<br> -->
-[What's with the background image for this site?](#What's-with-the-background-image-for-this-site?)
+[What is our purpose?](#What-is-our-purpose?)
 <br>
+<!-- [What's with the background image for this site?](#What's-with-the-background-image-for-this-site?) -->
+<!-- <br> -->
 [Can machines think?](#Can-machines-think?)
 <br>
 [How did you get into programming?](#How-did-you-get-into-programming?)
 <br>
-[What is our purpose?](#What-is-our-purpose?)
-<br>
+<!-- [What is our purpose?](#What-is-our-purpose?)
+<br> -->
 [What does your middle initial stand for?](#What-does-your-middle-initial-stand-for?)
 
 
-<!-- <a name="What-is-our-purpose?"></a>
+<a name="What-is-our-purpose?"></a>
 
 ---
 ## What is our purpose?
@@ -70,12 +70,12 @@ And occasionally:
 <br>
 ― Kurt Vonnegut again, *A Man Without a Country*
 
-<a name="What's-with-the-background-image-for-this-site?"></a> -->
+<!-- <a name="What's-with-the-background-image-for-this-site?"></a>
 
 ---
 ## What's with the background image for this site?
 
-That's a picture of Berkeley's Campanile, with a few rounds of [primitive](https://github.com/fogleman/primitive) run on top of it to try to approximate it using geometric primitives. I personally really like the aesthetic, though I'll admit without looking closely it kind of seems like a blown-up low fidelity JPEG.
+That's a picture of Berkeley's Campanile, with a few rounds of [primitive](https://github.com/fogleman/primitive) run on top of it to try to approximate it using geometric primitives. I personally really like the aesthetic, though I'll admit without looking closely it kind of seems like a blown-up low fidelity JPEG. -->
 
 <a name='Can-machines-think?'></a>
 
@@ -92,11 +92,11 @@ That's a picture of Berkeley's Campanile, with a few rounds of [primitive](https
 ---
 ## How did you get into programming?
 
-In high school I was relatively clueless about what I wanted to do in terms of career. I knew I wanted to some sort of STEM-related field, but I wasn't sure which one. My junior year I took the AP courses for CS and Chemistry, and really loved both of them! Unfortunately for chem, it was a lot easier to tinker with programming than it was with mass spectrometry on my own time, and so I ended up leaning towards computer science.
+In high school I was relatively clueless about what I wanted to do in terms of career. I knew I wanted to some sort of STEM-related field, but I wasn't sure which one. My junior year I took the AP courses for CS and Chemistry, and really loved both of them! Unfortunately for chem, it was a lot easier to tinker with programming than it was with mass spectrometry on my own time, and so I ended up leaning towards computer science. I also had some background in [competition math](https://purplecomet.org/), which teaches a lot of intuition and practical problem solving skills that you really won't get in a classroom.
 
+<!--
 Admittedly, APCS is kind of useless in terms of preparation of Berkeley (and I imagine many other school's) CS curriculum. In my opinion of CS courses "handhold" a bit too excessively. The most educational periods of my time during high school were spent trying get to simple graphical games to display and run at 30 FPS relying solely on StackOverflow, compiler vitriol, and Java's standard library documentation. This is the kind of suffering that the department of education and parts of the constitution forbid, but I suspect that kind of struggle working on a personal project builds a level of independence that many undergraduate or high school courses aren't able to provide.
-
-I also had some background in [competition math](https://purplecomet.org/), which teaches a lot of intuition and practical problem solving skills that you really won't get in a classroom.
+-->
 
 This in particular really hits home for me:
 
@@ -104,11 +104,11 @@ This in particular really hits home for me:
 
 [https://www.xkcd.com/519/](https://www.xkcd.com/519/)
 
-See the third quote in the next section for more on this.
+See the third quote in the first section for more on this.
 
-<a name="What-is-our-purpose?"></a>
+<!-- <a name="What-is-our-purpose?"></a> -->
 
----
+<!-- ---
 
 ## What is our purpose?
 
@@ -132,7 +132,9 @@ And occasionally:
 
 "*I tell you, we are here on Earth to fart around, and don't let anybody tell you different.*"
 <br>
-― Kurt Vonnegut again, *A Man Without a Country*
+― Kurt Vonnegut again, *A Man Without a Country* -->
+
+<a name="What-does-your-middle-initial-stand-for?"></a>
 
 ---
 ## What does your middle initial stand for?
